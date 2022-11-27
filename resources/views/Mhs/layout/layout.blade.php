@@ -6,7 +6,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>PPDB</title>
+  <title>Skydash Admin</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="/template-siswa/template/vendors/feather/feather.css">
   <link rel="stylesheet" href="/template-siswa/template/vendors/ti-icons/css/themify-icons.css">
@@ -15,7 +15,7 @@
   <!-- Plugin css for this page -->
   <link rel="stylesheet" href="/template-siswa/template/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
   <link rel="stylesheet" href="/template-siswa/template/vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" type="/text/css" href="template-siswa/template/js/select.dataTables.min.css">
+  <link rel="stylesheet" type="/template-siswa/template/text/css" href="js/select.dataTables.min.css">
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="/template-siswa/template/css/vertical-layout-light/style.css">
@@ -55,10 +55,13 @@
   </div>
  
 
-  @stack('addon-script')
+
  
   
+  <!-- plugins:js -->
   <script src="/template-siswa/template/vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
   <script src="/template-siswa/template/vendors/chart.js/Chart.min.js"></script>
   <script src="/template-siswa/template/vendors/datatables.net/jquery.dataTables.js"></script>
   <script src="/template-siswa/template/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
@@ -76,7 +79,7 @@
   <script src="/template-siswa/template/js/dashboard.js"></script>
   <script src="/template-siswa/template/js/Chart.roundedBarCharts.js"></script>
 
-  @stack('prepend-script')
+
 </body>
 
 </html>

@@ -32,7 +32,7 @@
       <div class="col-md-6 grid-margin stretch-card">
         <div class="card tale-bg">
           <div class="card-people mt-auto">
-            <img src="images/dashboard/people.svg" alt="people">
+            <img src="/template-siswa/template/images/dashboard/people.svg" alt="people">
             <div class="weather-info">
               <div class="d-flex">
                 <div>
@@ -564,7 +564,7 @@
             <ul class="icon-data-list">
               <li>
                 <div class="d-flex">
-                  <img src="images/faces/face1.jpg" alt="user">
+                  <img src="/template-siswa/template/images/faces/face1.jpg" alt="user">
                   <div>
                     <p class="text-info mb-1">Isabella Becker</p>
                     <p class="mb-0">Sales dashboard have been created</p>
@@ -574,7 +574,7 @@
               </li>
               <li>
                 <div class="d-flex">
-                  <img src="images/faces/face2.jpg" alt="user">
+                  <img src="/template-siswa/template/images/faces/face2.jpg" alt="user">
                   <div>
                     <p class="text-info mb-1">Adam Warren</p>
                     <p class="mb-0">You have done a great job #TW111</p>
@@ -584,7 +584,7 @@
               </li>
               <li>
                 <div class="d-flex">
-                <img src="images/faces/face3.jpg" alt="user">
+                <img src="/template-siswa/template/images/faces/face3.jpg" alt="user">
                <div>
                 <p class="text-info mb-1">Leonard Thornton</p>
                 <p class="mb-0">Sales dashboard have been created</p>
@@ -594,7 +594,7 @@
               </li>
               <li>
                 <div class="d-flex">
-                  <img src="images/faces/face4.jpg" alt="user">
+                  <img src="/template-siswa/template/images/faces/face4.jpg" alt="user">
                   <div>
                     <p class="text-info mb-1">George Morrison</p>
                     <p class="mb-0">Sales dashboard have been created</p>
@@ -604,7 +604,7 @@
               </li>
               <li>
                 <div class="d-flex">
-                  <img src="images/faces/face5.jpg" alt="user">
+                  <img src="/template-siswa/template/images/faces/face5.jpg" alt="user">
                   <div>
                   <p class="text-info mb-1">Ryan Cortez</p>
                   <p class="mb-0">Herbs are fun and easy to grow.</p>
@@ -617,35 +617,8 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12 grid-margin stretch-card">
-        <div class="card">
-          <div class="card-body">
-            <p class="card-title">Advanced Table</p>
-            <div class="row">
-              <div class="col-12">
-                <div class="table-responsive">
-                  <table id="example" class="display expandable-table" style="width:100%">
-                    <thead>
-                      <tr>
-                        <th>Quote#</th>
-                        <th>Product</th>
-                        <th>Business type</th>
-                        <th>Policy holder</th>
-                        <th>Premium</th>
-                        <th>Status</th>
-                        <th>Updated at</th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                </table>
-                </div>
-              </div>
-            </div>
-            </div>
-          </div>
-        </div>
-      </div>
+   
+
   </div>
  <!-- Modal -->
 
