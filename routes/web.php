@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DashboardController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('Admin.main.dashboard');
+// });
+
+
+
+//Admin
+Route::group([
+    'prefix' => 'admin/'], function(){
+    Route::get('/', [DashboardController::Class, 'index'] )->name('dashboard-admin');
+
+  
+
+
+});
+
+Route::group([
+    'prefix' => 'siswa/'], function(){
+    Route::get('/', [DashboardSiswaController::Class, 'index'])->name('dashboard-siswa');
 });
