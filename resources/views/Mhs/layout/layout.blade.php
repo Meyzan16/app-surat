@@ -1,4 +1,4 @@
-    
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,13 +27,13 @@
 
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
-     @include('siswa.partial.navbar')
+     @include('mhs.partials.navbar')
 
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_settings-panel.html -->
 
-      @include('siswa.partial.sidebar')
+      @include('mhs.partials.sidebar')
 
       
       <div class="main-panel">

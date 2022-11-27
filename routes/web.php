@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Mahasiswa\DashboardMhsController;
 
 
 /*
@@ -32,6 +33,6 @@ Route::group([
 });
 
 Route::group([
-    'prefix' => 'siswa/'], function(){
-    Route::get('/', [DashboardSiswaController::Class, 'index'])->name('dashboard-siswa');
+    'prefix' => 'mahasiswa/'], function(){
+    Route::get('/', [DashboardMhsController::Class, 'index'])->name('dashboard-mhs');
 });
