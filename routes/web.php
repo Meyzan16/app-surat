@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Mahasiswa\DashboardMhsController;
+use App\Http\Controllers\Mahasiswa\PandaController;
 
 
 /*
@@ -21,6 +22,13 @@ use App\Http\Controllers\Mahasiswa\DashboardMhsController;
 // });
 
 
+Route::get('/', function () {
+    return view('Mhs.main.login');
+})->name('login_mahasiswa');
+
+
+Route::post('/pandalogin',[PandaController::class, 'pandaLogin'])->name('login_mahasiswa_post');
+Route::get('/logout', [PandaController::class, 'authLogout'])->name('logout_mahasiswa');
 
 //Admin
 Route::group([
