@@ -4,6 +4,10 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\tb_jenis_surat;
+use App\Models\tb_judul_surat;
+use App\Models\tb_persetujuan;
+use App\Models\user;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,5 +24,37 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        tb_jenis_surat::create([
+            'kode_surat' => 'KDU1',
+            'jenis_surat' => 'surat_umum',
+        ]);
+
+        tb_jenis_surat::create([
+            'kode_surat' => 'KDM2',
+            'jenis_surat' => 'surat_mahasiswa',
+        ]);
+
+        tb_judul_surat::create([
+            'kode_jenis_surat' => 'KDM2',
+            'judul_surat' => 'surat keterangan masih kuliah',
+        ]);
+
+        User::create([
+            'nama' => 'adzanmagrib',
+            'username' => 'monmon16',
+            'password' => bcrypt('monmon16'),
+            'role' => 'ADMIN',
+            'status_aktif' => 'Y',
+        ]);
+
+        tb_persetujuan::create([
+            'users_id' => '1',
+            'golongan' => 'IV B',
+            'jabatan' => 'wakil Dekan Bidang Akademik',
+        ]);
+
+
+
     }
 }

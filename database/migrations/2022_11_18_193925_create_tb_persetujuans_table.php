@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('tb_persetujuans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('users_id')->nullable();
+            $table->string('nip',20)->nullable();
             $table->string('golongan', 200)->nullable();
             $table->string('jabatan', 200)->nullable();
-            $table->string('photo_ttd', 200)->nullable();
+            $table->string('photo', 200)->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
