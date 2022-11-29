@@ -34,8 +34,8 @@ return new class extends Migration
 
             $table->enum('status_koor_fak', ['Y','N','belum diverifikasi'])->default('belum diverifikasi');
             $table->text('catatan_status_koor_fak')->nullable();
-            $table->timestamp('time_acc_koor_fak')->nullable();
             $table->foreignId('user_verif_koor_fak')->nullable();
+            $table->timestamp('time_acc_koor_fak')->nullable();
 
             $table->enum('status_persetujuan', ['Y','N','belum diverifikasi'])->default('belum diverifikasi');
             $table->text('catatan_persetujuan')->nullable();
