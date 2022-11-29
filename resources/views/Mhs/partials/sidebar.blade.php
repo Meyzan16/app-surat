@@ -68,12 +68,20 @@
 
   <ul class="menu-inner py-1">
     <!-- Dashboard -->
-    <li class="menu-item active">
-      <a href="index.html" class="menu-link">
+    <li class="menu-item  {{ request()->is('mahasiswa') ? 'active' : '' }} ">
+      <a href="{{ route('dashboard-mhs')}}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-home-circle"></i>
         <div data-i18n="Analytics">Dashboard</div>
       </a>
     </li>
+
+    <li class="menu-item  {{ request()->is('mahasiswa/pengajuan-surat*') ? 'active' : '' }} ">
+      <a href="{{ route('pengajuan-index')}}" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-home-circle"></i>
+        <div data-i18n="Analytics">Pengajuan Surat</div>
+      </a>
+    </li>
+
 
     <!-- Layouts -->
     <li class="menu-item">
