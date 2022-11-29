@@ -27,20 +27,25 @@ return new class extends Migration
             $table->text('alamat')->nullable();
 
             
-            $table->enum('status_prodi', ['Y','N','belum diverifikasi'])->default('belum diverifikasi');
-            $table->text('catatan_status_prodi')->nullable();
-            $table->timestamp('time_acc_prodi')->nullable();
+            // $table->enum('status_prodi', ['Y','N','belum diverifikasi'])->default('belum diverifikasi');
+            // $table->text('catatan_status_prodi')->nullable();
+            // $table->timestamp('time_acc_prodi')->nullable();
+            
 
             $table->enum('status_koor_fak', ['Y','N','belum diverifikasi'])->default('belum diverifikasi');
             $table->text('catatan_status_koor_fak')->nullable();
             $table->timestamp('time_acc_koor_fak')->nullable();
+            $table->foreignId('user_verif_koor_fak')->nullable();
 
             $table->enum('status_persetujuan', ['Y','N','belum diverifikasi'])->default('belum diverifikasi');
             $table->text('catatan_persetujuan')->nullable();
-            $table->foreignId('id_persetujuan')->nullable();
+            $table->foreignId('user_verif_persetujuan')->nullable();
             $table->timestamp('time_acc_ttd')->nullable();
+
             $table->softDeletes();
             $table->timestamps();
+
+
         });
     }
 

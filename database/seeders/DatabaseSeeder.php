@@ -48,7 +48,6 @@ class DatabaseSeeder extends Seeder
             'status_aktif' => 'Y',
         ]);
 
-        
 
         tb_persetujuan::create([
             'users_id' => '1',
