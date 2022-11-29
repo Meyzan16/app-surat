@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('tb_jenis_surats', function (Blueprint $table) {
             $table->string('kode_surat', 4)->primary();
             $table->enum('jenis_surat', ['surat_umum','surat_mahasiswa'])->nullable();
-            $table->softDeletes();
             $table->timestamps();
         });
     }

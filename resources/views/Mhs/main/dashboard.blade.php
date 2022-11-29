@@ -9,7 +9,7 @@
         <div class="d-flex align-items-end row">
           <div class="col-sm-7">
             <div class="card-body">
-              <h5 class="card-title text-primary">Selamat Datang {{Session::get('nama_lengkap')}} 🎉</h5>
+              <h5 class="card-title text-primary">SELAMAT DATANG {{Session::get('nama_lengkap')}} 🎉</h5>
               <p class="mb-4">
                 Website ini merupakan terobosan baru dari fakultas <span class="fw-bold">Matematika dan Ilmu Pengetahuan Alam </span>
                 dalam mempermudah proses kebutuhan surat menyurat mahasiswa
