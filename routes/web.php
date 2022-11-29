@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Mahasiswa\DashboardMhsController;
 use App\Http\Controllers\Mahasiswa\PandaController;
+use App\Http\Controllers\Mahasiswa\PengajuanSuratController;
 
 
 /*
@@ -34,13 +35,10 @@ Route::get('/logout', [PandaController::class, 'authLogout'])->name('logout_maha
 Route::group([
     'prefix' => 'admin/'], function(){
     Route::get('/', [DashboardController::Class, 'index'] )->name('dashboard-admin');
-
-  
-
-
 });
 
 Route::group([
     'prefix' => 'mahasiswa/'], function(){
     Route::get('/', [DashboardMhsController::Class, 'index'])->name('dashboard-mhs');
+    Route::get('/pengajuan-surat', [PengajuanSuratController::Class, 'index'])->name('pengajuan-index');
 });
