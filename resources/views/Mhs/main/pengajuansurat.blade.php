@@ -20,9 +20,9 @@
               <div class="col-sm-10">
                 <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
                   <option selected>Pilih Surat</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                    @foreach ($judul_surat as $item)
+                      <option value="{{ $item->kode_jenis_surat }}"> {{ $item->tb_jenis_surat->jenis_surat }} | {{ $item->judul_surat }}</option>   
+                     @endforeach
                 </select>
               </div>
             </div>
