@@ -2,40 +2,46 @@
 
 @section('content')
 
-<div class="content-wrapper">
-    <div class="row">
-      <div class="col-md-12 grid-margin">
-        <div class="row">
-          <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-            <h3 class="font-weight-bold">Selamat Datang {{ Session::get('nama_lengkap')}}</h3>
-            <h6 class="font-weight-normal mb-0">All systems are running smoothly! You have <span class="text-primary">3 unread alerts!</span></h6>
-          </div>
-          <div class="col-12 col-xl-4">
-           <div class="justify-content-end d-flex">
-            <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
-              <button class="btn btn-sm btn-light bg-white dropdown-toggle" type="button" id="dropdownMenuDate2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-               <i class="mdi mdi-calendar"></i> Today (10 Jan 2021)
-              </button>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuDate2">
-                <a class="dropdown-item" href="#">January - March</a>
-                <a class="dropdown-item" href="#">March - June</a>
-                <a class="dropdown-item" href="#">June - August</a>
-                <a class="dropdown-item" href="#">August - November</a>
+<div class="container-xxl flex-grow-1 container-p-y">
+  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Pengajuan Surat/</span> Pengajuan Surat</h4>
+
+  <!-- Basic Layout & Basic with Icons -->
+  <div class="row">
+    <!-- Basic Layout -->
+    <div class="col-xxl">
+      <div class="card mb-4">
+        <div class="card-header d-flex align-items-center justify-content-between">
+          <h5 class="mb-0"></h5>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="basic-default-name">Jenis Surat</label>
+              <div class="col-sm-10">
+                <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
+                  <option selected>Pilih Surat</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
               </div>
             </div>
-           </div>
-          </div>
+           
+            <div class="row justify-content-end">
+              <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Ajukan</button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-   
-   
-  
-   
-   
-
+    <!-- Basic with Icons -->
+    
   </div>
- <!-- Modal -->
+</div>
+<!-- / Content -->
+
 
 
 @endsection
