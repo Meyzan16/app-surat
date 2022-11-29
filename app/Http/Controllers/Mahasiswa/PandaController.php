@@ -69,26 +69,24 @@ class PandaController extends Controller
 
             if($data[0]['is_access']==1){
                 if($data[0]['tusrThakrId']==1){
-                    
                     $mahasiswa = $this->panda($data_mahasiswa);
                     if ($mahasiswa['mahasiswa'][0]['prodi']['fakultas']['fakKodeUniv'] == 'G') 
                     {
-                        return "anda mahasiswa teknik";
+                       
                         if ($mahasiswa['mahasiswa'][0]['mhsTanggalLulus'] == null) {
-                            Session::put('login_as','Mahasiswa');
+                            Session::put('npm',$mahasiswa['mahasiswa'][0]['mhsNiu']);
                             Session::put('nama_lengkap',$mahasiswa['mahasiswa'][0]['mhsNama']);
-                            Session::put('username',$mahasiswa['mahasiswa'][0]['mhsNiu']);
+                            Session::put('jenkel',$mahasiswa['mahasiswa'][0]['mhsJenisKelamin']);
+                            Session::put('tgl_lahir',$mahasiswa['mahasiswa'][0]['mhsTanggalLahir']);
+                            Session::put('tgl_lahir',$mahasiswa['mahasiswa'][0]['mhsTanggalLahir']);
                             Session::put('prodi',$mahasiswa['mahasiswa'][0]['prodi']['prodiNamaResmi']);
                             Session::put('kode_prodi',$mahasiswa['mahasiswa'][0]['prodi']['prodiKodeUniv']);
-                            Session::put('login',1);
-                            Session::put('akses',1);
-                            if (Session::get('akses') == 1) {
-                                return redirect()->route('mahasiswa.dashboard');
+                            Session::put('akses_valid',1);
+                            if (Session::get('akses_valid') == 1) {
+                                return redirect()->route('dashboard-mhs');
                             }
-                            else{
-                                return redirect()->route('login_mahasiswa')->with(['error'	=> 'Akun anda tidak dikenali !! !!']);
-                            }
-                        }else {
+                           
+                        }else{
                             return redirect()->route('login_mahasiswa')->with(['error'	=> 'Maaf, Anda Bukan Mahasiswa Aktif !! !!']);
                         }
                     }else{
