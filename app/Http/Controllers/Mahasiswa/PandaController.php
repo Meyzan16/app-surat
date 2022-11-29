@@ -78,9 +78,9 @@ class PandaController extends Controller
                             Session::put('nama_lengkap',$mahasiswa['mahasiswa'][0]['mhsNama']);
                             Session::put('jenkel',$mahasiswa['mahasiswa'][0]['mhsJenisKelamin']);
                             Session::put('tgl_lahir',$mahasiswa['mahasiswa'][0]['mhsTanggalLahir']);
-                            Session::put('tgl_lahir',$mahasiswa['mahasiswa'][0]['mhsTanggalLahir']);
-                            Session::put('prodi',$mahasiswa['mahasiswa'][0]['prodi']['prodiNamaResmi']);
+                            
                             Session::put('kode_prodi',$mahasiswa['mahasiswa'][0]['prodi']['prodiKodeUniv']);
+                            Session::put('prodi',$mahasiswa['mahasiswa'][0]['prodi']['prodiNamaResmi']);
                             Session::put('akses_valid',1);
                             if (Session::get('akses_valid') == 1) {
                                 return redirect()->route('dashboard-mhs');

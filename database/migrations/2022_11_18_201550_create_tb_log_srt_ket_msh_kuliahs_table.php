@@ -16,11 +16,10 @@ return new class extends Migration
         Schema::create('tb_log_srt_ket_msh_kuliahs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_judul_surat')->nullable();
+
             $table->string('npm',9)->nullable();
-            $table->string('nama',200)->nullable();
-            $table->string('semester',100)->nullable();
-            $table->foreignId('kode_prodi',100)->nullable();
-            $table->string('masa_studi',100)->nullable();
+        
+
             $table->string('nama_ortu',100)->nullable();
             $table->string('nip',100)->nullable();
             $table->string('pekerjaan',100)->nullable();

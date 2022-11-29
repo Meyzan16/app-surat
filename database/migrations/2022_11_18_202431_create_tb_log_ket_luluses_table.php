@@ -15,11 +15,8 @@ return new class extends Migration
     {
         Schema::create('tb_log_ket_luluses', function (Blueprint $table) {
             $table->id();
+
             $table->string('npm',9)->nullable();
-            $table->string('nama',200)->nullable();
-            $table->string('semester',100)->nullable();
-            $table->foreignId('kode_prodi',100)->nullable();
-            $table->double('ipk',4)->nullable();
             
 
             $table->foreignId('id_judul_surat')->nullable();
