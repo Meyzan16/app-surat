@@ -14,11 +14,12 @@
           <h5 class="mb-0"></h5>
         </div>
         <div class="card-body">
-          <form>
+          <form action="{{ route('proses-pengajuan')}}" method="POST">
+            @csrf
             <div class="row mb-3">
               <label class="col-sm-2 col-form-label" for="basic-default-name">Jenis Surat</label>
               <div class="col-sm-10">
-                <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
+                <select class="form-select" name="judul_surat" id="exampleFormControlSelect1" aria-label="Default select example">
                   <option selected>Pilih Surat</option>
                     @foreach ($judul_surat as $item)
                       <option value="{{ $item->kode_jenis_surat }}"> {{ $item->tb_jenis_surat->jenis_surat }} | {{ $item->judul_surat }}</option>   
@@ -32,6 +33,7 @@
                 <button type="submit" class="btn btn-primary">Ajukan</button>
               </div>
             </div>
+
           </form>
         </div>
       </div>

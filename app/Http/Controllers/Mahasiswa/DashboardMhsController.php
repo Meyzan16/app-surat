@@ -9,6 +9,7 @@ class DashboardMhsController extends Controller
 {
     public function index()
     {
+       
         return view('Mhs.main.dashboard');
     }
 }

@@ -82,6 +82,18 @@
       </a>
     </li>
 
+    <li class="menu-item">
+      <form action="{{ route('logout_mahasiswa')}}" method="POST">
+        @csrf
+        <button class="dropdown-item d-flex menu-link" type="submit">
+          <i class="menu-icon tf-icons bx bx-home-circle"></i>
+          <div data-i18n="Analytics">Logout</div>
+        </button>
+      </form>
+
+     
+    </li>
+
 
     <!-- Layouts -->
     <li class="menu-item">

@@ -9,11 +9,13 @@
         <div class="d-flex align-items-end row">
           <div class="col-sm-7">
             <div class="card-body">
-              <h5 class="card-title text-primary">SELAMAT DATANG {{Session::get('nama_lengkap')}} 🎉</h5>
+              <h5 class="card-title text-primary">SELAMAT DATANG {{Session::get('nama_lengkap')}} | {{Session::get('terdaftar') }} 🎉</h5>
               <p class="mb-4">
                 Website ini merupakan terobosan baru dari fakultas <span class="fw-bold">Matematika dan Ilmu Pengetahuan Alam </span>
                 dalam mempermudah proses kebutuhan surat menyurat mahasiswa
               </p>
+
+
 
             </div>
           </div>
@@ -30,8 +32,22 @@
           </div>
         </div>
       </div>
+
     </div>
 
+               @if (Session::get('terdaftar'))
+                 <div class="col-8 col-md-6 col-lg-3 order-3 order-md-2 mb-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
+                        <div class="alert alert-danger alert-block">
+                            {{ $message }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              @endif
  
     <!-- Total Revenue -->
     <div class="col-12 col-lg-12 order-2 order-md-3 order-lg-2 mb-4">
@@ -144,7 +160,7 @@
     <div class="col-12">
       <div class="row">
         <div class="col-12 col-md-6 col-lg-3 order-3 order-md-2 mb-4">
-            <a href="{{ route('pengajuan-index')}}">
+            <a href="{{ route('pengajuan-index') }}" >
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">

@@ -13,4 +13,13 @@ class PengajuanSuratController extends Controller
         $judul_surat = tb_judul_surat::with('tb_jenis_surat')->get();
         return view('Mhs.main.pengajuansurat', compact('judul_surat'));
     }
+
+    public function proses_pengajuan(Request $request)
+    {
+        $judul_surat = $request->judul_surat;
+        return $judul_surat;
+        
+        
+    }
+
 }

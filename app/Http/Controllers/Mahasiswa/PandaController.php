@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Mahasiswa;
 use App\Http\Controllers\Controller;
 
 use App\Models\Prodi;
+use App\Models\tb_data_mahasiswa;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -78,13 +79,24 @@ class PandaController extends Controller
                             Session::put('nama_lengkap',$mahasiswa['mahasiswa'][0]['mhsNama']);
                             Session::put('jenkel',$mahasiswa['mahasiswa'][0]['mhsJenisKelamin']);
                             Session::put('tgl_lahir',$mahasiswa['mahasiswa'][0]['mhsTanggalLahir']);
-                            
                             Session::put('kode_prodi',$mahasiswa['mahasiswa'][0]['prodi']['prodiKodeUniv']);
                             Session::put('prodi',$mahasiswa['mahasiswa'][0]['prodi']['prodiNamaResmi']);
                             Session::put('akses_valid',1);
-                            if (Session::get('akses_valid') == 1) {
-                                return redirect()->route('dashboard-mhs');
+
+                            $tb_data_mhs = tb_data_mahasiswa::all();
+
+                            foreach($tb_data_mhs as $value){
+                                if (Session::get('npm') ==   $value->npm) {
+                                    Session::put('terdaftar', 'Y');
+                                    // return "terdaftar";
+                                    return redirect()->route('dashboard-mhs');
+                                }
                             }
+
+                            //simpan session kalo belum terdaftar
+                            return redirect()->route('dashboard-mhs');
+         
+                            
                            
                         }else{
                             return redirect()->route('login_mahasiswa')->with(['error'	=> 'Maaf, Anda Bukan Mahasiswa Aktif !! !!']);
@@ -142,9 +154,15 @@ class PandaController extends Controller
         }
     }
 
-    public function authLogout()
+    public function logout(Request $request)
     {
-        Session::flush();
-        return redirect()->route('login_mahasiswa');
+
+        //invalid session supaya tidak bisa dipakai
+        $request->session()->flush();
+        $request->session()->invalidate();
+        //bikin token baru supaya tidak dibajak
+        $request->session()->regenerateToken();
+        //redirect ke halaman mana
+        return \redirect()->route('login_mahasiswa');
     }
 }

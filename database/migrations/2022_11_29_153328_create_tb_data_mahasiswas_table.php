@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tb_data_mahasiswas', function (Blueprint $table) {
-            $table->string('npm', 4)->primary();
+            $table->string('npm', 9)->primary();
             $table->string('nama',200)->nullable();
             $table->enum('jenkel', ['L', 'P'])->nullable();
             $table->date('tanggal_lahir')->nullable();

@@ -29,7 +29,7 @@ Route::get('/', function () {
 
 
 Route::post('/pandalogin',[PandaController::class, 'pandaLogin'])->name('login_mahasiswa_post');
-Route::get('/logout', [PandaController::class, 'authLogout'])->name('logout_mahasiswa');
+Route::post('/logout', [PandaController::class, 'logout'])->name('logout_mahasiswa');
 
 //Admin
 Route::group([
@@ -40,5 +40,6 @@ Route::group([
 Route::group([
     'prefix' => 'mahasiswa/'], function(){
     Route::get('/', [DashboardMhsController::Class, 'index'])->name('dashboard-mhs');
-    Route::get('/pengajuan-surat', [PengajuanSuratController::Class, 'index'])->name('pengajuan-index');
+    Route::get('/pengajuan-surat', [PengajuanSuratController::Class, 'index'])->name('pengajuan-index')->middleware('is_terdaftar');
+    Route::POST('/pengajuan-surat/proses-ajuan', [PengajuanSuratController::Class, 'proses_pengajuan'])->name('proses-pengajuan');
 });
