@@ -120,6 +120,14 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script>
+      window.setTimeout(function() {
+           $(".autohide").fadeTo(500, 0).slideUp(500, function() {
+               $(this).remove();
+           });
+       }, 4000);
+   </script>
+   
   </body>
 </html>
 

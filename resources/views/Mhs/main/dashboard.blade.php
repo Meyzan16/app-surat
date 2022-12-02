@@ -33,21 +33,17 @@
         </div>
       </div>
 
+      @if (Session::get('error_belum_daftar'))
+        <div class="autohide col-12 col-md-12 col-lg-12 order-0  mb-0 mt-4">
+               <div class="alert alert-danger alert-block text-center">
+                  SILAHKAN MELENGKAPI BIODATA DIRI
+               </div>                  
+       </div>
+     @endif
+
+
     </div>
 
-               @if (Session::get('terdaftar'))
-                 <div class="col-8 col-md-6 col-lg-3 order-3 order-md-2 mb-4">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
-                        <div class="alert alert-danger alert-block">
-                            {{ $message }}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              @endif
  
     <!-- Total Revenue -->
     <div class="col-12 col-lg-12 order-2 order-md-3 order-lg-2 mb-4">

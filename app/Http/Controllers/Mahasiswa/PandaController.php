@@ -93,7 +93,7 @@ class PandaController extends Controller
                                 }
                             }
 
-                            //simpan session kalo belum terdaftar
+                            //tidak ada session kalo belum terdaftar
                             return redirect()->route('dashboard-mhs');
          
                             

@@ -21,6 +21,6 @@ class Is_terdaftar
         {
             return $next($request);
         }
-        return redirect()->route('dashboard-mhs')->with(['error'	=> 'Silahkan Melengkapi Biodata Diri']);
+        return redirect()->route('dashboard-mhs')->with(['error_belum_daftar'	=> 'Silahkan Melengkapi Biodata Diri']);
     }
 }
