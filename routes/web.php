@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Mahasiswa\DashboardMhsController;
 use App\Http\Controllers\Mahasiswa\PandaController;
 use App\Http\Controllers\Mahasiswa\PengajuanSuratController;
+use App\Http\Controllers\Mahasiswa\BiodataDiriController;
 
 
 /*
@@ -40,6 +41,17 @@ Route::group([
 Route::group([
     'prefix' => 'mahasiswa/'], function(){
     Route::get('/', [DashboardMhsController::Class, 'index'])->name('dashboard-mhs');
-    Route::get('/pengajuan-surat', [PengajuanSuratController::Class, 'index'])->name('pengajuan-index')->middleware('is_terdaftar');
-    Route::POST('/pengajuan-surat/proses-ajuan', [PengajuanSuratController::Class, 'proses_pengajuan'])->name('proses-pengajuan');
+
+    Route::group(['prefix'  => 'pengajuan-surat/'],function(){
+        Route::get('/', [PengajuanSuratController::Class, 'index'])->name('pengajuan-index')->middleware('is_terdaftar');
+        Route::POST('/proses-ajuan', [PengajuanSuratController::Class, 'proses_pengajuan'])->name('proses-pengajuan');
+    });
+
+
+    Route::group(['prefix'  => 'biodata-diri/'],function(){
+        Route::get('/', [BiodatadiriController::Class, 'index'])->name('mhs.biodata-diri.index');
+        Route::POST('/simpan-data', [PengajuanSuratController::Class, 'store'])->name('mhs.biodata.save');
+    });
+
+
 });

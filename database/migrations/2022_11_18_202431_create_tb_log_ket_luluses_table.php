@@ -18,7 +18,7 @@ return new class extends Migration
 
             $table->string('npm',9)->nullable();
             
-
+            $table->double('ipk',4)->nullable();
             $table->foreignId('id_judul_surat')->nullable();
 
             

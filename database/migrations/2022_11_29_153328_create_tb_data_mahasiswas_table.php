@@ -16,12 +16,10 @@ return new class extends Migration
         Schema::create('tb_data_mahasiswas', function (Blueprint $table) {
             $table->string('npm', 9)->primary();
             $table->string('nama',200)->nullable();
+            $table->string('email',100)->unique()->nullable();
             $table->enum('jenkel', ['L', 'P'])->nullable();
             $table->date('tanggal_lahir')->nullable();
             $table->string('kode_prodi',4)->nullable();
-            $table->string('semester',100)->nullable();
-            $table->string('masa_studi',100)->nullable();
-            $table->double('ipk',4)->nullable();
             $table->timestamps();
         });
     }

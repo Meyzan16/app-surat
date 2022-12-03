@@ -90,8 +90,6 @@
           <div data-i18n="Analytics">Logout</div>
         </button>
       </form>
-
-     
     </li>
 
 

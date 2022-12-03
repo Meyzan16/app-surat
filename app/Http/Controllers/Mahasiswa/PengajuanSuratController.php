@@ -11,7 +11,7 @@ class PengajuanSuratController extends Controller
     public function index()
     {
         $judul_surat = tb_judul_surat::with('tb_jenis_surat')->get();
-        return view('Mhs.main.pengajuansurat', compact('judul_surat'));
+        return view('Mhs.main.pengajuan-surat.index', compact('judul_surat'));
     }
 
     public function proses_pengajuan(Request $request)

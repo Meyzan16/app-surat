@@ -94,9 +94,7 @@ class PandaController extends Controller
                             }
 
                             //tidak ada session kalo belum terdaftar
-                            return redirect()->route('dashboard-mhs');
-         
-                            
+                            return redirect()->route('dashboard-mhs');                         
                            
                         }else{
                             return redirect()->route('login_mahasiswa')->with(['error'	=> 'Maaf, Anda Bukan Mahasiswa Aktif !! !!']);

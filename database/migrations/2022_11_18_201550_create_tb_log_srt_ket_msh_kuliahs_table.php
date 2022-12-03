@@ -18,6 +18,8 @@ return new class extends Migration
             $table->foreignId('id_judul_surat')->nullable();
 
             $table->string('npm',9)->nullable();
+            $table->string('semester',50)->nullable();
+            $table->string('masa_studi',50)->nullable();
         
 
             $table->string('nama_ortu',100)->nullable();
