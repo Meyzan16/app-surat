@@ -29,20 +29,11 @@
                     <div class="mb-4">
                         <h2 style="color:white">Login Sebagai Mahasiswa <br> Masukan Username dan Password Portal Akademik</h2>
                     </div>
-                        @if ($message = Session::get('success'))
-                        <div class="alert alert-success alert-block">
-                            {{ $message }}
-                        </div>
-                        @elseif ($message = Session::get('error'))
+                        @if ($message = Session::get('error'))
                             <div class="alert alert-danger alert-block">
                                 {{ $message }}
                             </div>
-                        @elseif (Session::get('akses_valid') )
-                        <div class="alert alert-danger alert-block">
-                            {{ $message }}
-                        </div>
-                        
-                    @endif
+                        @endif
                     <form method="POST" action="{{ route('login_mahasiswa_post') }}">
                         @csrf
                         <div class="form-group">

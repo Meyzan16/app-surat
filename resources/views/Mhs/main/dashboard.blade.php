@@ -33,12 +33,13 @@
         </div>
       </div>
 
-      @if (Session::get('error_belum_daftar'))
+      @if ($message = Session::get('error_belum_daftar'))
         <div class="autohide col-12 col-md-12 col-lg-12 order-0  mb-0 mt-4">
-               <div class="alert alert-danger alert-block text-center">
-                  SILAHKAN MELENGKAPI BIODATA DIRI
+               <div class="alert alert-danger  text-center">
+                {{$message}}
                </div>                  
        </div>
+       
      @endif
 
 

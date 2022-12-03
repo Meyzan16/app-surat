@@ -50,7 +50,7 @@ Route::group([
 
     Route::group(['prefix'  => 'biodata-diri/'],function(){
         Route::get('/', [BiodatadiriController::Class, 'index'])->name('mhs.biodata-diri.index');
-        Route::POST('/simpan-data', [PengajuanSuratController::Class, 'store'])->name('mhs.biodata.save');
+        Route::POST('/simpan-data', [BiodatadiriController::Class, 'store'])->name('mhs.biodata.save');
     });
 
 

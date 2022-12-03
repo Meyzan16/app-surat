@@ -17,7 +17,7 @@ class Is_terdaftar
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Session::get('terdaftar') )
+        if(Session::get('terdaftar') || Session::get('npm_terdaftar') )
         {
             return $next($request);
         }

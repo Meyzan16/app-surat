@@ -10,7 +10,7 @@ class tb_data_mahasiswa extends Model
     use HasFactory;
 
     protected $fillable = [
-        'npm', 'nama' , 'jenkel', 'tanggal_lahir', 'kode_prodi',
+        'npm', 'nama' , 'email','jenkel', 'tanggal_lahir', 'kode_prodi',
     ];
 
 }
