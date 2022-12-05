@@ -7,7 +7,10 @@ use App\Http\Controllers\Mahasiswa\PandaController;
 use App\Http\Controllers\Mahasiswa\PengajuanSuratController;
 use App\Http\Controllers\Mahasiswa\BiodataDiriController;
 
+//surat masih kuliah
+use App\Http\Controllers\Mahasiswa\SuratMasihKuliahController;
 
+//surat 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,6 +49,11 @@ Route::group([
     Route::group(['prefix'  => 'pengajuan-surat/'],function(){
         Route::get('/', [PengajuanSuratController::Class, 'index'])->name('pengajuan-index')->middleware('is_terdaftar');
         Route::POST('/proses-ajuan', [PengajuanSuratController::Class, 'proses_pengajuan'])->name('proses-pengajuan');
+        
+        
+        
+        Route::get('/surat-aktif-kuliah', [SuratMasihKuliahController::Class, 'index'])->name('surat-masih-kuliah.index');
+        Route::POST('/perbarui-data-pengajuan-aktif-kuliah', [SuratMasihKuliahController::Class, 'update'])->name('surat-masih-kuliah.update');
     });
 
 

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('tb_judul_surats', function (Blueprint $table) {
             $table->id();
             $table->string('kode_jenis_surat', 4);
+            $table->string('kode_judul_surat',10)->nullable();
             $table->string('judul_surat', 200)->nullable();
             $table->softDeletes();
             $table->timestamps();

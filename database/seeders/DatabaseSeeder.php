@@ -37,7 +37,14 @@ class DatabaseSeeder extends Seeder
 
         tb_judul_surat::create([
             'kode_jenis_surat' => 'KDM2',
+            'kode_judul_surat' => 'A1',
             'judul_surat' => 'surat keterangan masih kuliah',
+        ]);
+
+        tb_judul_surat::create([
+            'kode_jenis_surat' => 'KDM2',
+            'kode_judul_surat' => 'A2',
+            'judul_surat' => 'surat keterangan lulus',
         ]);
 
         User::create([

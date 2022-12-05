@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('tb_log_ket_luluses', function (Blueprint $table) {
             $table->id();
 
-            $table->string('npm',9)->nullable();
+            $table->string('kode_judul_surat',10)->nullable();
             
+            $table->string('npm',9)->nullable();
             $table->double('ipk',4)->nullable();
-            $table->foreignId('id_judul_surat')->nullable();
 
             
             $table->enum('status_prodi', ['Y','N','belum diverifikasi'])->default('belum diverifikasi');

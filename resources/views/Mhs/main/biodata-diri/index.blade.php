@@ -28,8 +28,8 @@
           </div>  
 
           <div class="card-body">  
-            <form  action="{{ route('mhs.biodata.update', Session::get('npm'))}}" method="POST">
-              @csrf @method('PATCH')
+              <form  action="{{ route('mhs.biodata.update', Session::get('npm'))}}" method="POST">
+                @csrf @method('PATCH')
                 <div class="row mb-3">
                   <label class="col-sm-2 col-form-label" for="basic-default-npm">NPM</label>
                   <div class="col-sm-10">

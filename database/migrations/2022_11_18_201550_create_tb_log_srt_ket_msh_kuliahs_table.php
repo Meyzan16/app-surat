@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('tb_log_srt_ket_msh_kuliahs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_judul_surat')->nullable();
+            $table->string('kode_judul_surat',10)->nullable();
 
             $table->string('npm',9)->nullable();
             $table->string('semester',50)->nullable();

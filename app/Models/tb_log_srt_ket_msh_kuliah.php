@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class tb_log_srt_ket_msh_kuliah extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'id_judul_surat', 'npm'
+    ];
 }
