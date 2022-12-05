@@ -49,11 +49,66 @@ class BiodataDiriController extends Controller
                         'kode_prodi' => Session::get('kode_prodi'),
                     ]);
 
-                    Session::put('npm_terdaftar', $request->npm);
+                                $tb_data_mhs = tb_data_mahasiswa::where('npm',Session::get('npm') )->first();
+                            
+                                Session::put('nama_terbaru', $tb_data_mhs->nama);
+                                Session::put('email', $tb_data_mhs->email);
+                                Session::put('tgl_terbaru', $tb_data_mhs->tanggal_lahir);
+                                Session::put('terdaftar', 'Y');
+                                Session::put('npm_terdaftar', $request->npm);
+                                // return "terdaftar";
+                            
+
         
-                    return \redirect()->route('mhs.biodata-diri.index')->with('success', 'Biodata Diri Berhasil Ditambahkan');
+                    return \redirect()->route('mhs.biodata-diri.index')->with('toast_success', 'Biodata Diri Berhasil Diperbarui');
 
         }
+
+    }
+
+    public function update(Request $request, $npm)
+    {
+        //pasang rules
+        $rules = [
+            'nama'=> 'required',
+            'tgl_lahir'=> 'required',
+            'email' => 'required',
+        ];
+
+        //pasang pesan kesalahan
+        $messages = [
+            'nama.required'     => 'nama wajib diisi',
+            'tgl_lahir.required'     => 'tanggal lahir wajib diisi',
+            'email.required'     => 'email wajib diisi',
+        ];
+
+        //ambil semua request dan pasang rules dan isi pesanya
+        $validator = Validator::make($request->all(), $rules, $messages);
+        //jika rules tidak sesuai kembalikan ke login bawak pesan error dan bawak request nya agar bisa dipakai denga old di view
+        if($validator->fails())
+        {
+                return redirect()->back()->withErrors($validator)->withInput($request->all());
+        } 
+        else{
+        
+            tb_data_mahasiswa::where('npm', $npm)->update([
+                        'nama' => $request->nama,
+                        'email' => $request->email,
+                        'tanggal_lahir' => $request->tgl_lahir,
+                    ]);
+
+
+                                $tb_data_mhs = tb_data_mahasiswa::where('npm',Session::get('npm') )->first();
+                            
+                                Session::put('nama_terbaru', $tb_data_mhs->nama);
+                                Session::put('email', $tb_data_mhs->email);
+                                Session::put('tgl_terbaru', $tb_data_mhs->tanggal_lahir);
+                                // return "terdaftar";
+                            
+
+        
+                    return \redirect()->route('mhs.biodata-diri.index')->with('toast_success', 'Biodata Diri Berhasil Diperbarui');
+         }
 
     }
 }

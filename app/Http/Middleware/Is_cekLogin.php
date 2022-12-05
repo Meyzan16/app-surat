@@ -3,10 +3,11 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Alert;
 
-class Is_terdaftar
+class Is_cekLogin
 {
     /**
      * Handle an incoming request.
@@ -17,10 +18,10 @@ class Is_terdaftar
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Session::get('terdaftar') || Session::get('npm_terdaftar') )
+        if(Session::get('akses_valid'))
         {
             return $next($request);
         }
-        return redirect()->route('dashboard-mhs')->with(['toast_error'	=> 'Silahkan Melengkapi Biodata Diri']);
+        return redirect()->route('login_mahasiswa')->with(['toast_error'	=> 'Silahkan Login']);
     }
 }

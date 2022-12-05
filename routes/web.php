@@ -39,6 +39,7 @@ Route::group([
 });
 
 Route::group([
+    'middleware' => 'is_cekLogin',
     'prefix' => 'mahasiswa/'], function(){
     Route::get('/', [DashboardMhsController::Class, 'index'])->name('dashboard-mhs');
 
@@ -51,6 +52,7 @@ Route::group([
     Route::group(['prefix'  => 'biodata-diri/'],function(){
         Route::get('/', [BiodatadiriController::Class, 'index'])->name('mhs.biodata-diri.index');
         Route::POST('/simpan-data', [BiodatadiriController::Class, 'store'])->name('mhs.biodata.save');
+        Route::PATCH('{npm}/perbarui-data', [BiodatadiriController::Class, 'update'])->name('mhs.biodata.update');
     });
 
 

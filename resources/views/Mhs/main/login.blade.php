@@ -66,6 +66,7 @@
                     </form>
                 </div>
             </div>
+            @include('sweetalert::alert')
         </div>
     </div>
     <script src="{{ asset('assets/vendors/jquery/dist/jquery.min.js') }}"></script>

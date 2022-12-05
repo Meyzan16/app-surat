@@ -32,15 +32,15 @@
           </div>
         </div>
       </div>
-
-      @if ($message = Session::get('error_belum_daftar'))
+{{-- 
+      @if ($message = Session::get('toast_error'))
         <div class="autohide col-12 col-md-12 col-lg-12 order-0  mb-0 mt-4">
                <div class="alert alert-danger  text-center">
                 {{$message}}
                </div>                  
        </div>
-       
-     @endif
+        --}}
+     {{-- @endif --}}
 
 
     </div>

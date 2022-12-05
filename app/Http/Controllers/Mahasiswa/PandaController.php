@@ -83,15 +83,18 @@ class PandaController extends Controller
                             Session::put('prodi',$mahasiswa['mahasiswa'][0]['prodi']['prodiNamaResmi']);
                             Session::put('akses_valid',1);
 
-                            $tb_data_mhs = tb_data_mahasiswa::all();
-
-                            foreach($tb_data_mhs as $value){
-                                if (Session::get('npm') ==   $value->npm) {
-                                    Session::put('terdaftar', 'Y');
-                                    // return "terdaftar";
-                                    return redirect()->route('dashboard-mhs');
-                                }
+                            $tb_data_mhs = tb_data_mahasiswa::where('npm',Session::get('npm') )->first();
+                            if($tb_data_mhs)
+                            {
+                                Session::put('nama_terbaru', $tb_data_mhs->nama);
+                                Session::put('email', $tb_data_mhs->email);
+                                Session::put('tgl_terbaru', $tb_data_mhs->tanggal_lahir);
+                                Session::put('terdaftar', 'Y');
+                                // return "terdaftar";
+                                return redirect()->route('dashboard-mhs');
                             }
+
+                            
 
                             //tidak ada session kalo belum terdaftar
                             return redirect()->route('dashboard-mhs');                         

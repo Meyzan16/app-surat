@@ -83,7 +83,7 @@
     </li>
 
     <li class="menu-item  {{ request()->is('mahasiswa/biodata-diri*') ? 'active' : '' }} ">
-      <a href="{{ route('pengajuan-index')}}" class="menu-link">
+      <a href="{{ route('mhs.biodata-diri.index')}}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-home-circle"></i>
         <div data-i18n="Analytics">Biodata Diri</div>
       </a>
