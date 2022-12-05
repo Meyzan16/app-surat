@@ -9,6 +9,6 @@ use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
-    // fsdfsd
+    // test doang
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 }
