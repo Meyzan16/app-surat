@@ -11,5 +11,6 @@ class Controller extends BaseController
 {
     // test doang
     //ini test lagi
+    //coba test
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 }
