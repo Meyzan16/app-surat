@@ -9,6 +9,6 @@ class tb_log_ket_lulus extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id_judul_surat', 'npm'
+        'kode_judul_surat', 'npm'
     ];
 }

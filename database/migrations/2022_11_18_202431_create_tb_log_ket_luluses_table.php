@@ -21,11 +21,6 @@ return new class extends Migration
             $table->string('npm',9)->nullable();
             $table->double('ipk',4)->nullable();
 
-            
-            $table->enum('status_prodi', ['Y','N','belum diverifikasi'])->default('belum diverifikasi');
-            $table->text('catatan_status_prodi')->nullable();
-            $table->timestamp('time_acc_prodi')->nullable();
-
             $table->enum('status_koor_fak', ['Y','N','belum diverifikasi'])->default('belum diverifikasi');
             $table->text('catatan_status_koor_fak')->nullable();
             $table->timestamp('time_acc_koor_fak')->nullable();

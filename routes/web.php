@@ -9,6 +9,8 @@ use App\Http\Controllers\Mahasiswa\BiodataDiriController;
 
 //surat masih kuliah
 use App\Http\Controllers\Mahasiswa\SuratMasihKuliahController;
+//surat ket lulus
+use App\Http\Controllers\Mahasiswa\SuratKetLulusController;
 
 //surat 
 /*
@@ -46,14 +48,22 @@ Route::group([
     'prefix' => 'mahasiswa/'], function(){
     Route::get('/', [DashboardMhsController::Class, 'index'])->name('dashboard-mhs');
 
-    Route::group(['prefix'  => 'pengajuan-surat/'],function(){
-        Route::get('/', [PengajuanSuratController::Class, 'index'])->name('pengajuan-index')->middleware('is_terdaftar');
+    Route::group([
+        'middleware' => 'is_terdaftar',
+        'prefix'  => 'pengajuan-surat/'],function(){
+        Route::get('/', [PengajuanSuratController::Class, 'index'])->name('pengajuan-index');
         Route::POST('/proses-ajuan', [PengajuanSuratController::Class, 'proses_pengajuan'])->name('proses-pengajuan');
         
         
+        Route::group(['prefix'  => 'surat-masih-kuliah/'],function(){
+            Route::get('/', [SuratMasihKuliahController::Class, 'index'])->name('surat-masih-kuliah.index');
+            Route::POST('/melengkapi-data', [SuratMasihKuliahController::Class, 'update'])->name('surat-masih-kuliah.update');
+        });
+
+        Route::group(['prefix'  => 'surat-keterangan-lulus/'],function(){
+            Route::get('/', [SuratKetLulusController::Class, 'index'])->name('surat-ket-lulus.index');
+        });
         
-        Route::get('/surat-aktif-kuliah', [SuratMasihKuliahController::Class, 'index'])->name('surat-masih-kuliah.index');
-        Route::POST('/perbarui-data-pengajuan-aktif-kuliah', [SuratMasihKuliahController::Class, 'update'])->name('surat-masih-kuliah.update');
     });
 
 

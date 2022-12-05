@@ -42,7 +42,7 @@ class PengajuanSuratController extends Controller
                 if($request->kode_judul_surat == 'A1')
                 {
                     tb_log_srt_ket_msh_kuliah::create([
-                        'id_judul_surat' => $request->kode_judul_surat,
+                        'kode_judul_surat' => $request->kode_judul_surat,
                         'npm' => Session::get('npm'),
                     ]);
 
@@ -51,11 +51,11 @@ class PengajuanSuratController extends Controller
                 }elseif($request->kode_judul_surat == 'A2')
                 {
                     tb_log_ket_lulus::create([
-                        'id_judul_surat' => $request->kode_judul_surat,
+                        'kode_judul_surat' => $request->kode_judul_surat,
                         'npm' => Session::get('npm'),
                     ]);
 
-                   return "surat keterangan lulus";
+                    return \redirect()->route('surat-ket-lulus.index')->with('successs', 'Silahkan lengkapai data data berikut');
                 }
                             
 

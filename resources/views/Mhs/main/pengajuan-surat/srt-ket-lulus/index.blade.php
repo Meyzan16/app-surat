@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container-xxl flex-grow-1 container-p-y">
-  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Pengajuan Surat/</span>Surat Masih Kuliah</h4>
+  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Pengajuan Surat/</span>Surat Keteranga Lulus</h4>
 
   @if ($message = Session::get('successs'))
         <div class="autohide col-12 col-md-12 col-lg-12 order-0  mb-0 mt-4">
@@ -23,17 +23,11 @@
       <div class="card-body">
         <form  action="{{ route('mhs.biodata.save')}}" method="POST">
           @csrf
+         
           <div class="row mb-3">
-            <label class="col-sm-2 col-form-label" for="basic-default-npm">NPM</label>
+            <label class="col-sm-2 col-form-label" for="basic-default-ipk">ipk</label>
             <div class="col-sm-10">
-              <input type="text"  name="npm" value="{{ Session::get('npm')}}" class="form-control" id="basic-default-npm" readonly />
-            </div>
-          </div>
-          
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label" for="basic-default-semester">semester</label>
-            <div class="col-sm-10">
-              <input type="text"  name="semester" class="form-control" id="basic-default-npm" required />
+              <input type="text"  name="ipk" class="form-control" id="basic-default-ipk" required />
             </div>
           </div>
          
