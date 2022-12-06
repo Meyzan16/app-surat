@@ -51,7 +51,7 @@ class DatabaseSeeder extends Seeder
             'nama' => 'verif fakultas',
             'username' => 'monmon16',
             'password' => bcrypt('monmon16'),
-            'roles' => 'VERIF_KOOR_FAK',
+            'roles' => 'OPERATOR_PRODI',
             'status_aktif' => 'Y',
         ]);
 
@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
             'nama' => 'pak aji',
             'username' => 'monmon16',
             'password' => bcrypt('monmon16'),
-            'roles' => 'KEP_KOOR_FAK',
+            'roles' => 'KEPALA_OPERATOR',
             'status_aktif' => 'Y',
         ]);
 

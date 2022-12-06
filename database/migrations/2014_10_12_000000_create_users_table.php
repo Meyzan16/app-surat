@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nama')->nullable();
             $table->string('username', 50)->nullable();
             $table->string('password', 100)->nullable();
-            $table->enum('roles', ['VERIF_PRODI','VERIF_KOOR_FAK', 'KEP_KOOR_FAK', 'KOOR_TU' , 'VERIF_PERSETUJUAN'])->nullable();
+            $table->enum('roles', ['VERIF_PRODI','OPERATOR_PRODI', 'KEPALA_OPERATOR', 'VERIF_PERSETUJUAN' , 'KOOR_TU' ])->nullable();
             $table->enum('status_aktif', ['Y', 'N'])->default('N');
             $table->softDeletes();
             $table->rememberToken();
