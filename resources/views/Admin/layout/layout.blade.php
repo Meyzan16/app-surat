@@ -27,7 +27,7 @@
         @include('admin.partials.header')
 
         <div id="main-content">
-        @yield('content')
+            @yield('content')
         
             <footer>
                 <div class="footer clearfix mb-0 text-muted">

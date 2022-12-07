@@ -18,6 +18,9 @@ use App\Http\Controllers\Mahasiswa\HistoryPengajuanSurat;
 //surat login
 use App\Http\Controllers\Login\LoginController;
 
+//operator
+use App\Http\Controllers\Admin\operator\SuratAktifKuliahOperatorController;
+
 //surat 
 /*
 |--------------------------------------------------------------------------
@@ -82,12 +85,30 @@ Route::group([
 
 });
 
-//Admin
+//operator
 Route::group([
     'middleware' => 'auth',
-    'prefix' => 'admin/'], function(){
-    Route::get('/', [DashboardController::class, 'index'] )->name('dashboard-admin');
+    'prefix' => 'operator/'], function(){
+    Route::get('/', [DashboardController::class, 'index'] )->name('operator.dashboard');
+
+    Route::group([
+        'prefix'  => 'pengajuan-surat/'],function(){
+
+        Route::group([
+            'prefix'  => 'surat-masih-kuliah/'],function(){
+            Route::get('/', [SuratAktifKuliahOperatorController::class, 'index'])->name('operator.surat-masih-kuliah.index');
+        });
+    });
 });
+
+//kepala operator
+Route::group([
+    'middleware' => 'auth',
+    'prefix' => 'kepala-operator/'], function(){
+    Route::get('/', [DashboardController::class, 'index'] )->name('kepala-operator.dashboard');
+});
+
+//admin
 
 Route::get('/login', [LoginController::class, 'index'] )->name('login');
 Route::POST('/authentication', [LoginController::class, 'authentication'] )->name('authentication-admin');

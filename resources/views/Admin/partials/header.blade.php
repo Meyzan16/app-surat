@@ -43,7 +43,13 @@
                             <div class="user-menu d-flex">
                                 <div class="user-name text-end me-3">
                                     <h6 class="mb-0 text-gray-600">{{ auth()->user()->nama }}</h6>
-                                    <p class="mb-0 text-sm text-gray-600">{{auth()->user()->kode_prodi}}</p>
+                                    @if(!empty(auth()->user()->tb_prodi->nama_prodi))
+                                    <p class="mb-0 text-sm text-gray-600">{{auth()->user()->tb_prodi->nama_prodi}}</p>
+                                    @else
+                                    <p class="mb-0 text-sm text-gray-600"> Kepala Operator Fakultas</p>
+                                    @endif
+                                    
+
                                 </div>
                                 <div class="user-img d-flex align-items-center">
                                     <div class="avatar avatar-md">

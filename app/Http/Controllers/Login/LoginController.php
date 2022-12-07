@@ -43,11 +43,11 @@ class LoginController extends Controller
                     if (auth()->user()->roles == 'OPERATOR_PRODI') {
                         Session::put('kode_prodi', auth()->user()->kode_prodi);
                         $request->session()->regenerate();
-                        return \redirect()->intended('/admin')->with('successs', 'Selamat datang '. auth()->user()->nama.' verifikator prodi ' . auth()->user()->kode_prodi  );
+                        return \redirect()->intended('/operator')->with('successs', 'Selamat datang '. auth()->user()->nama.' verifikator prodi ' . auth()->user()->kode_prodi  );
                     }
                     elseif (auth()->user()->roles == 'KEPALA_OPERATOR') {
                         $request->session()->regenerate();
-                        return \redirect()->intended('/admin')->with('successs', 'Selamat datang '. auth()->user()->nama.'  kepala operator'  );
+                        return \redirect()->intended('/kepala-operator')->with('successs', 'Selamat datang '. auth()->user()->nama.'  kepala operator'  );
                     }elseif(auth()->user()->roles == 'VERIF_PERSETUJUAN')
                     {
                         $request->session()->regenerate();

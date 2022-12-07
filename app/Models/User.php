@@ -7,11 +7,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\tb_prodi;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+
+    public function tb_prodi()
+    {
+        return $this->belongsTo(tb_prodi::class, 'kode_prodi', 'kode_prodi');
+    }
     /**
      * The attributes that are mass assignable.
      *

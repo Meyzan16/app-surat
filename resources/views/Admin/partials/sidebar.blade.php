@@ -29,7 +29,7 @@
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
-                            <a href="component-alert.html">Masih Aktif kuliah</a>
+                            <a href="{{ route('operator.surat-masih-kuliah.index')}}">Masih Aktif kuliah</a>
                         </li>
                         <li class="submenu-item ">
                             <a href="component-badge.html">Keteranga Lulus</a>
@@ -71,15 +71,8 @@
                         <span>Profile</span>
                     </a>
                 </li>
-
-           
-           
-
-
                
 {{-- 
-                
-
                 <li class="sidebar-item  ">
                     <a href="table.html" class='sidebar-link'>
                         <i class="bi bi-grid-1x2-fill"></i>
