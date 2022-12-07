@@ -16,6 +16,15 @@ class PengajuanSuratController extends Controller
     public function index()
     {
         $judul_surat = tb_judul_surat::with('tb_jenis_surat')->get();
+
+
+        $data = tb_log_srt_ket_msh_kuliah::where('npm',Session::get('npm') )->first();
+
+        if($data->semester == null)
+        {
+            return \redirect()->route('surat-masih-kuliah.index')->with('toast_success', 'anda belum melengkapi data');
+        }
+        
         return view('Mhs.main.pengajuan-surat.index', compact('judul_surat'));
     }
 

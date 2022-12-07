@@ -62,8 +62,13 @@
                       <tr>
                         <th>No</th>
                         <th>Judul Surat</th>
-                        <th>Status Operator Fakultas</th>
-                        <th>Kepala Operator Fakultas</th>
+                        @if($cek_surat_msh_kuliah->semester == null)
+                           <th>Status</th>
+                        @else
+                          <th>Status Operator Fakultas</th>
+                          <th>Kepala Operator Fakultas</th>
+                        @endif()
+
                         <th>Tanggal Pengajuan</th>
                       </tr>
                     </thead>
@@ -74,6 +79,15 @@
                         <td>{{ $loop->iteration }} </td>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $item->tb_judul_surat->judul_surat }}</strong></td>
 
+                        @if($cek_surat_msh_kuliah->semester == null)
+                     
+                           <td> 
+                            <a href="{{route('pengajuan-index')}}">
+                              <span class="badge bg-label-primary me-1">Belum Melengkapi Data</span>
+                            </a>
+                          </td>
+                        @else
+                         
                           @if($item->operator_prodi == 'belum diverifikasi')
                            <td><span class="badge bg-label-warning me-1">Menunggu</span></td>
                            @elseif($item->operator_prodi == 'N')
@@ -81,7 +95,7 @@
                            @elseif($item->operator_prodi == 'Y')
                            <td><span class="badge bg-label-success me-1">Diterima</span></td>
                           @endif
-
+  
                           @if($item->kepala_operator == 'belum diverifikasi')
                           <td><span class="badge bg-label-warning me-1">Menunggu</span></td>
                           @elseif($item->kepala_operator == 'N')
@@ -89,6 +103,9 @@
                           @elseif($item->kepala_operator == 'Y')
                           <td><span class="badge bg-label-success me-1">Diterima</span></td>
                           @endif
+
+                        @endif()
+                        
 
 
 

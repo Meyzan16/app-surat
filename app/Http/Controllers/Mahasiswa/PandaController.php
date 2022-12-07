@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Mahasiswa;
 use App\Http\Controllers\Controller;
 
-use App\Models\Prodi;
+
 use App\Models\tb_data_mahasiswa;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
@@ -159,7 +159,7 @@ class PandaController extends Controller
     {
 
         //invalid session supaya tidak bisa dipakai
-        $request->session()->flush();
+        Session::flush();
         $request->session()->invalidate();
         //bikin token baru supaya tidak dibajak
         $request->session()->regenerateToken();

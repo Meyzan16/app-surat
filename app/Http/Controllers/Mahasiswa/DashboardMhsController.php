@@ -16,6 +16,8 @@ class DashboardMhsController extends Controller
                     ->where('kepala_operator','belum diverifikasi')
                     ->get();
 
-        return view('Mhs.main.dashboard', compact('pengajuan'));
+        $cek_surat_msh_kuliah = tb_log_srt_ket_msh_kuliah::where('npm',Session::get('npm') )->first();
+        
+        return view('Mhs.main.dashboard', compact('pengajuan' , 'cek_surat_msh_kuliah'));
     }
 }
