@@ -41,7 +41,7 @@ Route::get('/', function () {
 
 
 Route::post('/pandalogin',[PandaController::class, 'pandaLogin'])->name('login_mahasiswa_post');
-Route::post('/logout', [PandaController::class, 'logout'])->name('logout_mahasiswa');
+Route::post('/logout-mhs', [PandaController::class, 'logout'])->name('logout_mahasiswa');
 
 
 Route::group([

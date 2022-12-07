@@ -21,12 +21,12 @@ class BiodataDiriController extends Controller
             'nama'=> 'required',
             'tgl_lahir'=> 'required',
             // 'email' => 'required|unique:tb_data_mahasiswas',
-            'email' => 'required|email:rfc',
+            'email' => 'required|email:rfc|unique:tb_data_mahasiswas',
         ];
 
         //pasang pesan kesalahan
         $messages = [
-            // 'email.unique'     => 'email sudah terdaftar',
+            'email.unique'     => 'email sudah terdaftar',
             'nama.required'     => 'nama wajib diisi',
             'tgl_lahir.required'     => 'tanggal lahir wajib diisi',
             'email.required'     => 'email wajib diisi',
@@ -52,7 +52,7 @@ class BiodataDiriController extends Controller
                                 $tb_data_mhs = tb_data_mahasiswa::where('npm',Session::get('npm') )->first();
                             
                                 Session::put('nama_terbaru', $tb_data_mhs->nama);
-                                Session::put('email', $tb_data_mhs->email);
+                                Session::put('email_terbaru', $tb_data_mhs->email);
                                 Session::put('tgl_terbaru', $tb_data_mhs->tanggal_lahir);
                                 Session::put('terdaftar', 'Y');
                                 Session::put('npm_terdaftar', $request->npm);
@@ -101,7 +101,7 @@ class BiodataDiriController extends Controller
                                 $tb_data_mhs = tb_data_mahasiswa::where('npm',Session::get('npm') )->first();
                             
                                 Session::put('nama_terbaru', $tb_data_mhs->nama);
-                                Session::put('email', $tb_data_mhs->email);
+                                Session::put('email_terbaru', $tb_data_mhs->email);
                                 Session::put('tgl_terbaru', $tb_data_mhs->tanggal_lahir);
                                 // return "terdaftar";
                             

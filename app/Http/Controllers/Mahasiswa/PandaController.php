@@ -74,7 +74,7 @@ class PandaController extends Controller
                     if ($mahasiswa['mahasiswa'][0]['prodi']['fakultas']['fakKodeUniv'] == 'G') 
                     {
                        
-                        if ($mahasiswa['mahasiswa'][0]['mhsTanggalLulus'] == null) {
+                        // if ($mahasiswa['mahasiswa'][0]['mhsTanggalLulus'] == null) {
                             Session::put('npm',$mahasiswa['mahasiswa'][0]['mhsNiu']);
                             Session::put('nama_lengkap',$mahasiswa['mahasiswa'][0]['mhsNama']);
                             Session::put('jenkel',$mahasiswa['mahasiswa'][0]['mhsJenisKelamin']);
@@ -99,9 +99,9 @@ class PandaController extends Controller
                             //tidak ada session kalo belum terdaftar
                             return redirect()->route('dashboard-mhs');                         
                            
-                        }else{
-                            return redirect()->route('login_mahasiswa')->with(['error'	=> 'Maaf, Anda Bukan Mahasiswa Aktif !! !!']);
-                        }
+                        // }else{
+                        //     return redirect()->route('login_mahasiswa')->with(['error'	=> 'Maaf, Anda Bukan Mahasiswa Aktif !! !!']);
+                        // }
                     }else{
                         return redirect()->route('login_mahasiswa')->with(['error'	=> 'Maaf, Anda Bukan Dari Program Studi Terdaftar !! !!']);
                     }
