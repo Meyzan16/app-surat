@@ -26,6 +26,7 @@
 
         @include('admin.partials.header')
 
+        <div id="main-content">
         @yield('content')
         
             <footer>

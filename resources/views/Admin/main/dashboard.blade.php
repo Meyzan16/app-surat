@@ -6,6 +6,26 @@
 <div class="page-heading">
     <h3>Profile Statistics</h3>
 </div>
+
+<div class="page-content">
+    <div class="row">
+        <div class="col-12">
+                <div class="card">
+                    <div class="card-body px-3 py-4-5">   
+                        @if(auth()->user()->kode_prodi)
+                        
+                            <h5>Selamat datang , verifikator prodi {{ auth()->user()->kode_prodi }}</h5>
+                        @elseif(auth()->user()->role == 'KEPALA_OPERATOR')
+                        
+                            <h5>Selamat datang , {{auth()->user()->nama}} kepala operator</h5>
+                        
+                        @endif
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
 <div class="page-content">
     <section class="row">
         <div class="col-12 col-lg-9">
@@ -20,7 +40,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Profile Views</h6>
+                                    <h6 class="text-muted font-semibold">Profile </h6>
                                     <h6 class="font-extrabold mb-0">112.000</h6>
                                 </div>
                             </div>

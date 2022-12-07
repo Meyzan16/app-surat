@@ -15,6 +15,9 @@ use App\Http\Controllers\Mahasiswa\SuratKetLulusController;
 //surat rekaman pengajuan
 use App\Http\Controllers\Mahasiswa\HistoryPengajuanSurat;
 
+//surat login
+use App\Http\Controllers\Login\LoginController;
+
 //surat 
 /*
 |--------------------------------------------------------------------------
@@ -40,11 +43,6 @@ Route::get('/', function () {
 Route::post('/pandalogin',[PandaController::class, 'pandaLogin'])->name('login_mahasiswa_post');
 Route::post('/logout', [PandaController::class, 'logout'])->name('logout_mahasiswa');
 
-//Admin
-Route::group([
-    'prefix' => 'admin/'], function(){
-    Route::get('/', [DashboardController::class, 'index'] )->name('dashboard-admin');
-});
 
 Route::group([
     'middleware' => 'is_cekLogin',
@@ -83,3 +81,15 @@ Route::group([
 
 
 });
+
+//Admin
+Route::group([
+    'middleware' => 'auth',
+    'prefix' => 'admin/'], function(){
+    Route::get('/', [DashboardController::class, 'index'] )->name('dashboard-admin');
+});
+
+Route::get('/login', [LoginController::class, 'index'] )->name('login');
+Route::POST('/authentication', [LoginController::class, 'authentication'] )->name('authentication-admin');
+Route::POST('/logout', [LoginController::class, 'logout'] )->name('logout-auth');
+

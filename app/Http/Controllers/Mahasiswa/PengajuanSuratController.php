@@ -55,14 +55,29 @@ class PengajuanSuratController extends Controller
 
                 if($request->kode_judul_surat == 'A1')
                 {
-                    tb_log_srt_ket_msh_kuliah::create([
-                        'kode_judul_surat' => $request->kode_judul_surat,
-                        'npm' => Session::get('npm'),
-                    ]);
 
-                    return \redirect()->route('surat-masih-kuliah.index')->with('successs', 'Silahkan lengkapai data data berikut');
+                    $data = tb_log_srt_ket_msh_kuliah::where([
+                        ['npm', '=',  Session::get('npm')],
+                        ['kode_judul_surat', '=',  $request->kode_judul_surat],
+                    ])->first();
+
+                    if(empty($data))
+                    {
+                        tb_log_srt_ket_msh_kuliah::create([
+                            'kode_judul_surat' => $request->kode_judul_surat,
+                            'npm' => Session::get('npm'),
+                        ]);
+                        return \redirect()->route('surat-masih-kuliah.index')->with('successs', 'Silahkan lengkapai data data berikut');
+                    }elseif($data->status_persetujuan == 'belum diverifikasi')
+                    {
+                        return \redirect()->route('pengajuan-index')->with('toast_error', 'Jenis surat keterangan masih kuliah baru saja diajukan');
+
+                    }
+
                
-                }elseif($request->kode_judul_surat == 'A2')
+                }
+                
+                elseif($request->kode_judul_surat == 'A2')
                 {
                     tb_log_ket_lulus::create([
                         'kode_judul_surat' => $request->kode_judul_surat,

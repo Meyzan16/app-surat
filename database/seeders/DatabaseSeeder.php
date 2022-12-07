@@ -48,9 +48,19 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'nama' => 'verif fakultas',
-            'username' => 'monmon16',
+            'nama' => 'prodi informatika',
+            'username' => 'G1A0',
             'password' => bcrypt('monmon16'),
+            'kode_prodi' => 'G1A0',
+            'roles' => 'OPERATOR_PRODI',
+            'status_aktif' => 'Y',
+        ]);
+
+        User::create([
+            'nama' => 'prodi sipil',
+            'username' => 'G1B0',
+            'password' => bcrypt('monmon16'),
+            'kode_prodi' => 'G1B0',
             'roles' => 'OPERATOR_PRODI',
             'status_aktif' => 'Y',
         ]);
