@@ -25,158 +25,60 @@
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-stack"></i>
-                        <span>Components</span>
+                        <span>Surat Mahasiswa</span>
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
-                            <a href="component-alert.html">Alert</a>
+                            <a href="component-alert.html">Masih Aktif kuliah</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="component-badge.html">Badge</a>
+                            <a href="component-badge.html">Keteranga Lulus</a>
                         </li>
-                        <li class="submenu-item ">
-                            <a href="component-breadcrumb.html">Breadcrumb</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="component-button.html">Button</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="component-card.html">Card</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="component-carousel.html">Carousel</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="component-dropdown.html">Dropdown</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="component-list-group.html">List Group</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="component-modal.html">Modal</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="component-navs.html">Navs</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="component-pagination.html">Pagination</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="component-progress.html">Progress</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="component-spinner.html">Spinner</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="component-tooltip.html">Tooltip</a>
-                        </li>
+                     
+                       
                     </ul>
                 </li>
 
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
-                        <i class="bi bi-collection-fill"></i>
-                        <span>Extra Components</span>
+                        <i class="bi bi-file-earmark-medical-fill"></i>
+                        <span>Surat Umum</span>
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
-                            <a href="extra-component-avatar.html">Avatar</a>
+                            <a href="form-editor-quill.html">Pengajuan Surat</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="extra-component-sweetalert.html">Sweet Alert</a>
+                            <a href="form-editor-ckeditor.html">History Pengajuan</a>
                         </li>
-                        <li class="submenu-item ">
-                            <a href="extra-component-toastify.html">Toastify</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="extra-component-rating.html">Rating</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="extra-component-divider.html">Divider</a>
-                        </li>
+                       
                     </ul>
                 </li>
 
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-grid-1x2-fill"></i>
-                        <span>Layouts</span>
-                    </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="layout-default.html">Default Layout</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="layout-vertical-1-column.html">1 Column</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="layout-vertical-navbar.html">Vertical Navbar</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="layout-rtl.html">RTL Layout</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="layout-horizontal.html">Horizontal Menu</a>
-                        </li>
-                    </ul>
-                </li>
+               
 
-                <li class="sidebar-title">Forms &amp; Tables</li>
-
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-hexagon-fill"></i>
-                        <span>Form Elements</span>
+                <li class="sidebar-item  ">
+                    <a href="form-layout.html" class='sidebar-link'>
+                        <i class="bi bi-chat-dots-fill"></i>
+                        <span> Pesan mahasiwa  <strong class="text-danger"> * </strong> </span>
                     </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="form-element-input.html">Input</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="form-element-input-group.html">Input Group</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="form-element-select.html">Select</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="form-element-radio.html">Radio</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="form-element-checkbox.html">Checkbox</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="form-element-textarea.html">Textarea</a>
-                        </li>
-                    </ul>
                 </li>
 
                 <li class="sidebar-item  ">
                     <a href="form-layout.html" class='sidebar-link'>
-                        <i class="bi bi-file-earmark-medical-fill"></i>
-                        <span>Form Layout</span>
+                        {{-- <i class="icon-mid bi bi-person"></i> --}}
+                        <i class="bi bi-person-badge-fill"></i>
+                        <span>Profile</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-pen-fill"></i>
-                        <span>Form Editor</span>
-                    </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="form-editor-quill.html">Quill</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="form-editor-ckeditor.html">CKEditor</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="form-editor-summernote.html">Summernote</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="form-editor-tinymce.html">TinyMCE</a>
-                        </li>
-                    </ul>
-                </li>
+           
+           
+
+
+               
+{{-- 
+                
 
                 <li class="sidebar-item  ">
                     <a href="table.html" class='sidebar-link'>
@@ -354,7 +256,7 @@
                         <i class="bi bi-cash"></i>
                         <span>Donate</span>
                     </a>
-                </li>
+                </li> --}}
 
             </ul>
         </div>
