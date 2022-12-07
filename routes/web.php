@@ -92,14 +92,17 @@ Route::group([
     Route::get('/', [DashboardController::class, 'index'] )->name('operator.dashboard');
 
     Route::group([
-        'prefix'  => 'pengajuan-surat/'],function(){
-
+        'prefix'  => 'surat-mahasiswa/'],function(){
         Route::group([
-            'prefix'  => 'surat-masih-kuliah/'],function(){
-            Route::get('/', [SuratAktifKuliahOperatorController::class, 'index'])->name('operator.surat-masih-kuliah.index');
+            'prefix'  => 'surat-aktif-kuliah/'],function(){
+                
+            Route::get('/', [SuratAktifKuliahOperatorController::class, 'index'])->name('operator.surat-aktif-kuliah.index');
+            Route::POST('/', [SuratAktifKuliahOperatorController::class, 'show'])->name('operator.surat-aktif-kuliah.data');
         });
     });
 });
+
+
 
 //kepala operator
 Route::group([

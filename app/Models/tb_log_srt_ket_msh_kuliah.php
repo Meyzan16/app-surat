@@ -10,7 +10,7 @@ class tb_log_srt_ket_msh_kuliah extends Model
     use HasFactory;
 
     protected $fillable = [
-        'kode_judul_surat', 'npm'
+        'kode_judul_surat', 'npm','angkatan', 'kode_prodi'
     ];
 
     public function tb_judul_surat()

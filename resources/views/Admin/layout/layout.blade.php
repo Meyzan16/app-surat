@@ -13,6 +13,8 @@
 
     <link rel="stylesheet" href="/template-admin/demo/assets/vendors/iconly/bold.css">
 
+    <link rel="stylesheet" href="/template-admin/demo/assets/vendors/simple-datatables/style.css">
+
     <link rel="stylesheet" href="/template-admin/demo/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="/template-admin/demo/assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="/template-admin/demo/assets/css/app.css">
@@ -22,9 +24,9 @@
 <body>
     <div id="app">
 
-        @include('admin.partials.sidebar')
+        @include('Admin.partials.sidebar')
 
-        @include('admin.partials.header')
+        @include('Admin.partials.header')
 
         <div id="main-content">
             @yield('content')
@@ -52,6 +54,13 @@
     <script src="/template-admin/demo/assets/js/pages/dashboard.js"></script>
 
     <script src="/template-admin/demo/assets/js/main.js"></script>
+    <script src="/template-admin/demo/assets/vendors/simple-datatables/simple-datatables.js"></script>
+    <script>
+        // Simple Datatable
+        let table1 = document.querySelector('#table1');
+        let dataTable = new simpleDatatables.DataTable(table1);
+    </script>
+
     @stack('prepend-script')
 
     

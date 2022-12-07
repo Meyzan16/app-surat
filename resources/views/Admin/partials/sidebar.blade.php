@@ -13,7 +13,7 @@
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
 
-                <li class="sidebar-item active">
+                <li class="sidebar-item {{ request()->is('operator') ? 'active' : '' }} ">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
@@ -22,17 +22,17 @@
 
                 
 
-                <li class="sidebar-item  has-sub">
+                <li class="sidebar-item  {{ request()->is('operator/surat-mahasiswa*') ? 'active' : '' }}  has-sub">
                     <a href="#" class='sidebar-link'>
-                        <i class="bi bi-stack"></i>
+                        <i class="bi bi-stack "></i>
                         <span>Surat Mahasiswa</span>
                     </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="{{ route('operator.surat-masih-kuliah.index')}}">Masih Aktif kuliah</a>
+                    <ul class="submenu {{ request()->is('operator/surat-mahasiswa*') ? 'active' : '' }}">
+                        <li class="submenu-item  {{ request()->is('operator/surat-mahasiswa/surat-aktif-kuliah*') ? 'active' : '' }} ">
+                            <a href="{{ route('operator.surat-aktif-kuliah.index')}}">Masih Aktif kuliah</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="component-badge.html">Keteranga Lulus</a>
+                            <a href="component-badge.html">Keterangan Lulus</a>
                         </li>
                      
                        

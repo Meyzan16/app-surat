@@ -66,6 +66,8 @@ class PengajuanSuratController extends Controller
                         tb_log_srt_ket_msh_kuliah::create([
                             'kode_judul_surat' => $request->kode_judul_surat,
                             'npm' => Session::get('npm'),
+                            'angkatan' => Session::get('angkatan'),
+                            'kode_prodi' => Session::get('kode_prodi')
                         ]);
                         return \redirect()->route('surat-masih-kuliah.index')->with('successs', 'Silahkan lengkapai data data berikut');
                     }elseif($data->status_persetujuan == 'belum diverifikasi')
@@ -82,6 +84,8 @@ class PengajuanSuratController extends Controller
                     tb_log_ket_lulus::create([
                         'kode_judul_surat' => $request->kode_judul_surat,
                         'npm' => Session::get('npm'),
+                        'angkatan' => Session::get('angkatan'),
+                        'kode_prodi' => Session::get('kode_prodi')
                     ]);
 
                     return \redirect()->route('surat-ket-lulus.index')->with('successs', 'Silahkan lengkapai data data berikut');

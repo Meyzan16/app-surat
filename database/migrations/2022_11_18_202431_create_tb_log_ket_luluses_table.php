@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('kode_judul_surat',10)->nullable();
             
             $table->string('npm',9)->nullable();
+            $table->string('angkatan',4)->nullable();
+            $table->string('kode_prodi',4)->nullable();
             $table->double('ipk',4)->nullable();
 
             $table->enum('operator_prodi', ['Y','N','belum diverifikasi'])->default('belum diverifikasi');

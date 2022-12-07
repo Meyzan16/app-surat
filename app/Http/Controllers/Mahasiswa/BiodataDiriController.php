@@ -42,6 +42,7 @@ class BiodataDiriController extends Controller
         
                     tb_data_mahasiswa::create([
                         'npm' => Session::get('npm') ,
+                        'angkatan' => Session::get('angkatan') ,
                         'nama' => $request->nama,
                         'email' => $request->email,
                         'jenkel' => Session::get('jenkel'),

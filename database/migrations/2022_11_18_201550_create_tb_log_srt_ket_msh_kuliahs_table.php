@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('kode_judul_surat',10)->nullable();
 
             $table->string('npm',9)->nullable();
+            $table->string('angkatan',4)->nullable();
+            $table->string('kode_prodi',4)->nullable();
             $table->string('semester',50)->nullable();
             $table->string('masa_studi',50)->nullable();
         

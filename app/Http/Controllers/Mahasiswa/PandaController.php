@@ -47,6 +47,7 @@ class PandaController extends Controller
                 {mahasiswa(mhsNiu:"' . $username . '") {
                     mhsNiu
                     mhsNama
+                    mhsAngkatan
                     mhsJenisKelamin
                     mhsTanggalLahir
                     mhsTanggalLulus
@@ -76,6 +77,7 @@ class PandaController extends Controller
                        
                         // if ($mahasiswa['mahasiswa'][0]['mhsTanggalLulus'] == null) {
                             Session::put('npm',$mahasiswa['mahasiswa'][0]['mhsNiu']);
+                            Session::put('angkatan',$mahasiswa['mahasiswa'][0]['mhsAngkatan']);
                             Session::put('nama_lengkap',$mahasiswa['mahasiswa'][0]['mhsNama']);
                             Session::put('jenkel',$mahasiswa['mahasiswa'][0]['mhsJenisKelamin']);
                             Session::put('tgl_lahir',$mahasiswa['mahasiswa'][0]['mhsTanggalLahir']);
