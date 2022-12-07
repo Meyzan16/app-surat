@@ -48,107 +48,60 @@
  
     <!-- Total Revenue -->
     <div class="col-12 col-lg-12 order-2 order-md-3 order-lg-2 mb-4">
-      <div class="card">
-        <h5 class="card-header">Informasi Proses Pengajuan</h5>
-        <div class="table-responsive text-nowrap">
-          <table class="table table-borderless">
-            <thead>
-              <tr>
-                <th>Project</th>
-                <th>Client</th>
-                <th>Status</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong></td>
-                <td>Albert Cook</td>
+      <div class="card mb-4">
+        <div class="card-header d-flex align-items-center justify-content-between">
+          <h5 class="mb-0">Informasi Proses Pengajuan</h5>
+        </div>  
+
+        <div class="card-body">
+          <div class="col-12 col-lg-12 order-2 order-md-3 order-lg-2 mb-4">
+
+                <div class="table-responsive text-nowrap">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>No</th>
+                        <th>Judul Surat</th>
+                        <th>Status Operator Fakultas</th>
+                        <th>Kepala Operator Fakultas</th>
+                        <th>Tanggal Pengajuan</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach ($pengajuan as $item)
+                      <tr>                       
+                     
+                        <td>{{ $loop->iteration }} </td>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $item->tb_judul_surat->judul_surat }}</strong></td>
+
+                          @if($item->operator_prodi == 'belum diverifikasi')
+                           <td><span class="badge bg-label-warning me-1">Menunggu</span></td>
+                           @elseif($item->operator_prodi == 'N')
+                           <td><span class="badge bg-label-danger me-1">Ditolak</span></td>
+                           @elseif($item->operator_prodi == 'Y')
+                           <td><span class="badge bg-label-success me-1">Diterima</span></td>
+                          @endif
+
+                          @if($item->kepala_operator == 'belum diverifikasi')
+                          <td><span class="badge bg-label-warning me-1">Menunggu</span></td>
+                          @elseif($item->kepala_operator == 'N')
+                          <td><span class="badge bg-label-danger me-1">Ditolak</span></td>
+                          @elseif($item->kepala_operator == 'Y')
+                          <td><span class="badge bg-label-success me-1">Diterima</span></td>
+                          @endif
+
+
+
+                          <td><i class="fab fa-angular fa-lg text-danger me-3"></i> {{ $item->updated_at }}</td>
+
+                        </tr>
+                        @endforeach
+                    
+                    </tbody>
+                  </table>
+                </div>
               
-                <td><span class="badge bg-label-primary me-1">Active</span></td>
-                <td>
-                  <div class="dropdown">
-                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                      <i class="bx bx-dots-vertical-rounded"></i>
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="javascript:void(0);"
-                        ><i class="bx bx-edit-alt me-1"></i> Edit</a
-                      >
-                      <a class="dropdown-item" href="javascript:void(0);"
-                        ><i class="bx bx-trash me-1"></i> Delete</a
-                      >
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td><i class="fab fa-react fa-lg text-info me-3"></i> <strong>React Project</strong></td>
-                <td>Barry Hunter</td>
-                
-                <td><span class="badge bg-label-success me-1">Completed</span></td>
-                <td>
-                  <div class="dropdown">
-                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                      <i class="bx bx-dots-vertical-rounded"></i>
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="javascript:void(0);"
-                        ><i class="bx bx-edit-alt me-1"></i> Edit</a
-                      >
-                      <a class="dropdown-item" href="javascript:void(0);"
-                        ><i class="bx bx-trash me-1"></i> Delete</a
-                      >
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td><i class="fab fa-vuejs fa-lg text-success me-3"></i> <strong>VueJs Project</strong></td>
-                <td>Trevor Baker</td>
-               
-                <td><span class="badge bg-label-info me-1">Scheduled</span></td>
-                <td>
-                  <div class="dropdown">
-                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                      <i class="bx bx-dots-vertical-rounded"></i>
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="javascript:void(0);"
-                        ><i class="bx bx-edit-alt me-1"></i> Edit</a
-                      >
-                      <a class="dropdown-item" href="javascript:void(0);"
-                        ><i class="bx bx-trash me-1"></i> Delete</a
-                      >
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong>Bootstrap Project</strong>
-                </td>
-                <td>Jerry Milton</td>
-               
-                <td><span class="badge bg-label-warning me-1">Pending</span></td>
-                <td>
-                  <div class="dropdown">
-                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                      <i class="bx bx-dots-vertical-rounded"></i>
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="javascript:void(0);"
-                        ><i class="bx bx-edit-alt me-1"></i> Edit</a
-                      >
-                      <a class="dropdown-item" href="javascript:void(0);"
-                        ><i class="bx bx-trash me-1"></i> Delete</a
-                      >
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+            </div>
         </div>
       </div>
     </div>
@@ -225,6 +178,7 @@
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3 order-3 order-md-2 mb-4">
+          <a href="{{ route('rekaman-pengajuan.index') }}" >
           <div class="card">
             <div class="card-body">
               <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
@@ -244,6 +198,7 @@
               </div>
             </div>
           </div>
+          </a>
         </div>
       </div>
     </div>
@@ -254,3 +209,4 @@
 
 
 @endsection
+

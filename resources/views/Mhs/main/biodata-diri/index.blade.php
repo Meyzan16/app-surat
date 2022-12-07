@@ -9,13 +9,13 @@
   <div class="row">
     <!-- Basic Layout -->
 
-    {{-- @if($message = Session::get('toast_success'))
+    @if($message = Session::get('successs'))
         <div class="autohide col-12 col-md-12 col-lg-12 order-0  mb-0 mt-4">
               <div class="alert alert-success  text-center">
                   {{$message}}
               </div>                  
       </div>
-    @endif --}}
+    @endif
 
     
       

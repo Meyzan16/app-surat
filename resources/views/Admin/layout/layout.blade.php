@@ -51,11 +51,6 @@
     <script src="/template-admin/demo/assets/js/pages/dashboard.js"></script>
 
     <script src="/template-admin/demo/assets/js/main.js"></script>
-
-
-
-   
-
     @stack('prepend-script')
 
     

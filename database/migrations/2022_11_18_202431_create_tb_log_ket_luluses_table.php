@@ -33,7 +33,6 @@ return new class extends Migration
             $table->timestamp('time_acc_kep_operator')->nullable();
 
             $table->enum('status_persetujuan', ['Y','N','belum diverifikasi'])->default('belum diverifikasi');
-            $table->text('catatan_persetujuan')->nullable();
             $table->foreignId('id_persetujuan')->nullable();
             $table->timestamp('time_acc_ttd')->nullable();
 

@@ -21,7 +21,7 @@
       </div>  
 
       <div class="card-body">
-        <form  action="{{ route('mhs.biodata.save')}}" method="POST">
+        <form  action="{{ route('surat-masih-kuliah.update', Session::get('npm'))}}" method="POST">
           @csrf
           <div class="row mb-3">
             <label class="col-sm-2 col-form-label" for="basic-default-npm">NPM</label>
@@ -33,67 +33,64 @@
           <div class="row mb-3">
             <label class="col-sm-2 col-form-label" for="basic-default-semester">semester</label>
             <div class="col-sm-10">
-              <input type="text"  name="semester" class="form-control @error('semester')is-invalid @enderror" id="basic-default-npm" required />
+              <input type="text" value="{{ old('semester') }}"  name="semester" class="form-control @error('semester')is-invalid @enderror" id="basic-default-npm"  />
               <small class="text-danger d-flex mt-1" >dalam tipe romawi*</small>
+              @error('semester') 
+                            <div class="invalid-feedback autohide">
+                              {{ $message }}
+                            </div>
+                          @enderror
             </div>
-            @error('semester') 
-                          <div class="invalid-feedback autohide">
-                            {{ $message }}
-                          </div>
-                        @enderror
           </div>
 
           <div class="row mb-3">
             <label class="col-sm-2 col-form-label" for="basic-default-masa_studi">masa studi</label>
             <div class="col-sm-10">
-              <input type="text"  name="masa_studi" class="form-control @error('masa_studi')is-invalid @enderror" id="basic-default-masa_studi" required />
-              <small class="text-danger d-flex mt-1" >dalam tipe romawi*</small>
+              <input type="text" value="{{ old('masa_studi') }}"   name="masa_studi" class="form-control @error('masa_studi')is-invalid @enderror" id="basic-default-masa_studi" placeholder="terhitung sampe sekarang"  />
+              <small class="text-danger d-flex mt-1" >4 tahun 7 bulan*</small>
+              @error('masa_studi') 
+                            <div class="invalid-feedback autohide">
+                              {{ $message }}
+                            </div>
+                          @enderror
             </div>
-            @error('masa_studi') 
-                          <div class="invalid-feedback autohide">
-                            {{ $message }}
-                          </div>
-                        @enderror
           </div>
 
 
           <div class="row mb-3">
             <label class="col-sm-2 col-form-label" for="basic-default-nama_ortu">nama ortu</label>
             <div class="col-sm-10">
-              <input type="text"  name="nama_ortu" class="form-control @error('nama_ortu')is-invalid @enderror" id="basic-default-nama_ortu" required />
-              <small class="text-danger d-flex mt-1" >dalam tipe romawi*</small>
+              <input type="text"  value="{{ old('nama_ortu') }}"  name="nama_ortu" class="form-control @error('nama_ortu')is-invalid @enderror"  id="basic-default-nama_ortu" placeholder="ricardo ajei"  />
+              @error('nama_ortu') 
+                            <div class="invalid-feedback autohide">
+                              {{ $message }}
+                            </div>
+                          @enderror
             </div>
-            @error('nama_ortu') 
-                          <div class="invalid-feedback autohide">
-                            {{ $message }}
-                          </div>
-                        @enderror
           </div>
 
           <div class="row mb-3">
             <label class="col-sm-2 col-form-label" for="basic-default-pekerjaan">Pekerjaan</label>
             <div class="col-sm-10">
-              <input type="text"  name="pekerjaan" class="form-control @error('pekerjaan')is-invalid @enderror" id="basic-default-pekerjaan" required />
-              <small class="text-danger d-flex mt-1" >dalam tipe romawi*</small>
+              <input type="text" value="{{ old('pekerjaan') }}" name="pekerjaan" class="form-control @error('pekerjaan')is-invalid @enderror" id="basic-default-pekerjaan" placeholder="petani"  />
+              @error('pekerjaan') 
+                            <div class="invalid-feedback autohide">
+                              {{ $message }}
+                            </div>
+                          @enderror
             </div>
-            @error('pekerjaan') 
-                          <div class="invalid-feedback autohide">
-                            {{ $message }}
-                          </div>
-                        @enderror
           </div>
 
           <div class="row mb-3">
             <label class="col-sm-2 col-form-label" for="basic-default-alamat">Alamat</label>
             <div class="col-sm-10">
-              <input type="text"  name="alamat" class="form-control @error('alamat')is-invalid @enderror" id="basic-default-alamat" required />
-              <small class="text-danger d-flex mt-1" >dalam tipe romawi*</small>
+              <input type="text" value="{{ old('alamat') }}" name="alamat" class="form-control @error('alamat')is-invalid @enderror" id="basic-default-alamat" placeholder="unib belakang"  />
+              @error('alamat') 
+                            <div class="invalid-feedback autohide">
+                              {{ $message }}
+                            </div>
+                          @enderror
             </div>
-            @error('alamat') 
-                          <div class="invalid-feedback autohide">
-                            {{ $message }}
-                          </div>
-                        @enderror
           </div>
 
           
@@ -113,7 +110,5 @@
   
 </div>
 <!-- / Content -->
-
-
-
 @endsection
+

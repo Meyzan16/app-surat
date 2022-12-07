@@ -12,6 +12,9 @@ use App\Http\Controllers\Mahasiswa\SuratMasihKuliahController;
 //surat ket lulus
 use App\Http\Controllers\Mahasiswa\SuratKetLulusController;
 
+//surat rekaman pengajuan
+use App\Http\Controllers\Mahasiswa\HistoryPengajuanSurat;
+
 //surat 
 /*
 |--------------------------------------------------------------------------
@@ -40,37 +43,40 @@ Route::post('/logout', [PandaController::class, 'logout'])->name('logout_mahasis
 //Admin
 Route::group([
     'prefix' => 'admin/'], function(){
-    Route::get('/', [DashboardController::Class, 'index'] )->name('dashboard-admin');
+    Route::get('/', [DashboardController::class, 'index'] )->name('dashboard-admin');
 });
 
 Route::group([
     'middleware' => 'is_cekLogin',
     'prefix' => 'mahasiswa/'], function(){
-    Route::get('/', [DashboardMhsController::Class, 'index'])->name('dashboard-mhs');
+    Route::get('/', [DashboardMhsController::class, 'index'])->name('dashboard-mhs');
 
     Route::group([
         'middleware' => 'is_terdaftar',
         'prefix'  => 'pengajuan-surat/'],function(){
-        Route::get('/', [PengajuanSuratController::Class, 'index'])->name('pengajuan-index');
-        Route::POST('/proses-ajuan', [PengajuanSuratController::Class, 'proses_pengajuan'])->name('proses-pengajuan');
+        Route::get('/', [PengajuanSuratController::class, 'index'])->name('pengajuan-index');
+        Route::POST('/proses-ajuan', [PengajuanSuratController::class, 'proses_pengajuan'])->name('proses-pengajuan');
         
         
         Route::group(['prefix'  => 'surat-masih-kuliah/'],function(){
-            Route::get('/', [SuratMasihKuliahController::Class, 'index'])->name('surat-masih-kuliah.index');
-            Route::POST('/melengkapi-data', [SuratMasihKuliahController::Class, 'update'])->name('surat-masih-kuliah.update');
+            Route::get('/', [SuratMasihKuliahController::class, 'index'])->name('surat-masih-kuliah.index');
+            Route::POST('{npm}/melengkapi-data', [SuratMasihKuliahController::class, 'update'])->name('surat-masih-kuliah.update');
         });
 
         Route::group(['prefix'  => 'surat-keterangan-lulus/'],function(){
-            Route::get('/', [SuratKetLulusController::Class, 'index'])->name('surat-ket-lulus.index');
+            Route::get('/', [SuratKetLulusController::class, 'index'])->name('surat-ket-lulus.index');
         });
-        
     });
-
+    
+    Route::group(['prefix'  => 'rekaman-pengajuan/'],function(){
+        Route::get('/', [HistoryPengajuanSurat::class, 'index'])->name('rekaman-pengajuan.index');
+    });
+    
 
     Route::group(['prefix'  => 'biodata-diri/'],function(){
-        Route::get('/', [BiodatadiriController::Class, 'index'])->name('mhs.biodata-diri.index');
-        Route::POST('/simpan-data', [BiodatadiriController::Class, 'store'])->name('mhs.biodata.save');
-        Route::PATCH('{npm}/perbarui-data', [BiodatadiriController::Class, 'update'])->name('mhs.biodata.update');
+        Route::get('/', [BiodatadiriController::class, 'index'])->name('mhs.biodata-diri.index');
+        Route::POST('/simpan-data', [BiodatadiriController::class, 'store'])->name('mhs.biodata.save');
+        Route::PATCH('{npm}/perbarui-data', [BiodatadiriController::class, 'update'])->name('mhs.biodata.update');
     });
 
 
