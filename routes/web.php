@@ -58,9 +58,11 @@ Route::group([
         Route::POST('/proses-ajuan', [PengajuanSuratController::class, 'proses_pengajuan'])->name('proses-pengajuan');
         
         
-        Route::group(['prefix'  => 'surat-masih-kuliah/'],function(){
+        Route::group([
+            'prefix'  => 'surat-masih-kuliah/'],function(){
             Route::get('/', [SuratMasihKuliahController::class, 'index'])->name('surat-masih-kuliah.index');
             Route::POST('{npm}/melengkapi-data', [SuratMasihKuliahController::class, 'update'])->name('surat-masih-kuliah.update');
+            Route::delete('{npm}/hapus-data', [SuratMasihKuliahController::class, 'destroy'])->name('surat-masih-kuliah.delete');
         });
 
         Route::group(['prefix'  => 'surat-keterangan-lulus/'],function(){

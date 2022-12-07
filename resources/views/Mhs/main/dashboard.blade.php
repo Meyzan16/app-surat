@@ -62,9 +62,13 @@
                       <tr>
                         <th>No</th>
                         <th>Judul Surat</th>
-                        @if($cek_surat_msh_kuliah->semester == null)
+                        @if( empty($cek_surat_msh_kuliah) )
+                          <th>Status</th>
+                         
+                        @elseif($cek_surat_msh_kuliah->semester == null)
                            <th>Status</th>
-                        @else
+                           <th>Aksi</th>
+                        @elseif($cek_surat_msh_kuliah->semester )
                           <th>Status Operator Fakultas</th>
                           <th>Kepala Operator Fakultas</th>
                         @endif()
@@ -79,32 +83,42 @@
                         <td>{{ $loop->iteration }} </td>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $item->tb_judul_surat->judul_surat }}</strong></td>
 
-                        @if($cek_surat_msh_kuliah->semester == null)
-                     
-                           <td> 
+                        @if( $cek_surat_msh_kuliah->semester  )
+                          
+                            @if($item->operator_prodi == 'belum diverifikasi')
+                            <td><span class="badge bg-label-warning me-1">Menunggu</span></td>
+                            @elseif($item->operator_prodi == 'N')
+                            <td><span class="badge bg-label-danger me-1">Ditolak</span></td>
+                            @elseif($item->operator_prodi == 'Y')
+                            <td><span class="badge bg-label-success me-1">Diterima</span></td>
+                            @endif
+    
+                            @if($item->kepala_operator == 'belum diverifikasi')
+                            <td><span class="badge bg-label-warning me-1">Menunggu</span></td>
+                            @elseif($item->kepala_operator == 'N')
+                            <td><span class="badge bg-label-danger me-1">Ditolak</span></td>
+                            @elseif($item->kepala_operator == 'Y')
+                            <td><span class="badge bg-label-success me-1">Diterima</span></td>
+                            @endif
+                        @elseif($cek_surat_msh_kuliah->semester == null)
+
+                          <td> 
                             <a href="{{route('pengajuan-index')}}">
                               <span class="badge bg-label-primary me-1">Belum Melengkapi Data</span>
                             </a>
                           </td>
-                        @else
-                         
-                          @if($item->operator_prodi == 'belum diverifikasi')
-                           <td><span class="badge bg-label-warning me-1">Menunggu</span></td>
-                           @elseif($item->operator_prodi == 'N')
-                           <td><span class="badge bg-label-danger me-1">Ditolak</span></td>
-                           @elseif($item->operator_prodi == 'Y')
-                           <td><span class="badge bg-label-success me-1">Diterima</span></td>
-                          @endif
-  
-                          @if($item->kepala_operator == 'belum diverifikasi')
-                          <td><span class="badge bg-label-warning me-1">Menunggu</span></td>
-                          @elseif($item->kepala_operator == 'N')
-                          <td><span class="badge bg-label-danger me-1">Ditolak</span></td>
-                          @elseif($item->kepala_operator == 'Y')
-                          <td><span class="badge bg-label-success me-1">Diterima</span></td>
-                          @endif
 
-                        @endif()
+                          <td> 
+                            <form action="{{route('surat-masih-kuliah.delete', $item->npm)}}" method="POST">
+                              @csrf @method('delete')
+                              <button type="submit" class="d-inline">
+                                <span class="badge bg-label-danger me-1">Hapus</span>
+                              </button>
+                            </form>
+                           
+                          </td>
+
+                        @endif
                         
 
 

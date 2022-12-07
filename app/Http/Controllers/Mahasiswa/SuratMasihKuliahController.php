@@ -62,5 +62,21 @@ class SuratMasihKuliahController extends Controller
          }
     }
 
+    public function destroy($npm)
+    {
+        $data = tb_log_srt_ket_msh_kuliah::where('npm', $npm)->first();
+
+        tb_log_srt_ket_msh_kuliah::where([
+            ['npm', '=',  $data->npm],
+            ['kode_judul_surat', '=',  $data->kode_judul_surat],
+        ])->delete();
+
+     
+
+        return \redirect()->route('dashboard-mhs')->with('toast_success', 'Pengajuan surat berhasil dihapus');
+
+
+    }
+
     
 }
