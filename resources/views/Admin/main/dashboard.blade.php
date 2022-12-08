@@ -14,7 +14,7 @@
                     <div class="card-body px-3 py-4-5">   
                         @if(auth()->user()->kode_prodi)
                         
-                            <h5>Selamat datang , verifikator prodi {{ auth()->user()->kode_prodi }}</h5>
+                            <h5>Selamat datang , verifikator prodi {{ auth()->user()->tb_prodi->nama_prodi }}</h5>
                         @elseif(auth()->user()->role == 'KEPALA_OPERATOR')
                         
                             <h5>Selamat datang , {{auth()->user()->nama}} kepala operator</h5>

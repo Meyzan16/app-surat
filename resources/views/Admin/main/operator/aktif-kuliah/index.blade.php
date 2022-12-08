@@ -29,15 +29,14 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form action="{{ route('operator.surat-aktif-kuliah.data') }}" class="form form-horizontal" method="POST">
-                                @csrf
+                            <form>
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <label>Pilih Prodi</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <select name="angkatan" id="angkatan" class="form-control">
+                                            <select name="angkatan" id="angkatan" class="form-control" required>
                                                 <option value="">-- pilih data -- </option>
                                                 @foreach ($angkatan as $item)
                                                 <option value=" {{ $item->angkatan}}"> {{ $item->angkatan}} </option>
@@ -50,13 +49,18 @@
 
                             
                                         <div class="col-sm-12 d-flex justify-content-end">
-                                            <button type="submit"
-                                                class="btn btn-primary me-1 mb-1">Cari</button>
+                                            <div class="col-sm-12 d-flex justify-content-end">
+                                                <button onclick="return cari()"
+                                                    class="btn btn-primary me-1 mb-1">Cari</button>
+                                                
+                                            </div>
+
                                             
                                         </div>
                                     </div>
                                 </div>
                             </form>
+
                         </div>
                     </div>
                 </div>
@@ -66,3 +70,4 @@
 </div>
 
 @endsection
+

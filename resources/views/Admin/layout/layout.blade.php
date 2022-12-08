@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="/template-admin/demo/assets/vendors/iconly/bold.css">
 
     <link rel="stylesheet" href="/template-admin/demo/assets/vendors/simple-datatables/style.css">
+    <link rel="stylesheet" href="/template-admin/demo/assets/vendors/iconly/bold.css">
+    <link rel="stylesheet" href="/template-admin/demo/assets/vendors/fontawesome/all.min.css">
 
     <link rel="stylesheet" href="/template-admin/demo/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="/template-admin/demo/assets/vendors/bootstrap-icons/bootstrap-icons.css">
@@ -43,8 +45,10 @@
                 </div>
             </footer>
 
+
             </div>
         </div>
+        @include('sweetalert::alert')
     </div>
     @stack('addon-script')
     <script src="/template-admin/demo/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
@@ -55,6 +59,7 @@
 
     <script src="/template-admin/demo/assets/js/main.js"></script>
     <script src="/template-admin/demo/assets/vendors/simple-datatables/simple-datatables.js"></script>
+    <script src="/template-admin/demo/assets/vendors/fontawesome/all.min.js"></script>
     <script>
         // Simple Datatable
         let table1 = document.querySelector('#table1');

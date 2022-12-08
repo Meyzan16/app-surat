@@ -46,7 +46,7 @@ Route::get('/', function () {
 Route::post('/pandalogin',[PandaController::class, 'pandaLogin'])->name('login_mahasiswa_post');
 Route::post('/logout-mhs', [PandaController::class, 'logout'])->name('logout_mahasiswa');
 
-
+//mahasiswa
 Route::group([
     'middleware' => 'is_cekLogin',
     'prefix' => 'mahasiswa/'], function(){
@@ -97,7 +97,10 @@ Route::group([
             'prefix'  => 'surat-aktif-kuliah/'],function(){
                 
             Route::get('/', [SuratAktifKuliahOperatorController::class, 'index'])->name('operator.surat-aktif-kuliah.index');
-            Route::POST('/', [SuratAktifKuliahOperatorController::class, 'show'])->name('operator.surat-aktif-kuliah.data');
+
+            
+            Route::patch('{npm}/verif_diterima', [SuratAktifKuliahOperatorController::class, 'verifikasi'])->name('operator.surat-aktif-kuliah.verif_diterima');
+            Route::patch('{npm}/verif_ditolak', [SuratAktifKuliahOperatorController::class, 'verifikasi_tolak'])->name('operator.surat-aktif-kuliah.verif_ditolak');
         });
     });
 });

@@ -70,10 +70,20 @@ class PengajuanSuratController extends Controller
                             'kode_prodi' => Session::get('kode_prodi')
                         ]);
                         return \redirect()->route('surat-masih-kuliah.index')->with('successs', 'Silahkan lengkapai data data berikut');
-                    }elseif($data->status_persetujuan == 'belum diverifikasi')
+                    }
+                    elseif($data->status_persetujuan == 'belum diverifikasi')
                     {
                         return \redirect()->route('pengajuan-index')->with('toast_error', 'Jenis surat keterangan masih kuliah baru saja diajukan');
 
+                    }elseif($data->status_persetujuan == 'Y')
+                    {
+                        tb_log_srt_ket_msh_kuliah::create([
+                            'kode_judul_surat' => $request->kode_judul_surat,
+                            'npm' => Session::get('npm'),
+                            'angkatan' => Session::get('angkatan'),
+                            'kode_prodi' => Session::get('kode_prodi')
+                        ]);
+                        return \redirect()->route('surat-masih-kuliah.index')->with('successs', 'Silahkan lengkapai data data berikut');
                     }
 
                

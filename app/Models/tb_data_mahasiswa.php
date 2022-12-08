@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\tb_log_srt_ket_msh_kuliahs;
 
 class tb_data_mahasiswa extends Model
 {
@@ -12,5 +13,10 @@ class tb_data_mahasiswa extends Model
     protected $fillable = [
         'npm', 'angkatan','nama' , 'email','jenkel', 'tanggal_lahir', 'kode_prodi',
     ];
+
+    public function tb_log_srt_ket_msh_kuliah()
+    {
+        return $this->hasMany(tb_log_srt_ket_msh_kuliahs::class);
+    }
 
 }
