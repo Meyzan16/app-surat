@@ -127,6 +127,7 @@ Route::group([
         Route::group([
             'prefix'  => 'surat-aktif-kuliah/'],function(){
             Route::get('{prodi}', [SuratAktifKuliahKepOperatorController::class, 'index'] )->name('kepala-operator.surat-aktif-kuliah.index');
+            Route::get('{prodi}/Data-pengajuan', [SuratAktifKuliahKepOperatorController::class, 'show'] )->name('kepala-operator.surat-aktif-kuliah.show');
         });
     });
 
