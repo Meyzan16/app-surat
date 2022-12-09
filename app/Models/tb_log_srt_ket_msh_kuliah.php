@@ -24,4 +24,6 @@ class tb_log_srt_ket_msh_kuliah extends Model
     {
         return $this->belongsTo(tb_data_mahasiswa::class, 'npm', 'npm');
     }
+
+    
 }

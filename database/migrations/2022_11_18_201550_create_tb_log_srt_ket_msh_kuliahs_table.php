@@ -39,7 +39,6 @@ return new class extends Migration
             
 
             $table->enum('kepala_operator', ['Y','N','belum diverifikasi'])->default('belum diverifikasi');
-            $table->text('catatan_kepala_operator')->nullable();
             $table->foreignId('id_kepala_operator')->nullable();
             $table->timestamp('time_acc_kep_operator')->nullable();
 

@@ -120,6 +120,28 @@
                 @endif
 
 
+                @if(auth()->user()->roles == 'VERIF_PERSETUJUAN')
+                    <li class="sidebar-item  has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-file-earmark-medical-fill"></i>
+                            <span>Surat Aktif Kuliah verif</span>
+                        </a>
+                        <ul class="submenu ">
+
+                            @php
+                                $prodi = DB::table('tb_prodis')->get();
+                            @endphp
+
+                            @foreach($prodi as $item)
+                            <li class="submenu-item ">
+                                <a href="{{ route('kepala-operator.surat-aktif-kuliah.index', $item->kode_prodi) }}">{{ $item->nama_prodi}}</a>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </li>
+                @endif
+
+
 
 
                 

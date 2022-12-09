@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="page-heading">
-    <h3>Data prodi {{ $data->nama_prodi }}</h3>
+    <h3>Surat Aktif Kuliah</h3>
 </div>
 
 <div class="page-content">
@@ -12,14 +12,7 @@
         <div class="col-12">
                 <div class="card">
                     <div class="card-body px-3 py-4-5">   
-                        @if(auth()->user()->kode_prodi)
-                        
-                            <h5>Selamat datang , verifikator prodi {{ auth()->user()->tb_prodi->nama_prodi }}</h5>
-                        @elseif(auth()->user()->roles == 'KEPALA_OPERATOR')
-                        
-                            <h5>Selamat datang , {{auth()->user()->nama}} kepala operator</h5>
-                        
-                        @endif
+                            <h5 class="text-center">Data prodi {{ $data->nama_prodi }}</h5>
                     </div>
                 </div>
         </div>
