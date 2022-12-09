@@ -45,9 +45,15 @@
                             <td>{{ $item->npm}}</td>
                             <td>{{ $item->tb_data_mahasiswa->nama}}</td>
                            
-                            @if ($item->operator_prodi == 'belum diverifikasi')
+                            @if ($item->operator_prodi == 'belum diverifikasi' && $item->catatan_operator_prodi == null)
                                 <td>
                                     <span class="badge bg-warning">Menunggu</span>
+                                </td>
+                            @elseif($item->operator_prodi == 'belum diverifikasi' && $item->catatan_operator_prodi != null)
+                                <td>
+                                    <span class="badge bg-warning">Menunggu Verifikasi Ulang</span>
+
+                                    <a class="badge bg-danger" data-bs-toggle="modal" data-bs-target="#exampleModalCatatan{{ $item->npm }}">  <i class="fa fa-comment-dots"> </i>  </a>          
                                 </td>
                             @elseif($item->operator_prodi == 'N')
                             <td>

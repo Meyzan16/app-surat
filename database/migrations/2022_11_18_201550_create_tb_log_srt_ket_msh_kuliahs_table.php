@@ -35,16 +35,16 @@ return new class extends Migration
             $table->enum('operator_prodi', ['Y','N','belum diverifikasi'])->default('belum diverifikasi');
             $table->text('catatan_operator_prodi')->nullable();
             $table->foreignId('id_operator')->nullable();
-            $table->timestamp('time_acc_operator_prodi')->nullable();
+            $table->datetime('time_acc_operator_prodi')->nullable();
             
 
             $table->enum('kepala_operator', ['Y','N','belum diverifikasi'])->default('belum diverifikasi');
             $table->foreignId('id_kepala_operator')->nullable();
-            $table->timestamp('time_acc_kep_operator')->nullable();
+            $table->datetime('time_acc_kep_operator')->nullable();
 
             $table->enum('status_persetujuan', ['Y','N','belum diverifikasi'])->default('belum diverifikasi');
             $table->foreignId('id_persetujuan')->nullable();
-            $table->timestamp('time_acc_ttd')->nullable();
+            $table->date('time_acc_ttd')->nullable();
 
             $table->softDeletes();
             $table->timestamps();

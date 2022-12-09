@@ -62,6 +62,12 @@ Route::group([
     'prefix' => 'mahasiswa/'], function(){
     Route::get('/', [DashboardMhsController::class, 'index'])->name('dashboard-mhs');
 
+     Route::group(['prefix'  => 'biodata-diri/'],function(){
+        Route::get('/', [BiodatadiriController::class, 'index'])->name('mhs.biodata-diri.index');
+        Route::POST('/simpan-data', [BiodatadiriController::class, 'store'])->name('mhs.biodata.save');
+        Route::PATCH('{npm}/perbarui-data', [BiodatadiriController::class, 'update'])->name('mhs.biodata.update');
+    });
+
     Route::group([
         'middleware' => 'is_terdaftar',
         'prefix'  => 'pengajuan-surat/'],function(){
@@ -72,10 +78,12 @@ Route::group([
         Route::group([
             'prefix'  => 'surat-masih-kuliah/'],function(){
             Route::get('/', [SuratMasihKuliahController::class, 'index'])->name('surat-masih-kuliah.index');
-          
-
-            Route::POST('{npm}/melengkapi-data', [SuratMasihKuliahController::class, 'update'])->name('surat-masih-kuliah.update');
+            
+            Route::post('{npm}/melengkapi-data', [SuratMasihKuliahController::class, 'update'])->name('surat-masih-kuliah.update');
             Route::delete('{npm}/hapus-data', [SuratMasihKuliahController::class, 'destroy'])->name('surat-masih-kuliah.delete');
+            
+           
+            
         });
 
         Route::group(['prefix'  => 'surat-keterangan-lulus/'],function(){
@@ -83,16 +91,22 @@ Route::group([
         });
     });
     
-    Route::group(['prefix'  => 'rekaman-pengajuan/'],function(){
-        Route::get('/', [HistoryPengajuanSurat::class, 'index'])->name('rekaman-pengajuan.index');
-    });
+        Route::group(['prefix'  => 'rekaman-pengajuan/'],function(){
+
+            Route::group([
+                'prefix'  => 'surat-masih-kuliah/'],function(){
+                    Route::get('{id}/data-diperbaiki', [SuratMasihKuliahController::class, 'show_perbaiki'])->name('surat-masih-kuliah.diperbaiki');
+                    Route::patch('{id}/data-diperbaiki', [SuratMasihKuliahController::class, 'update_diperbaiki'])->name('surat-masih-kuliah.diperbaiki-update');   
+            });
+
+          
+
+            Route::get('/surat-aktif-kuliah', [HistoryPengajuanSurat::class, 'index'])->name('rekaman-pengajuan.aktif-kuliah');
+            Route::get('/surat-ket-lulus', [HistoryPengajuanSurat::class, 'ket_lulus'])->name('rekaman-pengajuan.ket-lulus');
+        });
     
 
-    Route::group(['prefix'  => 'biodata-diri/'],function(){
-        Route::get('/', [BiodatadiriController::class, 'index'])->name('mhs.biodata-diri.index');
-        Route::POST('/simpan-data', [BiodatadiriController::class, 'store'])->name('mhs.biodata.save');
-        Route::PATCH('{npm}/perbarui-data', [BiodatadiriController::class, 'update'])->name('mhs.biodata.update');
-    });
+   
 
 
 });

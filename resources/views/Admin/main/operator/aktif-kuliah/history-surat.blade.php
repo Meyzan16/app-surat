@@ -32,10 +32,10 @@
                             <th>No</th>
                             <th>NPM</th>
                             <th>Nama</th>
-                            <th>Status</th>
-                            <th>Status Kep.Operator</th>
+                            <th>Operator</th>
+                            <th>Kep.Operator</th>
                             <th>Tanda tangan</th>
-                            <th>Masa Aktif</th>
+                            <th>Tgl dibuat</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -93,11 +93,13 @@
                             @else
                             <td>
                                 <span class="badge bg-success">Diterima</span>
+
+                                <a href="#showdata"  class="badge bg-primary"> <i class="fa fa-print"> </i> </a>
                             </td>
                             @endif
 
                             <td>
-                                <span class="badge bg-success">{{ date('d-M-Y');}}</span>
+                                <span class="badge bg-success">{{ $item->created_at ;}}</span>
                             </td>
 
 

@@ -88,13 +88,32 @@
         <div data-i18n="Analytics">Pengajuan Surat</div>
       </a>
     </li>
-    
-    <li class="menu-item  {{ request()->is('mahasiswa/rekaman-pengajuan*') ? 'active' : '' }} ">
-      <a href="{{ route('rekaman-pengajuan.index')}}" class="menu-link">
+
+    <li class="menu-item  {{ request()->is('mahasiswa/rekaman-pengajuan*') ? 'active' : '' }}">
+      <a  class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-home-circle"></i>
+        <div data-i18n="Misc">History pengajuan</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item  {{ request()->is('mahasiswa/rekaman-pengajuan/surat-aktif-kuliah') ? 'active' : '' }}">
+          <a href="{{ route('rekaman-pengajuan.aktif-kuliah') }}" class="menu-link">
+            <div data-i18n="Error">Surat Aktif Kuliah</div>
+          </a>
+        </li>
+        <li class="menu-item  {{ request()->is('mahasiswa/rekaman-pengajuan/surat-ket-lulus') ? 'active' : '' }}">
+          <a href="{{ route('rekaman-pengajuan.ket-lulus') }}" class="menu-link">
+            <div data-i18n="Under Maintenance">Surat Keterangan Lulus</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+    
+    {{-- <li class="menu-item  {{ request()->is('mahasiswa/rekaman-pengajuan*') ? 'active' : '' }} ">
+      <a href="{{ route('rekaman-pengajuan.index')}}" class="menu-link">
+       
         <div data-i18n="Analytics">History Pengajuan</div>
       </a>
-    </li>
+    </li> --}}
 
 
     <li class="menu-item">

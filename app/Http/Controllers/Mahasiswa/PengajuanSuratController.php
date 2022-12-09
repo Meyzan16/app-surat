@@ -18,18 +18,30 @@ class PengajuanSuratController extends Controller
         $judul_surat = tb_judul_surat::with('tb_jenis_surat')->get();
 
 
-        $data = tb_log_srt_ket_msh_kuliah::where('npm',Session::get('npm') )->first();
+        $data = tb_log_srt_ket_msh_kuliah::where('npm', Session::get('npm'))
+        ->where('status_persetujuan', 'belum diverifikasi')
+        ->first();
 
-        if(empty($data))
-        {
-            return view('Mhs.main.pengajuan-surat.index', compact('judul_surat'));
-        }elseif($data->semester == null)
-        {
-            return \redirect()->route('surat-masih-kuliah.index')->with('toast_error', 'anda belum melengkapi data');
-        }elseif($data->semester)
-        {
-            return view('Mhs.main.pengajuan-surat.index', compact('judul_surat'));
-        }
+                if(empty($data))
+                {
+                    return view('Mhs.main.pengajuan-surat.index', compact('judul_surat'));
+                }
+                elseif($data->semester == null)
+                {
+                    return \redirect()->route('surat-masih-kuliah.index')->with('toast_error', 'anda belum melengkapi data');
+                }
+                elseif($data->semester)
+                {
+                    return view('Mhs.main.pengajuan-surat.index', compact('judul_surat'));
+                }
+                
+
+                  
+
+        
+
+    
+           
         
     }
 

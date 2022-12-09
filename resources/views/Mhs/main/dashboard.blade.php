@@ -69,8 +69,8 @@
                            <th>Status</th>
                            <th>Aksi</th>
                         @elseif($cek_surat_msh_kuliah->semester )
-                          <th>Status Operator Fakultas</th>
-                          <th>Kepala Operator Fakultas</th>
+                          <th>Status Operator</th>
+                          <th>Status Kepala Operator</th>
                         @endif()
 
                         <th>Tanggal Pengajuan</th>
@@ -80,7 +80,7 @@
                       @foreach ($pengajuan as $item)
                       <tr>                       
                      
-                        <td>{{ $loop->iteration }} </td>
+                        <td>{{ $item->id }} </td>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $item->tb_judul_surat->judul_surat }}</strong></td>
 
                         @if( $cek_surat_msh_kuliah->semester  )
@@ -100,6 +100,8 @@
                             @elseif($item->kepala_operator == 'Y')
                             <td><span class="badge bg-label-success me-1">Diterima</span></td>
                             @endif
+
+                            
                         @elseif($cek_surat_msh_kuliah->semester == null)
 
                           <td> 
@@ -209,7 +211,7 @@
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3 order-3 order-md-2 mb-4">
-          <a href="{{ route('rekaman-pengajuan.index') }}" >
+          <a href="{{ route('rekaman-pengajuan.aktif-kuliah') }}" >
           <div class="card">
             <div class="card-body">
               <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
