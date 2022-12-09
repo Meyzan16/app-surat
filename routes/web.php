@@ -128,11 +128,33 @@ Route::group([
             'prefix'  => 'surat-aktif-kuliah/'],function(){
             Route::get('{prodi}', [SuratAktifKuliahKepOperatorController::class, 'index'] )->name('kepala-operator.surat-aktif-kuliah.index');
             Route::get('{prodi}/Data-pengajuan', [SuratAktifKuliahKepOperatorController::class, 'show'] )->name('kepala-operator.surat-aktif-kuliah.show');
+                
+            // operator
+            Route::post('{prodi}/verif_diterima', [SuratAktifKuliahKepOperatorController::class, 'verifikasi'])->name('kepala-operator.surat-aktif-kuliah.verif_diterima');
+            Route::patch('{prodi}/verif_ditolak', [SuratAktifKuliahKepOperatorController::class, 'verifikasi_tolak'])->name('kepala-operator.surat-aktif-kuliah.verif_ditolak');
+            
+            // kepala operator
+            Route::post('{prodi}/verifikasi-kepala-operator', [SuratAktifKuliahKepOperatorController::class, 'verifikasi_kepala'])->name('kepala-operator.surat-aktif-kuliah.verif-kep-operator');
         });
     });
+});
 
+//KEPALA VERIF
+Route::group([
+    'middleware' => 'auth',
+    'prefix' => 'pemegang-tanggung-jawab/'], function(){
+    Route::get('/', [DashboardController::class, 'index'] )->name('ttd-persetujuan.dashboard');
 
-
+    Route::group([
+        'prefix'  => 'surat-mahasiswa/'],function(){
+        Route::group([
+            
+            'prefix'  => 'surat-aktif-kuliah/'],function(){
+            Route::get('{prodi}', [SuratAktifKuliahKepOperatorController::class, 'index'] )->name('ttd-persetujuan.surat-aktif-kuliah.index');
+            Route::get('{prodi}/Data-pengajuan', [SuratAktifKuliahKepOperatorController::class, 'show'] )->name('ttd-persetujuan.surat-aktif-kuliah.show');
+            
+        });
+    });
 });
 
 //admin
