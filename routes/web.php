@@ -135,7 +135,9 @@ Route::group([
             'prefix'  => 'surat-aktif-kuliah/'],function(){
             Route::get('{prodi}', [SuratAktifKuliahKepOperatorController::class, 'index'] )->name('kepala-operator.surat-aktif-kuliah.index');
             Route::get('{prodi}/Data-pengajuan', [SuratAktifKuliahKepOperatorController::class, 'show'] )->name('kepala-operator.surat-aktif-kuliah.show');
-                
+            Route::get('{prodi}/history-pengajuan', [SuratAktifKuliahKepOperatorController::class, 'history'])->name('kepala-operator.surat-aktif-kuliah.history');
+
+
             // operator
             Route::post('{prodi}/verif_diterima', [SuratAktifKuliahKepOperatorController::class, 'verifikasi'])->name('kepala-operator.surat-aktif-kuliah.verif_diterima');
             Route::patch('{prodi}/verif_ditolak', [SuratAktifKuliahKepOperatorController::class, 'verifikasi_tolak'])->name('kepala-operator.surat-aktif-kuliah.verif_ditolak');

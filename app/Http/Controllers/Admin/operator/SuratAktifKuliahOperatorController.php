@@ -84,9 +84,7 @@ class SuratAktifKuliahOperatorController extends Controller
     }
 
     public function update(Request $request, $npm)
-    {
-
-        
+    {      
         //pasang rules
         $rules = [
             'semester'=> 'required|alpha',

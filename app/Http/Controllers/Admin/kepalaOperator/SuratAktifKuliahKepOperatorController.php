@@ -98,4 +98,19 @@ class SuratAktifKuliahKepOperatorController extends Controller
 
          return redirect()->route('kepala-operator.surat-aktif-kuliah.show', $prodi )->with(['toast_success' =>  $npm. ' berhasil di verifikasi !!']);
     }
+
+    public function history($prodi)
+    {
+        $data = tb_log_srt_ket_msh_kuliah::where([
+            ['kode_prodi', '=',  $prodi],
+            ['status_persetujuan', '=',  'Y']
+        ])->get();
+
+        $prodi = tb_prodi::where([
+            ['kode_prodi', '=',  $prodi],
+        ])->first();
+
+
+        return view('Admin.main.kep-operator.surat-mahasiswa.aktif-kuliah.history', compact('data', 'prodi'));
+    }
 }

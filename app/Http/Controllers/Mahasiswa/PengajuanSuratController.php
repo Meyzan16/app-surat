@@ -73,7 +73,7 @@ class PengajuanSuratController extends Controller
                     }
                     elseif($data->status_persetujuan == 'belum diverifikasi')
                     {
-                        return \redirect()->route('pengajuan-index')->with('toast_error', 'Jenis surat keterangan masih kuliah baru saja diajukan');
+                        return \redirect()->route('pengajuan-index')->with('toast_error', 'Jenis surat keterangan aktif kuliah baru saja diajukan');
 
                     }elseif($data->status_persetujuan == 'Y')
                     {
