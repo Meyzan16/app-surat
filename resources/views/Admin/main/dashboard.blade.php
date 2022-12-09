@@ -15,7 +15,7 @@
                         @if(auth()->user()->kode_prodi)
                         
                             <h5>Selamat datang , verifikator prodi {{ auth()->user()->tb_prodi->nama_prodi }}</h5>
-                        @elseif(auth()->user()->role == 'KEPALA_OPERATOR')
+                        @elseif(auth()->user()->roles == 'KEPALA_OPERATOR')
                         
                             <h5>Selamat datang , {{auth()->user()->nama}} kepala operator</h5>
                         

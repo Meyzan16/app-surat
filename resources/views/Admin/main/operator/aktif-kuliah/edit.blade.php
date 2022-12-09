@@ -3,7 +3,6 @@
 @extends('admin.layout.layout')
 
 @section('content')
-<div id="main-content">
 <div class="page-heading">
     <h3>Edit Data {{ $data->npm }}</h3>
 </div>
@@ -161,7 +160,8 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 </div> 
 @endsection
 

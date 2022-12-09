@@ -21,6 +21,11 @@ use App\Http\Controllers\Login\LoginController;
 //operator
 use App\Http\Controllers\Admin\operator\SuratAktifKuliahOperatorController;
 
+
+//kepala operator
+use App\Http\Controllers\Admin\kepalaOperator\SuratAktifKuliahKepOperatorController;
+
+
 //surat 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +67,8 @@ Route::group([
         Route::group([
             'prefix'  => 'surat-masih-kuliah/'],function(){
             Route::get('/', [SuratMasihKuliahController::class, 'index'])->name('surat-masih-kuliah.index');
+          
+
             Route::POST('{npm}/melengkapi-data', [SuratMasihKuliahController::class, 'update'])->name('surat-masih-kuliah.update');
             Route::delete('{npm}/hapus-data', [SuratMasihKuliahController::class, 'destroy'])->name('surat-masih-kuliah.delete');
         });
@@ -95,16 +102,16 @@ Route::group([
         'prefix'  => 'surat-mahasiswa/'],function(){
         Route::group([
             'prefix'  => 'surat-aktif-kuliah/'],function(){
-                
             Route::get('/', [SuratAktifKuliahOperatorController::class, 'index'])->name('operator.surat-aktif-kuliah.index');
             Route::get('{npm}/edit', [SuratAktifKuliahOperatorController::class, 'edit'])->name('operator.surat-aktif-kuliah.edit');
             Route::patch('{npm}/data-diperbarui', [SuratAktifKuliahOperatorController::class, 'update'])->name('operator.surat-aktif-kuliah.update');
-
             
             Route::patch('{npm}/verif_diterima', [SuratAktifKuliahOperatorController::class, 'verifikasi'])->name('operator.surat-aktif-kuliah.verif_diterima');
             Route::patch('{npm}/verif_ditolak', [SuratAktifKuliahOperatorController::class, 'verifikasi_tolak'])->name('operator.surat-aktif-kuliah.verif_ditolak');
         });
+        Route::get('aktif-kuliah/history-pengajuan', [SuratAktifKuliahOperatorController::class, 'history'])->name('surat-masih-kuliah.history');
     });
+
 });
 
 
@@ -114,6 +121,17 @@ Route::group([
     'middleware' => 'auth',
     'prefix' => 'kepala-operator/'], function(){
     Route::get('/', [DashboardController::class, 'index'] )->name('kepala-operator.dashboard');
+
+    Route::group([
+        'prefix'  => 'surat-mahasiswa/'],function(){
+        Route::group([
+            'prefix'  => 'surat-aktif-kuliah/'],function(){
+            Route::get('{prodi}', [SuratAktifKuliahKepOperatorController::class, 'index'] )->name('kepala-operator.surat-aktif-kuliah.index');
+        });
+    });
+
+
+
 });
 
 //admin

@@ -139,5 +139,16 @@ class SuratAktifKuliahOperatorController extends Controller
          }
     }
 
+    public function history()
+    {
+        $data = tb_log_srt_ket_msh_kuliah::where([
+            ['kode_prodi', '=',  auth()->user()->kode_prodi],
+            ['status_persetujuan', '=',  'Y']
+        ])->get();
+
+
+    return view('Admin.main.operator.aktif-kuliah.history-surat', compact('data'));
+    }
+
 
 }

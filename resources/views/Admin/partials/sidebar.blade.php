@@ -20,57 +20,113 @@
                     </a>
                 </li>
 
-                
+                @if(auth()->user()->roles == 'OPERATOR_PRODI')
+                    <li class="sidebar-item  {{ request()->is('operator/surat-mahasiswa*') ? 'active' : '' }}  has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-stack "></i>
+                            <span>Surat Aktif Kuliah</span>
+                        </a>
+                        <ul class="submenu {{ request()->is('operator/surat-mahasiswa*') ? 'active' : '' }}">
+                            <li class="submenu-item  {{ request()->is('operator/surat-mahasiswa/surat-aktif-kuliah*') ? 'active' : '' }} ">
+                                <a href="{{ route('operator.surat-aktif-kuliah.index')}}">Data pengajuan</a>
+                            </li>
+                            <li class="submenu-item {{ request()->is('operator/surat-mahasiswa/aktif-kuliah/history-pengajuan') ? 'active' : '' }}">
+                                <a href="{{route('surat-masih-kuliah.history')}}">History Surat</a>
+                            </li>
+                        </ul>
+                    </li>
 
-                <li class="sidebar-item  {{ request()->is('operator/surat-mahasiswa*') ? 'active' : '' }}  has-sub">
+                    <li class="sidebar-item has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-stack "></i>
+                            <span>Surat Keterangan Lulus</span>
+                        </a>
+                        <ul class="submenu">
+                            <li class="submenu-item">
+                                <a href="{{ route('operator.surat-aktif-kuliah.index')}}">Data pengajuan</a>
+                            </li>
+                            <li class="submenu-item ">
+                                <a href="component-badge.html">History Surat</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-item  has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-file-earmark-medical-fill"></i>
+                            <span>Surat Umum</span>
+                        </a>
+                        <ul class="submenu ">
+                            <li class="submenu-item ">
+                                <a href="form-editor-quill.html">Pengajuan Surat</a>
+                            </li>
+                            <li class="submenu-item ">
+                                <a href="form-editor-ckeditor.html">History Pengajuan</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-item ">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-person-badge-fill"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                @endif
+
+
+                {{-- kepala operator --}}
+
+                @if(auth()->user()->roles == 'KEPALA_OPERATOR')
+
+                <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
-                        <i class="bi bi-stack "></i>
-                        <span>Surat Mahasiswa</span>
+                        <i class="bi bi-file-earmark-medical-fill"></i>
+                        <span>Surat Aktif Kuliah</span>
                     </a>
-                    <ul class="submenu {{ request()->is('operator/surat-mahasiswa*') ? 'active' : '' }}">
-                        <li class="submenu-item  {{ request()->is('operator/surat-mahasiswa/surat-aktif-kuliah*') ? 'active' : '' }} ">
-                            <a href="{{ route('operator.surat-aktif-kuliah.index')}}">Masih Aktif kuliah</a>
-                        </li>
+                    <ul class="submenu ">
+
+                        @php
+                            $prodi = DB::table('tb_prodis')->get();
+                        @endphp
+
+                        @foreach($prodi as $item)
                         <li class="submenu-item ">
-                            <a href="component-badge.html">Keterangan Lulus</a>
+                            <a href="{{ route('kepala-operator.surat-aktif-kuliah.index', $item->kode_prodi) }}">{{ $item->nama_prodi}}</a>
                         </li>
-                     
-                       
+                        @endforeach
                     </ul>
                 </li>
 
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
-                        <i class="bi bi-file-earmark-medical-fill"></i>
-                        <span>Surat Umum</span>
+                        <i class="bi bi-person-badge-fill"></i>
+                        <span>Pengaturan</span>
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
-                            <a href="form-editor-quill.html">Pengajuan Surat</a>
+                            <a href="form-editor-quill.html">Operator</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="form-editor-ckeditor.html">History Pengajuan</a>
+                            <a href="form-editor-ckeditor.html">Persetujuan</a>
+                        </li>
+                        <li class="submenu-item ">
+                            <a href="form-editor-ckeditor.html">Profile</a>
                         </li>
                        
                     </ul>
                 </li>
+                @endif
+
+
+
+
+                
 
                
 
-                <li class="sidebar-item  ">
-                    <a href="form-layout.html" class='sidebar-link'>
-                        <i class="bi bi-chat-dots-fill"></i>
-                        <span> Pesan mahasiwa  <strong class="text-danger"> * </strong> </span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item  ">
-                    <a href="form-layout.html" class='sidebar-link'>
-                        {{-- <i class="icon-mid bi bi-person"></i> --}}
-                        <i class="bi bi-person-badge-fill"></i>
-                        <span>Profile</span>
-                    </a>
-                </li>
+            
                
 {{-- 
                 <li class="sidebar-item  ">
