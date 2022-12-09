@@ -97,6 +97,8 @@ Route::group([
             'prefix'  => 'surat-aktif-kuliah/'],function(){
                 
             Route::get('/', [SuratAktifKuliahOperatorController::class, 'index'])->name('operator.surat-aktif-kuliah.index');
+            Route::get('{npm}/edit', [SuratAktifKuliahOperatorController::class, 'edit'])->name('operator.surat-aktif-kuliah.edit');
+            Route::patch('{npm}/data-diperbarui', [SuratAktifKuliahOperatorController::class, 'update'])->name('operator.surat-aktif-kuliah.update');
 
             
             Route::patch('{npm}/verif_diterima', [SuratAktifKuliahOperatorController::class, 'verifikasi'])->name('operator.surat-aktif-kuliah.verif_diterima');
