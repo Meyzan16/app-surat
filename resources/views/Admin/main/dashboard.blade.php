@@ -18,7 +18,9 @@
                         @elseif(auth()->user()->roles == 'KEPALA_OPERATOR')
                         
                             <h5>Selamat datang , {{auth()->user()->nama}} kepala operator</h5>
+                        @elseif(auth()->user()->roles == 'VERIF_PERSETUJUAN')
                         
+                            <h5>Selamat datang , {{auth()->user()->nama}} Penanggung Jawab</h5>
                         @endif
                     </div>
                 </div>

@@ -134,11 +134,20 @@
 
                             @foreach($prodi as $item)
                             <li class="submenu-item ">
-                                <a href="{{ route('kepala-operator.surat-aktif-kuliah.index', $item->kode_prodi) }}">{{ $item->nama_prodi}}</a>
+                                <a href="{{ route('ttd-persetujuan.surat-aktif-kuliah.index', $item->kode_prodi) }}">{{ $item->nama_prodi}}</a>
                             </li>
                             @endforeach
                         </ul>
                     </li>
+
+                    <li class="sidebar-item">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-person-badge-fill"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+
+                   
                 @endif
 
 

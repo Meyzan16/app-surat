@@ -51,7 +51,7 @@ class LoginController extends Controller
                     }elseif(auth()->user()->roles == 'VERIF_PERSETUJUAN')
                     {
                         $request->session()->regenerate();
-                        return \redirect()->intended('/admin')->with('successs', 'Selamat datang '. auth()->user()->nama  );
+                        return \redirect()->intended('/pemegang-tanggung-jawab')->with('successs', 'Selamat datang '. auth()->user()->nama  );
                     }
                 }else{
                     return redirect()->route('login')->with('loginerror','Akun belum diaktivasi');

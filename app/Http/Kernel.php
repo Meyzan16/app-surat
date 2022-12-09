@@ -66,5 +66,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'is_terdaftar'=>  \App\Http\Middleware\Is_terdaftar::class,
         'is_cekLogin'=>  \App\Http\Middleware\Is_cekLogin::class,
+        'is_operator'=>  \App\Http\Middleware\Is_operator::class,
+        'is_kepalaoperator'=>  \App\Http\Middleware\Is_kepalaoperator::class,
+        'is_ttdpersetujuan'=>  \App\Http\Middleware\Is_ttdpersetujuan::class,
     ];
 }

@@ -23,8 +23,13 @@ use App\Http\Controllers\Admin\operator\SuratAktifKuliahOperatorController;
 
 
 //kepala operator
-use App\Http\Controllers\Admin\kepalaOperator\SuratAktifKuliahKepOperatorController;
+use App\Http\Controllers\Admin\kepalaoperator\SuratAktifKuliahKepOperatorController;
 
+// verif persetujuan
+use App\Http\Controllers\Admin\verifpersetujuan\SuratAktifKuliahVerifPersetujuanController;
+
+// error
+use App\Http\Controllers\Error\ErrorController;
 
 //surat 
 /*
@@ -95,6 +100,7 @@ Route::group([
 //operator
 Route::group([
     'middleware' => 'auth',
+    'middleware' => 'is_operator',
     'prefix' => 'operator/'], function(){
     Route::get('/', [DashboardController::class, 'index'] )->name('operator.dashboard');
 
@@ -119,6 +125,7 @@ Route::group([
 //kepala operator
 Route::group([
     'middleware' => 'auth',
+    'middleware' => 'is_kepalaoperator',
     'prefix' => 'kepala-operator/'], function(){
     Route::get('/', [DashboardController::class, 'index'] )->name('kepala-operator.dashboard');
 
@@ -139,9 +146,11 @@ Route::group([
     });
 });
 
+
 //KEPALA VERIF
 Route::group([
     'middleware' => 'auth',
+    'middleware' => 'is_ttdpersetujuan',
     'prefix' => 'pemegang-tanggung-jawab/'], function(){
     Route::get('/', [DashboardController::class, 'index'] )->name('ttd-persetujuan.dashboard');
 
@@ -150,15 +159,20 @@ Route::group([
         Route::group([
             
             'prefix'  => 'surat-aktif-kuliah/'],function(){
-            Route::get('{prodi}', [SuratAktifKuliahKepOperatorController::class, 'index'] )->name('ttd-persetujuan.surat-aktif-kuliah.index');
-            Route::get('{prodi}/Data-pengajuan', [SuratAktifKuliahKepOperatorController::class, 'show'] )->name('ttd-persetujuan.surat-aktif-kuliah.show');
+            Route::get('{prodi}', [SuratAktifKuliahVerifPersetujuanController::class, 'index'] )->name('ttd-persetujuan.surat-aktif-kuliah.index');
+            Route::get('{prodi}/Data-pengajuan', [SuratAktifKuliahVerifPersetujuanController::class, 'show'] )->name('ttd-persetujuan.surat-aktif-kuliah.show');
             
         });
     });
 });
-
 //admin
 
+
+// error
+Route::get('/404', [ErrorController::class, 'index'] )->name('error-404');
+
+
+// login
 Route::get('/login', [LoginController::class, 'index'] )->name('login');
 Route::POST('/authentication', [LoginController::class, 'authentication'] )->name('authentication-admin');
 Route::POST('/logout', [LoginController::class, 'logout'] )->name('logout-auth');

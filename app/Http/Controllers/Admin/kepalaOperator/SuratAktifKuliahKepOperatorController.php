@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\kepalaOperator;
+namespace App\Http\Controllers\Admin\kepalaoperator;
 use App\Http\Controllers\Controller;
 use App\Models\tb_log_srt_ket_msh_kuliah;
 use App\Models\tb_prodi;
