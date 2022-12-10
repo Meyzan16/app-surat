@@ -35,6 +35,7 @@
                             <th>Status</th>
                             <th>Aksi</th>
                             <th>Status Kepala Operator</th>
+                            <th>Status TTD Persetujuan</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -80,7 +81,7 @@
 
                             </td>
 
-                             @if ($item->kepala_operator == 'belum diverifikasi')
+                            @if ($item->kepala_operator == 'belum diverifikasi')
                                 <td>
                                     <span class="badge bg-warning">Menunggu</span>
                                 </td>
@@ -91,6 +92,16 @@
                                 <a class="badge bg-label-danger" data-bs-toggle="modal" data-bs-target="#show_data">  <i class="fa fa-comment-dots"> </i>  </a>          
 
                             </td>
+                            @else
+                            <td>
+                                <span class="badge bg-success">Diterima</span>
+                            </td>
+                            @endif
+
+                            @if ($item->status_persetujuan == 'belum diverifikasi')
+                                <td>
+                                    <span class="badge bg-warning">Menunggu</span>
+                                </td>
                             @else
                             <td>
                                 <span class="badge bg-success">Diterima</span>
@@ -136,9 +147,9 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 
             <div class="modal-body">
                     
-                @if ($item1->operator_prodi == 'Y')
+                @if ($item1->kepala_operator == 'Y')
                     <p class="text-center">
-                        Data sudah diverifikasi
+                        Data sudah diverifikasi Kepala Operator
                     </p>
                     <center>
                         <span class="badge bg-primary" >untuk verifikasi ulang, silahkan hubungi kepala operator</span>
@@ -162,7 +173,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <span class="d-none d-sm-block">Kembali</span>
                     </button>
 
-                @if ($item1->operator_prodi != 'Y')
+                @if ($item1->kepala_operator != 'Y')
                     <button type="submit" class="btn btn-primary ml-1">
                         <i class="bx bx-check d-block d-sm-none"></i>
                         <span class="d-none d-sm-block" >Verifikasi</span>
@@ -198,9 +209,9 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             @csrf {{ method_field('PATCH') }}
             <div class="modal-body">
 
-                @if ($item2->operator_prodi == 'Y')
+                @if ($item2->kepala_operator == 'Y')
                 <p class="text-center">
-                    Data sudah diverifikasi
+                    Data sudah diverifikasi Kepala Operator
                 </p>
                 <center>
                     <span class="badge bg-primary" >untuk verifikasi ulang, silahkan hubungi kepala operator</span>
@@ -228,7 +239,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <span class="d-none d-sm-block">kembali</span>
                 </button>
 
-                @if ($item2->operator_prodi != 'Y')
+                @if ($item2->kepala_operator != 'Y')
                     <button type="submit" class="btn btn-primary ml-1">
                         <i class="bx bx-check d-block d-sm-none"></i>
                         <span class="d-none d-sm-block" >ditolak</span>

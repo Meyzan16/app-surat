@@ -88,7 +88,6 @@ class SuratAktifKuliahKepOperatorController extends Controller
 
 
     public function verifikasi_kepala(Request $request, $prodi){
-
         $npm = $request->npm;
         tb_log_srt_ket_msh_kuliah::where([
             ['npm', '=',  $npm],

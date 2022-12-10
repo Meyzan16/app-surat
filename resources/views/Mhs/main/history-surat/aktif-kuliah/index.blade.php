@@ -62,15 +62,9 @@
 
                           @if($item->kepala_operator == 'belum diverifikasi')
                           <td><span class="badge bg-label-warning me-1">Menunggu</span></td>
-                          @elseif($item->kepala_operator == 'N')
-                          <td>
-                            <span class="badge bg-label-danger me-1">Ditolak</span>
-                          </td>
-
-                          
-                          @elseif($item->kepala_operator == 'Y')
+                          @else
                           <td><span class="badge bg-label-success me-1">Diterima</span></td>
-                         @endif
+                           @endif
 
                        
 

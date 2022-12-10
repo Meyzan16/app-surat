@@ -38,11 +38,11 @@ return new class extends Migration
             $table->datetime('time_acc_operator_prodi')->nullable();
             
 
-            $table->enum('kepala_operator', ['Y','N','belum diverifikasi'])->default('belum diverifikasi');
+            $table->enum('kepala_operator', ['Y','belum diverifikasi'])->default('belum diverifikasi');
             $table->foreignId('id_kepala_operator')->nullable();
             $table->datetime('time_acc_kep_operator')->nullable();
 
-            $table->enum('status_persetujuan', ['Y','N','belum diverifikasi'])->default('belum diverifikasi');
+            $table->enum('status_persetujuan', ['Y','belum diverifikasi'])->default('belum diverifikasi');
             $table->foreignId('id_persetujuan')->nullable();
             $table->datetime('time_acc_ttd')->nullable();
 
