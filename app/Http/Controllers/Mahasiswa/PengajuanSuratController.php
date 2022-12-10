@@ -28,6 +28,7 @@ class PengajuanSuratController extends Controller
                 }
                 elseif($data->semester == null)
                 {
+
                     return \redirect()->route('surat-masih-kuliah.index')->with('toast_error', 'anda belum melengkapi data');
                 }
                 elseif($data->semester)
@@ -63,6 +64,7 @@ class PengajuanSuratController extends Controller
                         ['npm', '=',  Session::get('npm')],
                         ['kode_judul_surat', '=',  $request->kode_judul_surat],
                     ])->first();
+                    
 
                     if(empty($data))
                     {

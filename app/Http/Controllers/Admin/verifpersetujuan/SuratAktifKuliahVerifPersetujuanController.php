@@ -48,4 +48,22 @@ class SuratAktifKuliahVerifPersetujuanController extends Controller
          return redirect()->route('ttd-persetujuan.surat-aktif-kuliah.show', $prodi )->with(['toast_success' =>  $npm. ' berhasil di verifikasi !!']);
     }
 
+    public function history(Request $reqeust, $prodi)
+    {
+        $data = tb_log_srt_ket_msh_kuliah::where([
+            ['kode_prodi', '=',  $prodi],
+            ['status_persetujuan', '=',  'Y']
+        ])->get();
+
+        
+        $prodi = tb_prodi::where([
+            ['kode_prodi', '=',  $prodi],
+        ])->first();
+
+
+        return view('Admin.main.verif-persetujuan.surat-mahasiswa.aktif-kuliah.history', compact('data', 'prodi'));
+    }
+
+    
+
 }

@@ -46,10 +46,11 @@
                             <th>No</th>
                             <th>NPM</th>
                             <th>Nama</th>
-                            <th>Status Operator</th>
-                            <th>Status Kep.Operator</th>
-                            <th>Status Persetujuan</th>
-                            <th>Aksi</th>
+                            <th>Tanggal dibuat</th>
+                            <th>Operator</th>
+                            <th>Kep.Operator</th>
+                            <th>TTD Persetujuan</th>
+                            <th>Masa Aktif</th>
 
                         </tr>
                     </thead>
@@ -60,6 +61,10 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->npm}}</td>
                             <td>{{ $item->tb_data_mahasiswa->nama}}</td>
+
+                            <td>
+                                <span class="badge bg-primary">{{ $item->created_at ;}}</span>
+                            </td>
                            
                             @if ($item->operator_prodi == 'belum diverifikasi')
                                 <td>
@@ -96,24 +101,49 @@
                                 <td>
                                     <span class="badge bg-warning">Menunggu</span>
                                 </td>
-                            @elseif($item->status_persetujuan == 'N')
-                            <td>
-                                <span class="badge bg-danger">Ditolak</span>
-
-                                <a class="badge bg-label-danger" data-bs-toggle="modal" data-bs-target="#show_data">  <i class="fa fa-comment-dots"> </i>  </a>          
-
-                            </td>
                             @else
                             <td>
-                                <span class="badge bg-success">Diterima</span>
+                                <span class="badge bg-success">Diterima</span>     
+                                <a href="#showdata"  class="badge bg-success"> <i class="fa fa-print"> </i> </a>
+                              
                             </td>
                             @endif
 
 
+
+                            @php
+                            $created = new DateTime($item->time_acc_ttd);
+                            $result = $created->format('d-m-Y');
+
                             
-                            <td>           
-                                <a href="#showdata"  class="badge bg-success"> <i class="fa fa-print"> </i> </a>
-                            </td>  
+                            $datetime1 = date_create($result);
+
+                            $now = date('d-m-Y');
+
+                            $datetime2 = date_create($now); // waktu sekarang
+                            
+                            $selisih  = date_diff($datetime1, $datetime2);
+
+                            $aa = $selisih->d;
+
+                            if($aa > 10)
+                            {
+                                $dataa = "Kadaluarsa";
+                                $color = "danger";
+                            }else {
+                                $dataa = "Masih Aktif";
+                                $color = "success";
+                            }
+
+
+                            @endphp
+
+                                <td>
+                                    <span class="badge bg-{{$color}}">{{  $dataa }} </span>
+                                </td>
+                            
+                            
+
 
                         </tr>
                         

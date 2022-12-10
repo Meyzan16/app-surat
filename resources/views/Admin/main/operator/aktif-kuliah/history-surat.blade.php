@@ -32,10 +32,11 @@
                             <th>No</th>
                             <th>NPM</th>
                             <th>Nama</th>
+                            <th>Tanggal dibuat</th>
                             <th>Operator</th>
                             <th>Kep.Operator</th>
-                            <th>Tanda tangan</th>
-                            <th>Tgl dibuat</th>
+                            <th>TTD Persetujuan</th>
+                            <th>Masa Aktif</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,6 +46,10 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->npm}}</td>
                             <td>{{ $item->tb_data_mahasiswa->nama}}</td>
+
+                            <td>
+                                <span class="badge bg-primary">{{ $item->created_at ;}}</span>
+                            </td>
                            
                             @if ($item->operator_prodi == 'belum diverifikasi')
                                 <td>
@@ -98,9 +103,39 @@
                             </td>
                             @endif
 
-                            <td>
-                                <span class="badge bg-success">{{ $item->created_at ;}}</span>
-                            </td>
+
+                            @php
+                            $created = new DateTime($item->time_acc_ttd);
+                            $result = $created->format('d-m-Y');
+
+                            
+                            $datetime1 = date_create($result);
+
+                            $now = date('d-m-Y');
+
+                            $datetime2 = date_create($now); // waktu sekarang
+                            
+                            $selisih  = date_diff($datetime1, $datetime2);
+
+                            $aa = $selisih->d;
+
+                            if($aa > 10)
+                            {
+                                $dataa = "Kadaluarsa";
+                                $color = "danger";
+                            }else {
+                                $dataa = "Masih Aktif";
+                                $color = "success";
+                            }
+
+
+                            @endphp
+
+                                <td>
+                                    <span class="badge bg-{{$color}}">{{  $dataa }} </span>
+                                </td>
+
+                            
 
 
                          

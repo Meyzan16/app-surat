@@ -80,7 +80,7 @@
                         
                         <td>
                           
-                          <a class="badge bg-label-primary "   data-bs-toggle="modal" data-bs-target="#show_data">  <i class="fa fa-eye"> </i> {{ date('Y-m-d') }} </a>          
+                          <a class="badge bg-label-primary "   data-bs-toggle="modal" data-bs-target="#show_data">  <i class="fa fa-eye"> </i> {{ date('Y-m-d ') }} </a>          
                           
                         </td>
 

@@ -182,6 +182,10 @@ Route::group([
             Route::get('{prodi}/Data-pengajuan', [SuratAktifKuliahVerifPersetujuanController::class, 'show'] )->name('ttd-persetujuan.surat-aktif-kuliah.show');
             
             Route::post('{prodi}/verifikasi', [SuratAktifKuliahVerifPersetujuanController::class, 'verifikasi'])->name('ttd-persetujuan.surat-aktif-kuliah.verifikasi');
+            
+
+            Route::get('{prodi}/History', [SuratAktifKuliahVerifPersetujuanController::class, 'history'] )->name('ttd-persetujuan.surat-aktif-kuliah.history');
+
         });
     });
 });
