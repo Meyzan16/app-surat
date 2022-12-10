@@ -25,7 +25,8 @@
                         <th>Judul Surat</th>
                         <th>Status Operator</th>
                         <th>Kepala Operator</th>
-                        <th>Aksi</th>
+                        <th>Cetak Surat</th>
+                        <th>Masa Aktif</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -74,13 +75,19 @@
                        
 
                         <td>
-                          <a class="badge bg-label-primary "   data-bs-toggle="modal" data-bs-target="#edit_data{{ $item->npm }}">  <i class="fa fa-edit"> </i> Detail </a>  
-                          
                           @if($item->status_persetujuan == 'Y')
-                            <a class="badge bg-label-success "   data-bs-toggle="modal" data-bs-target="#show_data{{ $item->npm }}">  <i class="fa fa-eye"> </i> Print </a>          
+                          <a class="badge bg-label-primary "   data-bs-toggle="modal" data-bs-target="#show_data{{ $item->npm }}">  <i class="fa fa-eye"> </i> Print </a>          
+                          @elseif($item->status_persetujuan == 'belum diverifikasi')
+                          <span class="badge bg-label-warning me-1">Menunggu disetujui</span>
                           @endif
+                        </td>
+                        
+                        <td>
+                          
+                          <a class="badge bg-label-primary "   data-bs-toggle="modal" data-bs-target="#show_data">  <i class="fa fa-eye"> </i> {{ date('Y-m-d') }} </a>          
                           
                         </td>
+
 
                       </tr>
                       @endforeach

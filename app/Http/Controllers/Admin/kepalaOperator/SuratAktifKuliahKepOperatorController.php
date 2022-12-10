@@ -44,6 +44,7 @@ class SuratAktifKuliahKepOperatorController extends Controller
             'operator_prodi'    =>  'Y',
             'catatan_operator_prodi' => NULL,
             'id_operator' => auth()->user()->id,
+            'time_acc_operator_prodi' => date("Y-m-d H:i:s"),
 
         ]);
 

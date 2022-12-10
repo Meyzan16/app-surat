@@ -29,7 +29,8 @@ class SuratAktifKuliahOperatorController extends Controller
         ])->update([
             'operator_prodi'    =>  'Y',
             'catatan_operator_prodi'   => NULL,
-            'id_operator' => auth()->user()->id
+            'id_operator' => auth()->user()->id,
+            'time_acc_operator_prodi' => date("Y-m-d H:i:s"),
         ]);
 
          return redirect()->route('operator.surat-aktif-kuliah.index')->with(['toast_success' =>  $npm. ' berhasil di verifikasi !!']);
