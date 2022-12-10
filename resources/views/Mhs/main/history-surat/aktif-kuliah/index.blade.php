@@ -25,7 +25,6 @@
                         <th>Judul Surat</th>
                         <th>Status Operator</th>
                         <th>Kepala Operator</th>
-                        <th>Masa Aktif</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>
@@ -72,7 +71,7 @@
                           <td><span class="badge bg-label-success me-1">Diterima</span></td>
                          @endif
 
-                         <td><span class="badge bg-label-success me-1">{{ $item->created_at }}</span></td>
+                       
 
                         <td>
                           <a class="badge bg-label-primary "   data-bs-toggle="modal" data-bs-target="#edit_data{{ $item->npm }}">  <i class="fa fa-edit"> </i> Detail </a>  

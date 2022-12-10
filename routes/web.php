@@ -93,16 +93,17 @@ Route::group([
     
         Route::group(['prefix'  => 'rekaman-pengajuan/'],function(){
 
+            Route::get('/surat-aktif-kuliah', [HistoryPengajuanSurat::class, 'index'])->name('rekaman-pengajuan.aktif-kuliah');
+            Route::get('/surat-ket-lulus', [HistoryPengajuanSurat::class, 'ket_lulus'])->name('rekaman-pengajuan.ket-lulus');
+            
             Route::group([
                 'prefix'  => 'surat-masih-kuliah/'],function(){
-                    Route::get('{id}/data-diperbaiki', [SuratMasihKuliahController::class, 'show_perbaiki'])->name('surat-masih-kuliah.diperbaiki');
-                    Route::patch('{id}/data-diperbaiki', [SuratMasihKuliahController::class, 'update_diperbaiki'])->name('surat-masih-kuliah.diperbaiki-update');   
+                    Route::get('{id}/show-diperbaiki', [SuratMasihKuliahController::class, 'show_perbaiki'])->name('surat-masih-kuliah.diperbaiki');
+                    Route::patch('{id}/update-diperbaiki', [SuratMasihKuliahController::class, 'update_diperbaiki'])->name('surat-masih-kuliah.diperbaiki-update');   
             });
 
           
 
-            Route::get('/surat-aktif-kuliah', [HistoryPengajuanSurat::class, 'index'])->name('rekaman-pengajuan.aktif-kuliah');
-            Route::get('/surat-ket-lulus', [HistoryPengajuanSurat::class, 'ket_lulus'])->name('rekaman-pengajuan.ket-lulus');
         });
     
 
@@ -153,8 +154,8 @@ Route::group([
 
 
             // operator
-            Route::post('{prodi}/verif_diterima', [SuratAktifKuliahKepOperatorController::class, 'verifikasi'])->name('kepala-operator.surat-aktif-kuliah.verif_diterima');
-            Route::patch('{prodi}/verif_ditolak', [SuratAktifKuliahKepOperatorController::class, 'verifikasi_tolak'])->name('kepala-operator.surat-aktif-kuliah.verif_ditolak');
+            Route::post('{prodi}/verif_diterima_operator', [SuratAktifKuliahKepOperatorController::class, 'verifikasi'])->name('kepala-operator.surat-aktif-kuliah.verif_diterima');
+            Route::patch('{prodi}/verif_ditolak_operator', [SuratAktifKuliahKepOperatorController::class, 'verifikasi_tolak'])->name('kepala-operator.surat-aktif-kuliah.verif_ditolak');
             
             // kepala operator
             Route::post('{prodi}/verifikasi-kepala-operator', [SuratAktifKuliahKepOperatorController::class, 'verifikasi_kepala'])->name('kepala-operator.surat-aktif-kuliah.verif-kep-operator');

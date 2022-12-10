@@ -71,9 +71,8 @@
                         @elseif($cek_surat_msh_kuliah->semester )
                           <th>Status Operator</th>
                           <th>Status Kepala Operator</th>
+                          <th>Status TTD Persetujuan</th>
                         @endif()
-
-                        <th>Tanggal Pengajuan</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -101,6 +100,14 @@
                             <td><span class="badge bg-label-success me-1">Diterima</span></td>
                             @endif
 
+                            @if($item->status_persetujuan == 'belum diverifikasi')
+                            <td><span class="badge bg-label-warning me-1">Menunggu</span></td>
+                            @elseif($item->status_persetujuan == 'N')
+                            <td><span class="badge bg-label-danger me-1">Ditolak</span></td>
+                            @elseif($item->status_persetujuan == 'Y')
+                            <td><span class="badge bg-label-success me-1">Diterima</span></td>
+                            @endif
+
                             
                         @elseif($cek_surat_msh_kuliah->semester == null)
 
@@ -122,11 +129,6 @@
 
                         @endif
                         
-
-
-
-                          <td><i class="fab fa-angular fa-lg text-danger me-3"></i> {{ $item->updated_at }}</td>
-
                         </tr>
                         @endforeach
                     

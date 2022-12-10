@@ -44,7 +44,7 @@ return new class extends Migration
 
             $table->enum('status_persetujuan', ['Y','N','belum diverifikasi'])->default('belum diverifikasi');
             $table->foreignId('id_persetujuan')->nullable();
-            $table->date('time_acc_ttd')->nullable();
+            $table->datetime('time_acc_ttd')->nullable();
 
             $table->softDeletes();
             $table->timestamps();

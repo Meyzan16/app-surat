@@ -139,7 +139,7 @@ class SuratMasihKuliahController extends Controller
                             
 
         
-                    return \redirect()->route('rekaman-pengajuan.index')->with('toast_success', 'Mohon menunggu diverifikasi');
+                    return \redirect()->route('rekaman-pengajuan.aktif-kuliah')->with('toast_success', 'Mohon menunggu diverifikasi ulang');
          }
     }
 

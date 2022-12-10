@@ -34,7 +34,7 @@ class SuratAktifKuliahKepOperatorController extends Controller
         return view('Admin.main.kep-operator.surat-mahasiswa.aktif-kuliah.data', compact('data', 'prodi'));
     }
 
-    // operator
+    // kepala operator
     public function verifikasi(Request $request, $prodi){
         $npm = $request->npm;
         tb_log_srt_ket_msh_kuliah::where([
@@ -42,8 +42,9 @@ class SuratAktifKuliahKepOperatorController extends Controller
             ['status_persetujuan', '=',  'belum diverifikasi']
         ])->update([
             'operator_prodi'    =>  'Y',
-            'catatan_operator_prodi'   => NULL,
-            'id_operator' => auth()->user()->id
+            'catatan_operator_prodi' => NULL,
+            'id_operator' => auth()->user()->id,
+
         ]);
 
          return redirect()->route('kepala-operator.surat-aktif-kuliah.show', $prodi )->with(['toast_success' =>  $npm. ' berhasil di verifikasi !!']);
@@ -93,7 +94,8 @@ class SuratAktifKuliahKepOperatorController extends Controller
             ['status_persetujuan', '=',  'belum diverifikasi']
         ])->update([
             'kepala_operator'    =>  'Y',
-            'id_kepala_operator' => auth()->user()->id
+            'id_kepala_operator' => auth()->user()->id,
+            'time_acc_kep_operator' => date("Y-m-d H:i:s"),
         ]);
 
          return redirect()->route('kepala-operator.surat-aktif-kuliah.show', $prodi )->with(['toast_success' =>  $npm. ' berhasil di verifikasi !!']);

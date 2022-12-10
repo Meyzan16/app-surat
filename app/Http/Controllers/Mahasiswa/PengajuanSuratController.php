@@ -33,16 +33,7 @@ class PengajuanSuratController extends Controller
                 elseif($data->semester)
                 {
                     return view('Mhs.main.pengajuan-surat.index', compact('judul_surat'));
-                }
-                
-
-                  
-
-        
-
-    
-           
-        
+                }    
     }
 
     public function proses_pengajuan(Request $request)

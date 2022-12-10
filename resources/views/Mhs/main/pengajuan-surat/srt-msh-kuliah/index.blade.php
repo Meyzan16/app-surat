@@ -70,6 +70,23 @@
           </div>
 
           <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-nip">Nip</label>
+            <div class="col-sm-10">
+              <input type="text"  value="{{ old('nip') }}" maxlength="19" minlength="19" onkeypress="return hanyaAngka(event)" name="nip" class="form-control"  id="basic-default-nip" placeholder="ricardo ajei"  />
+                <small class="text-danger d-flex mt-1" >kosongkan jikat tidak ada*</small>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-golongan">Golongan</label>
+            <div class="col-sm-10">
+              <input type="text"  value="{{ old('golongan') }}"  name="golongan" class="form-control"  id="basic-default-golongan" placeholder="ricardo ajei"  />
+                <small class="text-danger d-flex mt-1" >kosongkan jikat tidak ada*</small>
+            </div>
+          </div>
+
+
+          <div class="row mb-3">
             <label class="col-sm-2 col-form-label" for="basic-default-pekerjaan">Pekerjaan</label>
             <div class="col-sm-10">
               <input type="text" value="{{ old('pekerjaan') }}" name="pekerjaan" class="form-control @error('pekerjaan')is-invalid @enderror" id="basic-default-pekerjaan" placeholder="petani"  />
@@ -112,3 +129,15 @@
 <!-- / Content -->
 @endsection
 
+
+@push('addon-script')
+<script>
+    function hanyaAngka(evt) {
+      var charCode = (evt.which) ? evt.which : event.keyCode
+       if (charCode > 31 && (charCode < 48 || charCode > 57))
+
+        return false;
+      return true;
+    }
+</script>   
+@endpush
