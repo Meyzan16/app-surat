@@ -159,6 +159,7 @@ Route::group([
             
             // kepala operator
             Route::post('{prodi}/verifikasi-kepala-operator', [SuratAktifKuliahKepOperatorController::class, 'verifikasi_kepala'])->name('kepala-operator.surat-aktif-kuliah.verif-kep-operator');
+            Route::post('{prodi}/veri-batal-kepala-operator', [SuratAktifKuliahKepOperatorController::class, 'verif_batal_kepala'])->name('kepala-operator.surat-aktif-kuliah.verif-batal-kep-operator');
         });
     });
 });

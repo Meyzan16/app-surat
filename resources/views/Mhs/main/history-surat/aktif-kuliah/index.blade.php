@@ -24,8 +24,8 @@
                         <th>No</th>
                         <th>Judul Surat</th>
                         <th>Status Operator</th>
-                        <th>Kepala Operator</th>
-                        <th>Cetak Surat</th>
+                        <th>Status Kepala Operator</th>
+                        <th>Status TTD Persetujuan</th>
                         <th>Masa Aktif</th>
                       </tr>
                     </thead>
@@ -62,9 +62,11 @@
 
                           @if($item->kepala_operator == 'belum diverifikasi')
                           <td><span class="badge bg-label-warning me-1">Menunggu</span></td>
+                          @elseif($item->kepala_operator == 'N')
+                          <td><span class="badge bg-label-warning me-1">Menunggu</span></td>
                           @else
                           <td><span class="badge bg-label-success me-1">Diterima</span></td>
-                           @endif
+                          @endif
 
                        
 

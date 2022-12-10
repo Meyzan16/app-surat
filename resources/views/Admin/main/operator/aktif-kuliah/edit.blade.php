@@ -138,11 +138,16 @@
 
                                             
                                                 <div class="col-sm-12 d-flex justify-content-end">
-                                                    <button type="submit"  class="btn btn-primary me-1 mb-1"
-                                                    >
-                                                    &nbsp;Simpan
-                                                    </button>
-                                                  
+
+                       
+                                                    @if($data->kepala_operator != 'Y')
+                                            
+                                                            <button type="submit"  class="btn btn-primary me-1 mb-1"
+                                                            >
+                                                            &nbsp;Simpan
+                                                            </button>
+                                                        
+                                                    @endif
 
                                                     <button type="reset" onclick="location.href='{{ route('operator.surat-aktif-kuliah.index') }}'"
                                                         class="btn btn-light-secondary me-1 mb-1">Kembali</button>

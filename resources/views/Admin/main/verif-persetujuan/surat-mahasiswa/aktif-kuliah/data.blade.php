@@ -82,10 +82,7 @@
                                 </td>
                             @elseif($item->kepala_operator == 'N')
                             <td>
-                                <span class="badge bg-danger">Ditolak</span>
-
-                                <a class="badge bg-label-danger" data-bs-toggle="modal" data-bs-target="#show_data">  <i class="fa fa-comment-dots"> </i>  </a>          
-
+                                <span class="badge bg-warning">Verifikasi Dibatalkan</span>
                             </td>
                             @else
                             <td>

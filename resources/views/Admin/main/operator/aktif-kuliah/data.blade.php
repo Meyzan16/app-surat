@@ -77,7 +77,9 @@
                                
                                 <a href="#showdata"  class="badge bg-primary"> <i class="fa fa-eye"> </i> </a>
 
-                                <a onclick="location.href='{{ route('operator.surat-aktif-kuliah.edit', $item->npm) }}'"   class="badge bg-warning">  <i class="fa fa-edit"> </i>  </a>
+                                @if($item->kepala_operator != 'Y')
+                                    <a onclick="location.href='{{ route('operator.surat-aktif-kuliah.edit', $item->npm) }}'"   class="badge bg-warning">  <i class="fa fa-edit"> </i>  </a>
+                                @endif
 
                             </td>
 
@@ -86,17 +88,16 @@
                                     <span class="badge bg-warning">Menunggu</span>
                                 </td>
                             @elseif($item->kepala_operator == 'N')
-                            <td>
-                                <span class="badge bg-danger">Ditolak</span>
-
-                                <a class="badge bg-label-danger" data-bs-toggle="modal" data-bs-target="#show_data">  <i class="fa fa-comment-dots"> </i>  </a>          
-
-                            </td>
+                                <td>
+                                    <span class="badge bg-warning">Verifikasi Dibatalkan</span>
+                                </td>
                             @else
                             <td>
                                 <span class="badge bg-success">Diterima</span>
                             </td>
                             @endif
+
+                            
 
                             @if ($item->status_persetujuan == 'belum diverifikasi')
                                 <td>

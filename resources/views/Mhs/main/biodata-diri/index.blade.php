@@ -135,7 +135,7 @@
                 <div class="row mb-3">
                   <label class="col-sm-2 col-form-label" for="basic-default-email">Email</label>
                   <div class="col-sm-10">
-                    <input type="text" name="email" value="{{ Session::get('email_terbaru ')}}"  class="form-control" readonly  />
+                    <input type="text" name="email" value="{{ Session::get('email_terbaru')}}"  class="form-control" readonly  />
                   </div>
                 </div> 
               </form>
@@ -198,7 +198,7 @@
             <div class="row mb-3">
               <label class="col-sm-2 col-form-label" for="basic-default-email">Email</label>
               <div class="col-sm-10">
-                <input type="text" name="email" class="form-control @error('email')is-invalid @enderror" id="basic-default-email" placeholder="......@gmail.com"  />
+                <input type="text" name="email"  class="form-control @error('email')is-invalid @enderror" id="basic-default-email" placeholder="......@gmail.com"  />
                 <small class="text-danger d-flex mt-1" >Gunakan email yang aktif</small>
                   @error('email') 
                                                 <div class="invalid-feedback autohide">
