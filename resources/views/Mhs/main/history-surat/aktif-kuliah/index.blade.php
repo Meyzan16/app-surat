@@ -77,10 +77,37 @@
                           <span class="badge bg-label-warning me-1">Menunggu disetujui</span>
                           @endif
                         </td>
+
+                        @php
+                        $created = new DateTime($item->time_acc_ttd);
+                        $result = $created->format('d-m-Y');
+
+                        
+                        $datetime1 = date_create($result);
+
+                        $now = date('d-m-Y');
+
+                        $datetime2 = date_create($now); // waktu sekarang
+                        
+                        $selisih  = date_diff($datetime1, $datetime2);
+
+                        $aa = $selisih->d;
+
+                        if($aa > 8)
+                        {
+                            $dataa = "Kadaluarsa";
+                            $color = "danger";
+                        }else {
+                            $dataa = "Masih Aktif";
+                            $color = "success";
+                        }
+
+
+                        @endphp
                         
                         <td>
                           
-                          <a class="badge bg-label-primary "   data-bs-toggle="modal" data-bs-target="#show_data">  <i class="fa fa-eye"> </i> {{ date('Y-m-d ') }} </a>          
+                          <a class="badge bg-label-{{$color}} ">  {{$aa}} Hari | {{ $dataa }} </a>          
                           
                         </td>
 

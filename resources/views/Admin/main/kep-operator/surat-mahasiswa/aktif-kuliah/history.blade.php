@@ -50,7 +50,7 @@
                             <th>Operator</th>
                             <th>Kep.Operator</th>
                             <th>TTD Persetujuan</th>
-                            <th>Masa Aktif</th>
+                            <th>Masa Aktif 8 Hari</th>
 
                         </tr>
                     </thead>
@@ -126,7 +126,7 @@
 
                             $aa = $selisih->d;
 
-                            if($aa > 10)
+                            if($aa > 8)
                             {
                                 $dataa = "Kadaluarsa";
                                 $color = "danger";
@@ -139,7 +139,7 @@
                             @endphp
 
                                 <td>
-                                    <span class="badge bg-{{$color}}">{{  $dataa }} </span>
+                                    <span class="badge bg-{{$color}}"> Hari Ke-{{$aa}}  | {{ $dataa }}</span>
                                 </td>
                             
                             

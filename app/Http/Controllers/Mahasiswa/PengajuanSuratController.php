@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\tb_judul_surat;
 use App\Models\tb_log_srt_ket_msh_kuliah;
 use App\Models\tb_log_ket_lulus;
+use DateTime;
 
 
 use Illuminate\Http\Request;
@@ -62,34 +63,66 @@ class PengajuanSuratController extends Controller
 
                     $data = tb_log_srt_ket_msh_kuliah::where([
                         ['npm', '=',  Session::get('npm')],
-                        ['kode_judul_surat', '=',  $request->kode_judul_surat],
                     ])->first();
                     
 
                     if(empty($data))
                     {
-                        tb_log_srt_ket_msh_kuliah::create([
-                            'kode_judul_surat' => $request->kode_judul_surat,
-                            'npm' => Session::get('npm'),
-                            'angkatan' => Session::get('angkatan'),
-                            'kode_prodi' => Session::get('kode_prodi')
-                        ]);
-                        return \redirect()->route('surat-masih-kuliah.index')->with('successs', 'Silahkan lengkapai data data berikut');
-                    }
-                    elseif($data->status_persetujuan == 'belum diverifikasi')
+                        return "tidak ada data";
+                        // tb_log_srt_ket_msh_kuliah::create([
+                        //     'kode_judul_surat' => $request->kode_judul_surat,
+                        //     'npm' => Session::get('npm'),
+                        //     'angkatan' => Session::get('angkatan'),
+                        //     'kode_prodi' => Session::get('kode_prodi')
+                        // ]);
+                        // return \redirect()->route('surat-masih-kuliah.index')->with('successs', 'Silahkan lengkapai data data berikut');
+                    }else
                     {
-                        return \redirect()->route('pengajuan-index')->with('toast_error', 'Jenis surat keterangan aktif kuliah baru saja diajukan');
+                        // return "sudah ada data";
+                        
+                    
+                        if($data->status_persetujuan == 'belum diverifikasi')
+                        {
+                            return \redirect()->route('pengajuan-index')->with('toast_error', 'Jenis surat keterangan aktif kuliah baru saja diajukan');
 
-                    }elseif($data->status_persetujuan == 'Y')
-                    {
-                        tb_log_srt_ket_msh_kuliah::create([
-                            'kode_judul_surat' => $request->kode_judul_surat,
-                            'npm' => Session::get('npm'),
-                            'angkatan' => Session::get('angkatan'),
-                            'kode_prodi' => Session::get('kode_prodi')
-                        ]);
-                        return \redirect()->route('surat-masih-kuliah.index')->with('successs', 'Silahkan lengkapai data data berikut');
+                        }elseif($data->status_persetujuan == 'Y')
+                        {
+                            //cek masih aktif
+                            $created = new DateTime($data->time_acc_ttd);
+                            $result = $created->format('d-m-Y');
+                            $datetime1 = date_create($result);
+
+                            $now = date('d-m-Y');
+                            $datetime2 = date_create($now); // waktu sekarang
+                            $selisih  = date_diff($datetime1, $datetime2);
+                            $aa = $selisih->d;
+
+                            if($aa > 10)
+                            {
+                                //jika kadaluarsa
+                                // tb_log_srt_ket_msh_kuliah::create([
+                                //     'kode_judul_surat' => $request->kode_judul_surat,
+                                //     'npm' => Session::get('npm'),
+                                //     'angkatan' => Session::get('angkatan'),
+                                //     'kode_prodi' => Session::get('kode_prodi')
+                                //  ]);
+                                return \redirect()->route('surat-masih-kuliah.index')->with('successs', 'Silahkan lengkapai data data berikut');
+                            }else{
+                                return \redirect()->route('pengajuan-index')->with('toast_error', 'Surat aktif kuliah masih aktif, lihat history anda');
+                            }
+
+                        }
                     }
+
+
+                    // elseif($data->status_persetujuan == 'belum diverifikasi')
+                    // {
+                    //     return \redirect()->route('pengajuan-index')->with('toast_error', 'Jenis surat keterangan aktif kuliah baru saja diajukan');
+
+                    // }elseif($data->status_persetujuan == 'Y')
+                    // {
+                   
+                    // }
 
                
                 }

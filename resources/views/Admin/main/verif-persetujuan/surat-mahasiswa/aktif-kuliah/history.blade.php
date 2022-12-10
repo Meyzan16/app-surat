@@ -50,7 +50,7 @@
                             <th>Status Operator</th>
                             <th>Status Kep.Operator</th>
                             <th>Status ttd</th>
-                            <th>Masa Aktif</th>
+                            <th>Masa Aktif 8 Hari</th>
                       
 
                         </tr>
@@ -109,7 +109,7 @@
 
                             $aa = $selisih->d;
 
-                            if($aa > 10)
+                            if($aa > 8)
                             {
                                 $dataa = "Kadaluarsa";
                             }else {
@@ -120,7 +120,7 @@
                             @endphp
 
                                 <td>
-                                    <span class="badge bg-primary">{{  $dataa }} </span>
+                                    <span class="badge bg-primary">Hari Ke-{{$aa}}  | {{ $dataa }} </span>
                                 </td>
 
                            
