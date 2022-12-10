@@ -89,7 +89,7 @@ class PandaController extends Controller
                             if($tb_data_mhs)
                             {
                                 Session::put('nama_terbaru', $tb_data_mhs->nama);
-                                Session::put('email', $tb_data_mhs->email);
+                                Session::put('email_terbaru', $tb_data_mhs->email);
                                 Session::put('tgl_terbaru', $tb_data_mhs->tanggal_lahir);
                                 Session::put('terdaftar', 'Y');
                                 // return "terdaftar";
