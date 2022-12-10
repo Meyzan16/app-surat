@@ -137,7 +137,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             </button>
         </div>
 
-        <form action="{{ route('kepala-operator.surat-aktif-kuliah.verif_diterima', $prodi->kode_prodi) }}" method="POST">
+        <form action="{{ route('ttd-persetujuan.surat-aktif-kuliah.verifikasi', $prodi->kode_prodi) }}" method="POST">
             @csrf 
             <div class="modal-body">
                     
@@ -176,56 +176,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 @endforeach
 
 
-{{-- verif tolak --}}
-@foreach($data as $item2)
-<div class="modal fade" id="exampleModalTolak{{$item2->npm}}" tabindex="-1" role="dialog"
-aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
-    role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenterTitle"> Validasi Ditolak {{ $item2->tb_data_mahasiswa->nama}}
-            </h5>
-            <button type="button" class="close" data-bs-dismiss="modal"
-                aria-label="Close">
-                <i data-feather="x"></i>
-            </button>
-        </div>
-        <form action="{{ route('kepala-operator.surat-aktif-kuliah.verif_ditolak', $prodi->kode_prodi)}}" method="POST">
-            @csrf {{ method_field('PATCH') }}
-            <div class="modal-body">
 
-                    <p class="text-center">
-                        Perhatian !!!
-                        Data surat yang ditolak mohon tinggal kan catatan yang jelas agar mudah dimengerti dan dipahami
-                    </p>
-                    <center>
-                        <span class="badge bg-danger" >Silahkan tinggal catatan penolakan</span>
-                    </center>
-
-                    <textarea class="form-control mt-2"  id="editor" name="catatan_operator_prodi" cols="50" rows="3"> </textarea>
-                    <input type="hidden" value="{{ $item2->npm}}" name="npm"> 
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light-secondary"
-                    data-bs-dismiss="modal">
-                    <i class="bx bx-x d-block d-sm-none"></i>
-                    <span class="d-none d-sm-block">kembali</span>
-                </button>
-       
-                    <button type="submit" class="btn btn-primary ml-1">
-                        <i class="bx bx-check d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block" >ditolak</span>
-                    </button>  
-               
-
-            </div>
-        </form>
-    </div>
-</div>
-</div>
-@endforeach
 
 {{-- catatan penolakan --}}
 @foreach($data as $catatan)
@@ -264,64 +215,6 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 
 
 
-{{-- verif kepala operator --}}
-@foreach($data as $kepala_operator)
-<div class="modal fade" id="exampleModalTerimaKepOperator{{$kepala_operator->npm}}" tabindex="-1" role="dialog"
-aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
-    role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenterTitle"> Validasi diterima {{ $kepala_operator->tb_data_mahasiswa->nama}}
-            </h5>
-            <button type="button" class="close" data-bs-dismiss="modal"
-                aria-label="Close">
-                <i data-feather="x"></i>
-            </button>
-        </div>
-
-        <form action="{{ route('kepala-operator.surat-aktif-kuliah.verif-kep-operator', $prodi->kode_prodi) }}" method="POST">
-            @csrf 
-            <div class="modal-body">
-                    
-               @if ($kepala_operator->operator_prodi != 'Y')
-                    <p class="text-center">
-                        Perhatian !!!
-                        Data mahasiswa belum diverifikasi oleh operator prodi
-                    </p>
-                    <center>
-                        <span class="badge bg-primary" >Silahkan verifikasi oleh operator prodi</span>
-                    </center>
-               @else
-                    <p class="text-center">
-                        Perhatian !!!
-                        Silahkan cek data mahasiswa dengan benar untuk diverifikasi , selanjutnya menungu verifikasi dari pihak pemegang tanggung jawab (ttd persetejuan)
-                    </p>
-               @endif
-                <input type="hidden" value="{{ $kepala_operator->npm}}" name="npm"> 
-                
-            </div>
-            <div class="modal-footer">
-                    <button type="button" class="btn btn-light-secondary"
-                        data-bs-dismiss="modal">
-                        <i class="bx bx-x d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block">Kembali</span>
-                    </button>
-
-                    @if ($kepala_operator->operator_prodi == 'Y')
-                    <button type="submit" class="btn btn-primary ml-1">
-                        <i class="bx bx-check d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block" >Verifikasi</span>
-                    </button>
-                    @endif
-                    
-                
-            </div>
-        </form>
-    </div>
-</div>
-</div>
-@endforeach
 
 
 

@@ -154,6 +154,7 @@ Route::group([
 
 
             // operator
+            //kenapa prodi , karna di filter secara prodi dan di update secara npm, npm di ambil lewat request
             Route::post('{prodi}/verif_diterima_operator', [SuratAktifKuliahKepOperatorController::class, 'verifikasi'])->name('kepala-operator.surat-aktif-kuliah.verif_diterima');
             Route::patch('{prodi}/verif_ditolak_operator', [SuratAktifKuliahKepOperatorController::class, 'verifikasi_tolak'])->name('kepala-operator.surat-aktif-kuliah.verif_ditolak');
             
@@ -165,7 +166,7 @@ Route::group([
 });
 
 
-//KEPALA VERIF
+//TTD persetujuan
 Route::group([
     'middleware' => 'auth',
     'middleware' => 'is_ttdpersetujuan',
@@ -180,6 +181,7 @@ Route::group([
             Route::get('{prodi}', [SuratAktifKuliahVerifPersetujuanController::class, 'index'] )->name('ttd-persetujuan.surat-aktif-kuliah.index');
             Route::get('{prodi}/Data-pengajuan', [SuratAktifKuliahVerifPersetujuanController::class, 'show'] )->name('ttd-persetujuan.surat-aktif-kuliah.show');
             
+            Route::post('{prodi}/verifikasi', [SuratAktifKuliahVerifPersetujuanController::class, 'verifikasi'])->name('ttd-persetujuan.surat-aktif-kuliah.verifikasi');
         });
     });
 });

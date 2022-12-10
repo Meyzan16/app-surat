@@ -34,4 +34,18 @@ class SuratAktifKuliahVerifPersetujuanController extends Controller
         return view('Admin.main.verif-persetujuan.surat-mahasiswa.aktif-kuliah.data', compact('data', 'prodi'));
     }
 
+    public function verifikasi(Request $request, $prodi){
+        $npm = $request->npm;
+        tb_log_srt_ket_msh_kuliah::where([
+            ['npm', '=',  $npm],
+            ['status_persetujuan', '=',  'belum diverifikasi']
+        ])->update([
+            'status_persetujuan'    =>  'Y',
+            'id_persetujuan' => auth()->user()->id,
+            'time_acc_ttd' => date("Y-m-d H:i:s"),
+        ]);
+
+         return redirect()->route('ttd-persetujuan.surat-aktif-kuliah.show', $prodi )->with(['toast_success' =>  $npm. ' berhasil di verifikasi !!']);
+    }
+
 }
