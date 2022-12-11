@@ -78,7 +78,8 @@
                             <td>
                                 <span class="badge bg-success">Diterima</span>
                             </td>
-                            @endif                      
+                            @endif     
+                                             
 
                             @if ($item->kepala_operator == 'Y') 
                             <td>
@@ -109,7 +110,7 @@
 
                             $aa = $selisih->d;
 
-                            if($aa > 8)
+                            if($aa > $item->tb_judul_surat->masa_aktif)
                             {
                                 $dataa = "Kadaluarsa";
                             }else {

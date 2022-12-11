@@ -93,7 +93,7 @@
 
                         $aa = $selisih->d;
 
-                        if($aa > 8)
+                        if($aa > $item->tb_judul_surat->masa_aktif)
                         {
                             $dataa = "Kadaluarsa";
                             $color = "danger";
@@ -107,7 +107,7 @@
                         
                         <td>
                           
-                          <a class="badge bg-label-{{$color}} ">  {{$aa}} Hari | {{ $dataa }} </a>          
+                          <a class="badge bg-label-{{$color}} "> Hari ke-{{$aa}} | {{ $dataa }} </a>          
                           
                         </td>
 

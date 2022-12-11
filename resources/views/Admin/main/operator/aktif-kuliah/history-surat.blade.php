@@ -119,7 +119,7 @@
 
                             $aa = $selisih->d;
 
-                            if($aa > 8)
+                            if($aa > $item->tb_judul_surat->masa_aktif)
                             {
                                 $dataa = "Kadaluarsa";
                                 $color = "danger";

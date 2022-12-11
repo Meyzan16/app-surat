@@ -64,18 +64,20 @@ class PengajuanSuratController extends Controller
                     $data = tb_log_srt_ket_msh_kuliah::where([
                         ['npm', '=',  Session::get('npm')],
                     ])->first();
+
+                    return $data;
                     
 
                     if(empty($data))
                     {
-                        return "tidak ada data";
-                        // tb_log_srt_ket_msh_kuliah::create([
-                        //     'kode_judul_surat' => $request->kode_judul_surat,
-                        //     'npm' => Session::get('npm'),
-                        //     'angkatan' => Session::get('angkatan'),
-                        //     'kode_prodi' => Session::get('kode_prodi')
-                        // ]);
-                        // return \redirect()->route('surat-masih-kuliah.index')->with('successs', 'Silahkan lengkapai data data berikut');
+                        // return "tidak ada data";
+                        tb_log_srt_ket_msh_kuliah::create([
+                            'kode_judul_surat' => $request->kode_judul_surat,
+                            'npm' => Session::get('npm'),
+                            'angkatan' => Session::get('angkatan'),
+                            'kode_prodi' => Session::get('kode_prodi')
+                        ]);
+                        return \redirect()->route('surat-masih-kuliah.index')->with('successs', 'Silahkan lengkapai data data berikut');
                     }else
                     {
                         // return "sudah ada data";
@@ -97,15 +99,15 @@ class PengajuanSuratController extends Controller
                             $selisih  = date_diff($datetime1, $datetime2);
                             $aa = $selisih->d;
 
-                            if($aa > 10)
+                            if($aa > 8)
                             {
-                                //jika kadaluarsa
-                                // tb_log_srt_ket_msh_kuliah::create([
-                                //     'kode_judul_surat' => $request->kode_judul_surat,
-                                //     'npm' => Session::get('npm'),
-                                //     'angkatan' => Session::get('angkatan'),
-                                //     'kode_prodi' => Session::get('kode_prodi')
-                                //  ]);
+                                // jika kadaluarsa
+                                tb_log_srt_ket_msh_kuliah::create([
+                                    'kode_judul_surat' => $request->kode_judul_surat,
+                                    'npm' => Session::get('npm'),
+                                    'angkatan' => Session::get('angkatan'),
+                                    'kode_prodi' => Session::get('kode_prodi')
+                                 ]);
                                 return \redirect()->route('surat-masih-kuliah.index')->with('successs', 'Silahkan lengkapai data data berikut');
                             }else{
                                 return \redirect()->route('pengajuan-index')->with('toast_error', 'Surat aktif kuliah masih aktif, lihat history anda');
