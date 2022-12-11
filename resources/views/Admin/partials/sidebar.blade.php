@@ -134,7 +134,7 @@
 
                             @foreach($prodi as $item)
                             <li class="submenu-item ">
-                                <a href="{{ route('ttd-persetujuan.surat-aktif-kuliah.index', $item->kode_prodi) }}">{{ $item->nama_prodi}}</a>
+                                <a href="{{ route('prodi-pengajuan.surat-aktif-kuliah.index', $item->kode_prodi) }}">{{ $item->nama_prodi}}</a>
                             </li>
                             @endforeach
                         </ul>
@@ -146,8 +146,34 @@
                             <span>Profile</span>
                         </a>
                     </li>
+                @endif
 
-                   
+                @if(auth()->user()->roles == 'VERIF_PRODI')
+                    <li class="sidebar-item  has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-file-earmark-medical-fill"></i>
+                            <span>Surat Aktif Kuliah verif</span>
+                        </a>
+                        <ul class="submenu ">
+
+                            @php
+                                $prodi = DB::table('tb_prodis')->get();
+                            @endphp
+
+                            @foreach($prodi as $item)
+                            <li class="submenu-item ">
+                                <a href="{{ route('prodi-pengajuan.surat-aktif-kuliah.index', $item->kode_prodi) }}">{{ $item->nama_prodi}}</a>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-person-badge-fill"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
                 @endif
 
 

@@ -104,8 +104,6 @@
                             @else
                             <td>
                                 <span class="badge bg-success">Diterima</span>     
-                                <a href="#showdata"  class="badge bg-success"> <i class="fa fa-print"> </i> </a>
-                              
                             </td>
                             @endif
 

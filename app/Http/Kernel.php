@@ -69,5 +69,6 @@ class Kernel extends HttpKernel
         'is_operator'=>  \App\Http\Middleware\Is_operator::class,
         'is_kepalaoperator'=>  \App\Http\Middleware\Is_kepalaoperator::class,
         'is_ttdpersetujuan'=>  \App\Http\Middleware\Is_ttdpersetujuan::class,
+        'is_prodi'=>  \App\Http\Middleware\Is_prodi::class,
     ];
 }

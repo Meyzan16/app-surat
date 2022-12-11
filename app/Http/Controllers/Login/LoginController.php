@@ -52,7 +52,13 @@ class LoginController extends Controller
                     {
                         $request->session()->regenerate();
                         return \redirect()->intended('/pemegang-tanggung-jawab')->with('successs', 'Selamat datang '. auth()->user()->nama  );
+                    }elseif(auth()->user()->roles == 'VERIF_PRODI')
+                    {
+                        $request->session()->regenerate();
+                        return \redirect()->intended('/prodi')->with('successs', 'Selamat datang '. auth()->user()->nama  );
                     }
+
+                    
                 }else{
                     return redirect()->route('login')->with('loginerror','Akun belum diaktivasi');
                 }

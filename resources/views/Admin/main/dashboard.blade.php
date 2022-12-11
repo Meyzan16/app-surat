@@ -12,7 +12,7 @@
         <div class="col-12">
                 <div class="card">
                     <div class="card-body px-3 py-4-5">   
-                        @if(auth()->user()->kode_prodi)
+                        @if(auth()->user()->roles == 'OPERATOR_PRODI')
                         
                             <h5>Selamat datang , verifikator prodi {{ auth()->user()->tb_prodi->nama_prodi }}</h5>
                         @elseif(auth()->user()->roles == 'KEPALA_OPERATOR')
@@ -21,6 +21,9 @@
                         @elseif(auth()->user()->roles == 'VERIF_PERSETUJUAN')
                         
                             <h5>Selamat datang , {{auth()->user()->nama}} Penanggung Jawab</h5>
+                        @elseif(auth()->user()->roles == 'VERIF_PRODI')
+                        
+                            <h5>Selamat datang , {{auth()->user()->nama}} dari prodi {{ auth()->user()->tb_prodi->nama_prodi }} </h5> 
                         @endif
                     </div>
                 </div>

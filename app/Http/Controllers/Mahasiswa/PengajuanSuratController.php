@@ -19,9 +19,9 @@ class PengajuanSuratController extends Controller
         $judul_surat = tb_judul_surat::with('tb_jenis_surat')->get();
 
 
-        $data = tb_log_srt_ket_msh_kuliah::where('npm', Session::get('npm'))
-        ->where('status_persetujuan', 'belum diverifikasi')
-        ->first();
+                $data = tb_log_srt_ket_msh_kuliah::where('npm', Session::get('npm'))
+                ->where('status_persetujuan', 'belum diverifikasi')
+                ->first();
 
                 if(empty($data))
                 {
@@ -62,11 +62,9 @@ class PengajuanSuratController extends Controller
                 {
 
                     $data = tb_log_srt_ket_msh_kuliah::where([
-                        ['npm', '=',  Session::get('npm')],
+                        ['npm', '=',  Session::get('npm')]
                     ])->first();
-
-                    return $data;
-                    
+                
 
                     if(empty($data))
                     {
@@ -78,11 +76,8 @@ class PengajuanSuratController extends Controller
                             'kode_prodi' => Session::get('kode_prodi')
                         ]);
                         return \redirect()->route('surat-masih-kuliah.index')->with('successs', 'Silahkan lengkapai data data berikut');
-                    }else
-                    {
+                    }else{
                         // return "sudah ada data";
-                        
-                    
                         if($data->status_persetujuan == 'belum diverifikasi')
                         {
                             return \redirect()->route('pengajuan-index')->with('toast_error', 'Jenis surat keterangan aktif kuliah baru saja diajukan');

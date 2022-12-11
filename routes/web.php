@@ -28,6 +28,10 @@ use App\Http\Controllers\Admin\kepalaoperator\SuratAktifKuliahKepOperatorControl
 // verif persetujuan
 use App\Http\Controllers\Admin\verifpersetujuan\SuratAktifKuliahVerifPersetujuanController;
 
+//prodi
+use App\Http\Controllers\Admin\prodi\SuratAktifKuliahProdiController;
+
+
 // error
 use App\Http\Controllers\Error\ErrorController;
 
@@ -189,7 +193,29 @@ Route::group([
         });
     });
 });
-//admin
+
+
+// bagian prodi
+Route::group([
+    'middleware' => 'auth',
+    'middleware' => 'is_prodi',
+    'prefix' => 'prodi/'], function(){
+    Route::get('/', [DashboardController::class, 'index'] )->name('prodi.dashboard');
+
+    Route::group([
+        'prefix'  => 'surat-mahasiswa/'],function(){
+        Route::group([
+            
+            'prefix'  => 'surat-aktif-kuliah/'],function(){
+            Route::get('{prodi}', [SuratAktifKuliahProdiController::class, 'index'] )->name('prodi-pengajuan.surat-aktif-kuliah.index');
+            Route::get('{prodi}/pengajuan-aktif', [SuratAktifKuliahProdiController::class, 'show'] )->name('prodi-pengajuan.surat-aktif-kuliah.show');
+
+            Route::get('{prodi}/History', [SuratAktifKuliahProdiController::class, 'history'] )->name('prodi-pengajuan.surat-aktif-kuliah.history');
+
+        });
+    });
+});
+
 
 
 // error
