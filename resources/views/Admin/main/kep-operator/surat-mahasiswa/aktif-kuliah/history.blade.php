@@ -110,7 +110,7 @@
 
 
                             @php
-                            $created = new DateTime($item->time_acc_ttd);
+                            $created = new DateTime($item->created_at);
                             $result = $created->format('d-m-Y');
 
                             

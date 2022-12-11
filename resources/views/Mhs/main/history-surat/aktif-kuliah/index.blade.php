@@ -23,6 +23,7 @@
                       <tr>
                         <th>No</th>
                         <th>Judul Surat</th>
+                        <th>Tanggal Pengajuan</th>
                         <th>Status Operator</th>
                         <th>Status Kepala Operator</th>
                         <th>Status TTD Persetujuan</th>
@@ -35,8 +36,10 @@
                       
                             
                      
-                        <td>{{ $loop->iteration }} </td>
+                        <td>{{ $item->id }} </td>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $item->tb_judul_surat->judul_surat }}</strong></td>
+                        
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> {{ $item->created_at }}</td>
 
                           @if($item->operator_prodi == 'belum diverifikasi' && $item->catatan_operator_prodi == null)
                            <td><span class="badge bg-label-warning me-1">Menunggu</span></td>
@@ -75,7 +78,7 @@
                                    <span class="badge bg-label-success me-1">Diterima</span>
 
                                     @php
-                                    $created = new DateTime($item->time_acc_ttd);
+                                    $created = new DateTime($item->created_at);
                                     $result = $created->format('d-m-Y');
         
                                     
@@ -92,7 +95,7 @@
 
                                
                                     @if($aa < $item->tb_judul_surat->masa_aktif)
-                                      <a href="{{ route('cetak.aktif-kuliah', $item->npm)}}" class="badge bg-label-primary" >  <i class="fa fa-eye"> </i> Print </a>          
+                                      <a href="{{ route('cetak.aktif-kuliah', $item->id)}}" class="badge bg-label-primary" >  <i class="fa fa-eye"> </i> Print </a>          
                                     @endif
                                     
                             @elseif($item->status_persetujuan == 'belum diverifikasi')
@@ -101,7 +104,7 @@
                         </td>
 
                         @php
-                        $created = new DateTime($item->time_acc_ttd);
+                        $created = new DateTime($item->created_at);
                         $result = $created->format('d-m-Y');
 
                         
@@ -149,19 +152,20 @@
   
 </div>
 <!-- / Content -->
-<div class="modal fade" id="catatan{{$item->npm}}" tabindex="-1" role="dialog"
+@foreach($pengajuan as $item2)
+<div class="modal fade" id="catatan{{$item2->npm}}" tabindex="-1" role="dialog"
   aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
       role="document">
       <div class="modal-content">
           <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle"> Catatan {{ $item->tb_data_mahasiswa->nama}}
+              <h5 class="modal-title" id="exampleModalCenterTitle"> Catatan {{ $item2->tb_data_mahasiswa->nama}}
               </h5>
              
           </div>
   
               <div class="modal-body">              
-                  <textarea readonly class="form-control mt-2" cols="50" rows="3"> {{ $item->catatan_operator_prodi}} </textarea> 
+                  <textarea readonly class="form-control mt-2" cols="50" rows="3"> {{ $item2->catatan_operator_prodi}} </textarea> 
               </div>
               <div class="modal-footer">
                       <button type="button" class="btn btn-primary"
@@ -176,6 +180,7 @@
       </div>
   </div>
 </div>
+@endforeach
 
 
 
