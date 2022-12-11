@@ -26,7 +26,8 @@
 	<center>
 		<table>
 			<tr>
-				<td><img src="LOGO.jpg" width="90" height="90"></td>
+
+				<td><img src="/assets/images/logo.png" width="90" height="90"></td>
 				<td>
 				<center>
 					<font size="4">KEMENTERIAN PENDIDIKAN, KEBUDAYAAN,</font><br>
@@ -67,19 +68,19 @@
 		<table>
             <tr class="text2">
 				<td>Nama</td>
-				<td width="512">:{{ $data->user->nama }}</td>
+				<td width="512">: {{ $data->user->nama }}</td>
 			</tr>
 			<tr>
 				<td>NIP</td>
-				<td>: 08:30</td>
+				<td>: {{ $data->user->tb_persetujuan->nip }}</td>
 			</tr>
 			<tr>
 				<td>Pangkat/Golongan</td>
-				<td>: Ruang lap komputeasjdgajsdgj sr</td>
+				<td>: {{ $data->user->tb_persetujuan->golongan }}</td>
 			</tr>
 			<tr>
 				<td>Jabatan</td>
-				<td>: Ruang lap komputer</td>
+				<td>: {{ $data->user->tb_persetujuan->jabatan }}</td>
 			</tr>
 		</table>
 
@@ -91,34 +92,34 @@
             </tr>
         </table>
 
-        <table>
+        <table width="625">
             <tr class="text2">
 				<td>Nama</td>
-				<td width="520">: <b>Selasa/16 mei 2019</b></td>
+				<td width="512">: {{ $data->tb_data_mahasiswa->nama }}</td>
 			</tr>
             <tr class="text2">
 				<td>NPM</td>
-				<td>: <b>Selasa/16 mei 2019</b></td>
+				<td>: {{ $data->tb_data_mahasiswa->npm }}</td>
 			</tr>
             <tr class="text2">
 				<td>Semester</td>
-				<td>: <b>Selasa/16 mei 2019</b></td>
+				<td>:  {{ $data->semester }}</td>
 			</tr>
             <tr class="text2">
 				<td>Jurusan/Prodi</td>
-				<td>: <b>Selasa/16 mei 2019</b></td>
+				<td>:  {{ $data->tb_data_mahasiswa->tb_prodi->nama_prodi }}</td>
 			</tr>
             <tr class="text2">
 				<td>Fakultas</td>
-				<td>: <b>Selasa/16 mei 2019</b></td>
+				<td>: Matematika dan Ilmu Pengtahuan Alam</td>
 			</tr>
             <tr class="text2">
 				<td>Perguruan Tinggi</td>
-				<td>: <b>Selasa/16 mei 2019</b></td>
+				<td>: Universitas Bengkulu</td>
 			</tr>
             <tr class="text2">
 				<td>Masa Studi</td>
-				<td>: <b>Selasa/16 mei 2019</b></td>
+				<td>: {{ $data->masa_studi }}</td>
 			</tr>
 		</table>
 
@@ -138,26 +139,30 @@
 			</tr>
 	 	</table>
 
-	 <table>
+	 <table width="625">
 		 <tr class="text2">
 			 <td>Nama</td>
-			 <td width="512">: <b>Selasa/16 mei 2019</b></td>
+			 <td width="512">: {{ $data->nama_ortu}} </td>
 		 </tr>
-		 <tr>
-			 <td>NIP</td>
-			 <td>: 08:30</td>
-		 </tr>
+		 @if($data->nip)
+			<tr>
+				<td>NIP</td>
+				<td>: {{$data->nip}}</td>
+			</tr>
+			<tr>
+				<td>Pangkat/Golongan</td>
+				<td>: {{$data->golongan}}</td>
+			</tr>
+		 @endif
+		
 		 <tr>
 			 <td>Pekerjaan</td>
-			 <td>: 08:30</td>
+			 <td>: {{$data->pekerjaan}}</td>
 		 </tr>
+		 
 		 <tr>
-			 <td>Pangkat/Golongan</td>
-			 <td>: Ruang lap komputeasjdgajsdgj sr</td>
-		 </tr>
-		 <tr>
-			 <td>Jabatan</td>
-			 <td>: Ruang lap komputer</td>
+			 <td>Alamat</td>
+			 <td>: {{$data->alamat}}</td>
 		 </tr>
 	 </table>
 
@@ -173,10 +178,11 @@
 		<table width="625">
 			<tr>
 				<td width="430"><br><br><br><br></td>
-				<td class="text" style="text-align-last: left">Bengkulu, {{date('d F Y')}}<br>a.n. Dekan<br>Wakil Dekan Bidang Akademik
+				<td class="text" style="text-align-last: left">Bengkulu, {{date('d F Y')}}<br>a.n. Dekan<br>{{ $data->user->tb_persetujuan->jabatan}}
 				<br><br><br><br>
-				Bpk Fauzy.s.kom <br>
-				NIP 19291279798798
+
+				{{ $data->user->nama}} <br>
+				{{ $data->user->tb_persetujuan->nip }}
 				</td>	
 			</tr>
 

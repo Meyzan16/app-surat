@@ -30,6 +30,8 @@ class tb_log_srt_ket_msh_kuliah extends Model
         return $this->belongsTo(user::class, 'id_persetujuan', 'id');
     }
 
+    
+
 
 
     

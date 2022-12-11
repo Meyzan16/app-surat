@@ -9,7 +9,7 @@ class CetakController extends Controller
     public function aktif_kuliah($npm)
     {
 
-        $data = tb_log_srt_ket_msh_kuliah::with(['tb_judul_surat', 'tb_data_mahasiswa',
+        $data = tb_log_srt_ket_msh_kuliah::with(['tb_judul_surat', 'tb_data_mahasiswa.tb_prodi',
         'user.tb_persetujuan'])
         ->where('npm', $npm)->first();                           
 

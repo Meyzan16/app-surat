@@ -19,4 +19,9 @@ class tb_data_mahasiswa extends Model
         return $this->hasMany(tb_log_srt_ket_msh_kuliahs::class);
     }
 
+    public function tb_prodi()
+    {
+        return $this->belongsTo(tb_prodi::class, 'kode_prodi', 'kode_prodi');
+    }
+
 }
