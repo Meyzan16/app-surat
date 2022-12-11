@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\tb_jenis_surat;
 use App\Models\tb_judul_surat;
 use App\Models\tb_persetujuan;
+use App\Models\tb_prodi;
 use App\Models\user;
 
 class DatabaseSeeder extends Seeder
@@ -24,6 +25,16 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        tb_prodi::create([
+            'kode_prodi' => 'G1A0',
+            'nama_prodi' => 'Informatika',
+        ]);
+
+        tb_prodi::create([
+            'kode_prodi' => 'G1B0',
+            'nama_prodi' => 'Sipil',
+        ]);
 
         tb_jenis_surat::create([
             'kode_surat' => 'KDU1',
@@ -48,6 +59,8 @@ class DatabaseSeeder extends Seeder
             'masa_aktif' => '8',
             'judul_surat' => 'surat keterangan lulus',
         ]);
+
+
 
         User::create([
             'nama' => 'operator informatika',
@@ -87,7 +100,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'nama' => 'wakil dekan',
+            'nama' => 'Ashar Muda Lubis, Ph.D',
             'username' => 'monmon16',
             'password' => bcrypt('monmon16'),
             'roles' => 'VERIF_PERSETUJUAN',
@@ -96,7 +109,7 @@ class DatabaseSeeder extends Seeder
 
 
         tb_persetujuan::create([
-            'users_id' => '1',
+            'users_id' => '4',
             'golongan' => 'IV B',
             'jabatan' => 'wakil Dekan Bidang Akademik',
         ]);

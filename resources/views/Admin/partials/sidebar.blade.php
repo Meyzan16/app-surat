@@ -106,10 +106,29 @@
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
-                            <a href="form-editor-quill.html">Operator</a>
+                            <a href="form-editor-quill.html">Jenis Surat</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="form-editor-ckeditor.html">Persetujuan</a>
+                            <a href="form-editor-ckeditor.html">Akun Persetujuan</a>
+                        </li>
+                        <li class="submenu-item ">
+                            <a href="form-editor-ckeditor.html">Profile</a>
+                        </li>
+                       
+                    </ul>
+                </li>
+
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-person-badge-fill"></i>
+                        <span>Akun</span>
+                    </a>
+                    <ul class="submenu ">
+                        <li class="submenu-item ">
+                            <a href="form-editor-quill.html">Akun Operator</a>
+                        </li>
+                        <li class="submenu-item ">
+                            <a href="form-editor-ckeditor.html">Akun Persetujuan</a>
                         </li>
                         <li class="submenu-item ">
                             <a href="form-editor-ckeditor.html">Profile</a>

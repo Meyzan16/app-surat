@@ -126,7 +126,7 @@
 		<table width="625">
 			<tr>
 		       <td>
-			       <font size="2">Mahasiswa tersebut saat ini masih aktif kuliah dan akan selesai paling lambat Agustus 2024.</font>
+			       <font size="2">Mahasiswa tersebut saat ini masih aktif kuliah dibuktikan dengan surat yang telah ditanda tangani</font>
 		       </td>
 		    </tr>
 		</table>
