@@ -38,18 +38,20 @@ class DatabaseSeeder extends Seeder
         tb_judul_surat::create([
             'kode_jenis_surat' => 'KDM2',
             'kode_judul_surat' => 'A1',
+            'masa_aktif' => '8',
             'judul_surat' => 'surat keterangan masih kuliah',
         ]);
 
         tb_judul_surat::create([
             'kode_jenis_surat' => 'KDM2',
             'kode_judul_surat' => 'A2',
+            'masa_aktif' => '8',
             'judul_surat' => 'surat keterangan lulus',
         ]);
 
         User::create([
-            'nama' => 'prodi informatika',
-            'username' => 'G1A0',
+            'nama' => 'operator informatika',
+            'username' => 'OG1A0',
             'password' => bcrypt('monmon16'),
             'kode_prodi' => 'G1A0',
             'roles' => 'OPERATOR_PRODI',
@@ -57,13 +59,24 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'nama' => 'prodi sipil',
-            'username' => 'G1B0',
+            'nama' => 'operator sipil',
+            'username' => 'OG1B0',
             'password' => bcrypt('monmon16'),
             'kode_prodi' => 'G1B0',
             'roles' => 'OPERATOR_PRODI',
             'status_aktif' => 'Y',
         ]);
+
+        User::create([
+            'nama' => 'Informatika',
+            'username' => 'G1A0',
+            'password' => bcrypt('monmon16'),
+            'kode_prodi' => 'G1A0',
+            'roles' => 'VERIF_PRODI',
+            'status_aktif' => 'Y',
+        ]);
+
+
 
         User::create([
             'nama' => 'pak aji',

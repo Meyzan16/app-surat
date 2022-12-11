@@ -111,6 +111,7 @@
                                     @if($aa < $item->tb_judul_surat->masa_aktif)
                                       <a href="#showdata"  class="badge bg-primary"> <i class="fa fa-print"> </i> </a>
                                     @endif
+                                    
 
                                     
                                 </td>

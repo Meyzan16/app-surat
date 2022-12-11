@@ -70,12 +70,34 @@
 
                        
 
-                        <td>
-                          @if($item->status_persetujuan == 'Y')
-                          <a class="badge bg-label-primary "   data-bs-toggle="modal" data-bs-target="#show_data{{ $item->npm }}">  <i class="fa fa-eye"> </i> Print </a>          
-                          @elseif($item->status_persetujuan == 'belum diverifikasi')
-                          <span class="badge bg-label-warning me-1">Menunggu disetujui</span>
-                          @endif
+                         <td>
+                            @if($item->status_persetujuan == 'Y')
+                                   <span class="badge bg-label-success me-1">Diterima</span>
+
+                                    @php
+                                    $created = new DateTime($item->time_acc_ttd);
+                                    $result = $created->format('d-m-Y');
+        
+                                    
+                                    $datetime1 = date_create($result);
+        
+                                    $now = date('d-m-Y');
+        
+                                    $datetime2 = date_create($now); // waktu sekarang
+                                    
+                                    $selisih  = date_diff($datetime1, $datetime2);
+        
+                                    $aa = $selisih->d;
+                                    @endphp
+
+                               
+                                    @if($aa < $item->tb_judul_surat->masa_aktif)
+                                      <a class="badge bg-label-primary "   data-bs-toggle="modal" data-bs-target="#show_data{{ $item->npm }}">  <i class="fa fa-eye"> </i> Print </a>          
+                                    @endif
+                                    
+                            @elseif($item->status_persetujuan == 'belum diverifikasi')
+                            <span class="badge bg-label-warning me-1">Menunggu disetujui</span>
+                            @endif
                         </td>
 
                         @php
