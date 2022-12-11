@@ -102,19 +102,24 @@
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-person-badge-fill"></i>
-                        <span>Pengaturan</span>
+                        <span>Pengaturan Surat</span>
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
                             <a href="form-editor-quill.html">Jenis Surat</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="form-editor-ckeditor.html">Akun Persetujuan</a>
+                            <a href="form-editor-ckeditor.html">Lampiran Surat</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="form-editor-ckeditor.html">Profile</a>
+                            <a href="form-editor-ckeditor.html">Perihal Surat</a>
                         </li>
-                       
+                        <li class="submenu-item ">
+                            <a href="form-editor-ckeditor.html">Tujuan Surat</a>
+                        </li>
+                        <li class="submenu-item ">
+                            <a href="form-editor-ckeditor.html">Tembusan Surat</a>
+                        </li>
                     </ul>
                 </li>
 
