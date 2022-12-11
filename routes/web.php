@@ -9,6 +9,8 @@ use App\Http\Controllers\Mahasiswa\BiodataDiriController;
 
 //surat masih kuliah
 use App\Http\Controllers\Mahasiswa\SuratMasihKuliahController;
+use App\Http\Controllers\CetakController;
+
 //surat ket lulus
 use App\Http\Controllers\Mahasiswa\SuratKetLulusController;
 
@@ -84,10 +86,11 @@ Route::group([
             Route::get('/', [SuratMasihKuliahController::class, 'index'])->name('surat-masih-kuliah.index');
             
             Route::post('{npm}/melengkapi-data', [SuratMasihKuliahController::class, 'update'])->name('surat-masih-kuliah.update');
-            Route::delete('{npm}/hapus-data', [SuratMasihKuliahController::class, 'destroy'])->name('surat-masih-kuliah.delete');
+            Route::delete('{npm}/hapus-data', [SuratMasihKuliahController::class, 'destroy'])->name('surat-masih-kuliah.delete'); 
             
-           
+            Route::get('{npm}/cetak', [CetakController::class, 'aktif_kuliah'])->name('cetak.aktif-kuliah'); 
             
+
         });
 
         Route::group(['prefix'  => 'surat-keterangan-lulus/'],function(){
@@ -119,11 +122,11 @@ Route::group([
 //operator
 Route::group([
     'middleware' => 'auth',
-    'middleware' => 'is_operator',
     'prefix' => 'operator/'], function(){
     Route::get('/', [DashboardController::class, 'index'] )->name('operator.dashboard');
 
     Route::group([
+        'middleware' => 'is_operator',
         'prefix'  => 'surat-mahasiswa/'],function(){
         Route::group([
             'prefix'  => 'surat-aktif-kuliah/'],function(){
@@ -144,11 +147,11 @@ Route::group([
 //kepala operator
 Route::group([
     'middleware' => 'auth',
-    'middleware' => 'is_kepalaoperator',
     'prefix' => 'kepala-operator/'], function(){
     Route::get('/', [DashboardController::class, 'index'] )->name('kepala-operator.dashboard');
 
     Route::group([
+        'middleware' => 'is_kepalaoperator',
         'prefix'  => 'surat-mahasiswa/'],function(){
         Route::group([
             'prefix'  => 'surat-aktif-kuliah/'],function(){
@@ -173,11 +176,11 @@ Route::group([
 //TTD persetujuan
 Route::group([
     'middleware' => 'auth',
-    'middleware' => 'is_ttdpersetujuan',
     'prefix' => 'pemegang-tanggung-jawab/'], function(){
     Route::get('/', [DashboardController::class, 'index'] )->name('ttd-persetujuan.dashboard');
 
     Route::group([
+        'middleware' => 'is_ttdpersetujuan',
         'prefix'  => 'surat-mahasiswa/'],function(){
         Route::group([
             
@@ -198,11 +201,11 @@ Route::group([
 // bagian prodi
 Route::group([
     'middleware' => 'auth',
-    'middleware' => 'is_prodi',
     'prefix' => 'prodi/'], function(){
     Route::get('/', [DashboardController::class, 'index'] )->name('prodi.dashboard');
 
     Route::group([
+        'middleware' => 'is_prodi',
         'prefix'  => 'surat-mahasiswa/'],function(){
         Route::group([
             
@@ -220,6 +223,8 @@ Route::group([
 
 // error
 Route::get('/404', [ErrorController::class, 'index'] )->name('error-404');
+
+
 
 
 // login

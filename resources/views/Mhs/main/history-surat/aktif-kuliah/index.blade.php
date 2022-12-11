@@ -92,7 +92,7 @@
 
                                
                                     @if($aa < $item->tb_judul_surat->masa_aktif)
-                                      <a class="badge bg-label-primary "   data-bs-toggle="modal" data-bs-target="#show_data{{ $item->npm }}">  <i class="fa fa-eye"> </i> Print </a>          
+                                      <a href="{{ route('cetak.aktif-kuliah', $item->npm)}}" class="badge bg-label-primary" >  <i class="fa fa-eye"> </i> Print </a>          
                                     @endif
                                     
                             @elseif($item->status_persetujuan == 'belum diverifikasi')

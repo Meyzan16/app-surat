@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\tb_prodi;
+use App\Models\tb_persetujuan;
 
 class User extends Authenticatable
 {
@@ -18,6 +19,17 @@ class User extends Authenticatable
     {
         return $this->belongsTo(tb_prodi::class, 'kode_prodi', 'kode_prodi');
     }
+
+    public function tb_log_srt_ket_msh_kuliah()
+    {
+        return $this->hasMany(tb_log_srt_ket_msh_kuliah::class);
+    }
+
+    public function tb_persetujuan()
+    {
+        return $this->hasOne(tb_persetujuan::class , 'users_id','id' );
+    }
+
     /**
      * The attributes that are mass assignable.
      *
