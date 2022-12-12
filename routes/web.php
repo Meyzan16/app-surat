@@ -22,6 +22,7 @@ use App\Http\Controllers\Login\LoginController;
 
 //operator
 use App\Http\Controllers\Admin\operator\SuratAktifKuliahOperatorController;
+use App\Http\Controllers\Admin\operator\suratumum\SuratUmumOperatorController;
 
 
 //kepala operator
@@ -143,6 +144,17 @@ Route::group([
         });
         Route::get('aktif-kuliah/history-pengajuan', [SuratAktifKuliahOperatorController::class, 'history'])->name('surat-masih-kuliah.history');
     });
+
+    Route::group([
+        'middleware' => 'is_operator',
+        'prefix'  => 'surat-umum/'],function(){
+            Route::get('/', [SuratUmumOperatorController::class, 'index'])->name('operator.surat-umum.index');
+            Route::get('tambah-data', [SuratUmumOperatorController::class, 'create'])->name('operator.surat-umum.create');
+            Route::POST('simpan-data', [SuratUmumOperatorController::class, 'store'])->name('operator.surat-umum.store');
+       
+    });
+
+    
 
 });
 

@@ -51,19 +51,15 @@
                         </ul>
                     </li>
 
-                    <li class="sidebar-item  has-sub">
+                    <li class="sidebar-item {{ request()->is('operator/surat-umum*') ? 'active' : '' }}  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-file-earmark-medical-fill"></i>
                             <span>Surat Umum</span>
                         </a>
-                        <ul class="submenu ">
-                            <li class="submenu-item ">
-                                <a href="form-editor-quill.html">Pengajuan Surat</a>
+                        <ul class="submenu {{ request()->is('operator/surat-umum*') ? 'active' : '' }}">
+                            <li class="submenu-item {{ request()->is('operator/surat-umum*') ? 'active' : '' }}">
+                                <a href="{{route('operator.surat-umum.index')}}">Data Surat</a>
                             </li>
-                            <li class="submenu-item ">
-                                <a href="form-editor-ckeditor.html">History Pengajuan</a>
-                            </li>
-                        
                         </ul>
                     </li>
 

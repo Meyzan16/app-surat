@@ -8,6 +8,9 @@ use App\Models\tb_jenis_surat;
 use App\Models\tb_judul_surat;
 use App\Models\tb_persetujuan;
 use App\Models\tb_prodi;
+use App\Models\tb_tujuan_surat;
+use App\Models\tb_perihal_surat;
+use App\Models\tb_lampiran;
 use App\Models\user;
 
 class DatabaseSeeder extends Seeder
@@ -93,7 +96,7 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'nama' => 'pak aji',
-            'username' => 'monmon16',
+            'username' => 'kepala_operator',
             'password' => bcrypt('monmon16'),
             'roles' => 'KEPALA_OPERATOR',
             'status_aktif' => 'Y',
@@ -115,6 +118,26 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
+        tb_lampiran::create([
+            'judul_lampiran' => 'Satu berkas',
+        ]);
+        tb_lampiran::create([
+            'judul_lampiran' => 'Dua berkas',
+        ]);
+
+        tb_perihal_surat::create([
+            'nama' => 'Susulan Mohon Pembayaran UKT',
+        ]);
+        tb_perihal_surat::create([
+            'nama' => 'Undangan pembukaan asesmen lapangan',
+        ]);
+
+        tb_tujuan_surat::create([
+            'nama' => 'Wakil Rektor Bidang Akademik',
+        ]);
+        tb_tujuan_surat::create([
+            'nama' => 'Wakil Rektor Bidang Kemahasiswaan',
+        ]);
 
     }
 }

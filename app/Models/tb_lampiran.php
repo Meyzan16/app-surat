@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\tb_loghistory_surat_umum;
 
 class tb_lampiran extends Model
 {
@@ -14,4 +15,9 @@ class tb_lampiran extends Model
     protected $fillable = [
         'judul_lampiran'
     ];
+
+    public function tb_loghistory_surat_umum()
+    {
+        return $this->hasMany(tb_loghistory_surat_umum::class);
+    }
 }
