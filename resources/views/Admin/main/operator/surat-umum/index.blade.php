@@ -87,8 +87,8 @@
                                 
                                
                                
-                                <a href="#showdata"  class="badge bg-primary"> <i class="fa fa-eye"> </i> </a>
-                                <a onclick="location.href=''"   class="badge bg-warning">  <i class="fa fa-edit"> </i>  </a>
+                                <a href="{{ route('operator.surat-umum.show', $item->id)}}" target="_blank" class="badge bg-primary"> <i class="fa fa-eye"> </i> </a>
+                                <a onclick="location.href='{{ route('operator.surat-umum.edit', $item->id)}}'"   class="badge bg-warning">  <i class="fa fa-edit"> </i>  </a>
                           
                             </td>
 

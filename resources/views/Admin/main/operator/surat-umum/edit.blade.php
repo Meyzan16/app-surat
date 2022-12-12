@@ -8,14 +8,14 @@
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Surat Umum</h3>
+                <h3>Edit Data Surat Umum</h3>
 
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">Surat Umum </a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Form Input Data</li>
+                        <li class="breadcrumb-item active" aria-current="page">Edit Data</li>
                     </ol>
                 </nav>
             </div>
@@ -28,8 +28,8 @@
             </div>
             <div class="card-body">
                 <div class="form-body">
-                    <form action="{{ route('operator.surat-umum.store')}}" method="POST">
-                        @csrf
+                    <form action="{{ route('operator.surat-umum.update', $data->id)}}" method="POST">
+                        @csrf @method('patch')
 
                         <div class="row">
                             <div class="col-md-2">
@@ -37,9 +37,12 @@
                             </div>
                             <div class="col-md-10 form-group">
                                <select name="id_lampiran" class="form-control" required>
-                                   <option value=""> -- pilih data -- </option>
                                     @foreach ($lampiran as $item)
-                                    <option value="{{ $item->id }}"> {{$item->judul_lampiran}} </option>
+                                        @if(old('id_lampiran', $item->id) == $data->id )
+                                            <option value="{{ $item->id }}" selected>{{ $item->judul_lampiran }}</option>      
+                                        @else
+                                            <option value="{{ $item->id }}">{{ $item->judul_lampiran }}</option>    
+                                        @endif
                                     @endforeach
                                </select>
                             </div>
@@ -49,41 +52,50 @@
                             </div>
                             <div class="col-md-10 form-group">
                                <select name="id_perihal" class="form-control" required>
-                                   <option value=""> -- pilih data -- </option>
                                     @foreach ($perihal as $item)
-                                    <option value="{{ $item->id }}"> {{$item->nama}} </option>
+                                        @if(old('id_perihal', $item->id) == $data->id )
+                                            <option value="{{ $item->id }}" selected>{{ $item->nama }}</option>      
+                                        @else
+                                            <option value="{{ $item->id }}">{{ $item->nama }}</option>    
+                                        @endif
                                     @endforeach
+                            
                                </select>
                             </div>
 
+                       
                             <div class="col-md-2">
-                                <label>Tujuan Surat</label>
+                                    <label>Tujuan Surat</label>
                             </div>
                             <div class="col-md-6 form-group">
-                               <select name="id_tujuan" class="form-control" required>
-                                   <option value=""> -- pilih data -- </option>
-                                    @foreach ($tujuan as $item)
-                                    <option value="{{ $item->id }}"> {{$item->nama}} </option>
-                                    @endforeach
-                               </select>
+                                  <select name="id_tujuan" class="form-control" required>
+                                       @foreach ($tujuan as $item)
+                                           @if(old('id_tujuan', $item->id) == $data->id )
+                                               <option value="{{ $item->id }}" selected>{{ $item->nama }}</option>      
+                                           @else
+                                               <option value="{{ $item->id }}">{{ $item->nama }}</option>    
+                                           @endif
+                                       @endforeach
+                                  </select>
                             </div>
                             <div class="col-md-4 form-group">
-                                <input type="text" name="sub_tujuan" class="form-control" required>
+                                    <input type="text" name="sub_tujuan" class="form-control" value="{{ $data->sub_tujuan }}">
                             </div>
+                        
 
 
                             <div class="col-md-2">
                                 <label>Isi Surat</label>
                             </div>
                             <div class="col-md-10 form-group">                                                 
-                                <textarea class="form-control" name="isi_surat" id="editor" rows="3" required></textarea>                                                  
+                                <textarea class="form-control" name="isi_surat" id="editor" rows="3" required> {!! $data->isi_surat !!} </textarea>                                                  
                             </div>
 
                             <div class="col-md-2">
                                 <label>Tembusan</label>
                             </div>
                             <div class="col-md-8 form-group">                                                 
-                                <textarea class="form-control" name="tembusan" id="editor1" cols="2"></textarea>  
+                                <textarea class="form-control" name="tembusan" id="editor1" cols="2"> {!! $data->tembusan !!} </textarea>  
                                 <h6 class="text-danger d-flex mt-1" >kosongkan jika tidak ada*</small>                                             
                             </div>
 

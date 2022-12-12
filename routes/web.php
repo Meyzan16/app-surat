@@ -151,6 +151,10 @@ Route::group([
             Route::get('/', [SuratUmumOperatorController::class, 'index'])->name('operator.surat-umum.index');
             Route::get('tambah-data', [SuratUmumOperatorController::class, 'create'])->name('operator.surat-umum.create');
             Route::POST('simpan-data', [SuratUmumOperatorController::class, 'store'])->name('operator.surat-umum.store');
+            
+            Route::get('{id}/show-data', [SuratUmumOperatorController::class, 'show'])->name('operator.surat-umum.show');
+            Route::get('{id}/edit-data', [SuratUmumOperatorController::class, 'edit'])->name('operator.surat-umum.edit');
+            Route::patch('{id}/update-data', [SuratUmumOperatorController::class, 'update'])->name('operator.surat-umum.update');
        
     });
 
