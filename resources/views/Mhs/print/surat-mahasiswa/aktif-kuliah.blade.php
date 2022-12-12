@@ -68,19 +68,35 @@
 		<table>
             <tr class="text2">
 				<td>Nama</td>
-				<td width="512">: {{ $data->user->nama }}</td>
+				@if($data->status_persetujuan == 'Y')
+					<td width="512">: {{ $data->user->nama }}</td>
+				@else
+					<td width="512">:</td>
+				@endif
 			</tr>
 			<tr>
 				<td>NIP</td>
-				<td>: {{ $data->user->tb_persetujuan->nip }}</td>
+				@if($data->status_persetujuan == 'Y')
+					<td>: {{ $data->user->tb_persetujuan->nip }}</td>
+				@else
+					<td width="512">:</td>
+				@endif
 			</tr>
 			<tr>
 				<td>Pangkat/Golongan</td>
-				<td>: {{ $data->user->tb_persetujuan->golongan }}</td>
+				@if($data->status_persetujuan == 'Y')
+					<td>: {{ $data->user->tb_persetujuan->golongan }}</td>
+				@else
+					<td width="512">:</td>
+				@endif
 			</tr>
 			<tr>
 				<td>Jabatan</td>
+				@if($data->status_persetujuan == 'Y')
 				<td>: {{ $data->user->tb_persetujuan->jabatan }}</td>
+				@else
+					<td width="512">:</td>
+				@endif
 			</tr>
 		</table>
 
@@ -175,19 +191,21 @@
 		</table>
 		<br>
 
-		<table width="625">
-			<tr>
-				<td width="430"><br><br><br><br></td>
-				<td class="text" style="text-align-last: left">Bengkulu, {{date('d F Y')}}<br>a.n. Dekan<br>{{ $data->user->tb_persetujuan->jabatan}}
-				<br><br><br><br>
+		@if($data->status_persetujuan == 'Y')
+			<table width="625">
+				<tr>
+					<td width="430"><br><br><br><br></td>
+					<td class="text" style="text-align-last: left">Bengkulu, {{date('d F Y')}}<br>a.n. Dekan<br>{{ $data->user->tb_persetujuan->jabatan}}
+					<br><br><br><br>
 
-				{{ $data->user->nama}} <br>
-				{{ $data->user->tb_persetujuan->nip }}
-				</td>	
-			</tr>
+					{{ $data->user->nama}} <br>
+					{{ $data->user->tb_persetujuan->nip }}
+					</td>	
+				</tr>
 
-	
-	     </table>
+		
+			</table>
+		 @endif
 	</center>
 </body>
 </html>

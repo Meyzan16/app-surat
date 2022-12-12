@@ -45,7 +45,7 @@ class SuratAktifKuliahVerifPersetujuanController extends Controller
             'time_acc_ttd' => date("Y-m-d H:i:s"),
         ]);
 
-         return redirect()->route('ttd-persetujuan.surat-aktif-kuliah.show', $prodi )->with(['toast_success' =>  $npm. ' berhasil di verifikasi !!']);
+         return redirect()->route('ttd-persetujuan.surat-aktif-kuliah.history', $prodi )->with(['toast_success' =>  $npm. ' berhasil di verifikasi !!']);
     }
 
     public function history(Request $reqeust, $prodi)

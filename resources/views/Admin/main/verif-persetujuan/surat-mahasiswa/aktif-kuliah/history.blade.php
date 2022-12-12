@@ -49,7 +49,7 @@
                             <th>Tanggal dibuat</th>
                             <th>Status Operator</th>
                             <th>Status Kep.Operator</th>
-                            <th>Status ttd</th>
+                            <th>Status TTD</th>
                             <th>Masa Aktif 8 Hari</th>
                       
 
@@ -65,7 +65,7 @@
 
                             @php
                                 $datenow = $item->created_at;
-                                $kon = date_format($datenow, 'd-M-Y')   
+                                $kon = date_format($datenow, 'd M Y')   
                             @endphp
 
                                 <td>
@@ -76,21 +76,23 @@
 
                             @if ($item->operator_prodi == 'Y')
                             <td>
-                                <span class="badge bg-success">Diterima</span>
+                                <span class="badge bg-success">disetujui</span>
                             </td>
                             @endif     
                                              
 
                             @if ($item->kepala_operator == 'Y') 
                             <td>
-                                <span class="badge bg-success">Diterima</span>
+                                <span class="badge bg-success">disetujui</span>
                             </td>
                             @endif
 
 
                             @if ($item->status_persetujuan == 'Y')
                                 <td>
-                                    <span class="badge bg-success">Diterima</span>
+                                    <span class="badge bg-success">disetujui</span>
+
+                                    <a href="{{route('ttd-persetujuan.cetak.aktif-kuliah', $item->id)}}" target="_blank" class="badge bg-primary"> <i class="fa fa-eye"> </i> </a>
                                 </td>
                             
                             @endif
@@ -136,102 +138,5 @@
         </div>
 
     </section>
-
-{{-- verif terima operator --}}
-@foreach($data as $item1)
-<div class="modal fade" id="exampleModalTerima{{$item1->npm}}" tabindex="-1" role="dialog"
-aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
-    role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenterTitle"> Validasi diteirma {{ $item1->tb_data_mahasiswa->nama}}
-            </h5>
-            <button type="button" class="close" data-bs-dismiss="modal"
-                aria-label="Close">
-                <i data-feather="x"></i>
-            </button>
-        </div>
-
-        <form action="{{ route('ttd-persetujuan.surat-aktif-kuliah.verifikasi', $prodi->kode_prodi) }}" method="POST">
-            @csrf 
-            <div class="modal-body">
-                    
-               
-                <p class="text-center">
-                    Perhatian !!!
-                    Silahkan cek data mahasiswa dengan benar untuk diverifikasi ,
-                    data yang telah diverifikasi tidak bisa di verifikasi ulang.
-                    setelah diverifikasi.
-                </p>
-                <center>
-                    <span class="badge bg-primary" >Selanjutnya menunggu verifikasi kepala operator</span>
-                </center>
-
-                <input type="hidden" value="{{ $item1->npm}}" name="npm"> 
-                
-            </div>
-            <div class="modal-footer">
-                    <button type="button" class="btn btn-light-secondary"
-                        data-bs-dismiss="modal">
-                        <i class="bx bx-x d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block">Kembali</span>
-                    </button>
-
-                    <button type="submit" class="btn btn-primary ml-1">
-                        <i class="bx bx-check d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block" >Verifikasi</span>
-                    </button>
-                    
-                
-            </div>
-        </form>
-    </div>
-</div>
-</div>
-@endforeach
-
-
-
-
-{{-- catatan penolakan --}}
-@foreach($data as $catatan)
-<div class="modal fade" id="exampleModalCatatan{{$catatan->npm}}" tabindex="-1" role="dialog"
-aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
-    role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenterTitle"> Validasi diteirma {{ $catatan->tb_data_mahasiswa->nama}}
-            </h5>
-            <button type="button" class="close" data-bs-dismiss="modal"
-                aria-label="Close">
-                <i data-feather="x"></i>
-            </button>
-        </div>
-
-            <div class="modal-body">              
-                <textarea readonly class="form-control mt-2" cols="50" rows="3"> {{ $catatan->catatan_operator_prodi}} </textarea> 
-            </div>
-            <div class="modal-footer">
-                    <button type="button" class="btn btn-light-secondary"
-                        data-bs-dismiss="modal">
-                        <i class="bx bx-x d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block">Kembali</span>
-                    </button>
-
-                    
-                
-            </div>
-    </div>
-</div>
-</div>
-@endforeach
-{{-- akhir operator --}}
-
-
-
-
-
 
 @endsection

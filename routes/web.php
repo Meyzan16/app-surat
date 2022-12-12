@@ -147,6 +147,8 @@ Route::group([
             Route::patch('{npm}/verif_ditolak', [SuratAktifKuliahOperatorController::class, 'verifikasi_tolak'])->name('operator.surat-aktif-kuliah.verif_ditolak');
         });
         Route::get('aktif-kuliah/history-pengajuan', [SuratAktifKuliahOperatorController::class, 'history'])->name('surat-masih-kuliah.history');
+        
+        Route::get('{id}/cetak', [CetakController::class, 'aktif_kuliah'])->name('operator.cetak.aktif-kuliah'); 
     });
 
     Route::group([
@@ -190,15 +192,18 @@ Route::group([
             // kepala operator
             Route::post('{prodi}/verifikasi-kepala-operator', [SuratAktifKuliahKepOperatorController::class, 'verifikasi_kepala'])->name('kepala-operator.surat-aktif-kuliah.verif-kep-operator');
             Route::post('{prodi}/veri-batal-kepala-operator', [SuratAktifKuliahKepOperatorController::class, 'verif_batal_kepala'])->name('kepala-operator.surat-aktif-kuliah.verif-batal-kep-operator');
+            
+            Route::get('{id}/cetak', [CetakController::class, 'aktif_kuliah'])->name('kepala-operator.cetak.aktif-kuliah');
         });
     });
+
+    // pengaturan
 
     Route::group([
         'middleware' => 'is_kepalaoperator',
         'prefix'  => 'pengaturan/'],function(){
         Route::resource('judul-surat', JudulSuratController::class);
     });
-
 
     Route::group([
         'middleware' => 'is_kepalaoperator',
@@ -226,6 +231,8 @@ Route::group([
         Route::get('data-tujuan-trash', [TujuanSuratController::Class, 'trash'])->name('kep-operator.data-tujuan.trash');
         Route::get('{id}/data-tujuan-restore', [TujuanSuratController::class, 'restore'])->name('kep-operator.data-tujuan.restore');
     });
+
+    // akhir pengaturan
 
     // surat umum
     Route::group([
@@ -262,10 +269,10 @@ Route::group([
             Route::get('{prodi}/Data-pengajuan', [SuratAktifKuliahVerifPersetujuanController::class, 'show'] )->name('ttd-persetujuan.surat-aktif-kuliah.show');
             
             Route::post('{prodi}/verifikasi', [SuratAktifKuliahVerifPersetujuanController::class, 'verifikasi'])->name('ttd-persetujuan.surat-aktif-kuliah.verifikasi');
-            
 
             Route::get('{prodi}/History', [SuratAktifKuliahVerifPersetujuanController::class, 'history'] )->name('ttd-persetujuan.surat-aktif-kuliah.history');
 
+            Route::get('{id}/cetak', [CetakController::class, 'aktif_kuliah'])->name('ttd-persetujuan.cetak.aktif-kuliah');
         });
     });
 

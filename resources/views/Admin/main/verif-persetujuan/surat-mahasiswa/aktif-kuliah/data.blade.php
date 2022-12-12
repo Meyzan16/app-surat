@@ -72,7 +72,7 @@
                             </td>
                             @else
                             <td>
-                                <span class="badge bg-success">Diterima</span>
+                                <span class="badge bg-success">disetujui</span>
                             </td>
                             @endif                      
 
@@ -86,7 +86,7 @@
                             </td>
                             @else
                             <td>
-                                <span class="badge bg-success">Diterima</span>
+                                <span class="badge bg-success">disetujui</span>
                             </td>
                             @endif
 
@@ -102,12 +102,13 @@
                                 <a class="badge bg-label-danger" data-bs-toggle="modal" data-bs-target="#show_data">  <i class="fa fa-comment-dots"> </i>  </a>          
 
                             </td>
+                            
                             @endif
 
                             <td>           
                                 <a class="badge bg-success"   data-bs-toggle="modal" data-bs-target="#exampleModalTerima{{ $item->npm }}">   <i class="fa fa-check-circle"> </i>  </a>                                  
                                 
-                                <a class="badge bg-primary"   data-bs-toggle="modal" data-bs-target="#exampleModalTolak{{ $item->npm }}">  <i class="fa fa-eye"> </i>  </a>                                  
+                                <a href="{{route('ttd-persetujuan.cetak.aktif-kuliah', $item->id)}}" target="_blank" class="badge bg-primary"> <i class="fa fa-eye"> </i> </a>
                             </td>
 
                         </tr>
@@ -186,7 +187,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenterTitle"> Validasi diteirma {{ $catatan->tb_data_mahasiswa->nama}}
+            <h5 class="modal-title" id="exampleModalCenterTitle"> Catatan Penolakan {{ $catatan->tb_data_mahasiswa->nama}}
             </h5>
             <button type="button" class="close" data-bs-dismiss="modal"
                 aria-label="Close">

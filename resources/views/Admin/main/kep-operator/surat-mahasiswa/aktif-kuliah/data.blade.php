@@ -73,7 +73,7 @@
                             </td>
                             @else
                             <td>
-                                <span class="badge bg-success">Diterima</span>
+                                <span class="badge bg-success">disetujui</span>
                             </td>
                             @endif
 
@@ -94,7 +94,7 @@
                                 </td>
                             @else
                             <td>
-                                <span class="badge bg-success">Diterima</span>
+                                <span class="badge bg-success">disetujui</span>
                             </td>
                             @endif
 
@@ -106,7 +106,7 @@
                                 <a class="badge bg-danger"   data-bs-toggle="modal" data-bs-target="#cancel{{ $item->npm }}"> <i class="fa fa-ban"> </i> </a>
                                 @endif
 
-                                <a href="#showdata"  class="badge bg-primary"> <i class="fa fa-eye"> </i> </a>
+                                <a href="{{route('kepala-operator.cetak.aktif-kuliah', $item->id)}}" target="_blank"  class="badge bg-primary"> <i class="fa fa-eye"> </i> </a>
                             </td>    
 
 
@@ -280,7 +280,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenterTitle"> Validasi diterima {{ $kepala_operator->tb_data_mahasiswa->nama}}
+            <h5 class="modal-title" id="exampleModalCenterTitle"> Validasi disetujui {{ $kepala_operator->tb_data_mahasiswa->nama}}
             </h5>
             <button type="button" class="close" data-bs-dismiss="modal"
                 aria-label="Close">

@@ -63,7 +63,7 @@
                             </td>
                             @else
                             <td>
-                                <span class="badge bg-success">Diterima</span>
+                                <span class="badge bg-success">disetujui</span>
                             </td>
                             @endif
 
@@ -75,7 +75,7 @@
                                 
                                 <a class="badge bg-danger"   data-bs-toggle="modal" data-bs-target="#exampleModalTolak{{ $item->npm }}">  <i class="fa fa-ban"> </i>  </a>                                  
                                
-                                <a href="#showdata"  class="badge bg-primary"> <i class="fa fa-eye"> </i> </a>
+                                <a href="{{route('operator.cetak.aktif-kuliah', $item->id)}}" target="_blank" class="badge bg-primary"> <i class="fa fa-eye"> </i> </a>
 
                                 @if($item->kepala_operator != 'Y')
                                     <a onclick="location.href='{{ route('operator.surat-aktif-kuliah.edit', $item->npm) }}'"   class="badge bg-warning">  <i class="fa fa-edit"> </i>  </a>
@@ -93,7 +93,7 @@
                                 </td>
                             @else
                             <td>
-                                <span class="badge bg-success">Diterima</span>
+                                <span class="badge bg-success">disetujui</span>
                             </td>
                             @endif
 
@@ -105,7 +105,7 @@
                                 </td>
                             @else
                             <td>
-                                <span class="badge bg-success">Diterima</span>
+                                <span class="badge bg-success">disetujui</span>
                             </td>
                             @endif
 
@@ -134,7 +134,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenterTitle"> Validasi diteirma {{ $item1->tb_data_mahasiswa->nama}}
+            <h5 class="modal-title" id="exampleModalCenterTitle"> Validasi Disetujui {{ $item1->tb_data_mahasiswa->nama}}
             </h5>
             <button type="button" class="close" data-bs-dismiss="modal"
                 aria-label="Close">
@@ -264,7 +264,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenterTitle"> Validasi diteirma {{ $catatan->tb_data_mahasiswa->nama}}
+            <h5 class="modal-title" id="exampleModalCenterTitle"> Validasi Disetujui {{ $catatan->tb_data_mahasiswa->nama}}
             </h5>
             <button type="button" class="close" data-bs-dismiss="modal"
                 aria-label="Close">
