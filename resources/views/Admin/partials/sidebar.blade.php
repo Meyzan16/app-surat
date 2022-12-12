@@ -80,19 +80,19 @@
 
                 @if(auth()->user()->roles == 'KEPALA_OPERATOR')
 
-                <li class="sidebar-item  has-sub">
+                <li class="sidebar-item {{ request()->is('kepala-operator/surat-mahasiswa*') ? 'active' : '' }}  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-file-earmark-medical-fill"></i>
                         <span>Surat Aktif Kuliah</span>
                     </a>
-                    <ul class="submenu ">
+                    <ul class="submenu {{ request()->is('kepala-operator/surat-mahasiswa*') ? 'active' : '' }}">
 
                         @php
                             $prodi = DB::table('tb_prodis')->get();
                         @endphp
 
                         @foreach($prodi as $item)
-                        <li class="submenu-item ">
+                        <li class="submenu-item">
                             <a href="{{ route('kepala-operator.surat-aktif-kuliah.index', $item->kode_prodi) }}">{{ $item->nama_prodi}}</a>
                         </li>
                         @endforeach
@@ -111,8 +111,8 @@
                         <li class="submenu-item {{ request()->is('kepala-operator/pengaturan/data-lampiran*') ? 'active' : '' }}">
                             <a href="{{ route('data-lampiran.index') }}">Lampiran Surat</a>
                         </li>
-                        <li class="submenu-item ">
-                            <a href="form-editor-ckeditor.html">Perihal Surat</a>
+                        <li class="submenu-item {{ request()->is('kepala-operator/pengaturan/data-perihal*') ? 'active' : '' }}">
+                            <a href="{{ route('data-perihal.index') }}">Perihal Surat</a>
                         </li>
                         <li class="submenu-item ">
                             <a href="form-editor-ckeditor.html">Tujuan Surat</a>

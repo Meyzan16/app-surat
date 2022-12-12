@@ -12,7 +12,7 @@
         <div class="col-12">
                 <div class="card">
                     <div class="card-body px-3 py-4-5">   
-                            <h5 class="text-center">Data prodi {{ $data->nama_prodi }}</h5>
+                            <h5 class="text-center">Data Prodi {{ $data->nama_prodi }}</h5>
                     </div>
                 </div>
         </div>
