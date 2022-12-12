@@ -172,7 +172,26 @@
 
                             @foreach($prodi as $item)
                             <li class="submenu-item ">
-                                <a href="{{ route('prodi-pengajuan.surat-aktif-kuliah.index', $item->kode_prodi) }}">{{ $item->nama_prodi}}</a>
+                                <a href="{{ route('ttd-persetujuan.surat-aktif-kuliah.index', $item->kode_prodi) }}">{{ $item->nama_prodi}}</a>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-item {{ request()->is('kepala-operator/surat-umum*') ? 'active' : '' }}  has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-file-earmark-medical-fill"></i>
+                            <span>Surat Umum</span>
+                        </a>
+                        <ul class="submenu {{ request()->is('kepala-operator/surat-umum*') ? 'active' : '' }}">
+    
+                            @php
+                                $prodi = DB::table('tb_prodis')->get();
+                            @endphp
+    
+                            @foreach($prodi as $item)
+                            <li class="submenu-item">
+                                <a href="{{ route('ttd-persetujuan.surat-umum.index', $item->kode_prodi) }}">{{ $item->nama_prodi}}</a>
                             </li>
                             @endforeach
                         </ul>
@@ -185,6 +204,7 @@
                         </a>
                     </li>
                 @endif
+
 
                 @if(auth()->user()->roles == 'VERIF_PRODI')
                     <li class="sidebar-item  has-sub">

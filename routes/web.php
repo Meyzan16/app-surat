@@ -32,6 +32,7 @@ use App\Http\Controllers\Admin\kepalaoperator\suratumum\SuratUmumKepOperatorCont
 
 // verif persetujuan
 use App\Http\Controllers\Admin\verifpersetujuan\SuratAktifKuliahVerifPersetujuanController;
+use App\Http\Controllers\Admin\verifpersetujuan\suratumum\SuratUmumVerifPersetujuanController;
 
 //prodi
 use App\Http\Controllers\Admin\prodi\SuratAktifKuliahProdiController;
@@ -236,7 +237,7 @@ Route::group([
             
             Route::patch('{prodi}/verif-diterima', [SuratUmumKepOperatorController::class, 'verifikasi'])->name('kep-operator.surat-umum.verif_diterima');
             Route::patch('{prodi}/verif-ditolak', [SuratUmumKepOperatorController::class, 'verifikasi_tolak'])->name('kep-operator.surat-umum.verif_ditolak');
-        });
+    });
 
 
 
@@ -267,6 +268,18 @@ Route::group([
 
         });
     });
+
+    Route::group([
+        'middleware' => 'is_ttdpersetujuan',
+        'prefix'  => 'surat-umum/'],function(){
+            Route::get('{prodi}', [SuratUmumVerifPersetujuanController::class, 'index'])->name('ttd-persetujuan.surat-umum.index');
+            
+            Route::get('{id}/show-data', [SuratUmumVerifPersetujuanController::class, 'show'])->name('ttd-persetujuan.surat-umum.show');
+            
+            Route::patch('{prodi}/verif-diterima', [SuratUmumVerifPersetujuanController::class, 'verifikasi'])->name('ttd-persetujuan.surat-umum.verif_diterima');
+          
+    });
+
 });
 
 
