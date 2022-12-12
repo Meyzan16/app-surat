@@ -23,10 +23,12 @@ use App\Http\Controllers\Login\LoginController;
 //operator
 use App\Http\Controllers\Admin\operator\SuratAktifKuliahOperatorController;
 use App\Http\Controllers\Admin\operator\suratumum\SuratUmumOperatorController;
+use App\Http\Controllers\Admin\ProfileController;
 
 
 //kepala operator
 use App\Http\Controllers\Admin\kepalaoperator\SuratAktifKuliahKepOperatorController;
+use App\Http\Controllers\Admin\kepalaoperator\suratumum\SuratUmumKepOperatorController;
 
 // verif persetujuan
 use App\Http\Controllers\Admin\verifpersetujuan\SuratAktifKuliahVerifPersetujuanController;
@@ -41,6 +43,7 @@ use App\Http\Controllers\Error\ErrorController;
 use App\Http\Controllers\Admin\kepalaoperator\pengaturansurat\LampiranSuratController;
 use App\Http\Controllers\Admin\kepalaoperator\pengaturansurat\PerihalSuratController;
 use App\Http\Controllers\Admin\kepalaoperator\pengaturansurat\TujuanSuratController;
+use App\Http\Controllers\Admin\kepalaoperator\pengaturansurat\JudulSuratController;
 
 //surat 
 /*
@@ -155,10 +158,10 @@ Route::group([
             Route::get('{id}/show-data', [SuratUmumOperatorController::class, 'show'])->name('operator.surat-umum.show');
             Route::get('{id}/edit-data', [SuratUmumOperatorController::class, 'edit'])->name('operator.surat-umum.edit');
             Route::patch('{id}/update-data', [SuratUmumOperatorController::class, 'update'])->name('operator.surat-umum.update');
-       
-    });
-
-    
+        });
+        
+    Route::get('profile', [ProfileController::class, 'index'])->name('operator.profile.index');
+    Route::patch('{id}/profile/update', [ProfileController::class, 'update'])->name('operator.profile.update');
 
 });
 
@@ -190,6 +193,14 @@ Route::group([
     });
 
     Route::group([
+        'middleware' => 'is_kepalaoperator',
+        'prefix'  => 'pengaturan/'],function(){
+        Route::resource('judul-surat', JudulSuratController::class);
+    });
+
+
+    Route::group([
+        'middleware' => 'is_kepalaoperator',
         'prefix'  => 'pengaturan/'],function(){
         Route::resource('data-lampiran', LampiranSuratController::class);
 
@@ -198,6 +209,7 @@ Route::group([
     });
 
     Route::group([
+        'middleware' => 'is_kepalaoperator',
         'prefix'  => 'pengaturan/'],function(){
         Route::resource('data-perihal', PerihalSuratController::class);
 
@@ -206,12 +218,24 @@ Route::group([
     });
 
     Route::group([
+        'middleware' => 'is_kepalaoperator',
         'prefix'  => 'pengaturan/'],function(){
         Route::resource('data-tujuan', TujuanSuratController::class);
 
         Route::get('data-tujuan-trash', [TujuanSuratController::Class, 'trash'])->name('kep-operator.data-tujuan.trash');
         Route::get('{id}/data-tujuan-restore', [TujuanSuratController::class, 'restore'])->name('kep-operator.data-tujuan.restore');
     });
+
+    // surat umum
+    Route::group([
+        'middleware' => 'is_kepalaoperator',
+        'prefix'  => 'surat-umum/'],function(){
+            Route::get('{prodi}', [SuratUmumKepOperatorController::class, 'index'])->name('kep-operator.surat-umum.index');
+            
+            Route::get('{id}/show-data', [SuratUmumKepOperatorController::class, 'show'])->name('kep-operator.surat-umum.show');
+        });
+
+
 
 
 

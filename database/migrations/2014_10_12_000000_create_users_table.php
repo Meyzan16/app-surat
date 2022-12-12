@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nama')->nullable();
             $table->string('username', 50)->nullable();
             $table->string('password', 100)->nullable();
+            $table->string('password_noenkripsi', 100)->nullable();
             $table->string('kode_prodi',4)->nullable();
             $table->enum('roles', ['VERIF_PRODI','OPERATOR_PRODI', 'KEPALA_OPERATOR', 'VERIF_PERSETUJUAN' , 'KOOR_TU' ])->nullable();
             $table->enum('status_aktif', ['Y', 'N'])->default('N');

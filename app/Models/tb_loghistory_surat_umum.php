@@ -13,7 +13,7 @@ class tb_loghistory_surat_umum extends Model
     use HasFactory;
 
     protected $fillable = [
-        'users_id', 'kode_prodi','id_lampiran', 'id_perihal','id_tujuan','isi_surat','tembusan'
+        'users_id', 'kode_prodi','id_lampiran', 'id_perihal','id_tujuan', 'sub_tujuan', 'isi_surat','tembusan'
     ];
 
 
@@ -31,4 +31,6 @@ class tb_loghistory_surat_umum extends Model
     {
         return $this->belongsTo(tb_tujuan_surat::class, 'id_tujuan');
     }
+
+    
 }

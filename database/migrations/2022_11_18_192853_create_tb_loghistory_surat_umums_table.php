@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('id_lampiran')->nullable();
             $table->foreignId('id_perihal')->nullable();
             $table->foreignId('id_tujuan')->nullable();
+            $table->string('sub_tujuan',200)->nullable();
             $table->text('isi_surat')->nullable();
             $table->text('tembusan')->nullable();
             $table->enum('kepala_operator', ['Y','N','belum diverifikasi'])->default('belum diverifikasi');

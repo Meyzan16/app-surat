@@ -10,6 +10,7 @@ use App\Models\tb_log_srt_ket_msh_kuliah;
 class tb_judul_surat extends Model
 {
     use HasFactory;
+    
 
     public function tb_jenis_surat()
     {
