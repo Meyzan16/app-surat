@@ -25,7 +25,7 @@
                         <th>Judul Surat</th>
                         <th>Tanggal Pengajuan</th>
                         <th>Status Operator</th>
-                        <th>Status Kepala Operator</th>
+                        <th>Status Kep.Operator</th>
                         <th>Status TTD Persetujuan</th>
                         <th>Masa Aktif</th>
                       </tr>

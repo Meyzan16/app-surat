@@ -99,17 +99,17 @@
                     </ul>
                 </li>
 
-                <li class="sidebar-item  has-sub">
+                <li class="sidebar-item  {{ request()->is('kepala-operator/pengaturan*') ? 'active' : '' }} has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-person-badge-fill"></i>
                         <span>Pengaturan Surat</span>
                     </a>
-                    <ul class="submenu ">
+                    <ul class="submenu {{ request()->is('kepala-operator/pengaturan*') ? 'active' : '' }}">
                         <li class="submenu-item ">
                             <a href="form-editor-quill.html">Jenis Surat</a>
                         </li>
-                        <li class="submenu-item ">
-                            <a href="form-editor-ckeditor.html">Lampiran Surat</a>
+                        <li class="submenu-item {{ request()->is('kepala-operator/pengaturan/data-lampiran*') ? 'active' : '' }}">
+                            <a href="{{ route('data-lampiran.index') }}">Lampiran Surat</a>
                         </li>
                         <li class="submenu-item ">
                             <a href="form-editor-ckeditor.html">Perihal Surat</a>

@@ -127,6 +127,8 @@
 
     </section>
 
+    
+
 {{-- verif terima operator --}}
 @foreach($data as $item1)
 <div class="modal fade" id="exampleModalTerima{{$item1->npm}}" tabindex="-1" role="dialog"

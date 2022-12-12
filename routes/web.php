@@ -33,9 +33,11 @@ use App\Http\Controllers\Admin\verifpersetujuan\SuratAktifKuliahVerifPersetujuan
 //prodi
 use App\Http\Controllers\Admin\prodi\SuratAktifKuliahProdiController;
 
-
 // error
 use App\Http\Controllers\Error\ErrorController;
+
+//pengaturan
+use App\Http\Controllers\Admin\kepalaoperator\pengaturansurat\LampiranSuratController;
 
 //surat 
 /*
@@ -142,8 +144,6 @@ Route::group([
 
 });
 
-
-
 //kepala operator
 Route::group([
     'middleware' => 'auth',
@@ -170,6 +170,16 @@ Route::group([
             Route::post('{prodi}/veri-batal-kepala-operator', [SuratAktifKuliahKepOperatorController::class, 'verif_batal_kepala'])->name('kepala-operator.surat-aktif-kuliah.verif-batal-kep-operator');
         });
     });
+
+    Route::group([
+        'prefix'  => 'pengaturan/'],function(){
+        Route::resource('data-lampiran', LampiranSuratController::class);
+
+        Route::get('data-lampiran-trash', [LampiranSuratController::Class, 'trash'])->name('kep-operator.data-lampiran.trash');
+        Route::get('{id}/data-lampiran-restore', [LampiranSuratController::class, 'restore'])->name('kep-operator.data-lampiran.restore');
+    });
+
+
 });
 
 
