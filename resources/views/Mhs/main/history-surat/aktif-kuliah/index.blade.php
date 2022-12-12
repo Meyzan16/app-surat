@@ -58,7 +58,7 @@
                           
                           </td>
                            @elseif($item->operator_prodi == 'Y')
-                           <td><span class="badge bg-label-success me-1">Diterima</span></td>
+                           <td><span class="badge bg-label-success me-1">disetujui</span></td>
                           @endif
 
 
@@ -68,14 +68,14 @@
                           @elseif($item->kepala_operator == 'N')
                           <td><span class="badge bg-label-warning me-1">Menunggu</span></td>
                           @else
-                          <td><span class="badge bg-label-success me-1">Diterima</span></td>
+                          <td><span class="badge bg-label-success me-1">disetujui</span></td>
                           @endif
 
                        
 
                          <td>
                             @if($item->status_persetujuan == 'Y')
-                                   <span class="badge bg-label-success me-1">Diterima</span>
+                                   <span class="badge bg-label-success me-1">disetujui</span>
 
                                     @php
                                     $created = new DateTime($item->created_at);

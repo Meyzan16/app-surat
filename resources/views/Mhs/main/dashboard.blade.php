@@ -32,17 +32,6 @@
           </div>
         </div>
       </div>
-{{-- 
-      @if ($message = Session::get('toast_error'))
-        <div class="autohide col-12 col-md-12 col-lg-12 order-0  mb-0 mt-4">
-               <div class="alert alert-danger  text-center">
-                {{$message}}
-               </div>                  
-       </div>
-        --}}
-     {{-- @endif --}}
-
-
     </div>
 
  
@@ -150,13 +139,13 @@
                     <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
                       <div class="card-title">
                         <h5 class="text-nowrap mb-2">Pengajuan Surat</h5>
-                        <span class="badge bg-label-warning rounded-pill">Year 2021</span>
+                        <span class="badge bg-label-warning rounded-pill">Proses Pengajuan</span>
                       </div>
                       <div class="mt-sm-auto">
-                        <small class="text-success text-nowrap fw-semibold"
+                        {{-- <small class="text-success text-nowrap fw-semibold"
                           ><i class="bx bx-chevron-up"></i> 68.2%</small
-                        >
-                        <h3 class="mb-0">$84,686k</h3>
+                        > --}}
+                        {{-- <h3 class="mb-0">$84,686k</h3> --}}
                       </div>
                     </div>
                   
@@ -173,13 +162,26 @@
                   <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
                     <div class="card-title">
                       <h5 class="text-nowrap mb-2">Biodata Diri</h5>
-                      <span class="badge bg-label-warning rounded-pill">Year 2021</span>
+                      @if($tb_data_mahasiswa)
+                        
+                        <span class="badge bg-label-success rounded-pill">Sudah dilengkapi</span>
+                      @else
+                        
+                        <span class="badge bg-label-warning rounded-pill">Belum Melengkapi</span>
+                      @endif
+                      
                     </div>
                     <div class="mt-sm-auto">
-                      <small class="text-success text-nowrap fw-semibold"
-                        ><i class="bx bx-chevron-up"></i> 68.2%</small
-                      >
-                      <h3 class="mb-0">$84,686k</h3>
+                      {{-- @if($tb_data_mahasiswa)
+                        <small class="text-success text-nowrap fw-semibold"
+                          ><i class="bx bx-chevron-up"></i>Sudah dilengkapi</small
+                        >
+                      @else
+                        <small class="text-danger text-nowrap fw-semibold"
+                          ><i class="bx bx-chevron-up"></i>Belum Melengkapi</small
+                        >
+                      @endif --}}
+                     
                     </div>
                   </div>
                 
@@ -195,14 +197,14 @@
               <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
                 <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
                   <div class="card-title">
-                    <h5 class="text-nowrap mb-2">Informasi Verifaktor Prodi</h5>
-                    <span class="badge bg-label-warning rounded-pill">Year 2021</span>
+                    <h5 class="text-nowrap mb-2">Informasi Operator Prodi</h5>
+                    <span class="badge bg-label-warning rounded-pill">Narasumber penghubung</span>
                   </div>
                   <div class="mt-sm-auto">
-                    <small class="text-success text-nowrap fw-semibold"
+                    {{-- <small class="text-success text-nowrap fw-semibold"
                       ><i class="bx bx-chevron-up"></i> 68.2%</small
-                    >
-                    <h3 class="mb-0">$84,686k</h3>
+                    > --}}
+                    {{-- <h3 class="mb-0">$84,686k</h3> --}}
                   </div>
                 </div>
               
@@ -218,13 +220,12 @@
                 <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
                   <div class="card-title">
                     <h5 class="text-nowrap mb-2">History Pengajuan Surat</h5>
-                    <span class="badge bg-label-warning rounded-pill">Year 2021</span>
+                    <span class="badge bg-label-success rounded-pill">{{ $count_aktif_kuliah; }} Data Aktif </span>
                   </div>
                   <div class="mt-sm-auto">
                     <small class="text-success text-nowrap fw-semibold"
-                      ><i class="bx bx-chevron-up"></i> 68.2%</small
-                    >
-                    <h3 class="mb-0">$84,686k</h3>
+                      {{-- ><i class="bx bx-chevron-up"></i> {{ $count_aktif_kuliah; }} Data Aktif </small --}}
+                    > 
                   </div>
                 </div>
               
