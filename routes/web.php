@@ -39,6 +39,7 @@ use App\Http\Controllers\Error\ErrorController;
 //pengaturan
 use App\Http\Controllers\Admin\kepalaoperator\pengaturansurat\LampiranSuratController;
 use App\Http\Controllers\Admin\kepalaoperator\pengaturansurat\PerihalSuratController;
+use App\Http\Controllers\Admin\kepalaoperator\pengaturansurat\TujuanSuratController;
 
 //surat 
 /*
@@ -186,6 +187,14 @@ Route::group([
 
         Route::get('data-perihal-trash', [PerihalSuratController::Class, 'trash'])->name('kep-operator.data-perihal.trash');
         Route::get('{id}/data-perihal-restore', [PerihalSuratController::class, 'restore'])->name('kep-operator.data-perihal.restore');
+    });
+
+    Route::group([
+        'prefix'  => 'pengaturan/'],function(){
+        Route::resource('data-tujuan', TujuanSuratController::class);
+
+        Route::get('data-tujuan-trash', [TujuanSuratController::Class, 'trash'])->name('kep-operator.data-tujuan.trash');
+        Route::get('{id}/data-tujuan-restore', [TujuanSuratController::class, 'restore'])->name('kep-operator.data-tujuan.restore');
     });
 
 

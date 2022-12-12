@@ -114,8 +114,8 @@
                         <li class="submenu-item {{ request()->is('kepala-operator/pengaturan/data-perihal*') ? 'active' : '' }}">
                             <a href="{{ route('data-perihal.index') }}">Perihal Surat</a>
                         </li>
-                        <li class="submenu-item ">
-                            <a href="form-editor-ckeditor.html">Tujuan Surat</a>
+                        <li class="submenu-item {{ request()->is('kepala-operator/pengaturan/data-tujuan*') ? 'active' : '' }}">
+                            <a href="{{ route('data-tujuan.index') }}">Tujuan Surat</a>
                         </li>
                         <li class="submenu-item ">
                             <a href="form-editor-ckeditor.html">Tembusan Surat</a>

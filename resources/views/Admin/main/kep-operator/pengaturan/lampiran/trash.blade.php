@@ -2,59 +2,78 @@
 
 @extends('admin.layout.layout')
 @section('content')
-<div id="main-content">
-    <div class="page-heading">
-        <h3>Data Lampiran Yang Tidak Aktif</h3>
+<div class="page-heading">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Data Lampiran Yang Tidak Aktif</h3>
+
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Lampiran </a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Tidak Aktif</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
     </div>
 
+    <section class="section">
+        <div class="card">
+            <div class="card-header">
+                <button type="button" class="mr-3 btn btn-outline-primary block"
+                data-bs-toggle="modal" data-bs-target="#catatan_penolakan">
+                &nbsp;Tambah Data
+                </button>
 
-    <div class="page-content">
-            <section class="section">
-                <div class="card">
-                    <div class="card-header text-right">
+                <a href="{{ route('kep-operator.data-tujuan.trash') }}" class='sidebar-link'>
+                    <i class="fas fa-trash-alt"></i>
+                    <span>Tempat Sampah</span>
+                </a>
+            </div>
 
-                    </div>
+            <div class="card-body">
+                <table class="table table-striped" id="table1">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Tanggal dinon-aktifkan</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($data as $item)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $item->judul_lampiran }}</td>
+                            <td>{{ $item->deleted_at }}</td>    
 
+                            <td>
+                                    <a href="{{ route('kep-operator.data-lampiran.restore', $item->id) }}"  class="badge bg-success"><span data-feather="eye">Restore</span></a>
+                            </td>
+                            
 
-                    
+                        
+                            
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
 
-                    <div class="card-body">
-                        <table class="table table-striped" id="table1">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama</th>
-                                    <th>Tanggal dinon-aktifkan</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($data as $item)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->judul_lampiran }}</td>
-                                    <td>{{ $item->deleted_at }}</td>    
+                <button type="button" class="mb-2 btn btn-warning" aria-label="Left Align" onclick="location.href='{{ route('data-lampiran.index') }}'">
+                    <i class="fa fa-arrow-circle-left"> </i> Kembali
+                </button>
 
-                                    <td>
-                                            <a href="{{ route('kep-operator.data-lampiran.restore', $item->id) }}"  class="badge bg-success"><span data-feather="eye">Restore</span></a>
-                                    </td>
-                                    
+            </div>
+        </div>
 
-                                
-                                    
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+    </section>
+        
 
-                        <button type="button" class="mb-2 btn btn-warning" aria-label="Left Align" onclick="location.href='{{ route('data-lampiran.index') }}'">
-                            <i class="fa fa-arrow-circle-left"> </i> Kembali
-                        </button>
-
-                    </div>
-                </div>
-        </section>
-    </div>
+   
         
    
 
