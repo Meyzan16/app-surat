@@ -233,6 +233,9 @@ Route::group([
             Route::get('{prodi}', [SuratUmumKepOperatorController::class, 'index'])->name('kep-operator.surat-umum.index');
             
             Route::get('{id}/show-data', [SuratUmumKepOperatorController::class, 'show'])->name('kep-operator.surat-umum.show');
+            
+            Route::patch('{prodi}/verif-diterima', [SuratUmumKepOperatorController::class, 'verifikasi'])->name('kep-operator.surat-umum.verif_diterima');
+            Route::patch('{prodi}/verif-ditolak', [SuratUmumKepOperatorController::class, 'verifikasi_tolak'])->name('kep-operator.surat-umum.verif_ditolak');
         });
 
 

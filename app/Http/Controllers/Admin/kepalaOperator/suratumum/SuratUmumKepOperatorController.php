@@ -36,19 +36,50 @@ class SuratUmumKepOperatorController extends Controller
 
  
 
-    public function update(Request $request, $id)
-    {
-        tb_loghistory_surat_umum::where('id', $id)->update([
-            'id_lampiran' => $request->id_lampiran,
-            'id_perihal' => $request->id_perihal,
-            'id_tujuan' => $request->id_tujuan,
-            'isi_surat' => $request->isi_surat,
-            'sub_tujuan' => $request->sub_tujuan,
-            'tembusan' => $request->tembusan,
+     // kepala operator
+     public function verifikasi(Request $request, $prodi){
+        $id = $request->id;
+        tb_loghistory_surat_umum::where([
+            ['id', '=',  $id]
+        ])->update([
+            'kepala_operator'    =>  'Y',
+            'catatan_kepala_operator' => NULL,
+            'time_acc_kep_operator' => date("Y-m-d H:i:s"),
         ]);
 
-        return redirect()->route('operator.surat-umum.index')->with('success',' Data berhasil di perbarui ');
+         return redirect()->route('kep-operator.surat-umum.index', $prodi )->with(['toast_success' => 'Data berhasil di verifikasi !!']);
     }
+
+    
+    public function verifikasi_tolak(Request $request, $prodi){
+        $id = $request->id;
+        //pasang rules
+        $rules = [
+            'catatan_kepala_operator'=> 'required'
+        ];
+
+
+        //ambil semua request dan pasang rules dan isi pesanya
+        $validator = Validator::make($request->all(), $rules);
+        //jika rules tidak sesuai kembalikan ke login bawak pesan error dan bawak request nya agar bisa dipakai denga old di view
+        if($validator->fails())
+        {
+            return redirect()->route('kep-operator.surat-umum.index', $prodi)->with(['toast_error' =>' Catatan wajib di isi!!']);
+ 
+        } 
+        else{
+
+            tb_loghistory_surat_umum::where('id',$id)->update([
+                'kepala_operator'    =>  'N',
+                'catatan_kepala_operator'   => $request->catatan_kepala_operator,
+                'time_acc_kep_operator' => date("Y-m-d H:i:s"),     
+            ]);
+            return redirect()->route('kep-operator.surat-umum.index', $prodi )->with(['toast_success' => 'Data berhasil di tolak !!']);
+        }
+}
+
+
+  
 
 
 }
