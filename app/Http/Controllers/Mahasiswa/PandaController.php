@@ -67,8 +67,8 @@ class PandaController extends Controller
                 }}
             ';
 
-            $prodis = tb_prodi::select('kode_prodi')->pluck('kode_prodi');
-            $result =  $prodis->toArray();
+            // $prodis = tb_prodi::select('kode_prodi')->pluck('kode_prodi');
+            // $result =  $prodis->toArray();
 
             if($data[0]['is_access']==1){
                 if($data[0]['tusrThakrId']==1){
