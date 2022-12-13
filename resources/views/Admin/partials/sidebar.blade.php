@@ -144,6 +144,9 @@
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
+                            <a href="form-editor-ckeditor.html">Akun Prodi</a>
+                        </li>
+                        <li class="submenu-item ">
                             <a href="form-editor-quill.html">Akun Operator</a>
                         </li>
                         <li class="submenu-item ">

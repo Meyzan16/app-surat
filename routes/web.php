@@ -168,6 +168,7 @@ Route::group([
 
 });
 
+
 //kepala operator
 Route::group([
     'middleware' => 'auth',
@@ -183,7 +184,6 @@ Route::group([
             Route::get('{prodi}/Data-pengajuan', [SuratAktifKuliahKepOperatorController::class, 'show'] )->name('kepala-operator.surat-aktif-kuliah.show');
             Route::get('{prodi}/history-pengajuan', [SuratAktifKuliahKepOperatorController::class, 'history'])->name('kepala-operator.surat-aktif-kuliah.history');
 
-
             // operator
             //kenapa prodi , karna di filter secara prodi dan di update secara npm, npm di ambil lewat request
             Route::post('{prodi}/verif_diterima_operator', [SuratAktifKuliahKepOperatorController::class, 'verifikasi'])->name('kepala-operator.surat-aktif-kuliah.verif_diterima');
@@ -196,9 +196,21 @@ Route::group([
             Route::get('{id}/cetak', [CetakController::class, 'aktif_kuliah'])->name('kepala-operator.cetak.aktif-kuliah');
         });
     });
+    
+    // surat umum
+    Route::group([
+        'middleware' => 'is_kepalaoperator',
+        'prefix'  => 'surat-umum/'],function(){
+            Route::get('{prodi}', [SuratUmumKepOperatorController::class, 'index'])->name('kep-operator.surat-umum.index');
+            
+            Route::get('{id}/show-data', [SuratUmumKepOperatorController::class, 'show'])->name('kep-operator.surat-umum.show');
+            
+            Route::patch('{prodi}/verif-diterima', [SuratUmumKepOperatorController::class, 'verifikasi'])->name('kep-operator.surat-umum.verif_diterima');
+            Route::patch('{prodi}/verif-ditolak', [SuratUmumKepOperatorController::class, 'verifikasi_tolak'])->name('kep-operator.surat-umum.verif_ditolak');
+    });
+
 
     // pengaturan
-
     Route::group([
         'middleware' => 'is_kepalaoperator',
         'prefix'  => 'pengaturan/'],function(){
@@ -231,19 +243,20 @@ Route::group([
         Route::get('data-tujuan-trash', [TujuanSuratController::Class, 'trash'])->name('kep-operator.data-tujuan.trash');
         Route::get('{id}/data-tujuan-restore', [TujuanSuratController::class, 'restore'])->name('kep-operator.data-tujuan.restore');
     });
-
     // akhir pengaturan
 
-    // surat umum
+    
+    //Akun operator
     Route::group([
         'middleware' => 'is_kepalaoperator',
-        'prefix'  => 'surat-umum/'],function(){
-            Route::get('{prodi}', [SuratUmumKepOperatorController::class, 'index'])->name('kep-operator.surat-umum.index');
-            
-            Route::get('{id}/show-data', [SuratUmumKepOperatorController::class, 'show'])->name('kep-operator.surat-umum.show');
-            
-            Route::patch('{prodi}/verif-diterima', [SuratUmumKepOperatorController::class, 'verifikasi'])->name('kep-operator.surat-umum.verif_diterima');
-            Route::patch('{prodi}/verif-ditolak', [SuratUmumKepOperatorController::class, 'verifikasi_tolak'])->name('kep-operator.surat-umum.verif_ditolak');
+        'prefix'  => 'akun/'],function(){
+
+            Route::group([
+                'prefix'  => 'operator/'],function(){
+                    Route::get('/', [AkunOperatorController::class, 'index'])->name('kep-operator.akun.index');
+                    
+                
+            });
     });
 
 
