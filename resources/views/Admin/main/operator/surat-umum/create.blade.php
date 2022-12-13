@@ -68,7 +68,7 @@
                                </select>
                             </div>
                             <div class="col-md-4 form-group">
-                                <input type="text" name="sub_tujuan" class="form-control" required>
+                                <input type="text" name="sub_tujuan" class="form-control" placeholder="Universitas Bengkulu" required>
                             </div>
 
 

@@ -108,9 +108,19 @@
 				NIP 1919922972972979
 				</td>	
 			</tr>
-
-	
 	     </table>
+		 <br>
+		 @if($data->tembusan)
+		 <table width="600">
+			<tr>
+		       <td>
+				<font size="2">Tembusan :<br>
+                    {!!$data->tembusan!!} 
+                    </font>
+		       </td>
+		    </tr>
+		</table>
+		@endif
 	</center>
 </body>
 </html>
