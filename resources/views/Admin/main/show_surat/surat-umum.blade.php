@@ -98,6 +98,7 @@
 		</table>
 		<br>
 
+		@if($data->status_persetujuan == 'Y')
 		<table width="600">
 			<tr>
 				<td width="400"><br><br><br><br></td>
@@ -109,6 +110,8 @@
 				</td>	
 			</tr>
 	     </table>
+		 @endif
+
 		 <br>
 		 @if($data->tembusan)
 		 <table width="600">

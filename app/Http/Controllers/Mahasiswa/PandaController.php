@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Mahasiswa;
 use App\Http\Controllers\Controller;
-
+use App\Models\tb_prodi;
 
 use App\Models\tb_data_mahasiswa;
 use GuzzleHttp\Client;
@@ -66,8 +66,9 @@ class PandaController extends Controller
                         }
                 }}
             ';
-            // $prodis = Prodi::select('kode_prodi')->pluck('kode_prodi');
-            // $result =  $prodis->toArray();
+
+            $prodis = tb_prodi::select('kode_prodi')->pluck('kode_prodi');
+            $result =  $prodis->toArray();
 
             if($data[0]['is_access']==1){
                 if($data[0]['tusrThakrId']==1){

@@ -161,7 +161,7 @@
                 @if(auth()->user()->roles == 'VERIF_PERSETUJUAN')
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
-                            <i class="bi bi-file-earmark-medical-fill"></i>
+                            <i class="bi bi-stack "></i>
                             <span>Surat Aktif Kuliah verif</span>
                         </a>
                         <ul class="submenu ">
@@ -178,9 +178,24 @@
                         </ul>
                     </li>
 
+                    <li class="sidebar-item has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-stack "></i>
+                            <span>Surat Keterangan Lulus</span>
+                        </a>
+                        <ul class="submenu">
+                            <li class="submenu-item">
+                                <a href="">Data pengajuan</a>
+                            </li>
+                            <li class="submenu-item ">
+                                <a href="">History Surat</a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <li class="sidebar-item {{ request()->is('kepala-operator/surat-umum*') ? 'active' : '' }}  has-sub">
                         <a href="#" class='sidebar-link'>
-                            <i class="bi bi-file-earmark-medical-fill"></i>
+                            <i class="bi bi-stack "></i>
                             <span>Surat Umum</span>
                         </a>
                         <ul class="submenu {{ request()->is('kepala-operator/surat-umum*') ? 'active' : '' }}">

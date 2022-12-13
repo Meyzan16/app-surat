@@ -45,7 +45,7 @@ class SuratUmumOperatorController extends Controller
             'tembusan' => $request->tembusan,
         ]);
 
-        return redirect()->route('operator.surat-umum.index')->with('success',' Data berhasil di ajukan ');
+        return redirect()->route('operator.surat-umum.index')->with('toast_success',' Data berhasil di ajukan ');
     }
 
     public function show($id)
@@ -98,7 +98,7 @@ class SuratUmumOperatorController extends Controller
             ]);
         }
 
-        return redirect()->route('operator.surat-umum.index')->with('success',' Data berhasil di perbarui ');
+        return redirect()->route('operator.surat-umum.index')->with('toast_success',' Data berhasil di perbarui ');
     }
 
 
