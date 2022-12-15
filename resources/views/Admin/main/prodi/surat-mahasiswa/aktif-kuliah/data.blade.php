@@ -118,59 +118,7 @@
 
     </section>
 
-{{-- verif terima operator --}}
-@foreach($data as $item1)
-<div class="modal fade" id="exampleModalTerima{{$item1->npm}}" tabindex="-1" role="dialog"
-aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
-    role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenterTitle"> Validasi diteirma {{ $item1->tb_data_mahasiswa->nama}}
-            </h5>
-            <button type="button" class="close" data-bs-dismiss="modal"
-                aria-label="Close">
-                <i data-feather="x"></i>
-            </button>
-        </div>
 
-        <form action="{{ route('ttd-persetujuan.surat-aktif-kuliah.verifikasi', $prodi->kode_prodi) }}" method="POST">
-            @csrf 
-            <div class="modal-body">
-                    
-               
-                <p class="text-center">
-                    Perhatian !!!
-                    Silahkan cek data mahasiswa dengan benar untuk diverifikasi ,
-                    data yang telah diverifikasi tidak bisa di verifikasi ulang.
-                    setelah diverifikasi.
-                </p>
-                <center>
-                    <span class="badge bg-primary" >Selanjutnya menunggu verifikasi kepala operator</span>
-                </center>
-
-                <input type="hidden" value="{{ $item1->npm}}" name="npm"> 
-                
-            </div>
-            <div class="modal-footer">
-                    <button type="button" class="btn btn-light-secondary"
-                        data-bs-dismiss="modal">
-                        <i class="bx bx-x d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block">Kembali</span>
-                    </button>
-
-                    <button type="submit" class="btn btn-primary ml-1">
-                        <i class="bx bx-check d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block" >Verifikasi</span>
-                    </button>
-                    
-                
-            </div>
-        </form>
-    </div>
-</div>
-</div>
-@endforeach
 
 
 

@@ -29,6 +29,8 @@ use App\Http\Controllers\Admin\ProfileController;
 //kepala operator
 use App\Http\Controllers\Admin\kepalaoperator\SuratAktifKuliahKepOperatorController;
 use App\Http\Controllers\Admin\kepalaoperator\suratumum\SuratUmumKepOperatorController;
+use App\Http\Controllers\Admin\kepalaoperator\akun\AkunOperatorController;
+use App\Http\Controllers\Admin\kepalaoperator\akun\AkunProdiController;
 
 // verif persetujuan
 use App\Http\Controllers\Admin\verifpersetujuan\SuratAktifKuliahVerifPersetujuanController;
@@ -250,13 +252,10 @@ Route::group([
     Route::group([
         'middleware' => 'is_kepalaoperator',
         'prefix'  => 'akun/'],function(){
+                    Route::resource('akun-operator', AkunOperatorController::class);   
+                    Route::resource('akun-prodi', AkunProdiController::class);   
 
-            Route::group([
-                'prefix'  => 'operator/'],function(){
-                    Route::get('/', [AkunOperatorController::class, 'index'])->name('kep-operator.akun.index');
-                    
-                
-            });
+
     });
 
 

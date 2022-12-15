@@ -26,7 +26,7 @@
                     {{-- <p class="auth-subtitle mb-5"></p> --}}
 
                     @if(session()->has('loginerror'))
-                      <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+                      <div class="autohide alert alert-danger alert-dismissible fade show text-center" role="alert">
                         {{ session('loginerror'); }}
                       </div>
                     @endif
@@ -34,7 +34,7 @@
                     <form  action="{{ route('authentication-admin')}}" method="POST">
                       @csrf
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" class="form-control @error('username')is-invalid @enderror form-control-xl" placeholder="Username" name="username" >
+                            <input type="text" class="form-control @error('username')is-invalid @enderror form-control-xl" placeholder="Username" name="username" onkeyup="upper()">
                             <div class="form-control-icon">
                                 <i class="bi bi-person"></i>
                             </div>
@@ -71,6 +71,20 @@
 
     </div>
 
+    <script>     
+        window.setTimeout(function() {
+            $(".autohide").fadeTo(500, 0).slideUp(500, function() {
+                $(this).remove();
+            });
+        }, 4000);
+
+        </script>	
+        <script>
+            function upper() {
+                const word = document.getElementById('username');
+                word.value = word.value.toUpperCase();
+            }
+        </script>
     
 </body>
 

@@ -51,6 +51,14 @@
         @include('sweetalert::alert')
     </div>
     @stack('addon-script')
+    <script>
+        window.setTimeout(function() {
+            $(".autohide").fadeTo(500, 0).slideUp(500, function() {
+                $(this).remove();
+            });
+        }, 4000);
+    </script>
+    
     <script src="/template-admin/demo/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="/template-admin/demo/assets/js/bootstrap.bundle.min.js"></script>
 
@@ -65,6 +73,8 @@
         let table1 = document.querySelector('#table1');
         let dataTable = new simpleDatatables.DataTable(table1);
     </script>
+
+    
 
     @stack('prepend-script')
 

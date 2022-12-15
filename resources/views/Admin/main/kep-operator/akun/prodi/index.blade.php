@@ -6,13 +6,13 @@
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Akun Operator</h3>
+                <h3>Akun Prodi</h3>
 
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Akun operator</a></li>
+                        <li class="breadcrumb-item"><a href="index.html">Akun prodi</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Data</li>
                     </ol>
                 </nav>
@@ -63,9 +63,9 @@
                             <td>{{ $item->username }}</td>
                             <td>{{ $item->tb_prodi->nama_prodi }}</td>
 
-                            @if($item->roles == 'OPERATOR_PRODI')
+                            @if($item->roles == 'VERIF_PRODI')
                                 <td>
-                                    <span class="badge bg-primary" >OPERATOR PRODI FAKULTAS</span>
+                                    <span class="badge bg-primary" >AKUN PRODI</span>
                                 </td>   
                             @endif
 
@@ -85,7 +85,7 @@
 
                                 <a class="badge bg-warning"   data-bs-toggle="modal" data-bs-target="#edit_data{{ $item->id }}">  <i class="fa fa-edit"> </i>  </a>
 
-                                <form action="{{ route('akun-operator.destroy', $item->id) }}" method="POST" class="d-inline">
+                                <form action="{{ route('akun-prodi.destroy', $item->id) }}" method="POST" class="d-inline">
                                     {{ csrf_field() }}  {{ method_field("DELETE") }}
                                     <button class="badge bg-danger border-0" onclick="return confirm('Anda yakin, ingin menghapus data ?')" >  <i class="fa fa-ban"> </i>
                                     </button>
@@ -118,7 +118,7 @@
                     <i data-feather="x"></i>
                 </button>
             </div>
-            <form action="{{ route('akun-operator.store') }}" method="POST">
+            <form action="{{ route('akun-prodi.store') }}" method="POST">
                 @csrf 
                 <div class="modal-body">
                     <div>
@@ -133,6 +133,7 @@
                         <h6 class="modal-title" id="exampleModalCenterTitle" aria-required="true"> PASSWORD  </h6>
                        <input type="text" class="form-control" name="password">
                     </div>
+                    
                     <div>
                         <h6 class="modal-title" id="exampleModalCenterTitle" aria-required="true"> NAMA PRODI  </h6>
                         <select name="kode_prodi" id="" class="form-control">
@@ -142,20 +143,6 @@
                             @endforeach
                        </select>
                     </div>
-
-                    {{-- <div>
-                        <h6 class="modal-title" id="exampleModalCenterTitle" aria-required="true"> ROLE  </h6>
-                        <select name="roles" id="" class="form-control">
-                           <option value=""> --pilih data--</option>
-                           <option value="VERIF_PRODI">PRODI</option>
-                           <option value="OPERATOR_PRODI">OPERATOR PRODI FAKULTAS</option>
-                           <option value="VERIF_PERSETUJUAN">KEPALA OPERATOR</option>
-                           <option value="KOOR_TU">TTD PERSETUJUAN</option>
-
-                           
-                           
-                       </select>
-                    </div> --}}
 
                     <div>
                         <h6 class="modal-title" id="exampleModalCenterTitle" aria-required="true"> STATUS AKTIF  </h6>
@@ -202,7 +189,7 @@
                         <i data-feather="x"></i>
                     </button>
                 </div>
-                <form action="{{ route('akun-operator.update', $item1->id) }}" method="POST">
+                <form action="{{ route('akun-prodi.update', $item1->id) }}" method="POST">
                     @csrf @method('PUT')
                     <div class="modal-body">
                         <div>

@@ -144,10 +144,10 @@
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
-                            <a href="form-editor-ckeditor.html">Akun Prodi</a>
+                            <a href="{{route('akun-prodi.index')}}">Akun Prodi</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="form-editor-quill.html">Akun Operator</a>
+                            <a href="{{route('akun-operator.index')}}">Akun Operator</a>
                         </li>
                         <li class="submenu-item ">
                             <a href="form-editor-ckeditor.html">Akun Persetujuan</a>
