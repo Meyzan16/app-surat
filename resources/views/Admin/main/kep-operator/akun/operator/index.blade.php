@@ -71,7 +71,7 @@
 
                             @if($item->status_aktif == 'Y')
                                 <td>
-                                    <span class="badge bg-success" >AKTIF</span>
+                                    <span class="badge bggit-success" >AKTIF</span>
                                 </td>  
                             @else 
                                 <td>
