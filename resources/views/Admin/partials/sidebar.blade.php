@@ -150,7 +150,7 @@
                             <a href="{{route('akun-operator.index')}}">Akun Operator</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="form-editor-ckeditor.html">Akun Persetujuan</a>
+                            <a href="{{route('akun-persetujuan.index')}}">Akun Persetujuan</a>
                         </li>
                         <li class="submenu-item ">
                             <a href="form-editor-ckeditor.html">Profile</a>

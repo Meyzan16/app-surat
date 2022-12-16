@@ -31,6 +31,7 @@ use App\Http\Controllers\Admin\kepalaoperator\SuratAktifKuliahKepOperatorControl
 use App\Http\Controllers\Admin\kepalaoperator\suratumum\SuratUmumKepOperatorController;
 use App\Http\Controllers\Admin\kepalaoperator\akun\AkunOperatorController;
 use App\Http\Controllers\Admin\kepalaoperator\akun\AkunProdiController;
+use App\Http\Controllers\Admin\kepalaoperator\akun\AkunPersetujuanController;
 
 // verif persetujuan
 use App\Http\Controllers\Admin\verifpersetujuan\SuratAktifKuliahVerifPersetujuanController;
@@ -259,8 +260,14 @@ Route::group([
                     Route::resource('akun-prodi', AkunProdiController::class);   
                     Route::get('akun-prodi-trash', [AkunProdiController::Class, 'trash'])->name('kep-operator.akun-prodi.trash');
                     Route::get('{id}/akun-prodi-restore', [AkunProdiController::class, 'restore'])->name('kep-operator.akun-prodi.restore');
+                    
+                    
+                    Route::resource('akun-persetujuan', AkunPersetujuanController::class);  
+    
 
     });
+
+
 
 
 
