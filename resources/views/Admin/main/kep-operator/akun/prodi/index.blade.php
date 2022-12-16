@@ -40,6 +40,12 @@
                 data-bs-toggle="modal" data-bs-target="#catatan_penolakan">
                 &nbsp;Tambah Data
                 </button>
+
+                <a href="{{ route('kep-operator.akun-prodi.trash') }}" class='sidebar-link'>
+                    <i class="fas fa-trash-alt"></i>
+                    <span>Tempat Sampah</span>
+                </a>
+            </div>
             </div>
 
             <div class="card-body">

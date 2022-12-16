@@ -82,8 +82,29 @@ class AkunOperatorController extends Controller
 
     public function destroy($id)
     {
-        user::findorfail($id)->delete();   
+
+        user::where('id', $id)->update([
+            'status_aktif' => 'N',
+        ]);  
+        user::findorfail($id)->delete();  
         return redirect()->route('akun-operator.index')->with(['toast_success' =>  'Data Berhasil dihapus']);
+    }
+
+    // menampilkan data guru yang sudah dihapus
+    public function trash()
+    { 
+        $data = user::onlyTrashed()->latest()->get();  
+        return view('Admin.main.kep-operator.akun.operator.trash',compact('data'));
+    }
+
+    
+    public function restore($id) 
+    {
+        user::where('id', $id)->withTrashed()->restore();
+        user::where('id', $id)->update([
+            'status_aktif' => 'Y',
+        ]);
+        return redirect()->route('akun-operator.index')->with('toast_success', 'Data berhasil di kembalikan');
     }
 
     

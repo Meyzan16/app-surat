@@ -40,6 +40,11 @@
                 data-bs-toggle="modal" data-bs-target="#catatan_penolakan">
                 &nbsp;Tambah Data
                 </button>
+
+                <a href="{{ route('kep-operator.akun-operator.trash') }}" class='sidebar-link'>
+                    <i class="fas fa-trash-alt"></i>
+                    <span>Tempat Sampah</span>
+                </a>
             </div>
 
             <div class="card-body">
@@ -71,7 +76,7 @@
 
                             @if($item->status_aktif == 'Y')
                                 <td>
-                                    <span class="badge bggit-success" >AKTIF</span>
+                                    <span class="badge bg-success" >AKTIF</span>
                                 </td>  
                             @else 
                                 <td>
@@ -87,7 +92,7 @@
 
                                 <form action="{{ route('akun-operator.destroy', $item->id) }}" method="POST" class="d-inline">
                                     {{ csrf_field() }}  {{ method_field("DELETE") }}
-                                    <button class="badge bg-danger border-0" onclick="return confirm('Anda yakin, ingin menghapus data ?')" >  <i class="fa fa-ban"> </i>
+                                    <button class="badge bg-danger border-0" onclick="return confirm('Data akan dinonaktifkan secara sementara')" >  <i class="fa fa-ban"> </i>
                                     </button>
                                 </form>
                             </td>

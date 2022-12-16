@@ -20,8 +20,8 @@ class SuratMasihKuliahController extends Controller
         $rules = [
             'semester'=> 'required|alpha',
             'masa_studi'=> 'required',
-            'nama_ortu' => 'required|alpha',
-            'pekerjaan' => 'required|alpha',
+            'nama_ortu' => 'required',
+            'pekerjaan' => 'required',
             'alamat' => 'required',
         ];
 
@@ -31,11 +31,7 @@ class SuratMasihKuliahController extends Controller
             'masa_studi.required'     => 'masa_studi wajib diisi',
             'nama_ortu.required'     => 'nama_ortu wajib diisi',
             'pekerjaan.required'     => 'pekerjaan wajib diisi',
-            'alamat.required'     => 'alamat wajib diisi',
-
-            'semester.alpha'     => 'semester hanya boleh huruf',
-            'nama_ortu.alpha'     => 'nama ortu hanya boleh huruf',
-            'pekerjaan.alpha'     => 'pekerjaan hanya boleh huruf',
+            'alamat.required'     => 'alamat wajib diisi'
        
           
         ];

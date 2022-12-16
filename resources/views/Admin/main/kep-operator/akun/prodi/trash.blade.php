@@ -6,13 +6,13 @@
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Data Lampiran Yang Tidak Aktif</h3>
+                <h3>Akun Prodi Yang Tidak Aktif</h3>
 
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Lampiran </a></li>
+                        <li class="breadcrumb-item"><a href="index.html">Akun Prodi </a></li>
                         <li class="breadcrumb-item active" aria-current="page">Tidak Aktif</li>
                     </ol>
                 </nav>
@@ -23,6 +23,7 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
+
             </div>
 
             <div class="card-body">
@@ -31,19 +32,37 @@
                         <tr>
                             <th>No</th>
                             <th>Nama</th>
+                            <th>Username</th>
+                            <th>Nama Prodi</th>
                             <th>Tanggal dinon-aktifkan</th>
-                            <th>Aksi</th>
+                            <th>status</th>
+                            <th>aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($data as $item)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->judul_lampiran }}</td>
-                            <td>{{ $item->deleted_at }}</td>    
+                            <td>{{ $item->nama }}</td>
+                            <td>{{ $item->username }}</td>
+                            <td>{{ $item->tb_prodi->nama_prodi }}</td>
+                            <td>{{ $item->deleted_at }}</td>
+
+                            @if($item->status_aktif == 'Y')
+                                <td>
+                                    <span class="badge bg-success" >AKTIF</span>
+                                </td>  
+                            @else 
+                                <td>
+                                    <span class="badge bg-danger"> TIDAK AKTIF</span>
+                                </td>  
+                            @endif
 
                             <td>
-                                    <a href="{{ route('kep-operator.data-lampiran.restore', $item->id) }}"  class="badge bg-success"><span data-feather="eye">Restore</span></a>
+                                    {{-- aturan default resource tambahakan edit di belakang --}}
+                                   
+
+                                    <a href="{{ route('kep-operator.akun-prodi.restore', $item->id) }}"  class="badge bg-success"><span data-feather="eye">Restore</span></a>
                             </td>
                             
 
@@ -54,7 +73,7 @@
                     </tbody>
                 </table>
 
-                <button type="button" class="mb-2 btn btn-warning" aria-label="Left Align" onclick="location.href='{{ route('data-lampiran.index') }}'">
+                <button type="button" class="mb-2 btn btn-warning" aria-label="Left Align" onclick="location.href='{{ route('akun-prodi.index') }}'">
                     <i class="fa fa-arrow-circle-left"> </i> Kembali
                 </button>
 

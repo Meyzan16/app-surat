@@ -252,9 +252,13 @@ Route::group([
     Route::group([
         'middleware' => 'is_kepalaoperator',
         'prefix'  => 'akun/'],function(){
-                    Route::resource('akun-operator', AkunOperatorController::class);   
-                    Route::resource('akun-prodi', AkunProdiController::class);   
+                    Route::resource('akun-operator', AkunOperatorController::class);  
+                    Route::get('akun-operator-trash', [AkunOperatorController::Class, 'trash'])->name('kep-operator.akun-operator.trash');
+                    Route::get('{id}/akun-operator-restore', [AkunOperatorController::class, 'restore'])->name('kep-operator.akun-operator.restore');
 
+                    Route::resource('akun-prodi', AkunProdiController::class);   
+                    Route::get('akun-prodi-trash', [AkunProdiController::Class, 'trash'])->name('kep-operator.akun-prodi.trash');
+                    Route::get('{id}/akun-prodi-restore', [AkunProdiController::class, 'restore'])->name('kep-operator.akun-prodi.restore');
 
     });
 
