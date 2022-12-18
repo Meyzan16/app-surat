@@ -23,7 +23,7 @@ use App\Http\Controllers\Login\LoginController;
 //operator
 use App\Http\Controllers\Admin\operator\SuratAktifKuliahOperatorController;
 use App\Http\Controllers\Admin\operator\suratumum\SuratUmumOperatorController;
-use App\Http\Controllers\Admin\ProfileController;
+
 
 
 //kepala operator
@@ -37,6 +37,7 @@ use App\Http\Controllers\Admin\kepalaoperator\akun\AkunKepOperatorController;
 // verif persetujuan
 use App\Http\Controllers\Admin\verifpersetujuan\SuratAktifKuliahVerifPersetujuanController;
 use App\Http\Controllers\Admin\verifpersetujuan\suratumum\SuratUmumVerifPersetujuanController;
+use App\Http\Controllers\Admin\verifpersetujuan\ProfilePersetujuanController;
 
 //prodi
 use App\Http\Controllers\Admin\prodi\SuratAktifKuliahProdiController;
@@ -49,6 +50,7 @@ use App\Http\Controllers\Admin\kepalaoperator\pengaturansurat\LampiranSuratContr
 use App\Http\Controllers\Admin\kepalaoperator\pengaturansurat\PerihalSuratController;
 use App\Http\Controllers\Admin\kepalaoperator\pengaturansurat\TujuanSuratController;
 use App\Http\Controllers\Admin\kepalaoperator\pengaturansurat\JudulSuratController;
+
 
 //surat 
 /*
@@ -167,8 +169,7 @@ Route::group([
             Route::patch('{id}/update-data', [SuratUmumOperatorController::class, 'update'])->name('operator.surat-umum.update');
         });
         
-    Route::get('profile', [ProfileController::class, 'index'])->name('operator.profile.index');
-    Route::patch('{id}/profile/update', [ProfileController::class, 'update'])->name('operator.profile.update');
+  
 
 });
 
@@ -315,6 +316,9 @@ Route::group([
             Route::patch('{prodi}/verif-diterima', [SuratUmumVerifPersetujuanController::class, 'verifikasi'])->name('ttd-persetujuan.surat-umum.verif_diterima');
           
     });
+
+    Route::get('profile', [ProfilePersetujuanController::class, 'index'])->name('persetujaun.profile.index');
+    Route::patch('{id}/profile/update', [ProfilePersetujuanController::class, 'update'])->name('persetujaun.profile.update');
 
 });
 

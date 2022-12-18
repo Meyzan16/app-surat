@@ -35,17 +35,7 @@
 
     <section class="section">
         <div class="card">
-            <div class="card-header">
-                <button type="button" class="mr-3 btn btn-outline-primary block"
-                data-bs-toggle="modal" data-bs-target="#catatan_penolakan">
-                &nbsp;Tambah Data
-                </button>
-
-                <a href="{{ route('kep-operator.akun-operator.trash') }}" class='sidebar-link'>
-                    <i class="fas fa-trash-alt"></i>
-                    <span>Tempat Sampah</span>
-                </a>
-            </div>
+         
 
             <div class="card-body">
                 <table class="table table-striped" id="table1">

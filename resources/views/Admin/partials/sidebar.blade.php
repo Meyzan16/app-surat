@@ -69,88 +69,88 @@
 
                 @if(auth()->user()->roles == 'KEPALA_OPERATOR')
 
-                <li class="sidebar-item {{ request()->is('kepala-operator/surat-mahasiswa*') ? 'active' : '' }}  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-file-earmark-medical-fill"></i>
-                        <span>Surat Aktif Kuliah</span>
-                    </a>
-                    <ul class="submenu {{ request()->is('kepala-operator/surat-mahasiswa*') ? 'active' : '' }}">
+                    <li class="sidebar-item {{ request()->is('kepala-operator/surat-mahasiswa*') ? 'active' : '' }}  has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-file-earmark-medical-fill"></i>
+                            <span>Surat Aktif Kuliah</span>
+                        </a>
+                        <ul class="submenu {{ request()->is('kepala-operator/surat-mahasiswa*') ? 'active' : '' }}">
 
-                        @php
-                            $prodi = DB::table('tb_prodis')->get();
-                        @endphp
+                            @php
+                                $prodi = DB::table('tb_prodis')->get();
+                            @endphp
 
-                        @foreach($prodi as $item)
-                        <li class="submenu-item">
-                            <a href="{{ route('kepala-operator.surat-aktif-kuliah.index', $item->kode_prodi) }}">{{ $item->nama_prodi}}</a>
-                        </li>
-                        @endforeach
-                    </ul>
-                </li>
+                            @foreach($prodi as $item)
+                            <li class="submenu-item">
+                                <a href="{{ route('kepala-operator.surat-aktif-kuliah.index', $item->kode_prodi) }}">{{ $item->nama_prodi}}</a>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </li>
 
-                <li class="sidebar-item {{ request()->is('kepala-operator/surat-umum*') ? 'active' : '' }}  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-file-earmark-medical-fill"></i>
-                        <span>Surat Umum</span>
-                    </a>
-                    <ul class="submenu {{ request()->is('kepala-operator/surat-umum*') ? 'active' : '' }}">
+                    <li class="sidebar-item {{ request()->is('kepala-operator/surat-umum*') ? 'active' : '' }}  has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-file-earmark-medical-fill"></i>
+                            <span>Surat Umum</span>
+                        </a>
+                        <ul class="submenu {{ request()->is('kepala-operator/surat-umum*') ? 'active' : '' }}">
 
-                        @php
-                            $prodi = DB::table('tb_prodis')->get();
-                        @endphp
+                            @php
+                                $prodi = DB::table('tb_prodis')->get();
+                            @endphp
 
-                        @foreach($prodi as $item)
-                        <li class="submenu-item">
-                            <a href="{{ route('kep-operator.surat-umum.index', $item->kode_prodi) }}">{{ $item->nama_prodi}}</a>
-                        </li>
-                        @endforeach
-                    </ul>
-                </li>
+                            @foreach($prodi as $item)
+                            <li class="submenu-item">
+                                <a href="{{ route('kep-operator.surat-umum.index', $item->kode_prodi) }}">{{ $item->nama_prodi}}</a>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </li>
 
 
 
-                <li class="sidebar-item  {{ request()->is('kepala-operator/pengaturan*') ? 'active' : '' }} has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-person-badge-fill"></i>
-                        <span>Pengaturan Surat</span>
-                    </a>
-                    <ul class="submenu {{ request()->is('kepala-operator/pengaturan*') ? 'active' : '' }}">
-                        <li class="submenu-item  {{ request()->is('kepala-operator/pengaturan/judul-surat*') ? 'active' : '' }}">
-                            <a href="{{route('judul-surat.index')}}">Judul Surat</a>
-                        </li>
-                        <li class="submenu-item {{ request()->is('kepala-operator/pengaturan/data-lampiran*') ? 'active' : '' }}">
-                            <a href="{{ route('data-lampiran.index') }}">Lampiran Surat</a>
-                        </li>
-                        <li class="submenu-item {{ request()->is('kepala-operator/pengaturan/data-perihal*') ? 'active' : '' }}">
-                            <a href="{{ route('data-perihal.index') }}">Perihal Surat</a>
-                        </li>
-                        <li class="submenu-item {{ request()->is('kepala-operator/pengaturan/data-tujuan*') ? 'active' : '' }}">
-                            <a href="{{ route('data-tujuan.index') }}">Tujuan Surat</a>
-                        </li>
-                    </ul>
-                </li>
+                    <li class="sidebar-item  {{ request()->is('kepala-operator/pengaturan*') ? 'active' : '' }} has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-person-badge-fill"></i>
+                            <span>Pengaturan Surat</span>
+                        </a>
+                        <ul class="submenu {{ request()->is('kepala-operator/pengaturan*') ? 'active' : '' }}">
+                            <li class="submenu-item  {{ request()->is('kepala-operator/pengaturan/judul-surat*') ? 'active' : '' }}">
+                                <a href="{{route('judul-surat.index')}}">Judul Surat</a>
+                            </li>
+                            <li class="submenu-item {{ request()->is('kepala-operator/pengaturan/data-lampiran*') ? 'active' : '' }}">
+                                <a href="{{ route('data-lampiran.index') }}">Lampiran Surat</a>
+                            </li>
+                            <li class="submenu-item {{ request()->is('kepala-operator/pengaturan/data-perihal*') ? 'active' : '' }}">
+                                <a href="{{ route('data-perihal.index') }}">Perihal Surat</a>
+                            </li>
+                            <li class="submenu-item {{ request()->is('kepala-operator/pengaturan/data-tujuan*') ? 'active' : '' }}">
+                                <a href="{{ route('data-tujuan.index') }}">Tujuan Surat</a>
+                            </li>
+                        </ul>
+                    </li>
 
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-person-badge-fill"></i>
-                        <span>Akun</span>
-                    </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="{{route('akun-prodi.index')}}">Akun Prodi</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="{{route('akun-operator.index')}}">Akun Operator</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="{{route('akun-persetujuan.index')}}">Akun Persetujuan</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="{{ route('akun-kep-operator.index')}}">Profile</a>
-                        </li>
-                       
-                    </ul>
-                </li>
+                    <li class="sidebar-item  has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-person-badge-fill"></i>
+                            <span>Akun</span>
+                        </a>
+                        <ul class="submenu ">
+                            <li class="submenu-item ">
+                                <a href="{{route('akun-prodi.index')}}">Akun Prodi</a>
+                            </li>
+                            <li class="submenu-item ">
+                                <a href="{{route('akun-operator.index')}}">Akun Operator</a>
+                            </li>
+                            <li class="submenu-item ">
+                                <a href="{{route('akun-persetujuan.index')}}">Akun Persetujuan</a>
+                            </li>
+                            <li class="submenu-item ">
+                                <a href="{{ route('akun-kep-operator.index')}}">Profile</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
                 @endif
 
 
@@ -210,7 +210,7 @@
 
                     <li class="sidebar-item">
                         <a href="#" class='sidebar-link'>
-                            <i class="bi bi-person-badge-fill"></i>
+                            <i class="{{route('persetujaun.profile.index')}}"></i>
                             <span>Profile</span>
                         </a>
                     </li>

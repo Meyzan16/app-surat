@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\verifpersetujuan;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class ProfileController extends Controller
+class ProfilePersetujuanController extends Controller
 {
     public function index()
     {
         $data = user::where('id', auth()->user()->id)->first();
 
-        return view('Admin.main.profile', compact('data'));
+        return view('Admin.main.verif-persetujuan.profile', compact('data'));
     }
 
     public function update(Request $request, $id)
