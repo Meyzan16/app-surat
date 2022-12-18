@@ -60,7 +60,7 @@ class LoginController extends Controller
 
                     
                 }else{
-                    return redirect()->route('login')->with('loginerror','Akun belum diaktivasi');
+                    return redirect()->route('login')->with('loginerror','Akun tidak aktif ');
                 }
             }
         }else{

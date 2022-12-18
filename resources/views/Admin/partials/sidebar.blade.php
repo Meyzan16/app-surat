@@ -62,13 +62,6 @@
                             </li>
                         </ul>
                     </li>
-
-                    <li class="sidebar-item ">
-                        <a href="{{ route('operator.profile.index')}}" class='sidebar-link'>
-                            <i class="bi bi-person-badge-fill"></i>
-                            <span>Profile</span>
-                        </a>
-                    </li>
                 @endif
 
 
@@ -153,7 +146,7 @@
                             <a href="{{route('akun-persetujuan.index')}}">Akun Persetujuan</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="form-editor-ckeditor.html">Profile</a>
+                            <a href="{{ route('akun-kep-operator.index')}}">Profile</a>
                         </li>
                        
                     </ul>
@@ -242,13 +235,6 @@
                             </li>
                             @endforeach
                         </ul>
-                    </li>
-
-                    <li class="sidebar-item">
-                        <a href="#" class='sidebar-link'>
-                            <i class="bi bi-person-badge-fill"></i>
-                            <span>Profile</span>
-                        </a>
                     </li>
                 @endif
 

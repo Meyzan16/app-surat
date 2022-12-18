@@ -41,7 +41,7 @@
                 &nbsp;Tambah Data
                 </button>
 
-                <a href="{{ route('kep-operator.akun-operator.trash') }}" class='sidebar-link'>
+                <a href="{{ route('akun-persetujuan.trash') }}" class='sidebar-link'>
                     <i class="fas fa-trash-alt"></i>
                     <span>Tempat Sampah</span>
                 </a>
@@ -88,11 +88,14 @@
 
                                 <a class="badge bg-warning"   data-bs-toggle="modal" data-bs-target="#edit_data{{ $item->id }}">  <i class="fa fa-edit"> </i>  </a>
 
-                                <form action="{{ route('akun-operator.destroy', $item->id) }}" method="POST" class="d-inline">
+                                <form action="{{ route('akun-persetujuan.destroy', $item->id) }}" method="POST" class="d-inline">
                                     {{ csrf_field() }}  {{ method_field("DELETE") }}
                                     <button class="badge bg-danger border-0" onclick="return confirm('Data akan dinonaktifkan secara sementara')" >  <i class="fa fa-ban"> </i>
                                     </button>
                                 </form>
+
+                                <a class="badge bg-primary"   data-bs-toggle="modal" data-bs-target="#riset{{ $item->id }}">  <i class="fa fa-eye"> </i>  </a>
+
                             </td>
                             
 
@@ -121,7 +124,7 @@
                     <i data-feather="x"></i>
                 </button>
             </div>
-            <form action="{{ route('akun-operator.store') }}" method="POST">
+            <form action="{{ route('akun-persetujuan.store') }}" method="POST">
                 @csrf 
                 <div class="modal-body">
                     <div>
@@ -138,19 +141,7 @@
                     </div>
                     
 
-                    {{-- <div>
-                        <h6 class="modal-title" id="exampleModalCenterTitle" aria-required="true"> ROLE  </h6>
-                        <select name="roles" id="" class="form-control">
-                           <option value=""> --pilih data--</option>
-                           <option value="VERIF_PRODI">PRODI</option>
-                           <option value="OPERATOR_PRODI">OPERATOR PRODI FAKULTAS</option>
-                           <option value="VERIF_PERSETUJUAN">KEPALA OPERATOR</option>
-                           <option value="KOOR_TU">TTD PERSETUJUAN</option>
-
-                           
-                           
-                       </select>
-                    </div> --}}
+        
 
                     <div>
                         <h6 class="modal-title" id="exampleModalCenterTitle" aria-required="true"> STATUS AKTIF  </h6>
@@ -197,7 +188,7 @@
                         <i data-feather="x"></i>
                     </button>
                 </div>
-                <form action="{{ route('akun-operator.update', $item1->id) }}" method="POST">
+                <form action="{{ route('akun-persetujuan.update', $item1->id) }}" method="POST">
                     @csrf @method('PUT')
                     <div class="modal-body">
                         <div>
@@ -247,6 +238,73 @@
                         
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+    @endforeach
+
+
+
+    @foreach ($data as $itemm)
+    <div class="modal fade" id="riset{{ $itemm->id  }}" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+            role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle"> Detail Akun {{$itemm->nama}}
+                    </h5>
+                    <button type="button" class="close" data-bs-dismiss="modal"
+                        aria-label="Close">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+
+                    <div class="modal-body">
+                        <div>
+                            <h6 class="modal-title" id="exampleModalCenterTitle" aria-required="true"> NIP  </h6>
+                           <input type="text" class="form-control" name="username" readonly value="{{   $itemm->tb_persetujuan->nip }}">
+                        </div>
+                        
+                        <div>
+                            <h6 class="modal-title" id="exampleModalCenterTitle" aria-required="true"> NAMA  </h6>
+                           <input type="text" class="form-control" name="nama" readonly value="{{  $itemm->nama }}">
+                        </div>
+                        <div>
+                            <h6 class="modal-title" id="exampleModalCenterTitle" aria-required="true"> Golongan  </h6>
+                           <input type="text" class="form-control" name="nama" readonly value="{{  $itemm->tb_persetujuan->golongan }}">
+                        </div>
+                        <div>
+                            <h6 class="modal-title" id="exampleModalCenterTitle" aria-required="true"> Jabatan  </h6>
+                           <input type="text" class="form-control" name="nama" readonly value="{{  $itemm->tb_persetujuan->jabatan }}">
+                        </div>
+
+                        <div>
+                            <h6 class="modal-title" id="exampleModalCenterTitle" aria-required="true"> Username  </h6>
+                           <input type="text" class="form-control" name="nama" readonly value="{{  $itemm->username }}">
+                        </div>
+
+                        <div>
+                            <h6 class="modal-title" id="exampleModalCenterTitle" aria-required="true"> Password  </h6>
+                           <input type="text" class="form-control" name="password_noenkripsi"  readonly value="{{   $itemm->password_noenkripsi  }}">
+                        </div>
+                        
+
+    
+                       
+                    </div>
+    
+    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light-secondary"
+                            data-bs-dismiss="modal">
+                            <i class="bx bx-x d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Kembali</span>
+                        </button>
+        
+                          
+                      
+                    </div>
             </div>
         </div>
     </div>

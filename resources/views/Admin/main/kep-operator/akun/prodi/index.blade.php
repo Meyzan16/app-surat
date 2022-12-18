@@ -35,18 +35,18 @@
 
     <section class="section">
         <div class="card">
-            <div class="card-header">
-                <button type="button" class="mr-3 btn btn-outline-primary block"
-                data-bs-toggle="modal" data-bs-target="#catatan_penolakan">
-                &nbsp;Tambah Data
-                </button>
+                <div class="card-header">
+                    <button type="button" class="mr-3 btn btn-outline-primary block"
+                    data-bs-toggle="modal" data-bs-target="#catatan_penolakan">
+                    &nbsp;Tambah Data
+                    </button>
 
-                <a href="{{ route('kep-operator.akun-prodi.trash') }}" class='sidebar-link'>
-                    <i class="fas fa-trash-alt"></i>
-                    <span>Tempat Sampah</span>
-                </a>
-            </div>
-            </div>
+                    <a href="{{ route('kep-operator.akun-prodi.trash') }}" class='sidebar-link'>
+                        <i class="fas fa-trash-alt"></i>
+                        <span>Tempat Sampah</span>
+                    </a>
+                </div>
+           
 
             <div class="card-body">
                 <table class="table table-striped" id="table1">
@@ -96,6 +96,8 @@
                                     <button class="badge bg-danger border-0" onclick="return confirm('Anda yakin, ingin menghapus data ?')" >  <i class="fa fa-ban"> </i>
                                     </button>
                                 </form>
+
+                                <a class="badge bg-primary"   data-bs-toggle="modal" data-bs-target="#detail{{ $item->id }}">  <i class="fa fa-key"> </i>  </a>
                             </td>
                             
 
@@ -257,6 +259,55 @@
                         
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+    @endforeach
+
+    @foreach ($data as $itemm)
+    <div class="modal fade" id="detail{{ $itemm->id  }}" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+            role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle"> Detail Akun {{$itemm->nama}}
+                    </h5>
+                    <button type="button" class="close" data-bs-dismiss="modal"
+                        aria-label="Close">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+
+                    <div class="modal-body">
+                       
+
+                        <div>
+                            <h6 class="modal-title" id="exampleModalCenterTitle" aria-required="true"> Username  </h6>
+                           <input type="text" class="form-control" name="nama" readonly value="{{  $itemm->username }}">
+                        </div>
+
+                        <div>
+                            <h6 class="modal-title" id="exampleModalCenterTitle" aria-required="true"> Password  </h6>
+                           <input type="text" class="form-control" name="password_noenkripsi"  readonly value="{{   $itemm->password_noenkripsi  }}">
+                        </div>
+                        
+
+    
+                       
+                    </div>
+    
+    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light-secondary"
+                            data-bs-dismiss="modal">
+                            <i class="bx bx-x d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Kembali</span>
+                        </button>
+        
+                          
+                      
+                    </div>
             </div>
         </div>
     </div>

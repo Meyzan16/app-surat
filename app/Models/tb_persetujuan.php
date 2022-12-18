@@ -10,6 +10,10 @@ class tb_persetujuan extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+      'users_id'
+    ];
+
     public function user()
     {
         return $this->belongsTo(user::class);
