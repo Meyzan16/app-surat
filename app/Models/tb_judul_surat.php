@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\tb_jenis_surat;
 use App\Models\tb_log_srt_ket_msh_kuliah;
 use App\Models\tb_loghistory_surat_umum;
+use App\Models\tb_log_surat_mhs_umums;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class tb_judul_surat extends Model
@@ -28,6 +29,11 @@ class tb_judul_surat extends Model
     public function tb_log_srt_ket_msh_kuliah()
     {
         return $this->hasMany(tb_log_srt_ket_msh_kuliah::class);
+    }
+
+    public function tb_log_surat_mhs_umum()
+    {
+        return $this->hasMany(tb_log_surat_mhs_umum::class);
     }
 
     public function tb_loghistory_surat_umum()

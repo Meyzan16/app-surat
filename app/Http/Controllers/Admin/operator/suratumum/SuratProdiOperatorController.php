@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Http\Request;
 
-class SuratUmumOperatorController extends Controller
+class SuratProdiOperatorController extends Controller
 {
     public function index()
     {
@@ -19,7 +19,7 @@ class SuratUmumOperatorController extends Controller
         ])->get();
 
 
-        return view('Admin.main.operator.surat-umum.index', compact('data'));
+        return view('Admin.main.operator.surat-prodi.index', compact('data'));
     }
 
     public function create()
@@ -29,7 +29,7 @@ class SuratUmumOperatorController extends Controller
         $tujuan = tb_tujuan_surat::all();
 
 
-        return view('Admin.main.operator.surat-umum.create', compact('lampiran','perihal','tujuan'));
+        return view('Admin.main.operator.surat-prodi.create', compact('lampiran','perihal','tujuan'));
     }
 
     public function store(Request $request)
@@ -45,7 +45,7 @@ class SuratUmumOperatorController extends Controller
             'tembusan' => $request->tembusan,
         ]);
 
-        return redirect()->route('operator.surat-umum.index')->with('toast_success',' Data berhasil di ajukan ');
+        return redirect()->route('operator.surat-prodi.index')->with('toast_success',' Data berhasil di ajukan ');
     }
 
     public function show($id)
@@ -54,7 +54,7 @@ class SuratUmumOperatorController extends Controller
         $data = tb_loghistory_surat_umum::where([
             ['id', '=',  $id],
         ])->first();
-        return view('Admin.main.show_surat.surat-umum', compact('data'));
+        return view('Admin.main.show_surat.surat-prodi', compact('data'));
     }
 
     public function edit($id)
@@ -67,7 +67,7 @@ class SuratUmumOperatorController extends Controller
         $perihal = tb_judul_surat::where('kode_jenis_surat', 'KDU1')->get();
         $tujuan = tb_tujuan_surat::all();
 
-        return view('Admin.main.operator.surat-umum.edit', compact('data','lampiran','perihal','tujuan'));
+        return view('Admin.main.operator.surat-prodi.edit', compact('data','lampiran','perihal','tujuan'));
     }
 
     public function update(Request $request, $id)
@@ -98,7 +98,7 @@ class SuratUmumOperatorController extends Controller
             ]);
         }
 
-        return redirect()->route('operator.surat-umum.index')->with('toast_success',' Data berhasil di perbarui ');
+        return redirect()->route('operator.surat-prodi.index')->with('toast_success',' Data berhasil di perbarui ');
     }
 
 

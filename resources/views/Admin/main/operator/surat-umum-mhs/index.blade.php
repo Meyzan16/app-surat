@@ -7,7 +7,7 @@
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Surat Umum</h3>
+                <h3>Surat Umum Mahasiswa</h3>
 
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
@@ -30,11 +30,12 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Perihal Surat</th>
-                            <th>Status Kep.Operator</th>
-                            <th>Status TTD Persetujuan</th>
-                            <th>Tanggal Pengajuan</th>
+                            <th>NPM</th>
+                            <th>Nama</th>
+                            <th>Status</th>
                             <th>Aksi</th>
+                            <th>Status Kepala Operator</th>
+                            <th>Status TTD Persetujuan</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,27 +43,57 @@
                             
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->tb_judul_surat->judul_surat}}</td>
-                      
+                            <td>{{ $item->npm}}</td>
+                            <td>{{ $item->tb_data_mahasiswa->nama}}</td>
                            
-                            @if ($item->kepala_operator == 'belum diverifikasi' && $item->catatan_kepala_operator == null)
+                            @if ($item->operator_prodi == 'belum diverifikasi' && $item->catatan_operator_prodi == null)
                                 <td>
                                     <span class="badge bg-warning">Menunggu</span>
                                 </td>
-                            @elseif($item->kepala_operator == 'belum diverifikasi' && $item->catatan_kepala_operator != null)
+                            @elseif($item->operator_prodi == 'belum diverifikasi' && $item->catatan_operator_prodi != null)
                                 <td>
                                     <span class="badge bg-warning">Menunggu Verifikasi Ulang</span>
 
-                                    <a class="badge bg-danger" data-bs-toggle="modal" data-bs-target="#exampleModalCatatan{{ $item->id }}">  <i class="fa fa-comment-dots"> </i>  </a>          
+                                    <a class="badge bg-danger" data-bs-toggle="modal" data-bs-target="#exampleModalCatatan{{ $item->npm }}">  <i class="fa fa-comment-dots"> </i>  </a>          
                                 </td>
-                            @elseif($item->kepala_operator == 'N')
+                            @elseif($item->operator_prodi == 'N')
                             <td>
                                 <span class="badge bg-danger">Ditolak</span>
-                                <a class="badge bg-danger" data-bs-toggle="modal" data-bs-target="#exampleModalCatatan{{ $item->id }}">  <i class="fa fa-comment-dots"> </i>  </a>          
+                                <a class="badge bg-danger" data-bs-toggle="modal" data-bs-target="#exampleModalCatatan{{ $item->npm }}">  <i class="fa fa-comment-dots"> </i>  </a>          
                             </td>
                             @else
                             <td>
-                                <span class="badge bg-success">Diterima</span>
+                                <span class="badge bg-success">disetujui</span>
+                            </td>
+                            @endif
+
+
+                            <td>           
+                               
+                                
+                                <a class="badge bg-success"   data-bs-toggle="modal" data-bs-target="#exampleModalTerima{{ $item->npm }}">   <i class="fa fa-check-circle"> </i>  </a>                                  
+                                
+                                <a class="badge bg-danger"   data-bs-toggle="modal" data-bs-target="#exampleModalTolak{{ $item->npm }}">  <i class="fa fa-ban"> </i>  </a>                                  
+                               
+                                <a href="{{route('operator.cetak.aktif-kuliah', $item->id)}}" target="_blank" class="badge bg-primary"> <i class="fa fa-eye"> </i> </a>
+
+                                @if($item->kepala_operator != 'Y')
+                                    <a onclick="location.href='{{ route('operator.surat-aktif-kuliah.edit', $item->npm) }}'"   class="badge bg-warning">  <i class="fa fa-edit"> </i>  </a>
+                                @endif
+
+                            </td>
+
+                            @if ($item->kepala_operator == 'belum diverifikasi')
+                                <td>
+                                    <span class="badge bg-warning">Menunggu</span>
+                                </td>
+                            @elseif($item->kepala_operator == 'N')
+                                <td>
+                                    <span class="badge bg-warning">Verifikasi Dibatalkan</span>
+                                </td>
+                            @else
+                            <td>
+                                <span class="badge bg-success">disetujui</span>
                             </td>
                             @endif
 
@@ -74,23 +105,10 @@
                                 </td>
                             @else
                             <td>
-                                <span class="badge bg-success">Diterima</span>
+                                <span class="badge bg-success">disetujui</span>
                             </td>
                             @endif
 
-                            <td>
-                                <span class="badge bg-primary">{{ $item->created_at }}</span>
-                            </td>
-
-                            <td>
-                              
-                                
-                               
-                               
-                                <a href="{{ route('operator.surat-umum.show', $item->id)}}" target="_blank" class="badge bg-primary"> <i class="fa fa-eye"> </i> </a>
-                                <a onclick="location.href='{{ route('operator.surat-umum.edit', $item->id)}}'"   class="badge bg-warning">  <i class="fa fa-edit"> </i>  </a>
-                          
-                            </td>
 
                          
                         </tr>

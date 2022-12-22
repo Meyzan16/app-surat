@@ -21,12 +21,12 @@
                 </li>
 
                 @if(auth()->user()->roles == 'OPERATOR_PRODI')
-                    <li class="sidebar-item  {{ request()->is('operator/surat-mahasiswa*') ? 'active' : '' }}  has-sub">
+                    <li class="sidebar-item  {{ request()->is('operator/surat-mahasiswa/surat-aktif-kuliah*') ? 'active' : '' }}  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-stack "></i>
                             <span>Surat Aktif Kuliah</span>
                         </a>
-                        <ul class="submenu {{ request()->is('operator/surat-mahasiswa*') ? 'active' : '' }}">
+                        <ul class="submenu {{ request()->is('operator/surat-mahasiswa/surat-aktif-kuliah*') ? 'active' : '' }}">
                             <li class="submenu-item  {{ request()->is('operator/surat-mahasiswa/surat-aktif-kuliah*') ? 'active' : '' }} ">
                                 <a href="{{ route('operator.surat-aktif-kuliah.index')}}">Data pengajuan</a>
                             </li>
@@ -51,13 +51,30 @@
                         </ul>
                     </li>
 
-                    <li class="sidebar-item {{ request()->is('operator/surat-umum*') ? 'active' : '' }}  has-sub">
+                    <li class="sidebar-item  {{ request()->is('operator/surat-mahasiswa/surat-umum*') ? 'active' : '' }}  has-sub">
                         <a href="#" class='sidebar-link'>
-                            <i class="bi bi-file-earmark-medical-fill"></i>
+                            <i class="bi bi-stack "></i>
                             <span>Surat Umum</span>
                         </a>
-                        <ul class="submenu {{ request()->is('operator/surat-umum*') ? 'active' : '' }}">
-                            <li class="submenu-item {{ request()->is('operator/surat-umum*') ? 'active' : '' }}">
+                        <ul class="submenu {{ request()->is('operator/surat-mahasiswa/surat-umum*') ? 'active' : '' }}">
+                            <li class="submenu-item  {{ request()->is('operator/surat-mahasiswa/surat-umum*') ? 'active' : '' }} ">
+                                <a href="{{ route('operator.surat-umum-mhs.index')}}">Data pengajuan</a>
+                            </li>
+                            <li class="submenu-item {{ request()->is('operator/surat-mahasiswa/aktif-kuliah/history-pengajuan') ? 'active' : '' }}">
+                                <a href="#">History Surat</a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+
+                    <li class="sidebar-item {{ request()->is('operator/surat-prodi*') ? 'active' : '' }}  has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-file-earmark-medical-fill"></i>
+                            <span>Surat Prodi </span>
+                        </a>
+                        <ul class="submenu {{ request()->is('operator/surat-prodi*') ? 'active' : '' }}">
+                            <li class="submenu-item {{ request()->is('operator/surat-prodi*') ? 'active' : '' }}">
                                 <a href="{{route('operator.surat-umum.index')}}">Data Surat</a>
                             </li>
                         </ul>

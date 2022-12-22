@@ -105,6 +105,14 @@
             <div data-i18n="Under Maintenance">Surat Keterangan Lulus</div>
           </a>
         </li>
+        
+
+        <li class="menu-item  {{ request()->is('mahasiswa/rekaman-pengajuan/surat-umum') ? 'active' : '' }}">
+          <a href="{{ route('rekaman-pengajuan.surat_umum') }}" class="menu-link">
+            <div data-i18n="Under Maintenance">Surat Umum</div>
+          </a>
+        </li>
+
       </ul>
     </li>
     

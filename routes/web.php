@@ -23,7 +23,8 @@ use App\Http\Controllers\Login\LoginController;
 
 //operator
 use App\Http\Controllers\Admin\operator\SuratAktifKuliahOperatorController;
-use App\Http\Controllers\Admin\operator\suratumum\SuratUmumOperatorController;
+use App\Http\Controllers\Admin\operator\suratumum\SuratProdiOperatorController;
+use App\Http\Controllers\Admin\operator\suratumum\SuratUmumMhsController;
 
 
 
@@ -130,6 +131,7 @@ Route::group([
 
             Route::get('/surat-aktif-kuliah', [HistoryPengajuanSurat::class, 'index'])->name('rekaman-pengajuan.aktif-kuliah');
             Route::get('/surat-ket-lulus', [HistoryPengajuanSurat::class, 'ket_lulus'])->name('rekaman-pengajuan.ket-lulus');
+            Route::get('/surat-umum', [HistoryPengajuanSurat::class, 'surat_umum'])->name('rekaman-pengajuan.surat_umum');
             
 
             Route::group([
@@ -169,18 +171,29 @@ Route::group([
         Route::get('aktif-kuliah/history-pengajuan', [SuratAktifKuliahOperatorController::class, 'history'])->name('surat-masih-kuliah.history');
         
         Route::get('{id}/cetak', [CetakController::class, 'aktif_kuliah'])->name('operator.cetak.aktif-kuliah'); 
+
+
+        Route::group([
+            'prefix'  => 'surat-umum/'],function(){
+            Route::get('/', [SuratUmumMhsController::class, 'index'])->name('operator.surat-umum-mhs.index');
+        });
+
+
     });
+
+   
+
 
     Route::group([
         'middleware' => 'is_operator',
-        'prefix'  => 'surat-umum/'],function(){
-            Route::get('/', [SuratUmumOperatorController::class, 'index'])->name('operator.surat-umum.index');
-            Route::get('tambah-data', [SuratUmumOperatorController::class, 'create'])->name('operator.surat-umum.create');
-            Route::POST('simpan-data', [SuratUmumOperatorController::class, 'store'])->name('operator.surat-umum.store');
+        'prefix'  => 'surat-prodi/'],function(){
+            Route::get('/', [SuratProdiOperatorController::class, 'index'])->name('operator.surat-umum.index');
+            Route::get('tambah-data', [SuratProdiOperatorController::class, 'create'])->name('operator.surat-umum.create');
+            Route::POST('simpan-data', [SuratProdiOperatorController::class, 'store'])->name('operator.surat-umum.store');
             
-            Route::get('{id}/show-data', [SuratUmumOperatorController::class, 'show'])->name('operator.surat-umum.show');
-            Route::get('{id}/edit-data', [SuratUmumOperatorController::class, 'edit'])->name('operator.surat-umum.edit');
-            Route::patch('{id}/update-data', [SuratUmumOperatorController::class, 'update'])->name('operator.surat-umum.update');
+            Route::get('{id}/show-data', [SuratProdiOperatorController::class, 'show'])->name('operator.surat-umum.show');
+            Route::get('{id}/edit-data', [SuratProdiOperatorController::class, 'edit'])->name('operator.surat-umum.edit');
+            Route::patch('{id}/update-data', [SuratProdiOperatorController::class, 'update'])->name('operator.surat-umum.update');
         });
         
   
