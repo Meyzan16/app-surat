@@ -25,7 +25,8 @@
                   <select name="kode_judul_surat" class="form-control @error('kode_judul_surat')is-invalid @enderror">
                       <option value=""> -- Pilih Data Surat -- </option>  
                     @foreach ($judul_surat as $item)
-                      <option value="{{ $item->kode_judul_surat}}"> {{ $item->judul_surat}}</option>  
+                      <option value="{{ $item->id}}"> {{ $item->judul_surat}}</option>  
+                     
                     @endforeach
                   </select>
                   @error('kode_judul_surat') 

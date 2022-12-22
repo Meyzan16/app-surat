@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('kode_prodi',4)->nullable();
             $table->string('nomor_surat',200)->nullable();
             $table->foreignId('id_lampiran')->nullable();
-            $table->foreignId('id_perihal')->nullable();
+            $table->foreignId('id_judul_surat')->nullable();
             $table->foreignId('id_tujuan')->nullable();
             $table->string('sub_tujuan',200)->nullable();
             $table->text('isi_surat')->nullable();

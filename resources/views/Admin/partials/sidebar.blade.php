@@ -121,9 +121,6 @@
                             <li class="submenu-item {{ request()->is('kepala-operator/pengaturan/data-lampiran*') ? 'active' : '' }}">
                                 <a href="{{ route('data-lampiran.index') }}">Lampiran Surat</a>
                             </li>
-                            <li class="submenu-item {{ request()->is('kepala-operator/pengaturan/data-perihal*') ? 'active' : '' }}">
-                                <a href="{{ route('data-perihal.index') }}">Perihal Surat</a>
-                            </li>
                             <li class="submenu-item {{ request()->is('kepala-operator/pengaturan/data-tujuan*') ? 'active' : '' }}">
                                 <a href="{{ route('data-tujuan.index') }}">Tujuan Surat</a>
                             </li>

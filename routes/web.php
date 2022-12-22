@@ -220,6 +220,9 @@ Route::group([
         'middleware' => 'is_kepalaoperator',
         'prefix'  => 'pengaturan/'],function(){
         Route::resource('judul-surat', JudulSuratController::class);
+
+        Route::get('judul-surat-trash', [JudulSuratController::Class, 'trash'])->name('kep-operator.judul-surat.trash');
+        Route::get('{id}/judul-surat-restore', [JudulSuratController::class, 'restore'])->name('kep-operator.judul-surat.restore');
     });
 
     Route::group([
@@ -231,14 +234,7 @@ Route::group([
         Route::get('{id}/data-lampiran-restore', [LampiranSuratController::class, 'restore'])->name('kep-operator.data-lampiran.restore');
     });
 
-    Route::group([
-        'middleware' => 'is_kepalaoperator',
-        'prefix'  => 'pengaturan/'],function(){
-        Route::resource('data-perihal', PerihalSuratController::class);
 
-        Route::get('data-perihal-trash', [PerihalSuratController::Class, 'trash'])->name('kep-operator.data-perihal.trash');
-        Route::get('{id}/data-perihal-restore', [PerihalSuratController::class, 'restore'])->name('kep-operator.data-perihal.restore');
-    });
 
     Route::group([
         'middleware' => 'is_kepalaoperator',

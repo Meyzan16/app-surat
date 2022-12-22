@@ -17,7 +17,7 @@ class tb_log_srt_ket_msh_kuliah extends Model
 
     public function tb_judul_surat()
     {
-        return $this->belongsTo(tb_judul_surat::class, 'kode_judul_surat', 'kode_judul_surat');
+        return $this->belongsTo(tb_judul_surat::class, 'kode_judul_surat', 'id');
     }
 
     public function tb_data_mahasiswa()

@@ -53,16 +53,14 @@ class DatabaseSeeder extends Seeder
 
         tb_judul_surat::create([
             'kode_jenis_surat' => 'KDM2',
-            'kode_judul_surat' => 'A1',
             'masa_aktif' => '8',
             'judul_surat' => 'surat keterangan masih kuliah',
         ]);
 
         tb_judul_surat::create([
             'kode_jenis_surat' => 'KDM2',
-            'kode_judul_surat' => 'A2',
-            'masa_aktif' => '8',
             'judul_surat' => 'surat keterangan lulus',
+            'masa_aktif' => '8',
         ]);
 
 
@@ -132,12 +130,12 @@ class DatabaseSeeder extends Seeder
             'judul_lampiran' => 'Dua berkas',
         ]);
 
-        tb_perihal_surat::create([
-            'nama' => 'Susulan Mohon Pembayaran UKT',
-        ]);
-        tb_perihal_surat::create([
-            'nama' => 'Undangan pembukaan asesmen lapangan',
-        ]);
+        // tb_perihal_surat::create([
+        //     'nama' => 'Susulan Mohon Pembayaran UKT',
+        // ]);
+        // tb_perihal_surat::create([
+        //     'nama' => 'Undangan pembukaan asesmen lapangan',
+        // ]);
 
         tb_tujuan_surat::create([
             'nama' => 'Wakil Rektor Bidang Akademik',

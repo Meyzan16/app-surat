@@ -16,7 +16,7 @@ class PengajuanSuratController extends Controller
 {
     public function index()
     {
-        $judul_surat = tb_judul_surat::with('tb_jenis_surat')->get();
+                $judul_surat = tb_judul_surat::with('tb_jenis_surat')->where('kode_jenis_surat','KDM2')->get();
 
 
                 $data = tb_log_srt_ket_msh_kuliah::where('npm', Session::get('npm'))
@@ -40,23 +40,35 @@ class PengajuanSuratController extends Controller
 
     public function proses_pengajuan(Request $request)
     {
-        //pasang rules
-        $rules = [
-            'kode_judul_surat'=> 'required',
-        ];
+                //pasang rules
+                $rules = [
+                    'kode_judul_surat'=> 'required',
+                ];
 
-        //pasang pesan kesalahan
-        $messages = [
-            // 'email.unique'     => 'email sudah terdaftar',
-            'kode_judul_surat.required'     => 'Pilih surat yang mau diajukan',
-        ];
+                //pasang pesan kesalahan
+                $messages = [
+                    // 'email.unique'     => 'email sudah terdaftar',
+                    'kode_judul_surat.required'     => 'Pilih surat yang mau diajukan',
+                ];
 
-        //ambil semua request dan pasang rules dan isi pesanya
-        $validator = Validator::make($request->all(), $rules, $messages);
-        //jika rules tidak sesuai kembalikan ke login bawak pesan error dan bawak request nya agar bisa dipakai denga old di view
-        if($validator->fails()){
-                return redirect()->back()->withErrors($validator)->withInput($request->all());
-        } else{
+                //ambil semua request dan pasang rules dan isi pesanya
+                $validator = Validator::make($request->all(), $rules, $messages);
+                //jika rules tidak sesuai kembalikan ke login bawak pesan error dan bawak request nya agar bisa dipakai denga old di view
+                if($validator->fails()){
+                        return redirect()->back()->withErrors($validator)->withInput($request->all());
+                } else{
+
+
+                //cek jenis surat
+                $tb_judul_surat = tb_judul_surat::where('id', $request->kode_judul_surat)->first();
+                if($tb_judul_surat->kode_jenis_surat === 'KDM2')
+                {
+                    return "mahasiswa";
+                }elseif($tb_judul_surat->kode_jenis_surat === 'KDU1')
+                {
+                    return "umum";
+                }
+
 
                 if($request->kode_judul_surat == 'A1')
                 {
@@ -134,6 +146,7 @@ class PengajuanSuratController extends Controller
                     ]);
 
                     return \redirect()->route('surat-ket-lulus.index')->with('successs', 'Silahkan lengkapai data data berikut');
+                
                 }
                             
 
