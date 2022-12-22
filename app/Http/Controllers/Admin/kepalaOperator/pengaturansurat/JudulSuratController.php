@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\tb_judul_surat;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class JudulSuratController extends Controller
 {
@@ -20,10 +21,17 @@ class JudulSuratController extends Controller
 
     public function store(Request $request)
     {
-       
+        
+        $jenis_surat = $request->kode_jenis_surat;
+        if($jenis_surat == 'KDM2'){
+            $a = 'U1';
+        }else{
+            $a = 'U2';
+        }
 
         tb_judul_surat::create([
             'kode_jenis_surat'   => $request->kode_jenis_surat,
+            'slug' => $a,
             'judul_surat'   => $request->judul_surat,
             'masa_aktif'    =>  $request->masa_aktif,  
         ]);

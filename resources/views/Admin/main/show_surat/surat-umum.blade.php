@@ -60,7 +60,7 @@
 			</tr>
 			<tr>
 				<td>Hal</td>
-				<td>: {{$data->tb_perihal_surat->nama}} </td>
+				<td>: {{$data->tb_judul_surat->judul_surat}} </td>
 			</tr>
 			
 		</table>

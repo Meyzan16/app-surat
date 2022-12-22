@@ -26,7 +26,7 @@ class CetakController extends Controller
         $aa = $selisih->d;
 
 
-        $judul_surat = tb_judul_surat::where('kode_judul_surat', $data->kode_judul_surat)->first(); 
+        $judul_surat = tb_judul_surat::where('id', $data->kode_judul_surat)->first(); 
 
 
         if($aa > $judul_surat->masa_aktif)

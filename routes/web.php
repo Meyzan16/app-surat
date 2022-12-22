@@ -9,6 +9,7 @@ use App\Http\Controllers\Mahasiswa\BiodataDiriController;
 
 //surat masih kuliah
 use App\Http\Controllers\Mahasiswa\SuratMasihKuliahController;
+use App\Http\Controllers\Mahasiswa\SuratUmumMahasiswaController;
 use App\Http\Controllers\CetakController;
 
 //surat ket lulus
@@ -111,6 +112,18 @@ Route::group([
         Route::group(['prefix'  => 'surat-keterangan-lulus/'],function(){
             Route::get('/', [SuratKetLulusController::class, 'index'])->name('surat-ket-lulus.index');
         });
+
+        Route::group([
+            'prefix'  => 'surat-umum/'],function(){
+            Route::get('/', [SuratUmumMahasiswaController::class, 'index'])->name('surat-umum.index');
+            Route::PATCH('{npm}/update', [SuratUmumMahasiswaController::class, 'update'])->name('surat-umum.update');
+            
+           
+            
+
+        });
+
+
     });
     
         Route::group(['prefix'  => 'rekaman-pengajuan/'],function(){
@@ -118,6 +131,7 @@ Route::group([
             Route::get('/surat-aktif-kuliah', [HistoryPengajuanSurat::class, 'index'])->name('rekaman-pengajuan.aktif-kuliah');
             Route::get('/surat-ket-lulus', [HistoryPengajuanSurat::class, 'ket_lulus'])->name('rekaman-pengajuan.ket-lulus');
             
+
             Route::group([
                 'prefix'  => 'surat-masih-kuliah/'],function(){
                     Route::get('{id}/show-diperbaiki', [SuratMasihKuliahController::class, 'show_perbaiki'])->name('surat-masih-kuliah.diperbaiki');
@@ -234,8 +248,6 @@ Route::group([
         Route::get('{id}/data-lampiran-restore', [LampiranSuratController::class, 'restore'])->name('kep-operator.data-lampiran.restore');
     });
 
-
-
     Route::group([
         'middleware' => 'is_kepalaoperator',
         'prefix'  => 'pengaturan/'],function(){
@@ -269,13 +281,6 @@ Route::group([
     
 
     });
-
-
-
-
-
-
-
 });
 
 

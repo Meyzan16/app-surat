@@ -26,7 +26,6 @@
                       <option value=""> -- Pilih Data Surat -- </option>  
                     @foreach ($judul_surat as $item)
                       <option value="{{ $item->id}}"> {{ $item->judul_surat}}</option>  
-                     
                     @endforeach
                   </select>
                   @error('kode_judul_surat') 

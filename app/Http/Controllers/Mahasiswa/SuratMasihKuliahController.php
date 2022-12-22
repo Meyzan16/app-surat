@@ -11,7 +11,9 @@ class SuratMasihKuliahController extends Controller
 {
     public function index()
     {
-        return view('Mhs.main.pengajuan-surat.srt-msh-kuliah.index');
+            return view('Mhs.main.pengajuan-surat.srt-msh-kuliah.index');
+        
+        
     }
 
     public function update(Request $request, $npm)

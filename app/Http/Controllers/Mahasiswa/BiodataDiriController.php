@@ -11,6 +11,7 @@ class BiodataDiriController extends Controller
 {
     public function index()
     {
+        Session::forget('session_judul_surat');
         return view('Mhs.main.biodata-diri.index');
     }
 

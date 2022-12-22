@@ -42,7 +42,7 @@
                             
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->tb_perihal_surat->nama}}</td>
+                            <td>{{ $item->tb_judul_surat->judul_surat}}</td>
                       
                            
                             @if ($item->kepala_operator == 'belum diverifikasi' && $item->catatan_kepala_operator == null)

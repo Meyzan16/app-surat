@@ -48,10 +48,10 @@
                                 <label>Perihal</label>
                             </div>
                             <div class="col-md-10 form-group">
-                               <select name="id_perihal" class="form-control" required>
+                               <select name="id_judul_surat" class="form-control" required>
                                    <option value=""> -- pilih data -- </option>
                                     @foreach ($perihal as $item)
-                                    <option value="{{ $item->id }}"> {{$item->nama}} </option>
+                                    <option value="{{ $item->id }}"> {{$item->judul_surat}} </option>
                                     @endforeach
                                </select>
                             </div>

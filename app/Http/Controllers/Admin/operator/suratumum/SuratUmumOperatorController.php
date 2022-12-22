@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\operator\suratumum;
 use App\Http\Controllers\Controller;
 use App\Models\tb_loghistory_surat_umum;
 use App\Models\tb_lampiran;
-use App\Models\tb_perihal_surat;
+use App\Models\tb_judul_surat;
 use App\Models\tb_tujuan_surat;
 use Illuminate\Support\Facades\Validator;
 
@@ -25,7 +25,7 @@ class SuratUmumOperatorController extends Controller
     public function create()
     {
         $lampiran = tb_lampiran::all();
-        $perihal = tb_perihal_surat::all();
+        $perihal = tb_judul_surat::where('kode_jenis_surat', 'KDU1')->get();
         $tujuan = tb_tujuan_surat::all();
 
 
@@ -38,7 +38,7 @@ class SuratUmumOperatorController extends Controller
             'users_id' => auth()->user()->id,
             'kode_prodi' => auth()->user()->kode_prodi ,
             'id_lampiran' => $request->id_lampiran,
-            'id_perihal' => $request->id_perihal,
+            'id_judul_surat' => $request->id_judul_surat,
             'id_tujuan' => $request->id_tujuan,
             'isi_surat' => $request->isi_surat,
             'sub_tujuan' => $request->sub_tujuan,
@@ -64,7 +64,7 @@ class SuratUmumOperatorController extends Controller
             ['id', '=',  $id],
         ])->first();
         $lampiran = tb_lampiran::all();
-        $perihal = tb_perihal_surat::all();
+        $perihal = tb_judul_surat::where('kode_jenis_surat', 'KDU1')->get();
         $tujuan = tb_tujuan_surat::all();
 
         return view('Admin.main.operator.surat-umum.edit', compact('data','lampiran','perihal','tujuan'));

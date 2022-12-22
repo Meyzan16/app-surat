@@ -17,7 +17,7 @@ class tb_judul_surat extends Model
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
-        'kode_jenis_surat', 'judul_surat' , 'masa_aktif'
+        'kode_jenis_surat', 'slug','judul_surat' , 'masa_aktif'
     ];
 
     public function tb_jenis_surat()

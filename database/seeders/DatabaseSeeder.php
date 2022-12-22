@@ -53,12 +53,14 @@ class DatabaseSeeder extends Seeder
 
         tb_judul_surat::create([
             'kode_jenis_surat' => 'KDM2',
-            'masa_aktif' => '8',
+            'slug' => 'M1',
             'judul_surat' => 'surat keterangan masih kuliah',
+            'masa_aktif' => '8',
         ]);
 
         tb_judul_surat::create([
             'kode_jenis_surat' => 'KDM2',
+            'slug' => 'M2',
             'judul_surat' => 'surat keterangan lulus',
             'masa_aktif' => '8',
         ]);
@@ -117,7 +119,7 @@ class DatabaseSeeder extends Seeder
 
 
         tb_persetujuan::create([
-            'users_id' => '4',
+            'users_id' => '5',
             'golongan' => 'IV B',
             'jabatan' => 'wakil Dekan Bidang Akademik',
         ]);
