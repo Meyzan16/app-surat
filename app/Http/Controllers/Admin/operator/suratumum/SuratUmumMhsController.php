@@ -70,5 +70,61 @@ class SuratUmumMhsController extends Controller
             }
     }
 
+    public function edit(Request $request, $npm)
+    {
+        $data = tb_log_surat_mhs_umum::where([
+            ['npm', '=',  $npm],
+            ['status_persetujuan', '=',  'belum diverifikasi']
+        ])->first();
+
+        return view('Admin.main.operator.surat-umum-mhs.edit', compact('data'));
+    }
+
+    public function update(Request $request, $npm)
+    {      
+        //pasang rules
+        $rules = [
+            'tujuan_surat'=> 'required',
+            'sub_tujuan'=> 'required',
+            'judul_penelitian' => 'required',
+            'isi_surat' => 'required',
+        ];
+
+        //pasang pesan kesalahan
+        $messages = [
+            'tujuan_surat.required'     => 'Tujuan surat wajib diisi',
+            'sub_tujuan.required'     => 'Sub tujuan wajib diisi',
+            'judul_penelitian.required'     => 'Judul penelitian ortu wajib diisi',
+            'isi_surat.required'     => 'Isi surat wajib diisi',
+
+       
+          
+        ];
+
+        //ambil semua request dan pasang rules dan isi pesanya
+        $validator = Validator::make($request->all(), $rules, $messages);
+        //jika rules tidak sesuai kembalikan ke login bawak pesan error dan bawak request nya agar bisa dipakai denga old di view
+        if($validator->fails())
+        {
+                return redirect()->back()->withErrors($validator)->withInput($request->all());
+        }else{
+
+                        tb_log_surat_mhs_umum::where([
+                            ['npm', '=',  $npm],
+                            ['status_persetujuan', '=',  'belum diverifikasi']
+                        ])->update([
+                            'tujuan_surat' => $request->tujuan_surat,
+                            'sub_tujuan' => $request->sub_tujuan,
+                            'judul_penelitian' => $request->judul_penelitian,
+                            'isi_surat' => $request->isi_surat,
+                            'tembusan' => $request->tembusan,
+                    ]);
+                            
+
+        
+                    return \redirect()->route('operator.surat-umum-mhs.index')->with('toast_success',' Data '. $npm .' berhasil di perbarui ');
+         }
+    }
+
     
 }

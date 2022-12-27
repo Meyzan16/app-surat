@@ -69,17 +69,14 @@
 
 
                             <td>           
-                               
-                                
+
                                 <a class="badge bg-success"   data-bs-toggle="modal" data-bs-target="#exampleModalTerima{{ $item->npm }}">   <i class="fa fa-check-circle"> </i>  </a>                                  
                                 
                                 <a class="badge bg-danger"   data-bs-toggle="modal" data-bs-target="#exampleModalTolak{{ $item->npm }}">  <i class="fa fa-ban"> </i>  </a>                                  
                                
                                 <a href="{{route('operator.cetak.surat-umum-mhs', $item->id)}}" target="_blank" class="badge bg-primary"> <i class="fa fa-eye"> </i> </a>
 
-                                @if($item->kepala_operator != 'Y')
-                                    <a onclick="location.href='{{ route('operator.surat-aktif-kuliah.edit', $item->npm) }}'"   class="badge bg-warning">  <i class="fa fa-edit"> </i>  </a>
-                                @endif
+                                <a onclick="location.href='{{ route('operator.surat-umum-mhs.edit', $item->npm) }}'"   class="badge bg-warning">  <i class="fa fa-edit"> </i>  </a>
 
                             </td>
 

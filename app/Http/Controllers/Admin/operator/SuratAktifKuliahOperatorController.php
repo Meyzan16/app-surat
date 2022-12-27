@@ -73,14 +73,12 @@ class SuratAktifKuliahOperatorController extends Controller
 
     public function edit(Request $request, $npm)
     {
-
         $data = tb_log_srt_ket_msh_kuliah::where([
             ['npm', '=',  $npm],
             ['status_persetujuan', '=',  'belum diverifikasi']
         ])->first();
 
         return view('Admin.main.operator.aktif-kuliah.edit', compact('data'));
-
     }
 
     public function update(Request $request, $npm)
@@ -89,8 +87,8 @@ class SuratAktifKuliahOperatorController extends Controller
         $rules = [
             'semester'=> 'required|alpha',
             'masa_studi'=> 'required',
-            'nama_ortu' => 'required|alpha',
-            'pekerjaan' => 'required|alpha',
+            'nama_ortu' => 'required',
+            'pekerjaan' => 'required',
             'alamat' => 'required',
         ];
 
@@ -103,8 +101,6 @@ class SuratAktifKuliahOperatorController extends Controller
             'alamat.required'     => 'alamat wajib diisi',
 
             'semester.alpha'     => 'semester hanya boleh huruf',
-            'nama_ortu.alpha'     => 'nama ortu hanya boleh huruf',
-            'pekerjaan.alpha'     => 'pekerjaan hanya boleh huruf',
        
           
         ];
@@ -120,7 +116,10 @@ class SuratAktifKuliahOperatorController extends Controller
                     
            
         
-                    tb_log_srt_ket_msh_kuliah::where('npm', $npm)->update([
+                        tb_log_srt_ket_msh_kuliah::where([
+                            ['npm', '=',  $npm],
+                            ['status_persetujuan', '=',  'belum diverifikasi']
+                        ])->update([
                         'semester' => $request->semester,
                         'masa_studi' => $request->masa_studi,
                         'nama_ortu' => $request->nama_ortu,

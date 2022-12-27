@@ -114,18 +114,13 @@
                     <font size="2">{!! $data->isi_surat !!} </font>
                 </td>
             </tr>
-        </table>
-
-
-	
-		<table width="620">
 			<tr>
-		       <td>
-			       <font size="2">Atas Perhatian dan kerjasama yang baik kami ucapkan terimakasih </font>
-		       </td>
-		    </tr>
-		</table>
-		<br>
+				<td>
+					<font size="2">Atas Perhatian dan kerjasama yang baik kami ucapkan terimakasih </font>
+				</td>
+			</tr>
+        </table>
+		
 
 		@if($data->status_persetujuan == 'Y')
 		<table width="620">

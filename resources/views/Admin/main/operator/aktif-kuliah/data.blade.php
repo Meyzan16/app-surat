@@ -77,9 +77,7 @@
                                
                                 <a href="{{route('operator.cetak.aktif-kuliah', $item->id)}}" target="_blank" class="badge bg-primary"> <i class="fa fa-eye"> </i> </a>
 
-                                @if($item->kepala_operator != 'Y')
-                                    <a onclick="location.href='{{ route('operator.surat-aktif-kuliah.edit', $item->npm) }}'"   class="badge bg-warning">  <i class="fa fa-edit"> </i>  </a>
-                                @endif
+                                <a onclick="location.href='{{ route('operator.surat-aktif-kuliah.edit', $item->npm) }}'"   class="badge bg-warning">  <i class="fa fa-edit"> </i>  </a>
 
                             </td>
 

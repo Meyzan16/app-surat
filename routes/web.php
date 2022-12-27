@@ -170,6 +170,8 @@ Route::group([
         Route::group([
             'prefix'  => 'surat-umum/'],function(){
             Route::get('/', [SuratUmumMhsController::class, 'index'])->name('operator.surat-umum-mhs.index');
+            Route::get('{npm}/edit', [SuratUmumMhsController::class, 'edit'])->name('operator.surat-umum-mhs.edit');
+            Route::patch('{npm}/data-diperbarui', [SuratUmumMhsController::class, 'update'])->name('operator.surat-umum-mhs.update');
             Route::patch('{npm}/verif_diterima', [SuratUmumMhsController::class, 'verifikasi'])->name('operator.surat-umum-mhs.verif_diterima');
             Route::patch('{npm}/verif_ditolak', [SuratUmumMhsController::class, 'verifikasi_tolak'])->name('operator.surat-umum-mhs.verif_ditolak');
         
