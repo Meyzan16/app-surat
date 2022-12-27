@@ -31,7 +31,7 @@ class SuratUmumMahasiswaController extends Controller
             'isi_surat' => $request->isi_surat,
             'tembusan' => $request->tembusan,
         ]);
-        return redirect()->route('pengajuan.index');
+        return \redirect()->route('rekaman-pengajuan.surat_umum')->with('toast_success', 'Mohon menunggu diverifikasi');
     }
 
 }

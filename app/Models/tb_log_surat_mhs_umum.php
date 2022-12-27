@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\tb_judul_surat;
 use App\Models\tb_data_mahasiswa;
+use App\Models\user;
 
 class tb_log_surat_mhs_umum extends Model
 {
@@ -22,6 +23,11 @@ class tb_log_surat_mhs_umum extends Model
     public function tb_data_mahasiswa()
     {
         return $this->belongsTo(tb_data_mahasiswa::class, 'npm', 'npm');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(user::class, 'id_persetujuan', 'id');
     }
 
 

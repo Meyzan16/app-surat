@@ -139,16 +139,10 @@ Route::group([
                     Route::get('{id}/show-diperbaiki', [SuratMasihKuliahController::class, 'show_perbaiki'])->name('surat-masih-kuliah.diperbaiki');
                     Route::patch('{id}/update-diperbaiki', [SuratMasihKuliahController::class, 'update_diperbaiki'])->name('surat-masih-kuliah.diperbaiki-update');   
             });
-
-          
-
         });
-    
-
-   
-
-
 });
+
+
 
 //operator
 Route::group([
@@ -176,6 +170,11 @@ Route::group([
         Route::group([
             'prefix'  => 'surat-umum/'],function(){
             Route::get('/', [SuratUmumMhsController::class, 'index'])->name('operator.surat-umum-mhs.index');
+            Route::patch('{npm}/verif_diterima', [SuratUmumMhsController::class, 'verifikasi'])->name('operator.surat-umum-mhs.verif_diterima');
+            Route::patch('{npm}/verif_ditolak', [SuratUmumMhsController::class, 'verifikasi_tolak'])->name('operator.surat-umum-mhs.verif_ditolak');
+        
+            Route::get('{id}/cetak', [CetakController::class, 'surat_umum_mhs'])->name('operator.cetak.surat-umum-mhs');
+            
         });
 
 

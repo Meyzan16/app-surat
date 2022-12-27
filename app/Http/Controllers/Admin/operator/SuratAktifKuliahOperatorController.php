@@ -22,7 +22,8 @@ class SuratAktifKuliahOperatorController extends Controller
 
 
 
-    public function verifikasi($npm){
+    public function verifikasi($npm)
+    {
         tb_log_srt_ket_msh_kuliah::where([
             ['npm', '=',  $npm],
             ['status_persetujuan', '=',  'belum diverifikasi']
@@ -37,8 +38,8 @@ class SuratAktifKuliahOperatorController extends Controller
     }
 
 
-
-    public function verifikasi_tolak(Request $request, $npm){
+    public function verifikasi_tolak(Request $request, $npm)
+    {
             //pasang rules
             $rules = [
                 'catatan_operator_prodi'=> 'required'
@@ -67,10 +68,8 @@ class SuratAktifKuliahOperatorController extends Controller
                 ]);
                 return redirect()->route('operator.surat-aktif-kuliah.index')->with(['toast_error' =>  $npm. ' berhasil di tolak !!']);
             }
-        
-
-      
     }
+
 
     public function edit(Request $request, $npm)
     {

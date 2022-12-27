@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\tb_prodi;
 use App\Models\tb_persetujuan;
+use App\Models\tb_log_surat_mhs_umum;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
@@ -30,6 +31,11 @@ class User extends Authenticatable
     public function tb_persetujuan()
     {
         return $this->hasOne(tb_persetujuan::class , 'users_id','id' );
+    }
+
+    public function tb_log_surat_mhs_umum()
+    {
+        return $this->hasMany(tb_log_surat_mhs_umum::class);
     }
 
     /**

@@ -22,5 +22,53 @@ class SuratUmumMhsController extends Controller
         return view('Admin.main.operator.surat-umum-mhs.index', compact('data'));
     }
 
+    public function verifikasi($npm)
+    {
+        tb_log_surat_mhs_umum::where([
+            ['npm', '=',  $npm],
+            ['status_persetujuan', '=',  'belum diverifikasi']
+        ])->update([
+            'operator_prodi'    =>  'Y',
+            'catatan_operator_prodi'   => NULL,
+            'id_operator' => auth()->user()->id,
+            'time_acc_operator_prodi' => date("Y-m-d H:i:s"),
+        ]);
+
+         return redirect()->route('operator.surat-umum-mhs.index')->with(['toast_success' =>  $npm. ' berhasil di verifikasi !!']);
+    }
+
+
+    public function verifikasi_tolak(Request $request, $npm)
+    {
+            //pasang rules
+            $rules = [
+                'catatan_operator_prodi'=> 'required'
+            ];
+
+            //pasang pesan kesalahan
+            $messages = [
+                'catatan_operator_prodi.required'     => 'nama wajib diisi',
+               
+            ];
+
+            //ambil semua request dan pasang rules dan isi pesanya
+            $validator = Validator::make($request->all(), $rules, $messages);
+            //jika rules tidak sesuai kembalikan ke login bawak pesan error dan bawak request nya agar bisa dipakai denga old di view
+            if($validator->fails())
+            {
+                return redirect()->route('operator.surat-umum-mhs.index')->with(['toast_error' =>' Catatan ditolak wajib di isi!!']);
+                    // return redirect()->back()->withErrors($validator)->withInput($request->all());
+            } 
+            else{
+
+                tb_log_surat_mhs_umum::where('npm',$npm)->update([
+                    'catatan_operator_prodi'   => $request->catatan_operator_prodi,
+                    'operator_prodi'    =>  'N',
+                    'id_operator' => auth()->user()->id,     
+                ]);
+                return redirect()->route('operator.surat-umum-mhs.index')->with(['toast_error' =>  $npm. ' berhasil di tolak !!']);
+            }
+    }
+
     
 }
