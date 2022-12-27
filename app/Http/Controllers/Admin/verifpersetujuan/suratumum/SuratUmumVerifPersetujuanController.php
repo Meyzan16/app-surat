@@ -31,7 +31,7 @@ class SuratUmumVerifPersetujuanController extends Controller
         $data = tb_loghistory_surat_umum::where([
             ['id', '=',  $id],
         ])->first();
-        return view('Admin.main.show_surat.surat-umum', compact('data'));
+        return view('Admin.main.show_surat.surat-umum-prodi', compact('data'));
     }
 
  

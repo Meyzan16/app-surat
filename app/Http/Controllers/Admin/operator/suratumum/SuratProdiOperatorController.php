@@ -45,7 +45,7 @@ class SuratProdiOperatorController extends Controller
             'tembusan' => $request->tembusan,
         ]);
 
-        return redirect()->route('operator.surat-prodi.index')->with('toast_success',' Data berhasil di ajukan ');
+        return redirect()->route('operator.surat-umum.index')->with('toast_success',' Data berhasil di ajukan ');
     }
 
     public function show($id)
@@ -54,7 +54,7 @@ class SuratProdiOperatorController extends Controller
         $data = tb_loghistory_surat_umum::where([
             ['id', '=',  $id],
         ])->first();
-        return view('Admin.main.show_surat.surat-prodi', compact('data'));
+        return view('Admin.main.show_surat.surat-umum-prodi', compact('data'));
     }
 
     public function edit($id)

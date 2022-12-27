@@ -117,11 +117,7 @@ Route::group([
         Route::group([
             'prefix'  => 'surat-umum/'],function(){
             Route::get('/', [SuratUmumMahasiswaController::class, 'index'])->name('surat-umum.index');
-            Route::PATCH('{npm}/update', [SuratUmumMahasiswaController::class, 'update'])->name('surat-umum.update');
-            
-           
-            
-
+            Route::PATCH('{npm}/update', [SuratUmumMahasiswaController::class, 'update'])->name('surat-umum.update');    
         });
 
 

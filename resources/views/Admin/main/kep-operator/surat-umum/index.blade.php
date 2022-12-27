@@ -54,7 +54,7 @@
                             
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->tb_perihal_surat->nama}}</td>
+                            <td>{{ $item->tb_judul_surat->judul_surat}}</td>
                       
                            
                             @if ($item->kepala_operator == 'belum diverifikasi' && $item->catatan_kepala_operator == null)
@@ -132,7 +132,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             @csrf {{ method_field('PATCH') }}
             <div class="modal-body">
                     
-                <h6 class="text-center"> {{$item1->tb_perihal_surat->nama}} </h6>
+                <h6 class="text-center"> {{$item1->tb_judul_surat->judul_surat}} </h6>
                 <p class="text-center">
                     Perhatian !!!
                     Silahkan cek data surat yang diajukan dengan benar untuk diverifikasi ,

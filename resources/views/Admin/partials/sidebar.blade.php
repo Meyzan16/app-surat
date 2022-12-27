@@ -203,17 +203,17 @@
                         </ul>
                     </li>
 
-                    <li class="sidebar-item {{ request()->is('kepala-operator/surat-umum*') ? 'active' : '' }}  has-sub">
+                    <li class="sidebar-item {{ request()->is('pemegang-tanggung-jawab/surat-umum*') ? 'active' : '' }}  has-sub">
                         <a href="#" class='sidebar-link'>
-                            <i class="bi bi-stack "></i>
+                            <i class="bi bi-file-earmark-medical-fill"></i>
                             <span>Surat Umum</span>
                         </a>
-                        <ul class="submenu {{ request()->is('kepala-operator/surat-umum*') ? 'active' : '' }}">
-    
+                        <ul class="submenu {{ request()->is('pemegang-tanggung-jawab/surat-umum*') ? 'active' : '' }}">
+
                             @php
                                 $prodi = DB::table('tb_prodis')->get();
                             @endphp
-    
+
                             @foreach($prodi as $item)
                             <li class="submenu-item">
                                 <a href="{{ route('ttd-persetujuan.surat-umum.index', $item->kode_prodi) }}">{{ $item->nama_prodi}}</a>
