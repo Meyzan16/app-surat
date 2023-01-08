@@ -231,7 +231,7 @@ Route::group([
     // surat umum
     Route::group([
         'middleware' => 'is_kepalaoperator',
-        'prefix'  => 'surat-umum/'],function(){
+        'prefix'  => 'surat-umum-prodi/'],function(){
             Route::get('{prodi}', [SuratUmumKepOperatorController::class, 'index'])->name('kep-operator.surat-umum.index');
             
             Route::get('{id}/show-data', [SuratUmumKepOperatorController::class, 'show'])->name('kep-operator.surat-umum.show');
@@ -239,6 +239,19 @@ Route::group([
             Route::patch('{prodi}/verif-diterima', [SuratUmumKepOperatorController::class, 'verifikasi'])->name('kep-operator.surat-umum.verif_diterima');
             Route::patch('{prodi}/verif-ditolak', [SuratUmumKepOperatorController::class, 'verifikasi_tolak'])->name('kep-operator.surat-umum.verif_ditolak');
     });
+
+    // surat umum
+    Route::group([
+        'middleware' => 'is_kepalaoperator',
+        'prefix'  => 'surat-umum-mahasiswa/'],function(){
+            Route::get('{prodi}', [SuratUmumKepOperatorController::class, 'mahasiswa'])->name('kep-operator.surat-umum-mhs.index');
+            
+            Route::get('{id}/cetak', [CetakController::class, 'surat_umum_mhs'])->name('kep-operator.surat-umum-mhs.cetak');
+            
+            Route::patch('{id}/verif-diterima', [SuratUmumKepOperatorController::class, 'verifikasi_mhs'])->name('kep-operator.surat-umum-mhs.verif_diterima');
+            Route::patch('{id}/verif-ditolak', [SuratUmumKepOperatorController::class, 'verifikasi_tolak_mhs'])->name('kep-operator.surat-umum-mhs.verif_ditolak');
+            
+        });
 
 
     // pengaturan
