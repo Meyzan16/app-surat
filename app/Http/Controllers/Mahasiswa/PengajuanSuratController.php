@@ -138,7 +138,7 @@ class PengajuanSuratController extends Controller
                                     'id_judul_surat' => $request->kode_judul_surat,
                                 ]);
 
-                                return \redirect()->route('surat-umum.index')->with('successs', 'Silahkan lengkapai data data berikut');
+                                return \redirect()->route('rekaman-pengajuan.surat_umum')->with('successs', 'Silahkan lengkapai data data berikut');
                             
                             }else{
                                 // return "sudah ada data";
@@ -174,7 +174,7 @@ class PengajuanSuratController extends Controller
 
                                         // Session::put('session_judul_surat', $request->kode_judul_surat);
                                         
-                                        return \redirect()->route('surat-umum.index')->with('successs', 'Silahkan lengkapai data data berikut');
+                                        return \redirect()->route('rekaman-pengajuan.surat_umum')->with('successs', 'Silahkan lengkapai data data berikut');
                                     }else{
                                         return \redirect()->route('pengajuan-index')->with('toast_error', 'Surat aktif kuliah masih aktif, lihat history anda');
                                     }

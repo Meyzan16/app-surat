@@ -24,6 +24,7 @@
                         <th>No</th>
                         <th>Judul Surat</th>
                         <th>Tanggal Pengajuan</th>
+                        <th>Data</th>
                         <th>Status Operator</th>
                         <th>Status Kep.Operator</th>
                         <th>Status TTD Persetujuan</th>
@@ -39,29 +40,43 @@
                         
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> {{ $item->created_at }}</td>
 
-                          @if($item->operator_prodi == 'belum diverifikasi' && $item->catatan_operator_prodi == null)
+                        @if($item->tujuan_surat)
+                        <td>                      
+                          <span class="justify-content-center d-flex badge bg-label-warning me-1"> Data Lengkap </span></td>
+                        @else
+                        <td>
+                          <a href="{{ route('surat-umum.update', $item->id)}}">
+                            <span class="justify-content-center d-flex badge bg-label-warning me-1"> Lengkapi Data </span></td>
+                          </a>
+                            
+                        @endif
+
+                          @if($item->tujuan_surat == NULL)
+                            <td><span class="justify-content-center d-flex badge bg-label-warning me-1"> -- </span></td>
+                          @elseif($item->operator_prodi == 'belum diverifikasi' && $item->catatan_operator_prodi == null)
                            <td><span class="badge bg-label-warning me-1">Menunggu</span></td>
-                          
-                           @elseif($item->operator_prodi == 'belum diverifikasi' && $item->catatan_operator_prodi != null)
+
+                          @elseif($item->operator_prodi == 'belum diverifikasi' && $item->catatan_operator_prodi != null)
                              <td>
                               <span class="badge bg-label-warning me-1">Menunggu Verifikasi ulang</span>
                             </td>
                           
-                           @elseif($item->operator_prodi == 'N')
+                          @elseif($item->operator_prodi == 'N')
                            <td>
                             <span class="badge bg-label-danger me-1">Ditolak</span>
                             <a class="badge bg-label-danger me-1" data-bs-toggle="modal" data-bs-target="#catatan{{$item->npm}}"> Catatan  </a>          
                             
                             <a href="{{ route('surat-masih-kuliah.diperbaiki', $item->id) }}" class="badge bg-label-warning me-1"> Edit  </a>          
                           
-                          </td>
-                           @elseif($item->operator_prodi == 'Y')
+                            </td>
+                          @elseif($item->operator_prodi == 'Y')
                            <td><span class="badge bg-label-success me-1">disetujui</span></td>
                           @endif
 
 
-
-                          @if($item->kepala_operator == 'belum diverifikasi')
+                          @if($item->tujuan_surat == NULL)
+                          <td><span class="justify-content-center d-flex badge bg-label-warning me-1"> -- </span></td>
+                          @elseif($item->kepala_operator == 'belum diverifikasi')
                           <td><span class="badge bg-label-warning me-1">Menunggu</span></td>
                           @elseif($item->kepala_operator == 'N')
                           <td><span class="badge bg-label-warning me-1">Menunggu</span></td>
@@ -96,6 +111,8 @@
                                       <a href="{{ route('cetak.aktif-kuliah', $item->id)}}" class="badge bg-label-primary" >  <i class="fa fa-eye"> </i> Print </a>          
                                     @endif
                                     
+                            @elseif($item->tujuan_surat == NULL)
+                            <span class="justify-content-center d-flex badge bg-label-warning me-1"> -- </span>
                             @elseif($item->status_persetujuan == 'belum diverifikasi')
                             <span class="badge bg-label-warning me-1">Menunggu disetujui</span>
                             @endif

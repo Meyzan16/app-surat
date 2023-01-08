@@ -21,7 +21,7 @@
       </div>  
 
       <div class="card-body">
-        <form  action="{{ route('surat-umum.update', Session::get('npm'))}}" method="POST">
+        <form  action="{{ route('surat-umum.update', $data->id}}" method="POST">
           @csrf @method('PATCH')
          
 

@@ -10,19 +10,18 @@ use Illuminate\Support\Facades\Session;
 
 class SuratUmumMahasiswaController extends Controller
 {
-    public function index()
+    public function index($id)
     {
-                $data = tb_judul_surat::where('id', Session::get('session_judul_surat'))->first();
+                $data = tb_judul_surat::where('id', $id)->first();
                 return view('Mhs.main.pengajuan-surat.surat-umum.index', compact('data'));
     }
 
-    public function update(Request $request, $npm)
+    public function update(Request $request, $id)
     {
         tb_log_surat_mhs_umum::where([
 
-                ['npm','=' , $npm],
-                ['status_persetujuan', '=' , 'belum diverifikasi'],
-                ['id_judul_surat', '=' , 3]
+                ['id','=' , $id],
+                ['status_persetujuan', '=' , 'belum diverifikasi']
             ]
         )->update([
             'tujuan_surat' => $request->tujuan_surat,

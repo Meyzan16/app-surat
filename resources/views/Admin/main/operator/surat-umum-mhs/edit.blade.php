@@ -28,7 +28,7 @@
 
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form form-horizontal mdi-responsive" action="{{route('operator.surat-umum-mhs.update', $data->npm)}}" method="POST" >
+                            <form class="form form-horizontal mdi-responsive" action="{{route('operator.surat-umum-mhs.update', $data->id)}}" method="POST" >
                                 @csrf @method('PATCH')
                                 <div class="form-body">
                                         <div class="row">
@@ -103,7 +103,7 @@
                                                         
                                                     @endif
 
-                                                    <button type="reset" onclick="location.href='{{ route('operator.surat-aktif-kuliah.index') }}'"
+                                                    <button type="reset" onclick="location.href='{{ route('operator.surat-umum-mhs.index') }}'"
                                                         class="btn btn-light-secondary me-1 mb-1">Kembali</button>
                                                 
                                                 </div>

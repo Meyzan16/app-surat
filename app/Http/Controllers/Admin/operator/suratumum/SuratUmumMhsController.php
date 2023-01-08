@@ -22,10 +22,10 @@ class SuratUmumMhsController extends Controller
         return view('Admin.main.operator.surat-umum-mhs.index', compact('data'));
     }
 
-    public function verifikasi($npm)
+    public function verifikasi($id)
     {
         tb_log_surat_mhs_umum::where([
-            ['npm', '=',  $npm],
+            ['id', '=',  $id],
             ['status_persetujuan', '=',  'belum diverifikasi']
         ])->update([
             'operator_prodi'    =>  'Y',
@@ -34,11 +34,11 @@ class SuratUmumMhsController extends Controller
             'time_acc_operator_prodi' => date("Y-m-d H:i:s"),
         ]);
 
-         return redirect()->route('operator.surat-umum-mhs.index')->with(['toast_success' =>  $npm. ' berhasil di verifikasi !!']);
+         return redirect()->route('operator.surat-umum-mhs.index')->with(['toast_success' => ' berhasil di verifikasi !!']);
     }
 
 
-    public function verifikasi_tolak(Request $request, $npm)
+    public function verifikasi_tolak(Request $request, $id)
     {
             //pasang rules
             $rules = [
@@ -61,26 +61,26 @@ class SuratUmumMhsController extends Controller
             } 
             else{
 
-                tb_log_surat_mhs_umum::where('npm',$npm)->update([
+                tb_log_surat_mhs_umum::where('id',$id)->update([
                     'catatan_operator_prodi'   => $request->catatan_operator_prodi,
                     'operator_prodi'    =>  'N',
                     'id_operator' => auth()->user()->id,     
                 ]);
-                return redirect()->route('operator.surat-umum-mhs.index')->with(['toast_error' =>  $npm. ' berhasil di tolak !!']);
+                return redirect()->route('operator.surat-umum-mhs.index')->with(['toast_error' => ' berhasil di tolak !!']);
             }
     }
 
-    public function edit(Request $request, $npm)
+    public function edit(Request $request, $id)
     {
         $data = tb_log_surat_mhs_umum::where([
-            ['npm', '=',  $npm],
+            ['id', '=',  $id],
             ['status_persetujuan', '=',  'belum diverifikasi']
         ])->first();
 
         return view('Admin.main.operator.surat-umum-mhs.edit', compact('data'));
     }
 
-    public function update(Request $request, $npm)
+    public function update(Request $request, $id)
     {      
         //pasang rules
         $rules = [
@@ -110,7 +110,7 @@ class SuratUmumMhsController extends Controller
         }else{
 
                         tb_log_surat_mhs_umum::where([
-                            ['npm', '=',  $npm],
+                            ['id', '=',  $id],
                             ['status_persetujuan', '=',  'belum diverifikasi']
                         ])->update([
                             'tujuan_surat' => $request->tujuan_surat,
@@ -122,7 +122,7 @@ class SuratUmumMhsController extends Controller
                             
 
         
-                    return \redirect()->route('operator.surat-umum-mhs.index')->with('toast_success',' Data '. $npm .' berhasil di perbarui ');
+                    return \redirect()->route('operator.surat-umum-mhs.index')->with('toast_success',' Data berhasil di perbarui ');
          }
     }
 

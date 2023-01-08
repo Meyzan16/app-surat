@@ -31,7 +31,7 @@
                         <tr>
                             <th>No</th>
                             <th>NPM</th>
-                            <th>Nama</th>
+                            <th>Judul</th>
                             <th>Status</th>
                             <th>Aksi</th>
                             <th>Status Kepala Operator</th>
@@ -44,7 +44,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->npm}}</td>
-                            <td>{{ $item->tb_data_mahasiswa->nama}}</td>
+                            <td>{{ $item->tb_judul_surat->judul_surat}}</td>
                            
                             @if ($item->operator_prodi == 'belum diverifikasi' && $item->catatan_operator_prodi == null)
                                 <td>
@@ -54,12 +54,12 @@
                                 <td>
                                     <span class="badge bg-warning">Menunggu Verifikasi Ulang</span>
 
-                                    <a class="badge bg-danger" data-bs-toggle="modal" data-bs-target="#exampleModalCatatan{{ $item->npm }}">  <i class="fa fa-comment-dots"> </i>  </a>          
+                                    <a class="badge bg-danger" data-bs-toggle="modal" data-bs-target="#exampleModalCatatan{{ $item->id }}">  <i class="fa fa-comment-dots"> </i>  </a>          
                                 </td>
                             @elseif($item->operator_prodi == 'N')
                             <td>
                                 <span class="badge bg-danger">Ditolak</span>
-                                <a class="badge bg-danger" data-bs-toggle="modal" data-bs-target="#exampleModalCatatan{{ $item->npm }}">  <i class="fa fa-comment-dots"> </i>  </a>          
+                                <a class="badge bg-danger" data-bs-toggle="modal" data-bs-target="#exampleModalCatatan{{ $item->id }}">  <i class="fa fa-comment-dots"> </i>  </a>          
                             </td>
                             @else
                             <td>
@@ -70,13 +70,13 @@
 
                             <td>           
 
-                                <a class="badge bg-success"   data-bs-toggle="modal" data-bs-target="#exampleModalTerima{{ $item->npm }}">   <i class="fa fa-check-circle"> </i>  </a>                                  
+                                <a class="badge bg-success"   data-bs-toggle="modal" data-bs-target="#exampleModalTerima{{ $item->id }}">   <i class="fa fa-check-circle"> </i>  </a>                                  
                                 
-                                <a class="badge bg-danger"   data-bs-toggle="modal" data-bs-target="#exampleModalTolak{{ $item->npm }}">  <i class="fa fa-ban"> </i>  </a>                                  
+                                <a class="badge bg-danger"   data-bs-toggle="modal" data-bs-target="#exampleModalTolak{{ $item->id }}">  <i class="fa fa-ban"> </i>  </a>                                  
                                
                                 <a href="{{route('operator.cetak.surat-umum-mhs', $item->id)}}" target="_blank" class="badge bg-primary"> <i class="fa fa-eye"> </i> </a>
 
-                                <a onclick="location.href='{{ route('operator.surat-umum-mhs.edit', $item->npm) }}'"   class="badge bg-warning">  <i class="fa fa-edit"> </i>  </a>
+                                <a onclick="location.href='{{ route('operator.surat-umum-mhs.edit', $item->id) }}'"   class="badge bg-warning">  <i class="fa fa-edit"> </i>  </a>
 
                             </td>
 
@@ -121,7 +121,7 @@
 
 {{-- verif terima --}}
 @foreach($data as $item1)
-<div class="modal fade" id="exampleModalTerima{{$item1->npm}}" tabindex="-1" role="dialog"
+<div class="modal fade" id="exampleModalTerima{{$item1->id}}" tabindex="-1" role="dialog"
 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
     role="document">
@@ -135,7 +135,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             </button>
         </div>
 
-        <form action="{{ route('operator.surat-umum-mhs.verif_diterima', $item1->npm) }}" method="POST">
+        <form action="{{ route('operator.surat-umum-mhs.verif_diterima', $item1->id) }}" method="POST">
             @csrf {{ method_field('PATCH') }}
 
 
@@ -186,7 +186,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 
 {{-- verif tolak --}}
 @foreach($data as $item2)
-<div class="modal fade" id="exampleModalTolak{{$item2->npm}}" tabindex="-1" role="dialog"
+<div class="modal fade" id="exampleModalTolak{{$item2->id}}" tabindex="-1" role="dialog"
 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
     role="document">
@@ -199,7 +199,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <i data-feather="x"></i>
             </button>
         </div>
-        <form action="{{ route('operator.surat-umum-mhs.verif_ditolak', $item2->npm)}}" method="POST">
+        <form action="{{ route('operator.surat-umum-mhs.verif_ditolak', $item2->id)}}" method="POST">
             @csrf {{ method_field('PATCH') }}
             <div class="modal-body">
 
@@ -253,7 +253,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 
 {{-- catatan penolakan --}}
 @foreach($data as $catatan)
-<div class="modal fade" id="exampleModalCatatan{{$catatan->npm}}" tabindex="-1" role="dialog"
+<div class="modal fade" id="exampleModalCatatan{{$catatan->id}}" tabindex="-1" role="dialog"
 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
     role="document">
