@@ -42,11 +42,11 @@
 
                         @if($item->tujuan_surat)
                         <td>                      
-                          <span class="justify-content-center d-flex badge bg-label-warning me-1"> Data Lengkap </span></td>
+                          <span class="justify-content-center d-flex badge bg-success me-1"> Data Lengkap </span></td>
                         @else
                         <td>
-                          <a href="{{ route('surat-umum.update', $item->id)}}">
-                            <span class="justify-content-center d-flex badge bg-label-warning me-1"> Lengkapi Data </span></td>
+                          <a href="{{ route('surat-umum.index', $item->id)}}">
+                            <span class="justify-content-center d-flex badge bg-danger me-1"> Lengkapi Data </span></td>
                           </a>
                             
                         @endif
@@ -64,9 +64,9 @@
                           @elseif($item->operator_prodi == 'N')
                            <td>
                             <span class="badge bg-label-danger me-1">Ditolak</span>
-                            <a class="badge bg-label-danger me-1" data-bs-toggle="modal" data-bs-target="#catatan{{$item->npm}}"> Catatan  </a>          
+                            <a class="badge bg-label-danger me-1" data-bs-toggle="modal" data-bs-target="#catatan{{$item->id}}"> Catatan  </a>          
                             
-                            <a href="{{ route('surat-masih-kuliah.diperbaiki', $item->id) }}" class="badge bg-label-warning me-1"> Edit  </a>          
+                            <a href="{{ route('surat-umum.diperbaiki', $item->id) }}" class="badge bg-label-warning me-1"> Edit  </a>          
                           
                             </td>
                           @elseif($item->operator_prodi == 'Y')
@@ -168,7 +168,7 @@
 
 <!-- / Content -->
 @foreach($pengajuan as $item2)
-<div class="modal fade" id="catatan{{$item2->npm}}" tabindex="-1" role="dialog"
+<div class="modal fade" id="catatan{{$item2->id}}" tabindex="-1" role="dialog"
   aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
       role="document">

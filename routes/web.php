@@ -95,19 +95,14 @@ Route::group([
         'middleware' => 'is_terdaftar',
         'prefix'  => 'pengajuan-surat/'],function(){
         Route::get('/', [PengajuanSuratController::class, 'index'])->name('pengajuan-index');
-        Route::POST('/proses-ajuan', [PengajuanSuratController::class, 'proses_pengajuan'])->name('proses-pengajuan');
-        
+        Route::POST('/proses-ajuan', [PengajuanSuratController::class, 'proses_pengajuan'])->name('proses-pengajuan');     
         
         Route::group([
             'prefix'  => 'surat-masih-kuliah/'],function(){
             Route::get('/', [SuratMasihKuliahController::class, 'index'])->name('surat-masih-kuliah.index');
-            
             Route::post('{npm}/melengkapi-data', [SuratMasihKuliahController::class, 'update'])->name('surat-masih-kuliah.update');
             Route::delete('{npm}/hapus-data', [SuratMasihKuliahController::class, 'destroy'])->name('surat-masih-kuliah.delete'); 
-            
             Route::get('{id}/cetak', [CetakController::class, 'aktif_kuliah'])->name('cetak.aktif-kuliah'); 
-            
-
         });
 
         Route::group(['prefix'  => 'surat-keterangan-lulus/'],function(){
@@ -135,6 +130,14 @@ Route::group([
                     Route::get('{id}/show-diperbaiki', [SuratMasihKuliahController::class, 'show_perbaiki'])->name('surat-masih-kuliah.diperbaiki');
                     Route::patch('{id}/update-diperbaiki', [SuratMasihKuliahController::class, 'update_diperbaiki'])->name('surat-masih-kuliah.diperbaiki-update');   
             });
+
+            Route::group([
+                'prefix'  => 'surat-umum/'],function(){
+                    Route::get('{id}/show-diperbaiki', [SuratUmumMahasiswaController::class, 'show_perbaiki'])->name('surat-umum.diperbaiki');
+                    Route::patch('{id}/update-diperbaiki', [SuratUmumMahasiswaController::class, 'update_diperbaiki'])->name('surat-umum.diperbaiki-update');   
+            });
+
+
         });
 });
 

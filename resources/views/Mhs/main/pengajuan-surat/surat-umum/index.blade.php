@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container-xxl flex-grow-1 container-p-y">
-  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Pengajuan Surat/</span> </h4>
+  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Pengajuan Surat/</span>{{ $data->tb_judul_surat->judul_surat}} </h4>
 
   @if ($message = Session::get('successs'))
         <div class="autohide col-12 col-md-12 col-lg-12 order-0  mb-0 mt-4">
@@ -19,9 +19,11 @@
       <div class="card-header d-flex align-items-center justify-content-between">
         <h5 class="mb-0">Silahkan Melengkapi Data Berikut</h5>
       </div>  
+     
+
 
       <div class="card-body">
-        <form  action="{{ route('surat-umum.update', $data->id}}" method="POST">
+        <form  action="{{ route('surat-umum.update', $data->id)}}" method="POST">
           @csrf @method('PATCH')
          
 
@@ -39,12 +41,14 @@
             </div>
           </div>
 
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label" for="basic-default-npm">Judul Penelitian</label>
-            <div class="col-sm-10">
-                <input type="text" name="judul_penelitian" class="form-control">
-            </div>
-          </div>
+          @if ($data->id_judul_surat == '3' || $data->id_judul_surat == '5')
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="basic-default-npm">Judul Penelitian</label>
+              <div class="col-sm-10">
+                  <input type="text" name="judul_penelitian" class="form-control">
+              </div>
+            </div>              
+          @endif
 
           <div class="row mb-3">
             <label class="col-sm-2 col-form-label" for="basic-default-npm">Isi Surat</label>
@@ -61,8 +65,12 @@
           </div>
           
           <div class="row justify-content-end">
-            <div class="col-sm-10">
+            <div class="col-sm-5">
               <button type="submit" class="btn btn-primary">Ajukan</button>
+            </div>
+
+            <div class="col-sm-5">
+              <a href="{{ route('rekaman-pengajuan.surat_umum') }}" type="submit" class="btn btn-secondary">Kembali</a>
             </div>
           </div>
 

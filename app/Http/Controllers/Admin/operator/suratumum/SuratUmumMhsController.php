@@ -26,7 +26,6 @@ class SuratUmumMhsController extends Controller
     {
         tb_log_surat_mhs_umum::where([
             ['id', '=',  $id],
-            ['status_persetujuan', '=',  'belum diverifikasi']
         ])->update([
             'operator_prodi'    =>  'Y',
             'catatan_operator_prodi'   => NULL,
@@ -74,7 +73,6 @@ class SuratUmumMhsController extends Controller
     {
         $data = tb_log_surat_mhs_umum::where([
             ['id', '=',  $id],
-            ['status_persetujuan', '=',  'belum diverifikasi']
         ])->first();
 
         return view('Admin.main.operator.surat-umum-mhs.edit', compact('data'));
@@ -86,7 +84,6 @@ class SuratUmumMhsController extends Controller
         $rules = [
             'tujuan_surat'=> 'required',
             'sub_tujuan'=> 'required',
-            'judul_penelitian' => 'required',
             'isi_surat' => 'required',
         ];
 
@@ -94,7 +91,6 @@ class SuratUmumMhsController extends Controller
         $messages = [
             'tujuan_surat.required'     => 'Tujuan surat wajib diisi',
             'sub_tujuan.required'     => 'Sub tujuan wajib diisi',
-            'judul_penelitian.required'     => 'Judul penelitian ortu wajib diisi',
             'isi_surat.required'     => 'Isi surat wajib diisi',
 
        
@@ -111,7 +107,6 @@ class SuratUmumMhsController extends Controller
 
                         tb_log_surat_mhs_umum::where([
                             ['id', '=',  $id],
-                            ['status_persetujuan', '=',  'belum diverifikasi']
                         ])->update([
                             'tujuan_surat' => $request->tujuan_surat,
                             'sub_tujuan' => $request->sub_tujuan,

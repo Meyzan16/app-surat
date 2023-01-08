@@ -97,15 +97,17 @@
 				<td>:  {{ $data->tb_data_mahasiswa->tb_prodi->nama_prodi }}</td>
 			</tr>
           
-            <tr class="text2">
-				<td>Judul Penelitian</td>
-				<td>: <i>
-					<b>
-						"{{ $data->judul_penelitian }}"
-					</b>
-				</i>
-			</td>
-			</tr>
+			@if($data->judul_penelitian)
+				<tr class="text2">
+					<td>Judul Penelitian</td>
+					<td>: <i>
+						<b>
+							"{{ $data->judul_penelitian }}"
+						</b>
+					</i>
+				</td>
+				</tr>
+			@endif
 		</table>
 
 		<table width="620">

@@ -59,20 +59,16 @@
                                                         
                                                 </div>
 
+                                                @if ($data->judul_penelitian)            
+                                                    <div class="col-md-4">
+                                                        <label>Judul Penelitian</label>
+                                                    </div>
+                                                    <div class="col-md-8 form-group">
+                                                        <input type="text" value="{{ old('judul_penelitian', $data->judul_penelitian) }}" class="form-control" required
+                                                            name="judul_penelitian">
+                                                    </div>
+                                                @endif
 
-                                                <div class="col-md-4">
-                                                    <label>Judul Penelitian</label>
-                                                </div>
-                                                <div class="col-md-8 form-group">
-                                                    <input type="text" value="{{ old('judul_penelitian', $data->judul_penelitian) }}" class="form-control @error('judul_penelitian')is-invalid @enderror"
-                                                        name="judul_penelitian">
-                                                        @error('judul_penelitian') 
-                                                        <div class="invalid-feedback">
-                                                          {{ $message }}
-                                                        </div>
-                                                      @enderror
-                                                        
-                                                </div>
 
                                                 <div class="col-md-4">
                                                     <label>Isi Surat</label>

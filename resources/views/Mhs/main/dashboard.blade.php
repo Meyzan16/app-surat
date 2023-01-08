@@ -213,7 +213,7 @@
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3 order-3 order-md-2 mb-4">
-          <a href="{{ route('rekaman-pengajuan.aktif-kuliah') }}" >
+       
           <div class="card">
             <div class="card-body">
               <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
@@ -232,7 +232,7 @@
               </div>
             </div>
           </div>
-          </a>
+ 
         </div>
       </div>
     </div>
