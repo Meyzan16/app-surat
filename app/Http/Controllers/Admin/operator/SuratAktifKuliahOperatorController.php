@@ -16,7 +16,6 @@ class SuratAktifKuliahOperatorController extends Controller
             ['status_persetujuan', '=',  'belum diverifikasi']
         ])->get();
 
-
         return view('Admin.main.operator.aktif-kuliah.data', compact('data'));
     }
 

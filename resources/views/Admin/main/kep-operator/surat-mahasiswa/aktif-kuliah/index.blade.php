@@ -37,7 +37,7 @@
                                     </div>
                                     <div class="col-md-8">
                                         <h6 class="text-muted font-semibold">Data Pengajuan</h6>
-                                        <h6 class="font-extrabold mb-0">112</h6>
+                                        <h6 class="font-extrabold mb-0">{{$data_pengajuan_aktif_kuliah}}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -57,7 +57,7 @@
                                     </div>
                                     <div class="col-md-8">
                                         <h6 class="text-muted font-semibold">History Pengajuan </h6>
-                                        <h6 class="font-extrabold mb-0">112.000</h6>
+                                        <h6 class="font-extrabold mb-0">{{ $count_aktif_kuliah}}</h6>
                                     </div>
                                 </div>
                             </div>

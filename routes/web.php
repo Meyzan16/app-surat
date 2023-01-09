@@ -145,11 +145,11 @@ Route::group([
 //operator
 Route::group([
     'middleware' => 'auth',
+    'middleware' => 'is_operator',
     'prefix' => 'operator/'], function(){
     Route::get('/', [DashboardController::class, 'index'] )->name('operator.dashboard');
 
     Route::group([
-        'middleware' => 'is_operator',
         'prefix'  => 'surat-mahasiswa/'],function(){
         Route::group([
             'prefix'  => 'surat-aktif-kuliah/'],function(){
@@ -170,21 +170,14 @@ Route::group([
             Route::get('/', [SuratUmumMhsController::class, 'index'])->name('operator.surat-umum-mhs.index');
             Route::get('{id}/edit', [SuratUmumMhsController::class, 'edit'])->name('operator.surat-umum-mhs.edit');
             Route::patch('{id}/data-diperbarui', [SuratUmumMhsController::class, 'update'])->name('operator.surat-umum-mhs.update');
-           
-
-           
             Route::patch('{id}/verif_diterima', [SuratUmumMhsController::class, 'verifikasi'])->name('operator.surat-umum-mhs.verif_diterima');
             Route::patch('{id}/verif_ditolak', [SuratUmumMhsController::class, 'verifikasi_tolak'])->name('operator.surat-umum-mhs.verif_ditolak');
         
-            Route::get('{id}/cetak', [CetakController::class, 'surat_umum_mhs'])->name('operator.cetak.surat-umum-mhs');
-            
+            Route::get('{id}/cetak', [CetakController::class, 'surat_umum_mhs'])->name('operator.cetak.surat-umum-mhs'); 
         });
-
-
     });
 
     Route::group([
-        'middleware' => 'is_operator',
         'prefix'  => 'surat-prodi/'],function(){
             Route::get('/', [SuratProdiOperatorController::class, 'index'])->name('operator.surat-umum.index');
             Route::get('tambah-data', [SuratProdiOperatorController::class, 'create'])->name('operator.surat-umum.create');
@@ -194,118 +187,108 @@ Route::group([
             Route::get('{id}/edit-data', [SuratProdiOperatorController::class, 'edit'])->name('operator.surat-umum.edit');
             Route::patch('{id}/update-data', [SuratProdiOperatorController::class, 'update'])->name('operator.surat-umum.update');
         });
-        
-  
-
 });
 
 
 //kepala operator
 Route::group([
     'middleware' => 'auth',
+    'middleware' => 'is_kepalaoperator',
     'prefix' => 'kepala-operator/'], function(){
-    Route::get('/', [DashboardController::class, 'index'] )->name('kepala-operator.dashboard');
+            Route::get('/', [DashboardController::class, 'index'] )->name('kepala-operator.dashboard');
 
-    Route::group([
-        'middleware' => 'is_kepalaoperator',
-        'prefix'  => 'surat-mahasiswa/'],function(){
-        Route::group([
-            'prefix'  => 'surat-aktif-kuliah/'],function(){
-            Route::get('{prodi}', [SuratAktifKuliahKepOperatorController::class, 'index'] )->name('kepala-operator.surat-aktif-kuliah.index');
-            Route::get('{prodi}/Data-pengajuan', [SuratAktifKuliahKepOperatorController::class, 'show'] )->name('kepala-operator.surat-aktif-kuliah.show');
-            Route::get('{prodi}/history-pengajuan', [SuratAktifKuliahKepOperatorController::class, 'history'])->name('kepala-operator.surat-aktif-kuliah.history');
+            Route::group([
+                'prefix'  => 'surat-mahasiswa/'],function(){
+                Route::group([
+                    'prefix'  => 'surat-aktif-kuliah/'],function(){
+                    Route::get('{prodi}', [SuratAktifKuliahKepOperatorController::class, 'index'] )->name('kepala-operator.surat-aktif-kuliah.index');
+                    Route::get('{prodi}/Data-pengajuan', [SuratAktifKuliahKepOperatorController::class, 'show'] )->name('kepala-operator.surat-aktif-kuliah.show');
+                    Route::get('{prodi}/history-pengajuan', [SuratAktifKuliahKepOperatorController::class, 'history'])->name('kepala-operator.surat-aktif-kuliah.history');
 
-            // operator
-            //kenapa prodi , karna di filter secara prodi dan di update secara npm, npm di ambil lewat request
-            Route::post('{prodi}/verif_diterima_operator', [SuratAktifKuliahKepOperatorController::class, 'verifikasi'])->name('kepala-operator.surat-aktif-kuliah.verif_diterima');
-            Route::patch('{prodi}/verif_ditolak_operator', [SuratAktifKuliahKepOperatorController::class, 'verifikasi_tolak'])->name('kepala-operator.surat-aktif-kuliah.verif_ditolak');
-            
-            // kepala operator
-            Route::post('{prodi}/verifikasi-kepala-operator', [SuratAktifKuliahKepOperatorController::class, 'verifikasi_kepala'])->name('kepala-operator.surat-aktif-kuliah.verif-kep-operator');
-            Route::post('{prodi}/veri-batal-kepala-operator', [SuratAktifKuliahKepOperatorController::class, 'verif_batal_kepala'])->name('kepala-operator.surat-aktif-kuliah.verif-batal-kep-operator');
-            
-            Route::get('{id}/cetak', [CetakController::class, 'aktif_kuliah'])->name('kepala-operator.cetak.aktif-kuliah');
-        });
-    });
-    
-    // surat umum
-    Route::group([
-        'middleware' => 'is_kepalaoperator',
-        'prefix'  => 'surat-umum-prodi/'],function(){
-            Route::get('{prodi}', [SuratUmumKepOperatorController::class, 'index'])->name('kep-operator.surat-umum.index');
-            
-            Route::get('{id}/show-data', [SuratUmumKepOperatorController::class, 'show'])->name('kep-operator.surat-umum.show');
-            
-            Route::patch('{prodi}/verif-diterima', [SuratUmumKepOperatorController::class, 'verifikasi'])->name('kep-operator.surat-umum.verif_diterima');
-            Route::patch('{prodi}/verif-ditolak', [SuratUmumKepOperatorController::class, 'verifikasi_tolak'])->name('kep-operator.surat-umum.verif_ditolak');
-    });
-
-    // surat umum
-    Route::group([
-        'middleware' => 'is_kepalaoperator',
-        'prefix'  => 'surat-umum-mahasiswa/'],function(){
-            Route::get('{prodi}', [SuratUmumKepOperatorController::class, 'mahasiswa'])->name('kep-operator.surat-umum-mhs.index');
-            
-            Route::get('{id}/cetak', [CetakController::class, 'surat_umum_mhs'])->name('kep-operator.surat-umum-mhs.cetak');
-            
-            Route::patch('{id}/verif-diterima', [SuratUmumKepOperatorController::class, 'verifikasi_mhs'])->name('kep-operator.surat-umum-mhs.verif_diterima');
-            Route::patch('{id}/verif-ditolak', [SuratUmumKepOperatorController::class, 'verifikasi_tolak_mhs'])->name('kep-operator.surat-umum-mhs.verif_ditolak');
-            
-        });
-
-
-    // pengaturan
-    Route::group([
-        'middleware' => 'is_kepalaoperator',
-        'prefix'  => 'pengaturan/'],function(){
-        Route::resource('judul-surat', JudulSuratController::class);
-
-        Route::get('judul-surat-trash', [JudulSuratController::Class, 'trash'])->name('kep-operator.judul-surat.trash');
-        Route::get('{id}/judul-surat-restore', [JudulSuratController::class, 'restore'])->name('kep-operator.judul-surat.restore');
-    });
-
-    Route::group([
-        'middleware' => 'is_kepalaoperator',
-        'prefix'  => 'pengaturan/'],function(){
-        Route::resource('data-lampiran', LampiranSuratController::class);
-
-        Route::get('data-lampiran-trash', [LampiranSuratController::Class, 'trash'])->name('kep-operator.data-lampiran.trash');
-        Route::get('{id}/data-lampiran-restore', [LampiranSuratController::class, 'restore'])->name('kep-operator.data-lampiran.restore');
-    });
-
-    Route::group([
-        'middleware' => 'is_kepalaoperator',
-        'prefix'  => 'pengaturan/'],function(){
-        Route::resource('data-tujuan', TujuanSuratController::class);
-
-        Route::get('data-tujuan-trash', [TujuanSuratController::Class, 'trash'])->name('kep-operator.data-tujuan.trash');
-        Route::get('{id}/data-tujuan-restore', [TujuanSuratController::class, 'restore'])->name('kep-operator.data-tujuan.restore');
-    });
-    // akhir pengaturan
-
-    
-    //Akun operator
-    Route::group([
-        'middleware' => 'is_kepalaoperator',
-        'prefix'  => 'akun/'],function(){
-                    Route::resource('akun-operator', AkunOperatorController::class);  
-                    Route::get('akun-operator-trash', [AkunOperatorController::Class, 'trash'])->name('kep-operator.akun-operator.trash');
-                    Route::get('{id}/akun-operator-restore', [AkunOperatorController::class, 'restore'])->name('kep-operator.akun-operator.restore');
-
-                    Route::resource('akun-prodi', AkunProdiController::class);   
-                    Route::get('akun-prodi-trash', [AkunProdiController::Class, 'trash'])->name('kep-operator.akun-prodi.trash');
-                    Route::get('{id}/akun-prodi-restore', [AkunProdiController::class, 'restore'])->name('kep-operator.akun-prodi.restore');
+                    // operator
+                    //kenapa prodi , karna di filter secara prodi dan di update secara npm, npm di ambil lewat request
+                    Route::post('{prodi}/verif_diterima_operator', [SuratAktifKuliahKepOperatorController::class, 'verifikasi'])->name('kepala-operator.surat-aktif-kuliah.verif_diterima');
+                    Route::patch('{prodi}/verif_ditolak_operator', [SuratAktifKuliahKepOperatorController::class, 'verifikasi_tolak'])->name('kepala-operator.surat-aktif-kuliah.verif_ditolak');
                     
+                    // kepala operator
+                    Route::post('{prodi}/verifikasi-kepala-operator', [SuratAktifKuliahKepOperatorController::class, 'verifikasi_kepala'])->name('kepala-operator.surat-aktif-kuliah.verif-kep-operator');
+                    Route::post('{prodi}/veri-batal-kepala-operator', [SuratAktifKuliahKepOperatorController::class, 'verif_batal_kepala'])->name('kepala-operator.surat-aktif-kuliah.verif-batal-kep-operator');
                     
-                    Route::resource('akun-persetujuan', AkunPersetujuanController::class);  
-                    Route::get('akun-persetujuan-trash', [AkunPersetujuanController::Class, 'trash'])->name('akun-persetujuan.trash');
-                    Route::get('{id}/akun-persetujuan-restore', [AkunPersetujuanController::class, 'restore'])->name('akun-persetujuan.restore');
-                    Route::get('{id}/akun-persetujuan-riset', [AkunPersetujuanController::class, 'riset'])->name('kep-operator.akun-persetujuan.riset');
-                   
-                    Route::resource('akun-kep-operator', AkunKepOperatorController::class);  
-    
+                    Route::get('{id}/cetak', [CetakController::class, 'aktif_kuliah'])->name('kepala-operator.cetak.aktif-kuliah');
+                });
+            });
+            
+            // surat umum
+            Route::group([
+                'prefix'  => 'surat-umum-prodi/'],function(){
+                    Route::get('{prodi}', [SuratUmumKepOperatorController::class, 'index'])->name('kep-operator.surat-umum.index');
+                    
+                    Route::get('{id}/show-data', [SuratUmumKepOperatorController::class, 'show'])->name('kep-operator.surat-umum.show');
+                    
+                    Route::patch('{prodi}/verif-diterima', [SuratUmumKepOperatorController::class, 'verifikasi'])->name('kep-operator.surat-umum.verif_diterima');
+                    Route::patch('{prodi}/verif-ditolak', [SuratUmumKepOperatorController::class, 'verifikasi_tolak'])->name('kep-operator.surat-umum.verif_ditolak');
+            });
 
-    });
+            // surat umum
+            Route::group([
+                'prefix'  => 'surat-umum-mahasiswa/'],function(){
+                    Route::get('{prodi}', [SuratUmumKepOperatorController::class, 'mahasiswa'])->name('kep-operator.surat-umum-mhs.index');
+                    
+                    Route::get('{id}/cetak', [CetakController::class, 'surat_umum_mhs'])->name('kep-operator.surat-umum-mhs.cetak');
+                    
+                    Route::patch('{id}/verif-diterima', [SuratUmumKepOperatorController::class, 'verifikasi_mhs'])->name('kep-operator.surat-umum-mhs.verif_diterima');
+                    Route::patch('{id}/verif-ditolak', [SuratUmumKepOperatorController::class, 'verifikasi_tolak_mhs'])->name('kep-operator.surat-umum-mhs.verif_ditolak');
+                    
+                });
+
+
+            // pengaturan
+            Route::group([
+                'prefix'  => 'pengaturan/'],function(){
+                Route::resource('judul-surat', JudulSuratController::class);
+
+                Route::get('judul-surat-trash', [JudulSuratController::Class, 'trash'])->name('kep-operator.judul-surat.trash');
+                Route::get('{id}/judul-surat-restore', [JudulSuratController::class, 'restore'])->name('kep-operator.judul-surat.restore');
+            });
+
+            Route::group([
+                'prefix'  => 'pengaturan/'],function(){
+                Route::resource('data-lampiran', LampiranSuratController::class);
+
+                Route::get('data-lampiran-trash', [LampiranSuratController::Class, 'trash'])->name('kep-operator.data-lampiran.trash');
+                Route::get('{id}/data-lampiran-restore', [LampiranSuratController::class, 'restore'])->name('kep-operator.data-lampiran.restore');
+            });
+
+            Route::group([
+                'prefix'  => 'pengaturan/'],function(){
+                Route::resource('data-tujuan', TujuanSuratController::class);
+
+                Route::get('data-tujuan-trash', [TujuanSuratController::Class, 'trash'])->name('kep-operator.data-tujuan.trash');
+                Route::get('{id}/data-tujuan-restore', [TujuanSuratController::class, 'restore'])->name('kep-operator.data-tujuan.restore');
+            });
+            // akhir pengaturan
+            
+            //Akun operator
+            Route::group([
+                'prefix'  => 'akun/'],function(){
+                            Route::resource('akun-operator', AkunOperatorController::class);  
+                            Route::get('akun-operator-trash', [AkunOperatorController::Class, 'trash'])->name('kep-operator.akun-operator.trash');
+                            Route::get('{id}/akun-operator-restore', [AkunOperatorController::class, 'restore'])->name('kep-operator.akun-operator.restore');
+
+                            Route::resource('akun-prodi', AkunProdiController::class);   
+                            Route::get('akun-prodi-trash', [AkunProdiController::Class, 'trash'])->name('kep-operator.akun-prodi.trash');
+                            Route::get('{id}/akun-prodi-restore', [AkunProdiController::class, 'restore'])->name('kep-operator.akun-prodi.restore');
+                            
+                            
+                            Route::resource('akun-persetujuan', AkunPersetujuanController::class);  
+                            Route::get('akun-persetujuan-trash', [AkunPersetujuanController::Class, 'trash'])->name('akun-persetujuan.trash');
+                            Route::get('{id}/akun-persetujuan-restore', [AkunPersetujuanController::class, 'restore'])->name('akun-persetujuan.restore');
+                            Route::get('{id}/akun-persetujuan-riset', [AkunPersetujuanController::class, 'riset'])->name('kep-operator.akun-persetujuan.riset');
+                        
+                            Route::resource('akun-kep-operator', AkunKepOperatorController::class);  
+            
+
+            });
 });
 
 
@@ -365,7 +348,6 @@ Route::group([
             Route::get('{prodi}/pengajuan-aktif', [SuratAktifKuliahProdiController::class, 'show'] )->name('prodi-pengajuan.surat-aktif-kuliah.show');
 
             Route::get('{prodi}/History', [SuratAktifKuliahProdiController::class, 'history'] )->name('prodi-pengajuan.surat-aktif-kuliah.history');
-
         });
     });
 });
@@ -374,8 +356,6 @@ Route::group([
 
 // error
 Route::get('/404', [ErrorController::class, 'index'] )->name('error-404');
-
-
 
 
 // login

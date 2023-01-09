@@ -87,7 +87,7 @@
                                 </td>
                             @elseif($item->kepala_operator == 'N')
                                 <td>
-                                    <span class="badge bg-warning">Verifikasi Dibatalkan</span>
+                                    <span class="badge bg-warning">Verifikasi Ulang</span>
                                 </td>
                             @else
                             <td>

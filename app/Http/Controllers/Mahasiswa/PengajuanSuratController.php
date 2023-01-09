@@ -149,7 +149,7 @@ class PengajuanSuratController extends Controller
 
                                 }elseif($data->tujuan_surat == NULL && $data->status_persetujuan == 'belum diverifikasi')
                                 {
-                                    return \redirect()->route('surat-umum.index')->with('successs', 'Anda Belum Melengkapi Data');
+                                    return \redirect()->route('rekaman-pengajuan.surat_umum')->with('toast_error', 'Anda Belum Melengkapi Data');
                                 }
                                 elseif($data->tujuan_surat && $data->status_persetujuan == 'Y')
                                 {

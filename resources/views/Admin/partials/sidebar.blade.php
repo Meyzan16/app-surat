@@ -13,12 +13,21 @@
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
 
-                <li class="sidebar-item {{ request()->is('operator') ? 'active' : '' }} ">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-grid-fill"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
+                @if(auth()->user()->roles == 'OPERATOR_PRODI')
+                    <li class="sidebar-item {{ request()->is('operator') ? 'active' : '' }} ">
+                        <a href="{{ route('operator.dashboard')}}" class='sidebar-link'>
+                            <i class="bi bi-grid-fill"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                @elseif(auth()->user()->roles == 'KEPALA_OPERATOR')
+                    <li class="sidebar-item {{ request()->is('kepala-operator') ? 'active' : '' }} ">
+                        <a href="{{ route('kepala-operator.dashboard')}}" class='sidebar-link'>
+                            <i class="bi bi-grid-fill"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                @endif
 
                 @if(auth()->user()->roles == 'OPERATOR_PRODI')
                     <li class="sidebar-item  {{ request()->is('operator/surat-mahasiswa/surat-aktif-kuliah*') ? 'active' : '' }}  has-sub">
@@ -265,6 +274,25 @@
                             @foreach($prodi as $item)
                             <li class="submenu-item ">
                                 <a href="{{ route('prodi-pengajuan.surat-aktif-kuliah.index', $item->kode_prodi) }}">{{ $item->nama_prodi}}</a>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-item {{ request()->is('kepala-operator/surat-umum-mahasiswa*') ? 'active' : '' }}  has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-file-earmark-medical-fill"></i>
+                            <span>Surat Umum Mahasiswa</span>
+                        </a>
+                        <ul class="submenu {{ request()->is('kepala-operator/surat-umum-mahasiswa*') ? 'active' : '' }}">
+
+                            @php
+                                $prodi = DB::table('tb_prodis')->get();
+                            @endphp
+
+                            @foreach($prodi as $item)
+                            <li class="submenu-item">
+                                <a href="{{ route('kep-operator.surat-umum-mhs.index', $item->kode_prodi) }}">{{ $item->nama_prodi}}</a>
                             </li>
                             @endforeach
                         </ul>

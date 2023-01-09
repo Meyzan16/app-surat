@@ -47,7 +47,7 @@
                             <th>NPM</th>
                             <th>Nama</th>
                             <th>Status Operator</th>
-                            <th>Aksi</th>
+                            {{-- <th>Aksi</th> --}}
                             <th>Status Kep.Operator</th>
                             <th>Aksi</th>
                             <th>Status ttd</th>
@@ -78,11 +78,11 @@
                             @endif
 
 
-                            <td>           
+                            {{-- <td>           
                                 <a class="badge bg-success"   data-bs-toggle="modal" data-bs-target="#exampleModalTerima{{ $item->npm }}">   <i class="fa fa-check-circle"> </i>  </a>                                  
                                 
                                 <a class="badge bg-danger"   data-bs-toggle="modal" data-bs-target="#exampleModalTolak{{ $item->npm }}">  <i class="fa fa-ban"> </i>  </a>                                  
-                            </td>
+                            </td> --}}
 
                             @if ($item->kepala_operator == 'belum diverifikasi')
                                 <td>
@@ -90,7 +90,7 @@
                                 </td>
                             @elseif($item->kepala_operator == 'N')
                                 <td>
-                                    <span class="badge bg-warning">Verifikasi Dibatalkan</span>
+                                    <span class="badge bg-warning">Verifikasi Ulang</span>
                                 </td>
                             @else
                             <td>

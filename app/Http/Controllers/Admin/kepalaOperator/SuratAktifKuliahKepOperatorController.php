@@ -16,8 +16,14 @@ class SuratAktifKuliahKepOperatorController extends Controller
             ['kode_prodi', '=',  $prodi],
         ])->first();
 
+        $count_aktif_kuliah = tb_log_srt_ket_msh_kuliah::where('kode_prodi', $prodi)
+                    ->where('status_persetujuan', 'Y')  
+                    ->count();
+        $data_pengajuan_aktif_kuliah = tb_log_srt_ket_msh_kuliah::where('kode_prodi', $prodi)
+                    ->where('status_persetujuan', 'belum diverifikasi')  
+                    ->count();
 
-        return view('Admin.main.kep-operator.surat-mahasiswa.aktif-kuliah.index', compact('data'));
+        return view('Admin.main.kep-operator.surat-mahasiswa.aktif-kuliah.index', compact('data', 'data_pengajuan_aktif_kuliah','count_aktif_kuliah'));
     }
 
     public function show(Request $reqeust, $prodi)

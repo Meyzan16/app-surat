@@ -57,12 +57,7 @@
             </div>
           </div>
 
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label" for="basic-default-npm">Tembusan</label>
-            <div class="col-sm-10">
-                <textarea class="form-control" name="tembusan" id="editor1" rows="3" ></textarea>                                                  
-            </div>
-          </div>
+         
           
           <div class="row justify-content-end">
             <div class="col-sm-5">
