@@ -27,6 +27,13 @@
                             <span>Dashboard</span>
                         </a>
                     </li>
+                @elseif(auth()->user()->roles == 'VERIF_PERSETUJUAN')
+                    <li class="sidebar-item {{ request()->is('pemegang-tanggung-jawab') ? 'active' : '' }} ">
+                        <a href="{{ route('ttd-persetujuan.dashboard')}}" class='sidebar-link'>
+                            <i class="bi bi-grid-fill"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
                 @endif
 
                 @if(auth()->user()->roles == 'OPERATOR_PRODI')
@@ -197,19 +204,19 @@
 
 
                 @if(auth()->user()->roles == 'VERIF_PERSETUJUAN')
-                    <li class="sidebar-item  has-sub">
+                    <li class="sidebar-item {{ request()->is('pemegang-tanggung-jawab/surat-mahasiswa/surat-aktif-kuliah*') ? 'active' : '' }} has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-stack "></i>
                             <span>Surat Aktif Kuliah verif</span>
                         </a>
-                        <ul class="submenu ">
+                        <ul class="submenu {{ request()->is('pemegang-tanggung-jawab/surat-mahasiswa/surat-aktif-kuliah*') ? 'active' : '' }}">
 
                             @php
                                 $prodi = DB::table('tb_prodis')->get();
                             @endphp
 
                             @foreach($prodi as $item)
-                            <li class="submenu-item ">
+                            <li class="submenu-item">
                                 <a href="{{ route('ttd-persetujuan.surat-aktif-kuliah.index', $item->kode_prodi) }}">{{ $item->nama_prodi}}</a>
                             </li>
                             @endforeach
@@ -231,10 +238,30 @@
                         </ul>
                     </li>
 
+                    <li class="sidebar-item {{ request()->is('pemegang-tanggung-jawab/surat-umum-mhs*') ? 'active' : '' }}  has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-file-earmark-medical-fill"></i>
+                            <span>Surat Umum Mahasiswa</span>
+                        </a>
+                        <ul class="submenu {{ request()->is('pemegang-tanggung-jawab/surat-umum-mhs*') ? 'active' : '' }}">
+
+                            @php
+                                $prodi = DB::table('tb_prodis')->get();
+                            @endphp
+
+                            @foreach($prodi as $item)
+                            <li class="submenu-item">
+                                <a href="{{ route('ttd-persetujuan.surat-umum-mhs.index', $item->kode_prodi) }}">{{ $item->nama_prodi}}</a>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </li>
+
+
                     <li class="sidebar-item {{ request()->is('pemegang-tanggung-jawab/surat-umum*') ? 'active' : '' }}  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-file-earmark-medical-fill"></i>
-                            <span>Surat Umum</span>
+                            <span>Surat Umum Prodi</span>
                         </a>
                         <ul class="submenu {{ request()->is('pemegang-tanggung-jawab/surat-umum*') ? 'active' : '' }}">
 
@@ -250,9 +277,9 @@
                         </ul>
                     </li>
 
-                    <li class="sidebar-item">
-                        <a href="#" class='sidebar-link'>
-                            <i class="{{route('persetujaun.profile.index')}}"></i>
+                    <li class="sidebar-item {{ request()->is('pemegang-tanggung-jawab/profile*') ? 'active' : '' }}">
+                        <a href="{{route('persetujaun.profile.index')}}" class='sidebar-link {{ request()->is('pemegang-tanggung-jawab/profile*') ? 'active' : '' }}'>
+                            <i class="bi bi-person-badge-fill"></i>
                             <span>Profile</span>
                         </a>
                     </li>

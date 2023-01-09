@@ -9,7 +9,7 @@
         <div class="d-flex align-items-end row">
           <div class="col-sm-7">
             <div class="card-body">
-              <h5 class="card-title text-primary">SELAMAT DATANG {{Session::get('nama_lengkap')}} | {{Session::get('terdaftar') }} 🎉</h5>
+              <h5 class="card-title text-primary">SELAMAT DATANG {{Session::get('nama_lengkap')}}</h5>
               <p class="mb-4">
                 Website ini merupakan terobosan baru dari fakultas <span class="fw-bold">Matematika dan Ilmu Pengetahuan Alam </span>
                 dalam mempermudah proses kebutuhan surat menyurat mahasiswa
@@ -36,7 +36,7 @@
 
  
     <!-- Total Revenue -->
-    <div class="col-12 col-lg-12 order-2 order-md-3 order-lg-2 mb-4">
+    {{-- <div class="col-12 col-lg-12 order-2 order-md-3 order-lg-2 mb-4">
       <div class="card mb-4">
         <div class="card-header d-flex align-items-center justify-content-between">
           <h5 class="mb-0">Informasi Proses Pengajuan</h5>
@@ -126,7 +126,7 @@
             </div>
         </div>
       </div>
-    </div>
+    </div> --}}
 
     <!--/ Total Revenue -->
     <div class="col-12">

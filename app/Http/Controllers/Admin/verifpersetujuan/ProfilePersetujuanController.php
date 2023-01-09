@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\verifpersetujuan;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\tb_persetujuan;
 use Illuminate\Http\Request;
 
 class ProfilePersetujuanController extends Controller
@@ -23,6 +24,12 @@ class ProfilePersetujuanController extends Controller
             'password_noenkripsi' => $request->password,
         ]);
 
-        return redirect()->route('operator.profile.index')->with('toast_success',' Data berhasil di perbarui ');
+        tb_persetujuan::where('users_id', $id)->update([
+            'nip' => $request->nip,
+            'golongan' => $request->golongan,
+            'jabatan' => $request->jabatan,
+        ]);
+
+        return redirect()->route('persetujaun.profile.index')->with('toast_success',' Data berhasil di perbarui ');
     }
 }
