@@ -104,6 +104,16 @@
                             @endif
                         </td>
 
+                        <td> 
+                          <form action="{{route('surat-masih-kuliah.delete', $item->id)}}" method="POST">
+                            @csrf @method('delete')
+                            <button type="submit" class="d-flex">
+                              <span class="badge bg-label-danger me-1">Hapus</span>
+                            </button>
+                          </form>
+                        
+                        </td>
+
                         @php
                         $created = new DateTime($item->created_at);
                         $result = $created->format('d-m-Y');
@@ -119,7 +129,7 @@
 
                         $aa = $selisih->d;
 
-                        if($aa > 8)
+                        if($aa > $item->tb_judul_surat->masa_aktif)
                         {
                             $dataa = "Kadaluarsa";
                             $color = "danger";
@@ -131,19 +141,11 @@
 
                         @endphp
 
-                        <td> 
-                          <form action="{{route('surat-masih-kuliah.delete', $item->id)}}" method="POST">
-                            @csrf @method('delete')
-                            <button type="submit" class="d-flex">
-                              <span class="badge bg-label-danger me-1">Hapus</span>
-                            </button>
-                          </form>
                         
-                        </td>
                         
                         <td>
                           
-                          <a class="badge bg-label-{{$color}} "> Hari ke-{{$aa}} | {{ $dataa }} </a>          
+                          <a class="badge bg-label-{{$color}} "> Hari ke-{{$aa}} | {{ $dataa }}  </a>          
                           
                         </td>
 
