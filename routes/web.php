@@ -101,7 +101,7 @@ Route::group([
             'prefix'  => 'surat-masih-kuliah/'],function(){
             Route::get('/', [SuratMasihKuliahController::class, 'index'])->name('surat-masih-kuliah.index');
             Route::post('{npm}/melengkapi-data', [SuratMasihKuliahController::class, 'update'])->name('surat-masih-kuliah.update');
-            Route::delete('{npm}/hapus-data', [SuratMasihKuliahController::class, 'destroy'])->name('surat-masih-kuliah.delete'); 
+            Route::delete('{id}/hapus-data', [SuratMasihKuliahController::class, 'destroy'])->name('surat-masih-kuliah.delete'); 
             Route::get('{id}/cetak', [CetakController::class, 'aktif_kuliah'])->name('cetak.aktif-kuliah'); 
         });
 

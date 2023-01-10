@@ -26,7 +26,8 @@
                         <th>Tanggal Pengajuan</th>
                         <th>Status Operator</th>
                         <th>Status Kep.Operator</th>
-                        <th>Status TTD Persetujuan</th>
+                        <th>Status Persetujuan</th>
+                        <th>Aksi</th>
                         <th>Masa Aktif</th>
                       </tr>
                     </thead>
@@ -129,6 +130,16 @@
 
 
                         @endphp
+
+                        <td> 
+                          <form action="{{route('surat-masih-kuliah.delete', $item->id)}}" method="POST">
+                            @csrf @method('delete')
+                            <button type="submit" class="d-flex">
+                              <span class="badge bg-label-danger me-1">Hapus</span>
+                            </button>
+                          </form>
+                        
+                        </td>
                         
                         <td>
                           

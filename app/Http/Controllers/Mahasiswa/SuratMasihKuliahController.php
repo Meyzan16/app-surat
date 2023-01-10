@@ -59,22 +59,21 @@ class SuratMasihKuliahController extends Controller
                             
 
         
-                    return \redirect()->route('dashboard-mhs')->with('toast_success', 'Mohon menunggu diverifikasi');
+                    return \redirect()->route('rekaman-pengajuan.aktif-kuliah')->with('toast_success', 'Mohon menunggu diverifikasi');
          }
     }
 
-    public function destroy($npm)
+    public function destroy($id)
     {
-        $data = tb_log_srt_ket_msh_kuliah::where('npm', $npm)->first();
+        $data = tb_log_srt_ket_msh_kuliah::where('id', $id)->first();
 
         tb_log_srt_ket_msh_kuliah::where([
-            ['npm', '=',  $data->npm],
-            ['kode_judul_surat', '=',  $data->kode_judul_surat],
+            ['id', '=',  $data->id],
         ])->delete();
 
      
 
-        return \redirect()->route('dashboard-mhs')->with('toast_success', 'Pengajuan surat berhasil dihapus');
+        return \redirect()->route('rekaman-pengajuan.aktif-kuliah')->with('toast_success', 'Pengajuan surat berhasil dihapus');
 
 
     }
