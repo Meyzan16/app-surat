@@ -95,13 +95,7 @@
                             </li>
                         </ul>
                     </li>
-                @endif
-
-
-                {{-- kepala operator --}}
-
-                @if(auth()->user()->roles == 'KEPALA_OPERATOR')
-
+                @elseif(auth()->user()->roles == 'KEPALA_OPERATOR')
                     <li class="sidebar-item {{ request()->is('kepala-operator/surat-mahasiswa/surat-aktif-kuliah*') ? 'active' : '' }}  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-file-earmark-medical-fill"></i>
@@ -120,6 +114,8 @@
                             @endforeach
                         </ul>
                     </li>
+
+                    
 
                     <li class="sidebar-item {{ request()->is('kepala-operator/surat-mahasiswa/surat-umum-mahasiswa*') ? 'active' : '' }}  has-sub">
                         <a href="#" class='sidebar-link'>
@@ -200,14 +196,11 @@
                         
                         </ul>
                     </li>
-                @endif
-
-
-                @if(auth()->user()->roles == 'VERIF_PERSETUJUAN')
+                @elseif(auth()->user()->roles == 'VERIF_PERSETUJUAN')
                     <li class="sidebar-item {{ request()->is('pemegang-tanggung-jawab/surat-mahasiswa/surat-aktif-kuliah*') ? 'active' : '' }} has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-stack "></i>
-                            <span>Surat Aktif Kuliah verif</span>
+                            <span>Surat aktif kuliah</span>
                         </a>
                         <ul class="submenu {{ request()->is('pemegang-tanggung-jawab/surat-mahasiswa/surat-aktif-kuliah*') ? 'active' : '' }}">
 
@@ -222,6 +215,8 @@
                             @endforeach
                         </ul>
                     </li>
+
+                    
 
                     <li class="sidebar-item has-sub">
                         <a href="#" class='sidebar-link'>
@@ -238,12 +233,12 @@
                         </ul>
                     </li>
 
-                    <li class="sidebar-item {{ request()->is('pemegang-tanggung-jawab/surat-umum-mhs*') ? 'active' : '' }}  has-sub">
+                    <li class="sidebar-item {{ request()->is('pemegang-tanggung-jawab/surat-mahasiswa/surat-umum-mahasiswa*') ? 'active' : '' }}  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-file-earmark-medical-fill"></i>
-                            <span>Surat Mahasiswa</span>
+                            <span>Surat Mahasiswaa</span>
                         </a>
-                        <ul class="submenu {{ request()->is('pemegang-tanggung-jawab/surat-umum-mhs*') ? 'active' : '' }}">
+                        <ul class="submenu {{ request()->is('pemegang-tanggung-jawab/surat-mahasiswa/surat-umum-mahasiswa*') ? 'active' : '' }}">
 
                             @php
                                 $prodi = DB::table('tb_prodis')->get();
@@ -283,10 +278,7 @@
                             <span>Profile</span>
                         </a>
                     </li>
-                @endif
-
-
-                @if(auth()->user()->roles == 'VERIF_PRODI')
+                @elseif(auth()->user()->roles == 'VERIF_PRODI')
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-file-earmark-medical-fill"></i>

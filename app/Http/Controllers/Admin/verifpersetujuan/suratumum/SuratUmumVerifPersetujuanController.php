@@ -53,18 +53,49 @@ class SuratUmumVerifPersetujuanController extends Controller
     }
 
 
+    public function mahasiswa(Request $reqeust, $prodi)
+    {
+        
+        $data = tb_prodi::where([
+            ['kode_prodi', '=',  $prodi],
+        ])->first();
+
+        $count_aktif_kuliah = tb_log_surat_mhs_umum::where('kode_prodi', $prodi)
+                    ->where('status_persetujuan', 'Y')  
+                    ->count();
+        $data_pengajuan_aktif_kuliah = tb_log_surat_mhs_umum::where('kode_prodi', $prodi)
+                    ->where('status_persetujuan', 'belum diverifikasi')  
+                    ->count();
+
+        return view('Admin.main.verif-persetujuan.surat-umum-mhs.index', compact('data','data_pengajuan_aktif_kuliah', 'count_aktif_kuliah'));
+    }
+
     // mahasiswa
-    public function mahasiswa($prodi)
+    public function pengajuan($prodi)
     {
             $data = tb_log_surat_mhs_umum::where([
                 ['kode_prodi', '=',  $prodi],
+                ['status_persetujuan', '=',  'belum diverifikasi'],
             ])->get();
             $prodi = tb_prodi::where([
                 ['kode_prodi', '=',  $prodi],
             ])->first();
 
-            return view('Admin.main.verif-persetujuan.surat-umum-mhs.index', compact('data', 'prodi'));
+            return view('Admin.main.verif-persetujuan.surat-umum-mhs.pengajuan', compact('data', 'prodi'));
     }
+
+    public function history($prodi)
+    {  
+            $data = tb_log_surat_mhs_umum::where([
+                ['kode_prodi', '=',  $prodi],
+                ['status_persetujuan', '=',  'Y'],
+            ])->get();
+            $prodi = tb_prodi::where([
+                ['kode_prodi', '=',  $prodi],
+            ])->first();
+            return view('Admin.main.verif-persetujuan.surat-umum-mhs.history', compact('data', 'prodi'));
+    }
+
 
     public function verifikasi_mhs(Request $request, $prodi)
     {

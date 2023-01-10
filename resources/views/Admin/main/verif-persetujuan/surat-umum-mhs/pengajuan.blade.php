@@ -47,9 +47,9 @@
                             <th>Perihal Surat</th>
                             <th>Status Operator</th>
                             <th>Status Kep.Operator</th>
-                            <th>Aksi</th>
+
                             <th>Status Persetujuan</th>
-                            <th>Masa Aktif</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -107,10 +107,7 @@
                             @endif
                       
                           
-                            <td>      
-                                <a class="badge bg-success"   data-bs-toggle="modal" data-bs-target="#exampleModalTerima{{ $item->id }}">   <i class="fa fa-check-circle"> </i>  </a>                                  
-                                <a href="{{ route('kep-operator.surat-umum-mhs.cetak', $item->id)}}" class="badge bg-primary"> <i class="fa fa-eye"> </i> </a>
-                            </td>
+                         
 
                             @if ($item->status_persetujuan == 'belum diverifikasi')
                                 <td>
@@ -122,42 +119,17 @@
                             </td>
                             @endif
 
-                            @php
-                            $created = new DateTime($item->created_at);
-                            $result = $created->format('d-m-Y');
+                            <td>      
+                                <a class="badge bg-success"   data-bs-toggle="modal" data-bs-target="#exampleModalTerima{{ $item->id }}">   <i class="fa fa-check-circle"> </i>  </a>                                  
+                                
 
-                            
-                            $datetime1 = date_create($result);
-
-                            $now = date('d-m-Y');
-
-                            $datetime2 = date_create($now); // waktu sekarang
-                            
-                            $selisih  = date_diff($datetime1, $datetime2);
-
-                            $aa = $selisih->d;
-
-                            if($aa > $item->tb_judul_surat->masa_aktif)
-                            {
-                                $dataa = "Kadaluarsa";
-                                $color = "danger";
-                            }else {
-                                $dataa = "Masih Aktif";
-                                $color = "success";
-                            }
-
-
-                            @endphp
-
-                                <td>
-                                    <span class="badge bg-{{$color}}"> Hari Ke-{{$aa}}  | {{ $dataa }}</span>
-                                </td>
+                                <a href="{{ route('ttd-persetujuan.surat-umum-mhs.cetak', $item->id)}}" class="badge bg-primary"> <i class="fa fa-eye"> </i> </a>
+                            </td>
 
                          
                         </tr>
                         
-                            <a class="badge bg-primary" href="{{ route('kep-operator.surat-umum-mhs.index', $prodi->kode_prodi)}}" > Kembali </a>
-
+                        <a class="badge bg-primary" href="{{ route('ttd-persetujuan.surat-umum-mhs.index', $prodi->kode_prodi)}}" > Kembali </a>
                         @endforeach
                      
                     </tbody>
@@ -183,7 +155,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             </button>
         </div>
 
-        <form action="{{ route('kep-operator.surat-umum-mhs.verif_diterima', $prodi->kode_prodi) }}" method="POST">
+        <form action="{{ route('ttd-persetujuan.surat-umum-mhs.verif_diterima', $prodi->kode_prodi) }}" method="POST">
             @csrf {{ method_field('PATCH') }}
             <div class="modal-body">
                     

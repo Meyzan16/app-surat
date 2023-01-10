@@ -230,9 +230,6 @@ Route::group([
                         Route::patch('{id}/verif-diterima', [SuratUmumKepOperatorController::class, 'verifikasi_mhs'])->name('kep-operator.surat-umum-mhs.verif_diterima');
                         Route::patch('{id}/verif-ditolak', [SuratUmumKepOperatorController::class, 'verifikasi_tolak_mhs'])->name('kep-operator.surat-umum-mhs.verif_ditolak');
                 });
-
-
-
             });
             
             // surat umum prodi
@@ -323,6 +320,9 @@ Route::group([
         Route::group([
             'prefix'  => 'surat-umum-mahasiswa/'],function(){
                 Route::get('{prodi}', [SuratUmumVerifPersetujuanController::class, 'mahasiswa'])->name('ttd-persetujuan.surat-umum-mhs.index');
+                Route::get('{prodi}/Data-pengajuan', [SuratUmumVerifPersetujuanController::class, 'pengajuan'] )->name('ttd-persetujuan.surat-umum-mhs.pengajuan');
+                Route::get('{prodi}/history-pengajuan', [SuratUmumVerifPersetujuanController::class, 'history'])->name('ttd-persetujuan.surat-umum-mhs.history');
+
                 Route::get('{id}/cetak', [CetakController::class, 'surat_umum_mhs'])->name('ttd-persetujuan.surat-umum-mhs.cetak');
                 Route::patch('{id}/verif-diterima', [SuratUmumVerifPersetujuanController::class, 'verifikasi_mhs'])->name('ttd-persetujuan.surat-umum-mhs.verif_diterima');
         });
