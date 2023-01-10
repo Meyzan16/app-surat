@@ -70,7 +70,7 @@
                     <li class="sidebar-item  {{ request()->is('operator/surat-mahasiswa/surat-umum*') ? 'active' : '' }}  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-stack "></i>
-                            <span>Surat Umum</span>
+                            <span>Surat Mahasiswa</span>
                         </a>
                         <ul class="submenu {{ request()->is('operator/surat-mahasiswa/surat-umum*') ? 'active' : '' }}">
                             <li class="submenu-item  {{ request()->is('operator/surat-mahasiswa/surat-umum*') ? 'active' : '' }} ">
@@ -87,7 +87,7 @@
                     <li class="sidebar-item {{ request()->is('operator/surat-prodi*') ? 'active' : '' }}  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-file-earmark-medical-fill"></i>
-                            <span>Surat Prodi </span>
+                            <span>Surat Umum </span>
                         </a>
                         <ul class="submenu {{ request()->is('operator/surat-prodi*') ? 'active' : '' }}">
                             <li class="submenu-item {{ request()->is('operator/surat-prodi*') ? 'active' : '' }}">
@@ -124,7 +124,7 @@
                     <li class="sidebar-item {{ request()->is('kepala-operator/surat-umum-mahasiswa*') ? 'active' : '' }}  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-file-earmark-medical-fill"></i>
-                            <span>Surat Umum Mahasiswa</span>
+                            <span>Surat Mahasiswa</span>
                         </a>
                         <ul class="submenu {{ request()->is('kepala-operator/surat-umum-mahasiswa*') ? 'active' : '' }}">
 
@@ -241,7 +241,7 @@
                     <li class="sidebar-item {{ request()->is('pemegang-tanggung-jawab/surat-umum-mhs*') ? 'active' : '' }}  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-file-earmark-medical-fill"></i>
-                            <span>Surat Umum Mahasiswa</span>
+                            <span>Surat Mahasiswa</span>
                         </a>
                         <ul class="submenu {{ request()->is('pemegang-tanggung-jawab/surat-umum-mhs*') ? 'active' : '' }}">
 
@@ -309,7 +309,7 @@
                     <li class="sidebar-item {{ request()->is('kepala-operator/surat-umum-mahasiswa*') ? 'active' : '' }}  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-file-earmark-medical-fill"></i>
-                            <span>Surat Umum Mahasiswa</span>
+                            <span>Surat Mahasiswa</span>
                         </a>
                         <ul class="submenu {{ request()->is('kepala-operator/surat-umum-mahasiswa*') ? 'active' : '' }}">
 

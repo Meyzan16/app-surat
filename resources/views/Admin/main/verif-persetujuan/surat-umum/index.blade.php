@@ -96,8 +96,13 @@
 
                             <td>      
                                     <a class="badge bg-success"   data-bs-toggle="modal" data-bs-target="#exampleModalTerima{{ $item->id }}">   <i class="fa fa-check-circle"> </i>  </a>                                  
+                                @if($item->status_persetujuan == 'Y')
+                                <a href="{{ route('ttd-persetujuan.surat-umum.show', $item->id)}}" target="_blank" class="badge bg-primary"> <i class="fa fa-print"> </i> </a>
                                 
+                                @else
                                 <a href="{{ route('ttd-persetujuan.surat-umum.show', $item->id)}}" target="_blank" class="badge bg-primary"> <i class="fa fa-eye"> </i> </a>
+                                    
+                                @endif
                             </td>
 
                          

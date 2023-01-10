@@ -51,12 +51,12 @@
                                 <label>Perihal</label>
                             </div>
                             <div class="col-md-10 form-group">
-                               <select name="id_perihal" class="form-control" required>
+                               <select name="id_judul_surat" class="form-control" required>
                                     @foreach ($perihal as $item)
-                                        @if(old('id_perihal', $item->id) == $data->id )
-                                            <option value="{{ $item->id }}" selected>{{ $item->nama }}</option>      
+                                        @if(old('id', $item->id) == $data->id_judul_surat )
+                                            <option value="{{ $item->id }}" selected>{{ $item->judul_surat }}</option>      
                                         @else
-                                            <option value="{{ $item->id }}">{{ $item->nama }}</option>    
+                                            <option value="{{ $item->id }}">{{ $item->judul_surat }}</option>    
                                         @endif
                                     @endforeach
                             

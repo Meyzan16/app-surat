@@ -78,7 +78,7 @@ class SuratProdiOperatorController extends Controller
         {
             tb_loghistory_surat_umum::where('id', $id)->update([
                 'id_lampiran' => $request->id_lampiran,
-                'id_perihal' => $request->id_perihal,
+                'id_judul_surat' => $request->id_judul_surat,
                 'id_tujuan' => $request->id_tujuan,
                 'isi_surat' => $request->isi_surat,
                 'sub_tujuan' => $request->sub_tujuan,
@@ -90,7 +90,7 @@ class SuratProdiOperatorController extends Controller
         {
             tb_loghistory_surat_umum::where('id', $id)->update([
                 'id_lampiran' => $request->id_lampiran,
-                'id_perihal' => $request->id_perihal,
+                'id_judul_surat' => $request->id_judul_surat,
                 'id_tujuan' => $request->id_tujuan,
                 'isi_surat' => $request->isi_surat,
                 'sub_tujuan' => $request->sub_tujuan,
@@ -98,7 +98,7 @@ class SuratProdiOperatorController extends Controller
             ]);
         }
 
-        return redirect()->route('operator.surat-prodi.index')->with('toast_success',' Data berhasil di perbarui ');
+        return redirect()->route('operator.surat-umum.index')->with('toast_success',' Data berhasil di perbarui ');
     }
 
 

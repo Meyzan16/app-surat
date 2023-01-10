@@ -84,10 +84,13 @@
 
                             <td>
                               
-                                
-                               
-                               
+                                @if($item->status_persetujuan == 'Y')
+                                <a href="{{ route('operator.surat-umum.show', $item->id)}}" target="_blank" class="badge bg-primary"> <i class="fa fa-print"> </i> </a>
+                                @else
                                 <a href="{{ route('operator.surat-umum.show', $item->id)}}" target="_blank" class="badge bg-primary"> <i class="fa fa-eye"> </i> </a>
+                                @endif
+                               
+                               
                                 <a onclick="location.href='{{ route('operator.surat-umum.edit', $item->id)}}'"   class="badge bg-warning">  <i class="fa fa-edit"> </i>  </a>
                           
                             </td>

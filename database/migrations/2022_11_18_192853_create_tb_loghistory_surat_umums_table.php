@@ -27,7 +27,7 @@ return new class extends Migration
             $table->enum('kepala_operator', ['Y','N','belum diverifikasi'])->default('belum diverifikasi');
             $table->text('catatan_kepala_operator')->nullable();
             $table->timestamp('time_acc_kep_operator')->nullable();
-            $table->enum('status_persetujuan', ['Y','N','belum diverifikasi'])->default('belum diverifikasi');
+            $table->enum('status_persetujuan', ['Y','belum diverifikasi'])->default('belum diverifikasi');
             $table->foreignId('id_persetujuan')->nullable();
             $table->timestamp('time_acc_ttd')->nullable();
             $table->softDeletes();

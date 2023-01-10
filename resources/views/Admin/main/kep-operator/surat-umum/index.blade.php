@@ -87,7 +87,11 @@
                                 
                                 <a class="badge bg-danger"   data-bs-toggle="modal" data-bs-target="#exampleModalTolak{{ $item->id }}">  <i class="fa fa-ban"> </i>  </a>                                  
 
+                                @if($item->status_persetujuan == 'Y')
+                                <a href="{{ route('kep-operator.surat-umum.show', $item->id)}}" target="_blank" class="badge bg-primary"> <i class="fa fa-print"> </i> </a>
+                                @else
                                 <a href="{{ route('kep-operator.surat-umum.show', $item->id)}}" target="_blank" class="badge bg-primary"> <i class="fa fa-eye"> </i> </a>
+                                @endif
                             </td>
 
                             @if ($item->status_persetujuan == 'belum diverifikasi')
