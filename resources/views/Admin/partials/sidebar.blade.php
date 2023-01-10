@@ -76,8 +76,8 @@
                             <li class="submenu-item  {{ request()->is('operator/surat-mahasiswa/surat-umum*') ? 'active' : '' }} ">
                                 <a href="{{ route('operator.surat-umum-mhs.index')}}">Data pengajuan</a>
                             </li>
-                            <li class="submenu-item {{ request()->is('operator/surat-mahasiswa/aktif-kuliah/history-pengajuan') ? 'active' : '' }}">
-                                <a href="#">History Surat</a>
+                            <li class="submenu-item {{ request()->is('operator/surat-mahasiswa/surat-umum/history') ? 'active' : '' }}">
+                                <a href="{{route('operator.surat-umum-mhs.history')}}">History Surat</a>
                             </li>
                         </ul>
                     </li>
@@ -102,12 +102,12 @@
 
                 @if(auth()->user()->roles == 'KEPALA_OPERATOR')
 
-                    <li class="sidebar-item {{ request()->is('kepala-operator/surat-mahasiswa*') ? 'active' : '' }}  has-sub">
+                    <li class="sidebar-item {{ request()->is('kepala-operator/surat-mahasiswa/surat-aktif-kuliah*') ? 'active' : '' }}  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-file-earmark-medical-fill"></i>
                             <span>Surat Aktif Kuliah</span>
                         </a>
-                        <ul class="submenu {{ request()->is('kepala-operator/surat-mahasiswa*') ? 'active' : '' }}">
+                        <ul class="submenu {{ request()->is('kepala-operator/surat-mahasiswa/surat-aktif-kuliah*') ? 'active' : '' }}">
 
                             @php
                                 $prodi = DB::table('tb_prodis')->get();
@@ -121,12 +121,12 @@
                         </ul>
                     </li>
 
-                    <li class="sidebar-item {{ request()->is('kepala-operator/surat-umum-mahasiswa*') ? 'active' : '' }}  has-sub">
+                    <li class="sidebar-item {{ request()->is('kepala-operator/surat-mahasiswa/surat-umum-mahasiswa*') ? 'active' : '' }}  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-file-earmark-medical-fill"></i>
                             <span>Surat Mahasiswa</span>
                         </a>
-                        <ul class="submenu {{ request()->is('kepala-operator/surat-umum-mahasiswa*') ? 'active' : '' }}">
+                        <ul class="submenu {{ request()->is('kepala-operator/surat-mahasiswa/surat-umum-mahasiswa*') ? 'active' : '' }}">
 
                             @php
                                 $prodi = DB::table('tb_prodis')->get();

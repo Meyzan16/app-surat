@@ -169,6 +169,7 @@ Route::group([
         Route::group([
             'prefix'  => 'surat-umum/'],function(){
             Route::get('/', [SuratUmumMhsController::class, 'index'])->name('operator.surat-umum-mhs.index');
+            Route::get('/history', [SuratUmumMhsController::class, 'history'])->name('operator.surat-umum-mhs.history');
             Route::get('{id}/edit', [SuratUmumMhsController::class, 'edit'])->name('operator.surat-umum-mhs.edit');
             Route::patch('{id}/data-diperbarui', [SuratUmumMhsController::class, 'update'])->name('operator.surat-umum-mhs.update');
             Route::patch('{id}/verif_diterima', [SuratUmumMhsController::class, 'verifikasi'])->name('operator.surat-umum-mhs.verif_diterima');
@@ -222,6 +223,9 @@ Route::group([
                 Route::group([
                     'prefix'  => 'surat-umum-mahasiswa/'],function(){
                         Route::get('{prodi}', [SuratUmumKepOperatorController::class, 'mahasiswa'])->name('kep-operator.surat-umum-mhs.index');
+                        Route::get('{prodi}/Data-pengajuan', [SuratUmumKepOperatorController::class, 'pengajuan'] )->name('kep-operator.surat-umum-mhs.pengajuan');
+                        Route::get('{prodi}/history-pengajuan', [SuratUmumKepOperatorController::class, 'history'])->name('kep-operator.surat-umum-mhs.history');
+
                         Route::get('{id}/cetak', [CetakController::class, 'surat_umum_mhs'])->name('kep-operator.surat-umum-mhs.cetak');
                         Route::patch('{id}/verif-diterima', [SuratUmumKepOperatorController::class, 'verifikasi_mhs'])->name('kep-operator.surat-umum-mhs.verif_diterima');
                         Route::patch('{id}/verif-ditolak', [SuratUmumKepOperatorController::class, 'verifikasi_tolak_mhs'])->name('kep-operator.surat-umum-mhs.verif_ditolak');
