@@ -6,6 +6,7 @@ use App\models\tb_log_srt_ket_msh_kuliah;
 use App\models\tb_judul_surat;
 use App\models\tb_log_surat_mhs_umum;
 use DateTime;
+use Illuminate\Support\Facades\Session;
 
 class CetakController extends Controller
 {
@@ -14,7 +15,10 @@ class CetakController extends Controller
         
         $data = tb_log_srt_ket_msh_kuliah::with(['tb_judul_surat', 'tb_data_mahasiswa.tb_prodi',
         'user.tb_persetujuan'])
-        ->where('id', $id)->first();   
+        ->where([
+            ['id', '=',  $id],
+            ['npm', '=',  Session::get('npm')]
+            ])->first();   
         
         //cek masih aktif
         $created = new DateTime($data->created_at);
@@ -45,7 +49,10 @@ class CetakController extends Controller
         
         $data = tb_log_surat_mhs_umum::with(['tb_judul_surat', 'tb_data_mahasiswa.tb_prodi',
         'user.tb_persetujuan'])
-        ->where('id', $id)->first();   
+        ->where([
+            ['id', '=',  $id],
+            ['npm', '=',  Session::get('npm')]
+            ])->first();   
         
         //cek masih aktif
         $created = new DateTime($data->created_at);

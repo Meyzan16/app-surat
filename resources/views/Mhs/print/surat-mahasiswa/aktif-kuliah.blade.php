@@ -34,7 +34,7 @@
 					<font size="4">RISET, DAN TEKNOLOGI</font><br>
 					<font size="4"><b>UNIVERSITAS BENGKULU</b></font><br>
 					<font size="4"><b>FAKULTAS MATEMATIKA DAN ILMU PENGTAHUAN ALAM</b></font><br>
-					<font size="2">Jalan W.R Supratman, Kandang Limun (Gedung T), Bengkulu 38371A</font><br>
+					<font size="2">Jalan W.R Supratman, Kandang Limun (Dekanat MIPA), Bengkulu 38371A</font><br>
 					<font size="2">Telepon: (0736) 20919, 21170 ext. 208 Faksimile: (0736) 20919</font><br>
 					<font size="2">Laman: <i>http://www.fmipa.unib.ac.id </i>  <i>e-mail</i>: dekanat_fmipa@unib.ac.id </font>
 				</center>
@@ -199,11 +199,9 @@
 					<br><br><br><br>
 
 					{{ $data->user->nama}} <br>
-					{{ $data->user->tb_persetujuan->nip }}
+					NIP. {{ $data->user->tb_persetujuan->nip }}
 					</td>	
-				</tr>
-
-		
+				</tr>		
 			</table>
 		 @endif
 	</center>

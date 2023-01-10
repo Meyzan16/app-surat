@@ -9,6 +9,7 @@ use App\Models\tb_tujuan_surat;
 use App\Models\tb_prodi;
 use App\Models\tb_log_surat_mhs_umum;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 
 use Illuminate\Http\Request;
 
@@ -76,7 +77,7 @@ class SuratUmumVerifPersetujuanController extends Controller
             'time_acc_ttd' => date("Y-m-d H:i:s"),
         ]);
 
-         return redirect()->route('Admin.main.verif-persetujuan.surat-umum-mhs.index', $prodi )->with(['toast_success' => 'Data berhasil di verifikasi !!']);
+         return redirect()->route('ttd-persetujuan.surat-umum-mhs.index', $prodi )->with(['toast_success' => 'Data berhasil di verifikasi !!']);
     }
 
 

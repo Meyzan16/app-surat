@@ -112,7 +112,8 @@ Route::group([
         Route::group([
             'prefix'  => 'surat-umum/'],function(){
             Route::get('{id}/edit', [SuratUmumMahasiswaController::class, 'index'])->name('surat-umum.index');
-            Route::PATCH('{id}/update', [SuratUmumMahasiswaController::class, 'update'])->name('surat-umum.update');    
+            Route::PATCH('{id}/update', [SuratUmumMahasiswaController::class, 'update'])->name('surat-umum.update');
+            Route::get('{id}/cetak', [CetakController::class, 'surat_umum_mhs'])->name('cetak.surat_umum_mhs');     
         });
 
 

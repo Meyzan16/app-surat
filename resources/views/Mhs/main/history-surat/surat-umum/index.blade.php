@@ -108,7 +108,7 @@
 
                                
                                     @if($aa < $item->tb_judul_surat->masa_aktif)
-                                      <a href="{{ route('cetak.aktif-kuliah', $item->id)}}" class="badge bg-label-primary" >  <i class="fa fa-eye"> </i> Print </a>          
+                                      <a href="{{ route('cetak.surat_umum_mhs', $item->id)}}" class="badge bg-label-primary" >  <i class="fa fa-eye"> </i> Print </a>          
                                     @endif
                                     
                             @elseif($item->tujuan_surat == NULL)

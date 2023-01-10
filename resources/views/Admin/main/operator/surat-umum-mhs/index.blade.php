@@ -34,7 +34,7 @@
                             <th>Judul</th>
                             <th>Status</th>
                             <th>Aksi</th>
-                            <th>Status Kepala Operator</th>
+                            <th>Status Kep.Operator</th>
                             <th>Status TTD Persetujuan</th>
                         </tr>
                     </thead>

@@ -104,15 +104,18 @@
                             @endif
                         </td>
 
-                        <td> 
-                          <form action="{{route('surat-masih-kuliah.delete', $item->id)}}" method="POST">
-                            @csrf @method('delete')
-                            <button type="submit" class="d-flex">
-                              <span class="badge bg-label-danger me-1">Hapus</span>
-                            </button>
-                          </form>
-                        
-                        </td>
+                        @if($item->status_persetujuan != 'Y')
+                          <td> 
+                            <form action="{{route('surat-masih-kuliah.delete', $item->id)}}" method="POST">
+                              @csrf @method('delete')
+                              <button type="submit" class="d-flex">
+                                <span class="badge bg-label-danger me-1">Hapus</span>
+                              </button>
+                            </form>
+                          </td>   
+                        @else
+                        <td><span class="badge bg-label-success me-1">Data Tersimpan</span></td> 
+                        @endif
 
                         @php
                         $created = new DateTime($item->created_at);
@@ -139,10 +142,7 @@
                         }
 
 
-                        @endphp
-
-                        
-                        
+                        @endphp                     
                         <td>
                           
                           <a class="badge bg-label-{{$color}} "> Hari ke-{{$aa}} | {{ $dataa }}  </a>          
