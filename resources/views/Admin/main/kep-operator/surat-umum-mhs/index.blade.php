@@ -47,9 +47,9 @@
                             <th>Perihal Surat</th>
                             <th>Status Operator</th>
                             <th>Status Kep.Operator</th>
-
                             <th>Aksi</th>
                             <th>Status Persetujuan</th>
+                            <th>Masa Aktif</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -109,9 +109,7 @@
                           
                             <td>      
                                 <a class="badge bg-success"   data-bs-toggle="modal" data-bs-target="#exampleModalTerima{{ $item->id }}">   <i class="fa fa-check-circle"> </i>  </a>                                  
-                                
-
-                                <a href="{{ route('kep-operator.surat-umum-mhs.cetak', $item->id)}}" target="_blank" class="badge bg-primary"> <i class="fa fa-eye"> </i> </a>
+                                <a href="{{ route('kep-operator.surat-umum-mhs.cetak', $item->id)}}" class="badge bg-primary"> <i class="fa fa-eye"> </i> </a>
                             </td>
 
                             @if ($item->status_persetujuan == 'belum diverifikasi')
@@ -123,6 +121,37 @@
                                 <span class="badge bg-success">Diterima</span>
                             </td>
                             @endif
+
+                            @php
+                            $created = new DateTime($item->created_at);
+                            $result = $created->format('d-m-Y');
+
+                            
+                            $datetime1 = date_create($result);
+
+                            $now = date('d-m-Y');
+
+                            $datetime2 = date_create($now); // waktu sekarang
+                            
+                            $selisih  = date_diff($datetime1, $datetime2);
+
+                            $aa = $selisih->d;
+
+                            if($aa > $item->tb_judul_surat->masa_aktif)
+                            {
+                                $dataa = "Kadaluarsa";
+                                $color = "danger";
+                            }else {
+                                $dataa = "Masih Aktif";
+                                $color = "success";
+                            }
+
+
+                            @endphp
+
+                                <td>
+                                    <span class="badge bg-{{$color}}"> Hari Ke-{{$aa}}  | {{ $dataa }}</span>
+                                </td>
 
                          
                         </tr>

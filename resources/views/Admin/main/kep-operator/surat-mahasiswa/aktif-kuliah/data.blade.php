@@ -47,10 +47,10 @@
                             <th>NPM</th>
                             <th>Nama</th>
                             <th>Status Operator</th>
-                            {{-- <th>Aksi</th> --}}
                             <th>Status Kep.Operator</th>
                             <th>Aksi</th>
                             <th>Status ttd</th>
+                            <th>Masa Aktif</th>
 
                         </tr>
                     </thead>
@@ -115,6 +115,39 @@
                                     <span class="badge bg-warning">Menunggu</span>
                                 </td>
                             @endif
+
+                            @php
+                            $created = new DateTime($item->created_at);
+                            $result = $created->format('d-m-Y');
+
+                            
+                            $datetime1 = date_create($result);
+
+                            $now = date('d-m-Y');
+
+                            $datetime2 = date_create($now); // waktu sekarang
+                            
+                            $selisih  = date_diff($datetime1, $datetime2);
+
+                            $aa = $selisih->d;
+
+                            if($aa > $item->tb_judul_surat->masa_aktif)
+                            {
+                                $dataa = "Kadaluarsa";
+                                $color = "danger";
+                            }else {
+                                $dataa = "Masih Aktif";
+                                $color = "success";
+                            }
+
+
+                            @endphp
+
+                                <td>
+                                    <span class="badge bg-{{$color}}"> Hari Ke-{{$aa}}  | {{ $dataa }}</span>
+                                </td>
+
+
 
                         </tr>
                         

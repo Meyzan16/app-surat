@@ -74,7 +74,7 @@
                                 
                                 <a class="badge bg-danger"   data-bs-toggle="modal" data-bs-target="#exampleModalTolak{{ $item->id }}">  <i class="fa fa-ban"> </i>  </a>                                  
                                
-                                <a href="{{route('operator.cetak.surat-umum-mhs', $item->id)}}" target="_blank" class="badge bg-primary"> <i class="fa fa-eye"> </i> </a>
+                                <a href="{{route('operator.cetak.surat-umum-mhs', $item->id)}}" class="badge bg-primary"> <i class="fa fa-eye"> </i> </a>
 
                                 <a onclick="location.href='{{ route('operator.surat-umum-mhs.edit', $item->id) }}'"   class="badge bg-warning">  <i class="fa fa-edit"> </i>  </a>
 

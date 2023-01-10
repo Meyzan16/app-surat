@@ -46,7 +46,7 @@
                             <th>Status Kep.Operator</th>
                             <th>Tanggal Pengajuan</th>
                             <th>Aksi</th>
-                            <th>Status TTD Persetujuan</th>
+                            <th>Status Persetujuan</th>
                         </tr>
                     </thead>
                     <tbody>

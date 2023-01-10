@@ -51,7 +51,6 @@ class CetakController extends Controller
         'user.tb_persetujuan'])
         ->where([
             ['id', '=',  $id],
-            ['npm', '=',  Session::get('npm')]
             ])->first();   
         
         //cek masih aktif
@@ -70,7 +69,21 @@ class CetakController extends Controller
 
         if($aa > $judul_surat->masa_aktif)
         {
-            return redirect()->route('rekaman-pengajuan.aktif-kuliah')->with('toast_error', 'Surat Sudah Tidak Aktif');
+          
+            if(auth()->user()->roles == 'OPERATOR_PRODI')
+            {
+                return redirect()->route('operator.surat-umum-mhs.index', auth()->user()->kode_prodi)->with('toast_error', 'Surat Sudah Tidak Aktif');
+            }
+            elseif(auth()->user()->roles == 'KEPALA_OPERATOR')
+            {
+                return redirect()->route('kep-operator.surat-umum-mhs.index', $data->kode_prodi)->with('toast_error', 'Surat Sudah Tidak Aktif');
+            }    
+            elseif(auth()->user()->roles == 'VERIF_PERSETUJUAN')
+            {
+                return redirect()->route('ttd-persetujuan.surat-umum-mhs.index', $data->kode_prodi)->with('toast_error', 'Surat Sudah Tidak Aktif');
+            }else{
+                return redirect()->route('rekaman-pengajuan.aktif-kuliah')->with('toast_error', 'Surat Sudah Tidak Aktif');
+            }
         }else
         {
             return view('Mhs.print.surat-mahasiswa.surat-umum-mhs', compact('data'));

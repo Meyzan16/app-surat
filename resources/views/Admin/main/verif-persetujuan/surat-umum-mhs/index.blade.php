@@ -123,7 +123,7 @@
                                 <a class="badge bg-success"   data-bs-toggle="modal" data-bs-target="#exampleModalTerima{{ $item->id }}">   <i class="fa fa-check-circle"> </i>  </a>                                  
                                 
 
-                                <a href="{{ route('ttd-persetujuan.surat-umum-mhs.cetak', $item->id)}}" target="_blank" class="badge bg-primary"> <i class="fa fa-eye"> </i> </a>
+                                <a href="{{ route('ttd-persetujuan.surat-umum-mhs.cetak', $item->id)}}" class="badge bg-primary"> <i class="fa fa-eye"> </i> </a>
                             </td>
 
                          
